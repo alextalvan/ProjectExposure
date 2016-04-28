@@ -19,15 +19,21 @@ public class MapBuilder : MonoBehaviour {
 	[SerializeField]
 	int mapColumns;
 
+
 	//for ease of use, all the tile data should be viewable and editable from the inspector
 	[SerializeField]
 	List<TileType> tileTypes = new List<TileType>();
+
+	//tile references are cached for editing them in the inspector
+	//HexagonTile[,] storedTiles;
 
 
 	void Start()
 	{
 		BuildMap(mapRows,mapColumns);
 	}
+
+
 
 	void BuildMap (int rows, int cols)
 	{
@@ -39,12 +45,13 @@ public class MapBuilder : MonoBehaviour {
 		//centering the map, this is optional
 		mapRoot.transform.position = new Vector3(tileModelSizeX * rows * -0.5f,0,tileModelSizeZ * cols * -0.5f);
 
+		//storedTiles = new HexagonTile[rows,cols];
+
 		float xAxisOffset = tileModelSizeX * 1.5f;
 		float halfXSize = xAxisOffset * 0.5f;
 		float zAxisOffset = tileModelSizeZ * 0.5f;
 
-
-		for (int i = 0; i < rows; ++i)
+		for (int i = -1; i < rows; ++i)
 		{
 			float hexagonOffset = (i % 2 == 0) ? halfXSize : 0.0f;
 
@@ -53,22 +60,46 @@ public class MapBuilder : MonoBehaviour {
 
 				//instantiation and positioning
 				GameObject newTile = Instantiate(tilePrefab);
-				//newTile.name = i.ToString() + "," + j.ToString();
+				newTile.name = i.ToString() + "," + j.ToString();
 				newTile.transform.SetParent(mapRoot.transform);
-				newTile.transform.localPosition = new Vector3(j * xAxisOffset + hexagonOffset, 0 , i * zAxisOffset);
+
+				Vector3 pos = new Vector3(j * xAxisOffset + hexagonOffset, 0 , i * zAxisOffset);
+				newTile.transform.localPosition = pos;
+
 
 
 				HexagonTile tileComp = newTile.GetComponent<HexagonTile>();
+				//storedTiles[i,j] = tileComp;
 
-				//for now, just pick random type for each tile
 				TileType randomType = tileTypes[Random.Range(0,tileTypes.Count)];
-
 				tileComp.tileType = randomType;
 
+
+				//city tile
 
 			}
 
 		}
-			
+
+
+		//RecalculateTiles();
 	}
+
+//	public void RecalculateTiles()
+//	{
+//		if(storedTiles == null)
+//			return;
+//
+//		for (int i = 0; i < mapRows; ++i)
+//			for(int j = 0; j < mapColumns; ++j)
+//			{
+//				TileType randomType = tileTypes[Random.Range(0,tileTypes.Count)];
+//
+//				storedTiles[i,j].tileType = randomType;
+//			}
+//
+//
+//	}
+
+
 }

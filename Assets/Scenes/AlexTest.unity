@@ -165,8 +165,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 54445191}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.40611395, y: 0, z: 0, w: 0.9138225}
+  m_LocalPosition: {x: -242.7, y: 164.6, z: -134}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -232,6 +232,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1001 &1325032909
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 407856, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407856, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407856, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407856, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407856, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407856, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407856, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 407856, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2058988226
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,10 +316,36 @@ MonoBehaviour:
   tilePrefab: {fileID: 112570, guid: 5d934e6fbec8bf74c94c0d7a99ebf74a, type: 2}
   tileModelSizeX: 10
   tileModelSizeZ: 8.66
-  mapRows: 80
-  mapColumns: 20
+  mapRows: 24
+  mapColumns: 6
   tileTypes:
-  - material: {fileID: 2100000, guid: 9bf29f9426756344db7328bbb3b7c7ef, type: 2}
+  - topObjectPrefab: {fileID: 193274, guid: 0411e91c036dfde43904087eb37bcefc, type: 2}
+    platformPrefab: {fileID: 191558, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+    coalEfficiency: 1
+    windEfficiency: 0.25
+    solarEfficiency: 0.25
+    hydroEfficiency: 0
+  - topObjectPrefab: {fileID: 163278, guid: 922743c6b84d5cf4aa08d483070b648c, type: 2}
+    platformPrefab: {fileID: 191558, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+    coalEfficiency: 0.25
+    windEfficiency: 0.25
+    solarEfficiency: 0.25
+    hydroEfficiency: 0.25
+  - topObjectPrefab: {fileID: 193130, guid: b9b480d60adc6e24989c38e3ccaa5eb4, type: 2}
+    platformPrefab: {fileID: 191558, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
     coalEfficiency: 0
-    windEfficiency: 0
-    solarEfficiency: 0
+    windEfficiency: 1
+    solarEfficiency: 0.25
+    hydroEfficiency: 0.25
+  - topObjectPrefab: {fileID: 106694, guid: 3973c6f64425a334db380084e2c50e70, type: 2}
+    platformPrefab: {fileID: 191558, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+    coalEfficiency: 0.25
+    windEfficiency: 0.25
+    solarEfficiency: 1
+    hydroEfficiency: 0
+  - topObjectPrefab: {fileID: 117288, guid: 70f06d9b00f51eb4f999612e64397ab4, type: 2}
+    platformPrefab: {fileID: 191558, guid: d6ce88ef222c8d34d9394fa864fd1117, type: 2}
+    coalEfficiency: 0
+    windEfficiency: 0.25
+    solarEfficiency: 0.25
+    hydroEfficiency: 1

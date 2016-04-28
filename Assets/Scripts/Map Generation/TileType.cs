@@ -6,8 +6,11 @@ using System.Collections;
 public class TileType
 {
 	//public string description = "unknown";
-	public Material material;
+	//public Material material;
+	public GameObject topObjectPrefab;
+	public GameObject platformPrefab;
 	public float coalEfficiency;
 	public float windEfficiency;
 	public float solarEfficiency;
+	public float hydroEfficiency;
 }
