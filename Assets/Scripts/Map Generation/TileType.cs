@@ -13,4 +13,5 @@ public class TileType
 	public float windEfficiency;
 	public float solarEfficiency;
 	public float hydroEfficiency;
+	public bool allowBuildOver;
 }

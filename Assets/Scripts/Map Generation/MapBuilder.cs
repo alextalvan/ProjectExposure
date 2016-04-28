@@ -24,6 +24,12 @@ public class MapBuilder : MonoBehaviour {
 	[SerializeField]
 	List<TileType> tileTypes = new List<TileType>();
 
+	[SerializeField]
+	List<TileType> cityTiles = new List<TileType>();
+
+	[SerializeField]
+	int cityRadius = 1;
+
 	//tile references are cached for editing them in the inspector
 	//HexagonTile[,] storedTiles;
 
@@ -45,17 +51,17 @@ public class MapBuilder : MonoBehaviour {
 		//centering the map, this is optional
 		mapRoot.transform.position = new Vector3(tileModelSizeX * rows * -0.5f,0,tileModelSizeZ * cols * -0.5f);
 
-		//storedTiles = new HexagonTile[rows,cols];
+		//storedTiles = new HexagonTile[rows + 4,cols + 4];
 
 		float xAxisOffset = tileModelSizeX * 1.5f;
 		float halfXSize = xAxisOffset * 0.5f;
 		float zAxisOffset = tileModelSizeZ * 0.5f;
 
-		for (int i = -1; i < rows; ++i)
+		for (int i = 1; i < rows + 2; ++i)
 		{
 			float hexagonOffset = (i % 2 == 0) ? halfXSize : 0.0f;
 
-			for(int j = 0; j < cols; ++j)
+			for(int j = 0; j < cols ; ++j)
 			{
 
 				//instantiation and positioning
@@ -69,13 +75,18 @@ public class MapBuilder : MonoBehaviour {
 
 
 				HexagonTile tileComp = newTile.GetComponent<HexagonTile>();
-				//storedTiles[i,j] = tileComp;
+				//storedTiles[i+1,j] = tileComp;
 
-				TileType randomType = tileTypes[Random.Range(0,tileTypes.Count)];
+				TileType randomType;
+
+				if(CheckIfCityTile(i,j))
+					randomType = cityTiles[Random.Range(0,cityTiles.Count)];
+				else
+					randomType = tileTypes[Random.Range(0,tileTypes.Count)];
+
+
 				tileComp.tileType = randomType;
 
-
-				//city tile
 
 			}
 
@@ -83,6 +94,42 @@ public class MapBuilder : MonoBehaviour {
 
 
 		//RecalculateTiles();
+	}
+
+	bool CheckIfCityTile(int i, int j)
+	{
+		if(cityRadius <= 0)//no city
+			return false;
+
+		//map central tile is always city
+		int ci = mapRows/ 2 + 1;
+		int cj = mapColumns/2;
+
+		if(i == ci  && j == cj)
+			return true;
+
+		if(cityRadius >= 2)
+		{
+			if(i == ci + 1 && j == cj)
+				return true;
+
+			if(i == ci - 1 && j == cj)
+				return true;
+
+			if(i == ci + 2 && j == cj)
+				return true;
+
+			if(i == ci - 2 && j == cj)
+				return true;
+
+			if(i == ci + 1 && j == cj - 1)
+				return true;
+
+			if(i == ci - 1 && j == cj - 1)
+				return true;
+		}
+
+		return false;
 	}
 
 //	public void RecalculateTiles()
@@ -100,6 +147,5 @@ public class MapBuilder : MonoBehaviour {
 //
 //
 //	}
-
 
 }

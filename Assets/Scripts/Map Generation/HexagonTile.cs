@@ -37,5 +37,11 @@ public class HexagonTile : MonoBehaviour
 		}
 	}
 
-	//public void 
+	public void Interact()
+	{
+		//to be filled
+
+		if(_topObject!=null)
+			_topObject.GetComponent<Renderer>().material.color = Color.magenta;
+	}
 }
