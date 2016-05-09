@@ -3,22 +3,24 @@ using System.Collections;
 
 public class TileInteracter : MonoBehaviour 
 {
-
-	// Update is called once per frame
-	void Update () 
+	void Start()
 	{
-//		if(Input.GetMouseButtonDown(0))
-//		{
-//			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-//
-//			RaycastHit hitinfo;
-//
-//			if(Physics.Raycast(ray,out hitinfo))
-//			{
-//				//for now we know the only raycastable colliders belong to tiles
-//
-//				//gameManagerReference.HandleTileClick(hitinfo.collider.gameObject.GetComponent<HexagonTile>());
-//			}
-//		}
+		TouchInputManager.Singleton.OnTouchBegin += DebugColor;
+	}
+
+	void DebugColor()
+	{
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+		RaycastHit hitinfo;
+
+		if(Physics.Raycast(ray,out hitinfo))
+		{
+
+			Renderer[] rends = hitinfo.collider.GetComponentsInChildren<Renderer>();
+
+			foreach(Renderer r in rends)
+				r.material.color = Color.blue;
+		}
 	}
 }
