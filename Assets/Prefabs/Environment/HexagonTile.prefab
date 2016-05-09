@@ -17,48 +17,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &149550
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 496352}
-  m_Layer: 0
-  m_Name: Model_Platform
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &196882
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 427042}
-  m_Layer: 0
-  m_Name: Model_Top_Object
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &427042
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196882}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 438200}
-  m_RootOrder: 1
 --- !u!4 &438200
 Transform:
   m_ObjectHideFlags: 1
@@ -68,22 +26,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 496352}
-  - {fileID: 427042}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
---- !u!4 &496352
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149550}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 438200}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!64 &6494388
 MeshCollider:
@@ -105,11 +49,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 112570}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52fe4767079e74647b0f26de679d7265, type: 3}
+  m_Script: {fileID: 11500000, guid: eb627dcb99dd05741a29613adf8501d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topObject: {fileID: 196882}
-  _platform: {fileID: 149550}
+  tileTypes:
+  - environmentType: 0
+    visualPrefab: {fileID: 113364, guid: ef9b6f858b3cdc641b212b0ae92460ee, type: 2}
+  - environmentType: 1
+    visualPrefab: {fileID: 167194, guid: fc1c3b44322a0b1468580f8da3acd924, type: 2}
+  - environmentType: 2
+    visualPrefab: {fileID: 123284, guid: 463be204914d2a44c9407dc5e04e5d34, type: 2}
+  - environmentType: 3
+    visualPrefab: {fileID: 182664, guid: be84dddb2e2fce848ac0365c5c04b794, type: 2}
+  - environmentType: 4
+    visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
