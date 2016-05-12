@@ -319,11 +319,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingSpawnCoolDown: 0
-  distBetweenBuldings: 2.5
-  minRandomDist: -0.5
-  maxRandomDist: 0.5
+  distBetweenBuldings: 3
+  minRndOffset: -0.5
+  maxRndOffset: 0.5
+  minRndLineOffset: -0.5
+  maxRndLineOffset: 0.5
   rndUpgradeSkipRate: 2
   upgradeRange: 1.5
+  upgradeRndShuffleRate: 3
   buildingPrefabs:
   - {fileID: 171028, guid: 3c81ba451b72cfc44a87f1cc20f62fde, type: 2}
   - {fileID: 194018, guid: 0c394cf2a920c2d499eb2a1afdf1dd60, type: 2}

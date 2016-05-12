@@ -9,13 +9,19 @@ public class CityScript : MonoBehaviour {
 	[SerializeField]
 	float distBetweenBuldings = 1f;
 	[SerializeField]
-	float minRandomDist = -1.0f; //min rnd dist + to dist between buildings
+	float minRndOffset = -1.0f; //min rnd offset
 	[SerializeField]
-	float maxRandomDist = 1.0f; //max rnd dist + to dist between buildings
-	[SerializeField]
+	float maxRndOffset = 1.0f; //max rnd offset
+    [SerializeField]
+    float minRndLineOffset = -0.5f; //min rnd line offset
+    [SerializeField]
+    float maxRndLineOffset = 0.5f; //max rnd line offset
+    [SerializeField]
 	int rndUpgradeSkipRate = 2; //rnd chanse to skip upgrade of building
 	[SerializeField]
 	float upgradeRange = 1.5f; //modifier of range for building upgrades
+    [SerializeField]
+    int upgradeRndShuffleRate = 3; //used as divider for list count when swapping items in list (lesser - farer items it might swap)
 
 	[SerializeField]
 	List<GameObject> buildingPrefabs = new List<GameObject>(); //storage for prefabs
@@ -59,9 +65,10 @@ public class CityScript : MonoBehaviour {
 		//Calculate starting point (1st column / 1st row cell)
 		Vector3 startPnt = new Vector3 (topDistrict.position.x - bounds.extents.x + ((bounds.size.x - numx * distBetweenBuldings) * 0.5f) + distBetweenBuldings * 0.5f, topDistrict.position.y, topDistrict.position.z + - bounds.extents.z + ((bounds.size.z - numz * distBetweenBuldings) * 0.5f) + distBetweenBuldings * 0.5f);
 		for (int x = 0; x < numx; ++x) {
-			for (int z = 0; z < numz; ++z) {
+            float lineOffset = Random.Range(minRndLineOffset, maxRndLineOffset);
+            for (int z = 0; z < numz; ++z) {
 				//Calculate new point and add random offset to it
-				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRandomDist, maxRandomDist), 0,  distBetweenBuldings * z + Random.Range(minRandomDist, maxRandomDist)) + startPnt;
+				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 0,  distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset)) + startPnt;
 				//If is in city radius
 				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius * transform.lossyScale.x)
 					grid.Add (newPnt); //Add to points list
@@ -72,9 +79,11 @@ public class CityScript : MonoBehaviour {
 		numx = (int)(bounds.size.x / distBetweenBuldings);
 		numz = (int)(bounds.size.z / distBetweenBuldings);
 		startPnt = new Vector3 (bottomDistrict.position.x - bounds.extents.x + ((bounds.size.x - numx * distBetweenBuldings) * 0.5f) + distBetweenBuldings * 0.5f, bottomDistrict.position.y, bottomDistrict.position.z + - bounds.extents.z + ((bounds.size.z - numz * distBetweenBuldings) * 0.5f) + distBetweenBuldings * 0.5f);
-		for (int x = 0; x < numx; ++x) {
-			for (int z = 0; z < numz; ++z) {
-				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRandomDist, maxRandomDist), 0,  distBetweenBuldings * z + Random.Range(minRandomDist, maxRandomDist)) + startPnt;
+		for (int x = 0; x < numx; ++x)
+        {
+            float lineOffset = Random.Range(minRndLineOffset, maxRndLineOffset);
+            for (int z = 0; z < numz; ++z) {
+				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 0,  distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset)) + startPnt;
 				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius * transform.lossyScale.x)
 					grid.Add (newPnt);
 			}
@@ -116,8 +125,8 @@ public class CityScript : MonoBehaviour {
 				grid.RemoveAt (0); //Remove used point from list
 			} else {
 				if (grid.Count > 1) {
-					int rndId = Random.Range (1, grid.Count / 3); //Randomly pick point from list in range from 1 to count / 3
-					grid [0] = grid [rndId]; //Swap those points
+					int rndId = Random.Range (1, grid.Count / upgradeRndShuffleRate); //Randomly pick point from list in range from 1 to count / upgradeRndShuffleRate
+                    grid [0] = grid [rndId]; //Swap those points
 					grid [rndId] = pnt;
 				}
 			}
@@ -137,7 +146,7 @@ public class CityScript : MonoBehaviour {
 					int rnd = Random.Range (0, rndUpgradeSkipRate); //Randomize if will be upgraded now or not
 					if (rnd != 0)
 						return;
-					if (Vector3.Distance (building.position, transform.position) < lastBuildingDist / ((buildingType + 2)) * upgradeRange) //If meets the condition
+					if (Vector3.Distance (building.position, transform.position) < lastBuildingDist / ((buildingType + 2)) * upgradeRange) //If meets the condition (weird formula out of ass :))
 						upgradedBuildings.Add (ReplaceBuilding (building)); //Upgrade
 				}
 			}
@@ -150,11 +159,11 @@ public class CityScript : MonoBehaviour {
 	/// <returns>The building.</returns>
 	/// <param name="building">Building.</param>
 	GameObject ReplaceBuilding(Transform building) {
-		Vector3 position = building.position;
-		int prefabIndex = ++building.transform.GetComponent<BuildingScript> ().Type;
-		Destroy (building.gameObject);
-		GameObject upgradedBuilding = Instantiate (buildingPrefabs [prefabIndex], position, Quaternion.identity) as GameObject;
-		upgradedBuilding.transform.parent = buildings;
-		return upgradedBuilding;
+		Vector3 position = building.position; //Store current building position
+        int prefabIndex = ++building.transform.GetComponent<BuildingScript> ().Type; //Increment current building type
+        Destroy (building.gameObject); //Remove current building
+		GameObject upgradedBuilding = Instantiate (buildingPrefabs [prefabIndex], position, Quaternion.identity) as GameObject; //Instantiate new building
+		upgradedBuilding.transform.parent = buildings; //Set parent to buildings
+		return upgradedBuilding; //Return it back
 	}
 }
