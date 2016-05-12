@@ -86,4 +86,10 @@ public class UIConsole : MonoBehaviour
 		GUI.Box (containerInfo, _mainText, _consoleStyle);
 	}
 
+	void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.Space))
+			_mainText = "";
+	}
+
 }

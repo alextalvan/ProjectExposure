@@ -18,8 +18,12 @@ public class HexagonTile : MonoBehaviour {
 		_environmentType = tileTypes[randomType].environmentType;
 
 		GameObject visualModel = (GameObject)Instantiate(tileTypes[randomType].visualPrefab);
-		visualModel.transform.parent = this.transform;
-		visualModel.transform.localPosition = new Vector3(0,0,0);
+
+		//visualModel.transform.localScale = this.transform.lossyScale;
+		visualModel.transform.SetParent(this.transform,false);
+		//visualModel.transform.localRotation = Quaternion.identity;
+		//visualModel.transform.localScale = new Vector3(1,1,1);
+		//visualModel.transform.localPosition = new Vector3(0,0,0);
 	}
 	
 
