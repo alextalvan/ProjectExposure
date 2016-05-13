@@ -44,7 +44,7 @@ public class CityScript : MonoBehaviour {
 	void Start () {
 		cityBound = GetComponent<SphereCollider> ();
 		//max building type (int)
-		maxBuildingType = buildingPrefabs [buildingPrefabs.Count - 1].transform.GetComponent<BuildingScript> ().Type;
+		maxBuildingType = buildingPrefabs [buildingPrefabs.Count - 1].transform.GetComponent<CityBuildingScript> ().Type;
 		InitializeGrid ();
 		//RandomizeGrid ();
 		//sort list of points so it goes from closest points to farest
@@ -141,7 +141,7 @@ public class CityScript : MonoBehaviour {
 		if (buildings.childCount > 1) {
 			List<GameObject> upgradedBuildings = new List<GameObject> (); //Create tmp list
 			foreach (Transform building in buildings) {
-				int buildingType = building.GetComponent<BuildingScript> ().Type; //Get current building type
+				int buildingType = building.GetComponent<CityBuildingScript> ().Type; //Get current building type
 				if (buildingType != maxBuildingType) { //If can be upgraded (not max type (level))
 					int rnd = Random.Range (0, rndUpgradeSkipRate); //Randomize if will be upgraded now or not
 					if (rnd != 0)
@@ -160,7 +160,7 @@ public class CityScript : MonoBehaviour {
 	/// <param name="building">Building.</param>
 	GameObject ReplaceBuilding(Transform building) {
 		Vector3 position = building.position; //Store current building position
-        int prefabIndex = ++building.transform.GetComponent<BuildingScript> ().Type; //Increment current building type
+        int prefabIndex = ++building.transform.GetComponent<CityBuildingScript> ().Type; //Increment current building type
         Destroy (building.gameObject); //Remove current building
 		GameObject upgradedBuilding = Instantiate (buildingPrefabs [prefabIndex], position, Quaternion.identity) as GameObject; //Instantiate new building
 		upgradedBuilding.transform.parent = buildings; //Set parent to buildings
