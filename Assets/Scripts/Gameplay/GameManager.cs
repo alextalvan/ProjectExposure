@@ -1,6 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
+
+public enum INPUT_STATES
+{
+	FREE,
+	PICKING_TILE
+}
+
+public enum ENERGY_BUILDING_TYPES
+{
+	COAL,
+	NUCLEAR,
+	WINDMILL,
+	SOLAR,
+	HYDRO
+}
+
 
 public class GameManager : MonoBehaviour 
 {
@@ -46,6 +63,13 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField]
 	Text player2moneyText;
+
+
+	//need to keep track of card that will be consumed after the action is validated
+	ActionCard _currentSelectedActionCard = null;
+
+	public ActionCard CurrentSelectedActionCard { set { _currentSelectedActionCard = value; } }
+
 
 	void Update () 
 	{

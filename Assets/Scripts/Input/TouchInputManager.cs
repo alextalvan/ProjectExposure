@@ -265,15 +265,15 @@ public class TouchInputManager : MonoBehaviour
 	}
 
 
-	void OnGUI()
-	{
-		string debugText = "";
-
-		foreach(KeyValuePair<int,GameObject> kv in focusedObjects)
-		{
-			debugText += "Touch # " + kv.Key.ToString() + " focused object is: " + kv.Value.name + "\n";
-		}
-
-		GUI.Box(new Rect(0,0,512,256),debugText);
-	}
+//	void OnGUI()
+//	{
+//		string debugText = "";
+//
+//		foreach(KeyValuePair<int,GameObject> kv in focusedObjects)
+//		{
+//			debugText += "Touch # " + kv.Key.ToString() + " focused object is: " + kv.Value.name + "\n";
+//		}
+//
+//		GUI.Box(new Rect(0,0,512,256),debugText);
+//	}
 }

@@ -2,13 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class HexagonTile : MonoBehaviour {
+[RequireComponent(typeof(Collider))]
+public class HexagonTile : MonoBehaviour 
+{
 
 	[SerializeField]
 	List<TileType> tileTypes = new List<TileType>();
 
 	[SerializeField]
 	ENVIRONMENT_TYPES _environmentType;
+
+	[SerializeField]
+	GameObject outline;
+
+	[SerializeField]
+	private bool _allowBuild = true;
+
+	public bool AllowBuild { get { return _allowBuild; } }
 
 
 	void Start () 
@@ -18,12 +28,16 @@ public class HexagonTile : MonoBehaviour {
 		_environmentType = tileTypes[randomType].environmentType;
 
 		GameObject visualModel = (GameObject)Instantiate(tileTypes[randomType].visualPrefab);
-
-		//visualModel.transform.localScale = this.transform.lossyScale;
 		visualModel.transform.SetParent(this.transform,false);
-		//visualModel.transform.localRotation = Quaternion.identity;
-		//visualModel.transform.localScale = new Vector3(1,1,1);
-		//visualModel.transform.localPosition = new Vector3(0,0,0);
+
+
+		outline.SetActive(false);
+	}
+
+
+	public void SetOutline(bool active)
+	{
+		outline.SetActive(active);
 	}
 	
 

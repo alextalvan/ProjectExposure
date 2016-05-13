@@ -13,12 +13,17 @@ public class TouchTest2 : MonoBehaviour {
 	
 	}
 
-	void TouchEnter(Touch t)
+//	void TouchEnter(Touch t)
+//	{
+//		Renderer[] rends = GetComponentsInChildren<Renderer>();
+//		foreach(Renderer r in rends)
+//		{
+//			r.material.color = Color.green;
+//		}
+//	}
+
+	void OnMouseUp()
 	{
-		Renderer[] rends = GetComponentsInChildren<Renderer>();
-		foreach(Renderer r in rends)
-		{
-			r.material.color = Color.green;
-		}
+		Debug.Log("test");
 	}
 }
