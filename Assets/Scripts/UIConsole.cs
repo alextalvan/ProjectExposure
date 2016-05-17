@@ -16,6 +16,8 @@ public class UIConsole : MonoBehaviour
 	static UIConsole _instance = null;
 	bool hide = false;
 
+	static string[] randomColors = { "red", "blue", "green", "yellow", "white", "magenta", "cyan" };
+
 	static UIConsole Instance
 	{
 		get 
@@ -43,10 +45,20 @@ public class UIConsole : MonoBehaviour
 		Instance.PushDebugLine (message);
 	}
 
-	public void PushDebugLine(object message)
+	static public void LogWithRandomColor(object message)
+	{
+		Instance.PushDebugLine (message,randomColors[Random.Range(0,randomColors.GetLength(0))]);
+	}
+
+	public void PushDebugLine(object message, string colorName = null)
 	{
 		Debug.Log (message);
-		_mainText += message.ToString();
+
+		if(colorName==null)
+			_mainText += message.ToString();
+		else
+			_mainText += "<color=" + colorName + ">" + message.ToString() + "</color>";
+		
 		_mainText += "\n";
 	}
 

@@ -21,6 +21,29 @@ public class BuildingCard : ActionCard
 
 	void OnMouseUp()
 	{
-		
+
+		//Debug.Log("card");
+		PlayerGameData pdata = _gameMng.playerData[this.Owner];
+
+		if(pdata.currentInputState != INPUT_STATES.FREE)
+			return;
+
+		bool oneFreeTile = false;
+
+		foreach(HexagonTile t in pdata.tiles)
+		if(t.AllowBuild)
+		{
+			oneFreeTile = true;
+			break;
+		}
+
+		if(oneFreeTile)
+		{
+			pdata.currentSelectedCard = this;
+			_gameMng.StartEnergyBuildingTileSelection(this);
+		}
+
+
+		_gameMng.raycastedOn2DObject = true;
 	}
 }

@@ -14,7 +14,11 @@ public class TileVisual : MonoBehaviour
 
 	GameObject _bottomVisual;
 
+	public GameObject bottomVisual { get { return _bottomVisual; } }
+
 	GameObject _topVisual;
+
+	public GameObject topVisual { get { return _topVisual; } }
 	
 	void Start()
 	{
@@ -23,5 +27,12 @@ public class TileVisual : MonoBehaviour
 
 		_topVisual = (GameObject)Instantiate(topPrefabs[Random.Range(0,topPrefabs.Count)]);
 		_topVisual.transform.SetParent(this.transform,false);
+	}
+
+	public void DestroyTopVisual()
+	{
+		if(_topVisual)
+			Destroy(_topVisual);
+		_topVisual = null;
 	}
 }

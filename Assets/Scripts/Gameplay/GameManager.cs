@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public enum INPUT_STATES
 {
 	FREE,
-	PICKING_TILE
+	PICKING_BUILDING_CARD_TARGET
 }
 
 public enum ENERGY_BUILDING_TYPES
@@ -64,12 +64,10 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	Text player2moneyText;
 
+	[SerializeField]
+	PlayerGameDataList _playerData = new PlayerGameDataList();
 
-	//need to keep track of card that will be consumed after the action is validated
-	ActionCard _currentSelectedActionCard = null;
-
-	public ActionCard CurrentSelectedActionCard { set { _currentSelectedActionCard = value; } }
-
+	public PlayerGameDataList playerData { get { return _playerData; } }
 
 	void Update () 
 	{
@@ -89,4 +87,27 @@ public class GameManager : MonoBehaviour
 		Player2Money += moneyRate;
 	}
 
+	public void StartEnergyBuildingTileSelection(ActionCard card)
+	{
+		PlayerGameData pdata = playerData[card.Owner];
+
+		foreach(HexagonTile t in pdata.tiles)
+		{
+			if(t.AllowBuild)
+				t.SetOutline(true);
+		}
+			
+		pdata.currentInputState = INPUT_STATES.PICKING_BUILDING_CARD_TARGET;
+
+	}
+
+
+
+	//temp fix for using mouse, this will be useless when touch input is used
+	public bool raycastedOn2DObject = false;
+
+	void LateUpdate()
+	{
+		raycastedOn2DObject = false;
+	}
 }
