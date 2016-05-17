@@ -12,8 +12,8 @@ GameObject:
   - 65: {fileID: 6596744}
   - 23: {fileID: 2338000}
   - 114: {fileID: 11480674}
-  - 54: {fileID: 5423172}
-  m_Layer: 10
+  - 54: {fileID: 5413658}
+  m_Layer: 0
   m_Name: Unit3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102548}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5423172
+--- !u!54 &5413658
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitSpeed: 0.1
   distanceToWP: 1
+  animationTime: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

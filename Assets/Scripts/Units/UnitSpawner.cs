@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class UnitSpawner : MonoBehaviour {
-
+	
     [SerializeField]
     Transform pathGroup;
     [SerializeField]
@@ -17,12 +17,14 @@ public class UnitSpawner : MonoBehaviour {
 	[SerializeField]
 	float spawnCoolDown = 1f;
 	private float spawnTimer;
+	PLAYERS owner;
 
     private List<Vector3> unitPath = new List<Vector3>();
 
 	// Use this for initialization
 	void Start () {
         CreateUnitPath();
+		owner = GetComponent<HexagonTile> ().Owner;
     }
 
     void CreateUnitPath()
@@ -54,7 +56,8 @@ public class UnitSpawner : MonoBehaviour {
             {
                 GameObject newUnit = Instantiate(unit, spawnPoint.position, Quaternion.identity) as GameObject;
                 newUnit.GetComponent<UnitAI>().SetPath(unitPath);
-                //newUnit.transform.parent = units;
+				newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
+                newUnit.transform.parent = units;
 				newUnit.transform.rotation = transform.rotation;
             }
             spawnTimer = spawnCoolDown;
