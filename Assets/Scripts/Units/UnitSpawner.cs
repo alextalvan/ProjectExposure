@@ -4,14 +4,10 @@ using System.Collections.Generic;
 
 public class UnitSpawner : MonoBehaviour {
 	
-    [SerializeField]
-    Transform pathGroup;
-    [SerializeField]
-    Transform spawnPoint;
+	private Transform pathGroup;
+	private Transform spawnPoint;
 	[SerializeField]
 	GameObject unit;
-    [SerializeField]
-    Transform units;
     [SerializeField]
 	int unitsPerSpawn = 1;
 	[SerializeField]
@@ -23,8 +19,7 @@ public class UnitSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        CreateUnitPath();
-		owner = GetComponent<HexagonTile> ().Owner;
+		
     }
 
     void CreateUnitPath()
@@ -59,7 +54,7 @@ public class UnitSpawner : MonoBehaviour {
                 GameObject newUnit = Instantiate(unit, spawnPoint.position, Quaternion.identity) as GameObject;
                 newUnit.GetComponent<UnitAI>().SetPath(unitPath);
 				newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
-                newUnit.transform.parent = units;
+				//newUnit.transform.parent = transform;
 				newUnit.transform.rotation = transform.rotation;
             }
             spawnTimer = spawnCoolDown;
@@ -74,8 +69,11 @@ public class UnitSpawner : MonoBehaviour {
 	/// <param name="pathRoot">Path root.</param>
 	/// <param name="spawnPoint">Spawn point.</param>
 	/// <param name="owner">Player owner.</param>
-	public void SetSpawnInformation(Transform pathRoot, Transform spawnPoint, PLAYERS owner)
+	public void SetSpawnInformation(Transform pathRoot, Transform spawnPt, PLAYERS powner)
 	{
-		//fill this
+		pathGroup = pathRoot;
+		spawnPoint = spawnPt;
+		owner = powner;
+		CreateUnitPath ();
 	}
 }
