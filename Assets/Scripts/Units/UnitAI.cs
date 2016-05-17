@@ -6,40 +6,39 @@ public class UnitAI : MonoBehaviour {
 
 	[SerializeField]
 	float unitSpeed = 1f;
-    //[SerializeField]
-    //float maxTurnValue;
     [SerializeField]
     float distanceToWP;
+	[SerializeField]
+	float animationTime = 1f;
     private List<Vector3> path;
-    private Rigidbody rb;
 
     private int currentWP = 0;
     private int pathLength;
+	private bool fighting = false;
 
     // Use this for initialization
     void Start ()
     {
-        rb = GetComponent<Rigidbody>();
+		
     }
 	
 	// Update is called once per frame
-	void FixedUpdate ()
+	void Update ()
     {
-        //GetDirection();
-        Move();
+        Move ();
+		Fight ();
     }
 
 	void Move()
     {
-        if (pathLength > currentWP)
+        if (!fighting && pathLength > currentWP)
         {
             Vector3 dirVec = path[currentWP] - transform.position;
 
-			transform.position += dirVec.normalized * unitSpeed;
-            //float currentTurnValue = maxTurnValue;
+			//Quaternion lookRotation = Quaternion.LookRotation(dirVec);
+			//transform.rotation = Quaternion.LookRotation(dirVec);
 
-            //Quaternion lookRotation = Quaternion.LookRotation(dirVec);
-            //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, currentTurnValue);
+			transform.position += dirVec.normalized * unitSpeed;
 
 			if (dirVec.magnitude <= distanceToWP)
             {
@@ -52,16 +51,24 @@ public class UnitAI : MonoBehaviour {
         }
     }
 
-	/*
-    void Move()
-    {
-        //if (rb.velocity.magnitude < 1f)
-        //    rb.AddForce(transform.forward * unitSpeed);
-    }
-*/
+	void Fight() {
+		if (fighting) {
+			animationTime -= Time.deltaTime;
+			if (animationTime <= 0f) {
+				fighting = false;
+				Destroy (gameObject);
+			}
+		}
+	}
+
     public void SetPath(List<Vector3> unitPath)
     {
         path = unitPath;
         pathLength = path.Count;
     }
+
+	void OnCollisionEnter(Collision col) {
+		if (col.transform.GetComponent<UnitAI> ())
+			fighting = true;
+	}
 }
