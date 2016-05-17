@@ -40,7 +40,8 @@ public class UnitSpawner : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		if (spawnTimer > 0f)
 			spawnTimer -= Time.deltaTime;
         SpawnUnits();
@@ -49,7 +50,8 @@ public class UnitSpawner : MonoBehaviour {
 	/// <summary>
 	/// Spawns the units.
 	/// </summary>
-	void SpawnUnits() {
+	void SpawnUnits() 
+	{
         if (spawnTimer <= 0f)
         {
             for (int i = 0; i < unitsPerSpawn; ++i)
@@ -62,5 +64,18 @@ public class UnitSpawner : MonoBehaviour {
             }
             spawnTimer = spawnCoolDown;
         }
+	}
+
+
+	/// <summary>
+	/// Sets the spawn information depending on the hexagon tile this building was put on.
+	/// Will be called by the tile on instantiation.
+	/// </summary>
+	/// <param name="pathRoot">Path root.</param>
+	/// <param name="spawnPoint">Spawn point.</param>
+	/// <param name="owner">Player owner.</param>
+	public void SetSpawnInformation(Transform pathRoot, Transform spawnPoint, PLAYERS owner)
+	{
+		//fill this
 	}
 }

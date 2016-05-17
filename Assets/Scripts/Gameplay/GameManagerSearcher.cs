@@ -10,6 +10,7 @@ public abstract class GameManagerSearcher : MonoBehaviour
 	void Awake()
 	{
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-	}
 
+	}
+		
 }

@@ -40,6 +40,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 465952}
+  - 114: {fileID: 11464352}
+  - 114: {fileID: 11454152}
   m_Layer: 0
   m_Name: Nuclear_Plant
   m_TagString: Untagged
@@ -118,6 +120,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126482}
   m_Mesh: {fileID: 4300000, guid: 186ce40228b8ac542b6fcab27efc62f3, type: 3}
+--- !u!114 &11454152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 936698b37e33c3c4fb572a365c9f25dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathGroup: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  unit: {fileID: 0}
+  units: {fileID: 0}
+  unitsPerSpawn: 1
+  spawnCoolDown: 1
+--- !u!114 &11464352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec8f4fdb5e94eb499b5d446f8251688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
