@@ -14,6 +14,14 @@ public class HexagonTile : GameManagerSearcher
 	[SerializeField]
 	ENVIRONMENT_TYPES _environmentType;
 
+	//the root containing all the waypoints for the ai, in order
+	[SerializeField]
+	Transform aiPathRoot;
+
+	//the waypoint (in the path) which this tile spawns its units at
+	[SerializeField]
+	Transform spawnPoint;
+
 	[SerializeField]
 	GameObject outline;
 
@@ -69,6 +77,8 @@ public class HexagonTile : GameManagerSearcher
 					energyBuilding.transform.SetParent(this.transform,false);
 					_allowBuild = false;
 					//currentEnergyBuilding = energyBuilding;
+
+					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(aiPathRoot,spawnPoint,owner);
 
 					visualObject.GetComponent<TileVisual>().DestroyTopVisual();
 					Destroy(bc.gameObject);

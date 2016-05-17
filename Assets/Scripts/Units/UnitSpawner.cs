@@ -4,14 +4,10 @@ using System.Collections.Generic;
 
 public class UnitSpawner : MonoBehaviour {
 	
-    [SerializeField]
-    Transform pathGroup;
-    [SerializeField]
-    Transform spawnPoint;
+	private Transform pathGroup;
+	private Transform spawnPoint;
 	[SerializeField]
 	GameObject unit;
-    [SerializeField]
-    Transform units;
     [SerializeField]
 	int unitsPerSpawn = 1;
 	[SerializeField]
@@ -23,8 +19,7 @@ public class UnitSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        CreateUnitPath();
-		owner = GetComponent<HexagonTile> ().Owner;
+		
     }
 
     void CreateUnitPath()
@@ -40,7 +35,8 @@ public class UnitSpawner : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		if (spawnTimer > 0f)
 			spawnTimer -= Time.deltaTime;
         SpawnUnits();
@@ -49,7 +45,8 @@ public class UnitSpawner : MonoBehaviour {
 	/// <summary>
 	/// Spawns the units.
 	/// </summary>
-	void SpawnUnits() {
+	void SpawnUnits() 
+	{
         if (spawnTimer <= 0f)
         {
             for (int i = 0; i < unitsPerSpawn; ++i)
@@ -57,10 +54,26 @@ public class UnitSpawner : MonoBehaviour {
                 GameObject newUnit = Instantiate(unit, spawnPoint.position, Quaternion.identity) as GameObject;
                 newUnit.GetComponent<UnitAI>().SetPath(unitPath);
 				newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
-                newUnit.transform.parent = units;
+				//newUnit.transform.parent = transform;
 				newUnit.transform.rotation = transform.rotation;
             }
             spawnTimer = spawnCoolDown;
         }
+	}
+
+
+	/// <summary>
+	/// Sets the spawn information depending on the hexagon tile this building was put on.
+	/// Will be called by the tile on instantiation.
+	/// </summary>
+	/// <param name="pathRoot">Path root.</param>
+	/// <param name="spawnPoint">Spawn point.</param>
+	/// <param name="owner">Player owner.</param>
+	public void SetSpawnInformation(Transform pathRoot, Transform spawnPt, PLAYERS powner)
+	{
+		pathGroup = pathRoot;
+		spawnPoint = spawnPt;
+		owner = powner;
+		CreateUnitPath ();
 	}
 }
