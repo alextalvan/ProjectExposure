@@ -6,10 +6,10 @@ public class UnitAI : MonoBehaviour {
 
 	[SerializeField]
 	float unitSpeed = 1f;
+    //[SerializeField]
+    //float maxTurnValue;
     [SerializeField]
-    float maxTurnValue;
-    [SerializeField]
-    float distanceToPath;
+    float distanceToWP;
     private List<Vector3> path;
     private Rigidbody rb;
 
@@ -25,23 +25,23 @@ public class UnitAI : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        GetDirection();
+        //GetDirection();
         Move();
     }
 
-    void GetDirection()
+	void Move()
     {
         if (pathLength > currentWP)
         {
-            Vector3 dirVec = new Vector3(path[currentWP].x, transform.position.y, path[currentWP].z) - transform.position;
+            Vector3 dirVec = path[currentWP] - transform.position;
 
-            float currentTurnValue = maxTurnValue;
+			transform.position += dirVec.normalized * unitSpeed;
+            //float currentTurnValue = maxTurnValue;
 
-            Quaternion lookRotation = Quaternion.LookRotation(dirVec);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, currentTurnValue * Time.deltaTime);
-           // transform.Translate(dirVec.normalized * 0.1f);
+            //Quaternion lookRotation = Quaternion.LookRotation(dirVec);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, currentTurnValue);
 
-            if (dirVec.magnitude <= distanceToPath)
+			if (dirVec.magnitude <= distanceToWP)
             {
                 currentWP++;
                 if (pathLength <= currentWP)
@@ -52,19 +52,16 @@ public class UnitAI : MonoBehaviour {
         }
     }
 
+	/*
     void Move()
     {
-        if (rb.velocity.magnitude < unitSpeed/5)
-            rb.AddForce(transform.forward * unitSpeed);
+        //if (rb.velocity.magnitude < 1f)
+        //    rb.AddForce(transform.forward * unitSpeed);
     }
-
+*/
     public void SetPath(List<Vector3> unitPath)
     {
         path = unitPath;
         pathLength = path.Count;
     }
-
-	public void SetTarget(Transform target) {
-
-	}
 }

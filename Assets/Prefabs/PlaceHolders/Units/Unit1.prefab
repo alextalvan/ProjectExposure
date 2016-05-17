@@ -9,11 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 488558}
   - 33: {fileID: 3317258}
-  - 65: {fileID: 6528444}
   - 23: {fileID: 2306334}
   - 114: {fileID: 11434274}
-  - 54: {fileID: 5497472}
-  m_Layer: 0
+  - 65: {fileID: 6514288}
+  - 54: {fileID: 5418718}
+  m_Layer: 10
   m_Name: Unit1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152352}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5497472
+--- !u!54 &5418718
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -80,7 +80,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &6528444
+--- !u!65 &6514288
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -103,9 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c70fe9bd71043b428fb76d991c15720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitSpeed: 10
-  maxTurnValue: 15
-  distanceToPath: 1
+  unitSpeed: 0.1
+  distanceToWP: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

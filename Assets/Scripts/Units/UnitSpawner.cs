@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class BuildingSpawner : MonoBehaviour {
+public class UnitSpawner : MonoBehaviour {
 
     [SerializeField]
     Transform pathGroup;
@@ -52,9 +52,10 @@ public class BuildingSpawner : MonoBehaviour {
         {
             for (int i = 0; i < unitsPerSpawn; ++i)
             {
-                GameObject newUnit = Instantiate(unit, spawnPoint.position, transform.rotation) as GameObject;
+                GameObject newUnit = Instantiate(unit, spawnPoint.position, Quaternion.identity) as GameObject;
                 newUnit.GetComponent<UnitAI>().SetPath(unitPath);
-                newUnit.transform.parent = units;
+                //newUnit.transform.parent = units;
+				newUnit.transform.rotation = transform.rotation;
             }
             spawnTimer = spawnCoolDown;
         }

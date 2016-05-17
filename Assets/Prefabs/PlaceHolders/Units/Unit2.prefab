@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2319594}
   - 114: {fileID: 11485242}
   - 54: {fileID: 5491500}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Unit2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,9 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c70fe9bd71043b428fb76d991c15720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitSpeed: 1
-  maxTurnValue: 15
-  distanceToPath: 1
+  unitSpeed: 0.1
+  distanceToWP: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
