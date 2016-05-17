@@ -2,19 +2,21 @@
 using System.Collections;
 
 [RequireComponent(typeof(Collider))]
-public class BackgroundCollider : MonoBehaviour 
+public class BackgroundCollider : GameManagerSearcher 
 {
-	private GameManager _gameMng;
-
-	void Start()
-	{
-		_gameMng = GameObject.Find("GameManager").GetComponent<GameManager>();
-	}
+	[SerializeField]
+	PLAYERS owner;
 
 	void OnMouseUp()
 	{
 		//UIConsole.LogWithRandomColor("Background.");
+		PlayerGameData pdata = gameManager.playerData[owner];
 
+		if(pdata.currentInputState == INPUT_STATES.PICKING_BUILDING_CARD_TARGET)
+		{
+			pdata.SetAllTilesHighlight(false);
+			pdata.currentInputState = INPUT_STATES.FREE;
+		}
 
 	}
 }

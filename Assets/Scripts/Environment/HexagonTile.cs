@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(Collider))]
-public class HexagonTile : MonoBehaviour 
+public class HexagonTile : GameManagerSearcher 
 {
 	[SerializeField]
 	PLAYERS owner;
@@ -24,8 +24,6 @@ public class HexagonTile : MonoBehaviour
 
 	public PLAYERS Owner { get { return owner; } }
 
-	GameManager _gameMng;
-
 	//GameObject currentEnergyBuilding = null;
 	GameObject visualObject = null;
 
@@ -41,8 +39,6 @@ public class HexagonTile : MonoBehaviour
 
 
 		outline.SetActive(false);
-
-		_gameMng = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 
 
@@ -55,11 +51,11 @@ public class HexagonTile : MonoBehaviour
 	void OnMouseUp()
 	{
 		//mosue fix for 2d object raycasts to supress 3d object raycasts
-		if(_gameMng.raycastedOn2DObject)
+		if(gameManager.raycastedOn2DObject)
 			return;
 
 		
-		PlayerGameData pdata = _gameMng.playerData[this.Owner];
+		PlayerGameData pdata = gameManager.playerData[this.Owner];
 
 		//Debug.Log(pdata.currentInputState);
 		if(pdata.currentInputState == INPUT_STATES.PICKING_BUILDING_CARD_TARGET)

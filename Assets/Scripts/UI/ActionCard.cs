@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Collider2D))]
-public abstract class ActionCard : MonoBehaviour 
+public abstract class ActionCard : GameManagerSearcher 
 {
 	public delegate void CardDestructionDelegate();
 	public event CardDestructionDelegate OnDestruction = null;

@@ -12,18 +12,13 @@ public class BuildingCard : ActionCard
 	public EnergyBuildingType BuildingType { get { return _buildingType; } }
 
 
-	private GameManager _gameMng;
 
-	void Start()
-	{
-		_gameMng = GameObject.Find("GameManager").GetComponent<GameManager>();
-	}
 
 	void OnMouseUp()
 	{
 
 		//Debug.Log("card");
-		PlayerGameData pdata = _gameMng.playerData[this.Owner];
+		PlayerGameData pdata = gameManager.playerData[this.Owner];
 
 		if(pdata.currentInputState != INPUT_STATES.FREE)
 			return;
@@ -40,10 +35,10 @@ public class BuildingCard : ActionCard
 		if(oneFreeTile)
 		{
 			pdata.currentSelectedCard = this;
-			_gameMng.StartEnergyBuildingTileSelection(this);
+			gameManager.StartEnergyBuildingTileSelection(this);
 		}
 
 
-		_gameMng.raycastedOn2DObject = true;
+		gameManager.raycastedOn2DObject = true;
 	}
 }
