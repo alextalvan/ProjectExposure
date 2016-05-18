@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class UnitAI : MonoBehaviour {
+public class UnitAI : GameManagerSearcher 
+{
 
 	[SerializeField]
 	float unitSpeed = 1f;
@@ -12,15 +13,15 @@ public class UnitAI : MonoBehaviour {
 	float animationTime = 1f;
     private List<Vector3> path;
 
+	[SerializeField]
+	int scoreReward = 10;
+
     private int currentWP = 0;
     private int pathLength;
 	private bool fighting = false;
+	private bool allowCollision = true;
+	private PLAYERS owner;
 
-    // Use this for initialization
-    void Start ()
-    {
-		
-    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -43,8 +44,9 @@ public class UnitAI : MonoBehaviour {
 			if (dirVec.magnitude <= distanceToWP)
             {
                 currentWP++;
-                if (pathLength <= currentWP)
+				if (pathLength <= currentWP && !fighting)
                 {
+					GenerateScore();
                     Destroy(gameObject);
                 }
             }
@@ -61,14 +63,34 @@ public class UnitAI : MonoBehaviour {
 		}
 	}
 
-    public void SetPath(List<Vector3> unitPath)
+	public void SetData(List<Vector3> unitPath, PLAYERS owner)
     {
         path = unitPath;
         pathLength = path.Count;
+		this.owner = owner;
     }
 
-	void OnCollisionEnter(Collision col) {
+	void OnCollisionEnter(Collision col) 
+	{
+		if(!allowCollision)
+			return;
+
+		allowCollision = false;
+
 		if (col.transform.GetComponent<UnitAI> ())
 			fighting = true;
+	}
+
+	void GenerateScore()
+	{
+		switch(owner)
+		{
+			case PLAYERS.PLAYER1:
+				gameManager.Player1Money += scoreReward;
+				break;
+			case PLAYERS.PLAYER2:
+				gameManager.Player2Money += scoreReward;
+				break;
+		}
 	}
 }

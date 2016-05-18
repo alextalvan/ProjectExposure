@@ -52,7 +52,7 @@ public class UnitSpawner : MonoBehaviour {
             for (int i = 0; i < unitsPerSpawn; ++i)
             {
                 GameObject newUnit = Instantiate(unit, spawnPoint.position, Quaternion.identity) as GameObject;
-                newUnit.GetComponent<UnitAI>().SetPath(unitPath);
+				newUnit.GetComponent<UnitAI>().SetData(unitPath, owner);
 				newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
 				//newUnit.transform.parent = transform;
 				newUnit.transform.rotation = transform.rotation;

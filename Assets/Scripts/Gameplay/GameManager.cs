@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 
 	float timeAccumulator = 0.0f;
 
+
+	//will probably end up refactoring these money fields to score
 	[SerializeField]
 	int _player1money = 0;
 
@@ -54,8 +56,10 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	[SerializeField]
-	int moneyRate = 1;
+
+
+	//[SerializeField]
+	//int moneyRate = 1;
 
 
 	[SerializeField]
@@ -71,20 +75,20 @@ public class GameManager : MonoBehaviour
 
 	void Update () 
 	{
-		timeAccumulator += Time.deltaTime;
-
-		while(timeAccumulator >= UPDATE_RATE)
-		{
-			timeAccumulator -= UPDATE_RATE;
-			UpdateMoney();
-
-		}
+//		timeAccumulator += Time.deltaTime;
+//
+//		while(timeAccumulator >= UPDATE_RATE)
+//		{
+//			timeAccumulator -= UPDATE_RATE;
+//			UpdateMoney();
+//
+//		}
 	}
 
 	void UpdateMoney()
 	{
-		Player1Money += moneyRate;
-		Player2Money += moneyRate;
+		//Player1Money += moneyRate;
+		//Player2Money += moneyRate;
 	}
 
 	public void StartEnergyBuildingTileSelection(ActionCard card)
