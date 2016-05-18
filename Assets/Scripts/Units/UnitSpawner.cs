@@ -14,7 +14,7 @@ public class UnitSpawner : MonoBehaviour {
 	[SerializeField]
 	float spawnCoolDown = 1f;
 	private float spawnTimer;
-
+	Transform activeUnit;
 
 	PLAYERS owner;
     private List<Vector3> unitPath = new List<Vector3>();
@@ -45,18 +45,22 @@ public class UnitSpawner : MonoBehaviour {
 	/// </summary>
 	void SpawnUnits() 
 	{
-        if (spawnTimer <= 0f)
+		if (spawnTimer <= 0f && !activeUnit)
         {
             for (int i = 0; i < unitsPerSpawn; ++i)
             {
                 GameObject newUnit = Instantiate(unit, spawnPoint.position, Quaternion.identity) as GameObject;
-				newUnit.GetComponent<UnitAI>().SetData(unitPath, owner);
+				newUnit.GetComponent<UnitAI>().SetData(unitPath, owner, this);
 				newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
 				newUnit.transform.parent = unitGroupParent;
 				newUnit.transform.rotation = transform.rotation;
+				activeUnit = newUnit.transform;
             }
-            spawnTimer = spawnCoolDown;
         }
+	}
+
+	public void ResetTimer() {
+		spawnTimer = spawnCoolDown;
 	}
 
 
