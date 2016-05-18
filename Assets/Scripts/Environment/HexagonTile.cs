@@ -35,6 +35,10 @@ public class HexagonTile : GameManagerSearcher
 	//GameObject currentEnergyBuilding = null;
 	GameObject visualObject = null;
 
+	//each hexagon tile knows the unit group its spawned units are parented to
+	[SerializeField]
+	Transform spawnedUnitsParent;
+
 	void Start () 
 	{
 		int randomType = Random.Range(0,tileTypes.Count);
@@ -78,7 +82,7 @@ public class HexagonTile : GameManagerSearcher
 					_allowBuild = false;
 					//currentEnergyBuilding = energyBuilding;
 
-					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(aiPathRoot,spawnPoint,owner);
+					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(aiPathRoot,spawnPoint,spawnedUnitsParent,owner);
 
 					visualObject.GetComponent<TileVisual>().DestroyTopVisual();
 					Destroy(bc.gameObject);

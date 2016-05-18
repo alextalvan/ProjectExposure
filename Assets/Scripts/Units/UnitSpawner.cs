@@ -6,6 +6,7 @@ public class UnitSpawner : MonoBehaviour {
 	
 	private Transform pathGroup;
 	private Transform spawnPoint;
+	private Transform unitGroupParent;
 	[SerializeField]
 	GameObject unit;
     [SerializeField]
@@ -13,14 +14,11 @@ public class UnitSpawner : MonoBehaviour {
 	[SerializeField]
 	float spawnCoolDown = 1f;
 	private float spawnTimer;
-	PLAYERS owner;
 
+
+	PLAYERS owner;
     private List<Vector3> unitPath = new List<Vector3>();
 
-	// Use this for initialization
-	void Start () {
-		
-    }
 
     void CreateUnitPath()
     {
@@ -54,7 +52,7 @@ public class UnitSpawner : MonoBehaviour {
                 GameObject newUnit = Instantiate(unit, spawnPoint.position, Quaternion.identity) as GameObject;
 				newUnit.GetComponent<UnitAI>().SetData(unitPath, owner);
 				newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
-				//newUnit.transform.parent = transform;
+				newUnit.transform.parent = unitGroupParent;
 				newUnit.transform.rotation = transform.rotation;
             }
             spawnTimer = spawnCoolDown;
@@ -69,11 +67,12 @@ public class UnitSpawner : MonoBehaviour {
 	/// <param name="pathRoot">Path root.</param>
 	/// <param name="spawnPoint">Spawn point.</param>
 	/// <param name="owner">Player owner.</param>
-	public void SetSpawnInformation(Transform pathRoot, Transform spawnPt, PLAYERS powner)
+	public void SetSpawnInformation(Transform pathRoot, Transform spawnPt, Transform unitGroupParent, PLAYERS powner)
 	{
 		pathGroup = pathRoot;
 		spawnPoint = spawnPt;
 		owner = powner;
+		this.unitGroupParent = unitGroupParent;
 		CreateUnitPath ();
 	}
 }

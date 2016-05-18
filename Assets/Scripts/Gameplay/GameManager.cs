@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
 
 	public PlayerGameDataList playerData { get { return _playerData; } }
 
+
 	void Update () 
 	{
 //		timeAccumulator += Time.deltaTime;
