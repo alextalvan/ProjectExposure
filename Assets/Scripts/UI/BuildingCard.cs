@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class BuildingCard : ActionCard 
+public class BuildingCard : Card 
 {
 	//for now use mouse input for testing
 

@@ -86,10 +86,10 @@ public class UnitAI : GameManagerSearcher
 		switch(owner)
 		{
 			case PLAYERS.PLAYER1:
-				gameManager.Player1Money += scoreReward;
+				gameManager.Player1Score += scoreReward;
 				break;
 			case PLAYERS.PLAYER2:
-				gameManager.Player2Money += scoreReward;
+				gameManager.Player2Score += scoreReward;
 				break;
 		}
 	}
