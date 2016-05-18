@@ -64,7 +64,7 @@ public class CardSpawner : MonoBehaviour
 			cardsToSpawn--;
 
 
-			ActionCard cardComp = card.GetComponent<ActionCard>();
+			Card cardComp = card.GetComponent<Card>();
 			card.transform.SetParent(this.transform,false);
 			cardComp.Owner = player;
 			cardComp.OnDestruction += () => {this.cardCount--;};

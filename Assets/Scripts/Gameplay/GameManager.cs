@@ -21,13 +21,19 @@ public enum ENERGY_BUILDING_TYPES
 
 public class GameManager : MonoBehaviour 
 {
-	//global game logic updaterate in seconds
-	public const float UPDATE_RATE = 1.0f;
+	//money updaterate in seconds
+	public const float MONEY_UPDATE_RATE = 1.0f;
+	float timeAccumulatorMoney = 0.0f;
 
-	float timeAccumulator = 0.0f;
+	[SerializeField]
+	float waveInterval = 5.0f;
+
+	float timeAccumulatorWaves = 0.0f;
+
+	public delegate void WaveTriggerDelegate();
+	public event WaveTriggerDelegate OnNewWave = null;
 
 
-	//will probably end up refactoring these money fields to score
 	[SerializeField]
 	int _player1money = 0;
 
@@ -56,10 +62,38 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	[SerializeField]
+	int _player1score = 0;
+
+	public int Player1Score 
+	{
+		get { return _player1score; }
+		set 
+		{ 
+			if(value < 0) value = 0;
+			_player1score = value;
+			player1scoreText.text = _player1score.ToString();
+		}
+	}
+
+	[SerializeField]
+	int _player2score = 0;
+
+	public int Player2Score
+	{
+		get { return _player2score; }
+		set 
+		{ 
+			if(value < 0) value = 0;
+			_player2score = value;
+			player2scoreText.text = _player2score.ToString();
+		}
+	}
 
 
-	//[SerializeField]
-	//int moneyRate = 1;
+
+	[SerializeField]
+	int moneyRate = 1;
 
 
 	[SerializeField]
@@ -69,30 +103,45 @@ public class GameManager : MonoBehaviour
 	Text player2moneyText;
 
 	[SerializeField]
+	Text player1scoreText;
+
+	[SerializeField]
+	Text player2scoreText;
+
+	[SerializeField]
 	PlayerGameDataList _playerData = new PlayerGameDataList();
 
 	public PlayerGameDataList playerData { get { return _playerData; } }
 
-
 	void Update () 
 	{
-//		timeAccumulator += Time.deltaTime;
-//
-//		while(timeAccumulator >= UPDATE_RATE)
-//		{
-//			timeAccumulator -= UPDATE_RATE;
-//			UpdateMoney();
-//
-//		}
+		timeAccumulatorMoney += Time.deltaTime;
+
+		while(timeAccumulatorMoney >= MONEY_UPDATE_RATE)
+		{
+			timeAccumulatorMoney -= MONEY_UPDATE_RATE;
+			UpdateMoney();
+
+		}
+
+		timeAccumulatorWaves += Time.deltaTime;
+
+		while(timeAccumulatorWaves >= waveInterval)
+		{
+			timeAccumulatorMoney -= waveInterval;
+			if(OnNewWave != null)
+				OnNewWave();
+
+		}
 	}
 
 	void UpdateMoney()
 	{
-		//Player1Money += moneyRate;
-		//Player2Money += moneyRate;
+		Player1Money += moneyRate;
+		Player2Money += moneyRate;
 	}
 
-	public void StartEnergyBuildingTileSelection(ActionCard card)
+	public void StartEnergyBuildingTileSelection(Card card)
 	{
 		PlayerGameData pdata = playerData[card.Owner];
 

@@ -1,20 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Collider2D))]
-public abstract class ActionCard : GameManagerSearcher 
+
+public class ActionCard : Card 
 {
-	public delegate void CardDestructionDelegate();
-	public event CardDestructionDelegate OnDestruction = null;
 
-	[SerializeField]
-	PLAYERS owner;
-
-	public PLAYERS Owner { get { return owner; } set { owner = value; } }
-
-	void OnDestroy()
+	void OnMouseUp()
 	{
-		if(OnDestruction!=null)
-			OnDestruction();
+		//to be filled
+		switch(this.CardType)
+		{
+			case CARD_TYPES.EARTHQUAKE:
+				break;
+		}
 	}
 }
