@@ -6,7 +6,15 @@ public class EnergyBuilding : MonoBehaviour
 	PLAYERS owner;
 	public PLAYERS Owner { get { return owner; } set { owner = value; } }
 
+	[SerializeField]
+	float lifeTime = 30.0f;
 
+
+
+	void Start()
+	{
+		Destroy(this.gameObject,lifeTime);
+	}
 
 //	[SerializeField]
 //	protected float currentPollution;

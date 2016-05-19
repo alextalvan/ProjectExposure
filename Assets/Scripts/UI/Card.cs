@@ -36,6 +36,11 @@ public abstract class Card : GameManagerSearcher
 
 	public CARD_TYPES CardType { get { return cardType; } }
 
+	[SerializeField]
+	int moneyCost = 0;
+
+	public int MoneyCost { get { return moneyCost; } }
+
 	void OnDestroy()
 	{
 		if(OnDestruction!=null)

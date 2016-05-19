@@ -14,7 +14,7 @@ GameObject:
   - 50: {fileID: 5000204}
   - 114: {fileID: 11496926}
   m_Layer: 5
-  m_Name: Card_Build_Hydro
+  m_Name: Card_Build_Biofuel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3c2d514fc742ac044b80f55319f28251, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6959c0cd078d5724eb2af3119f45949d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 0
+  cardType: 5
   _buildingType:
     prefab: {fileID: 189662, guid: 7a6a105a86f9bab49b0e23747e1c61a5, type: 2}
     type: 4

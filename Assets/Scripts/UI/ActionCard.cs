@@ -10,7 +10,7 @@ public class ActionCard : Card
 		//to be filled
 		switch(this.CardType)
 		{
-			case CARD_TYPES.EARTHQUAKE:
+			case CARD_TYPES.ZAP:
 				break;
 		}
 	}

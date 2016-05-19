@@ -1,32 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &121820
+--- !u!1 &123974
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 224: {fileID: 22489720}
-  - 222: {fileID: 22249084}
-  - 114: {fileID: 11470882}
-  - 61: {fileID: 6130822}
-  - 50: {fileID: 5094262}
-  - 114: {fileID: 11466648}
+  - 224: {fileID: 22443076}
+  - 222: {fileID: 22274042}
+  - 114: {fileID: 11499304}
+  - 61: {fileID: 6180630}
+  - 50: {fileID: 5076066}
+  - 114: {fileID: 11443282}
   m_Layer: 5
-  m_Name: Card_Build_Coal
+  m_Name: Card_Ability_Wind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &5094262
+--- !u!50 &5076066
 Rigidbody2D:
   serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121820}
+  m_GameObject: {fileID: 123974}
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -37,12 +37,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6130822
+--- !u!61 &6180630
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121820}
+  m_GameObject: {fileID: 123974}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 560c65d4e96455d4ca0b72ea338be43e, type: 2}
@@ -51,29 +51,26 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
---- !u!114 &11466648
+--- !u!114 &11443282
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121820}
+  m_GameObject: {fileID: 123974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad717b7f3164df42bff495ea3acc4f2, type: 3}
+  m_Script: {fileID: 11500000, guid: c2e6f2905ca460b4c8c89ced6877ac72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 0
-  cardType: 0
-  moneyCost: 2
-  _buildingType:
-    prefab: {fileID: 179158, guid: 533a24c2066725840bf2a122d9fe3205, type: 2}
-    type: 0
---- !u!114 &11470882
+  cardType: 8
+  moneyCost: 0
+--- !u!114 &11499304
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121820}
+  m_GameObject: {fileID: 123974}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
@@ -87,7 +84,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 291b8721fa8c7b84c9035d2961ad8539, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c47962978efa1e47bb1bec96ee22ec2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -95,18 +92,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!222 &22249084
+--- !u!222 &22274042
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121820}
---- !u!224 &22489720
+  m_GameObject: {fileID: 123974}
+--- !u!224 &22443076
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121820}
+  m_GameObject: {fileID: 123974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -127,5 +124,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 121820}
+  m_RootGameObject: {fileID: 123974}
   m_IsPrefabParent: 1

@@ -15,14 +15,15 @@ public enum ENERGY_BUILDING_TYPES
 	NUCLEAR,
 	WINDMILL,
 	SOLAR,
-	HYDRO
+	BIO_OIL,
+	GAS
 }
 
 
 public class GameManager : MonoBehaviour 
 {
 	//money updaterate in seconds
-	public const float MONEY_UPDATE_RATE = 1.0f;
+	public const float MONEY_UPDATE_RATE = 2.0f;
 	float timeAccumulatorMoney = 0.0f;
 
 	[SerializeField]
@@ -128,7 +129,7 @@ public class GameManager : MonoBehaviour
 
 		while(timeAccumulatorWaves >= waveInterval)
 		{
-			timeAccumulatorMoney -= waveInterval;
+			timeAccumulatorWaves -= waveInterval;
 			if(OnNewWave != null)
 				OnNewWave();
 
