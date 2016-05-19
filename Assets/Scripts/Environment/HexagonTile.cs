@@ -84,6 +84,15 @@ public class HexagonTile : GameManagerSearcher
 
 					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(aiPathRoot,spawnPoint,spawnedUnitsParent,owner);
 
+					EnergyBuilding enComp = energyBuilding.GetComponent<EnergyBuilding>();
+					enComp.OnDestruction += () => {this._allowBuild = true;};
+					enComp.Owner = this.Owner;
+
+					if(this.Owner == PLAYERS.PLAYER1)
+						gameManager.Player1Money -= pdata.currentSelectedCard.MoneyCost;
+					else
+						gameManager.Player2Money -= pdata.currentSelectedCard.MoneyCost;
+
 					visualObject.GetComponent<TileVisual>().DestroyTopVisual();
 					Destroy(bc.gameObject);
 				}

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnergyBuilding : MonoBehaviour 
+public class EnergyBuilding : GameManagerSearcher 
 {
 	PLAYERS owner;
 	public PLAYERS Owner { get { return owner; } set { owner = value; } }
@@ -9,11 +9,18 @@ public class EnergyBuilding : MonoBehaviour
 	[SerializeField]
 	float lifeTime = 30.0f;
 
-
+	public delegate void BuildingDestructionDelegate();
+	public event BuildingDestructionDelegate OnDestruction = null;
 
 	void Start()
 	{
 		Destroy(this.gameObject,lifeTime);
+	}
+
+	void OnDestroy()
+	{
+		if(OnDestruction != null)
+			OnDestruction();
 	}
 
 //	[SerializeField]
