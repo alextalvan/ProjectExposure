@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class UnitAI : GameManagerSearcher 
 {
-	private UnitSpawner parentSpawner;
 	[SerializeField]
 	float unitSpeed = 1f;
     [SerializeField]
@@ -36,7 +35,7 @@ public class UnitAI : GameManagerSearcher
     {
 		if (!fighting && pathLength > currentWP && !HasUnitInFront())
         {
-            Vector3 dirVec = path[currentWP] - transform.position;
+			Vector3 dirVec = new Vector3(path[currentWP].x, transform.position.y, path[currentWP].z) - transform.position;
 
 			transform.position += dirVec.normalized * unitSpeed;
 
@@ -46,7 +45,7 @@ public class UnitAI : GameManagerSearcher
 				if (pathLength <= currentWP && !fighting)
                 {
 					GenerateScore();
-					CustomDestroy ();
+					Destroy (gameObject);
                 }
             }
         }
@@ -63,23 +62,16 @@ public class UnitAI : GameManagerSearcher
 			animationTime -= Time.deltaTime;
 			if (animationTime <= 0f) {
 				fighting = false;
-				CustomDestroy ();
+				Destroy (gameObject);
 			}
 		}
 	}
 
-	void CustomDestroy() {
-		if (parentSpawner != null)
-			parentSpawner.ResetTimer();
-		Destroy (gameObject);
-	}
-
-	public void SetData(List<Vector3> unitPath, PLAYERS owner, UnitSpawner spawner)
+	public void SetData(List<Vector3> unitPath, PLAYERS owner)
     {
         path = unitPath;
         pathLength = path.Count;
 		this.owner = owner;
-		parentSpawner = spawner;
     }
 
 	void OnCollisionEnter(Collision col) 

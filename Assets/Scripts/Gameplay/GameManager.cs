@@ -25,13 +25,14 @@ public class GameManager : MonoBehaviour
 	public const float MONEY_UPDATE_RATE = 1.0f;
 	float timeAccumulatorMoney = 0.0f;
 
-	[SerializeField]
-	float waveInterval = 5.0f;
+	//[SerializeField]
+	//float waveInterval = 5.0f;
 
-	float timeAccumulatorWaves = 0.0f;
+	//[SerializeField]
+	//float timeAccumulatorWaves = 0.0f;
 
-	public delegate void WaveTriggerDelegate();
-	public event WaveTriggerDelegate OnNewWave = null;
+	//public delegate void WaveTriggerDelegate();
+	//public event WaveTriggerDelegate OnNewWave = null;
 
 
 	[SerializeField]
@@ -123,16 +124,15 @@ public class GameManager : MonoBehaviour
 			UpdateMoney();
 
 		}
-
+		/*
 		timeAccumulatorWaves += Time.deltaTime;
 
 		while(timeAccumulatorWaves >= waveInterval)
 		{
-			timeAccumulatorMoney -= waveInterval;
+			timeAccumulatorWaves -= waveInterval;
 			if(OnNewWave != null)
 				OnNewWave();
-
-		}
+		}	*/
 	}
 
 	void UpdateMoney()
