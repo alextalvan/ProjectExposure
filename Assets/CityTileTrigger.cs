@@ -4,15 +4,12 @@ using System.Collections.Generic;
 
 public class CityTileTrigger : MonoBehaviour {
 
-	private bool hasP1Units = false;
-	private bool hasP2Units = false;
-	List<Transform> unitsP1;
-	List<Transform> unitsP2;
+	List<Transform> unitsP1 = new List<Transform>();
+	List<Transform> unitsP2 = new List<Transform>();
 
 	// Use this for initialization
 	void Start () {
-		unitsP1 = new List<Transform>();
-		unitsP2 = new List<Transform>();
+		
 	}
 
 	public void AddUnit(Transform unit, PLAYERS player) {
@@ -31,9 +28,9 @@ public class CityTileTrigger : MonoBehaviour {
 
 	public bool HasHostileUnits(PLAYERS player) {
 		if (player == PLAYERS.PLAYER1)
-			return hasP2Units;
+			return unitsP2.Count > 0;
 		else
-			return hasP1Units;
+			return unitsP1.Count > 0;
 	}
 	
 	// Update is called once per frame

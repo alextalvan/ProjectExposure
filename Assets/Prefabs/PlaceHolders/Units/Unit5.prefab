@@ -91,10 +91,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c70fe9bd71043b428fb76d991c15720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitStrength: 1
   unitSpeed: 0.1
   distanceToWP: 1.51
-  animationTime: 1
-  rcDist: 1
+  rayCastDist: 1
+  freezeTime: 1
+  fightAnimTime: 1
+  wanderAnimTime: 5
+  cheerAnimTime: 1
   scoreReward: 10
 --- !u!136 &13634574
 CapsuleCollider:
