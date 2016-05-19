@@ -32,20 +32,21 @@ public class BuildingCard : Card
 			break;
 		}
 
-		bool moneyCheck = ((this.Owner == PLAYERS.PLAYER1) ? gameManager.Player1Money : gameManager.Player2Money) >= this.MoneyCost;
+		bool moneyCheck = CheckMoneyCost();
 
 		if(oneFreeTile && moneyCheck)
 		{
 			pdata.currentSelectedCard = this;
 			gameManager.StartEnergyBuildingTileSelection(this);
 
-			if(this.Owner == PLAYERS.PLAYER1)
-				gameManager.Player1Money -= this.MoneyCost;
-			else
-				gameManager.Player2Money -= this.MoneyCost;
 		}
 
 
 		gameManager.raycastedOn2DObject = true;
+	}
+
+	protected override bool HighlightCondition ()
+	{
+		return CheckMoneyCost();
 	}
 }

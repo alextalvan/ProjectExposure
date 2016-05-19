@@ -41,9 +41,36 @@ public abstract class Card : GameManagerSearcher
 
 	public int MoneyCost { get { return moneyCost; } }
 
+	[SerializeField]
+	GameObject highlight = null;
+
 	void OnDestroy()
 	{
 		if(OnDestruction!=null)
 			OnDestruction();
+	}
+
+	protected virtual void Start()
+	{
+		if(highlight)
+			highlight.SetActive(false);
+	}
+
+
+	protected virtual bool HighlightCondition()
+	{
+		return false;
+	}
+
+	protected virtual void Update()
+	{
+		if(highlight)
+			highlight.SetActive(HighlightCondition());
+	}
+
+	//utility function for checking if the card can be afforded
+	protected bool CheckMoneyCost()
+	{
+		return ((this.Owner == PLAYERS.PLAYER1) ? gameManager.Player1Money : gameManager.Player2Money) >= this.MoneyCost;
 	}
 }

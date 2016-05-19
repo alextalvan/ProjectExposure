@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 		get { return _player1money; }
 		set 
 		{ 
+			
 			if(value < 0) value = 0;
 			_player1money = value;
 			player1moneyText.text = _player1money.ToString();
@@ -93,9 +94,8 @@ public class GameManager : MonoBehaviour
 	}
 
 
-
 	[SerializeField]
-	int moneyRate = 1;
+	int moneyRate = 0;
 
 
 	[SerializeField]
