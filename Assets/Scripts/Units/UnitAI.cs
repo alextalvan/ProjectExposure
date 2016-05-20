@@ -201,7 +201,7 @@ public class UnitAI : GameManagerSearcher
 			return false;
 
 		RaycastHit hit;
-		LayerMask layer = owner == PLAYERS.PLAYER1 ? LayerMask.GetMask("UnitP1") : LayerMask.GetMask("UnitP2");
+		LayerMask layer = owner == PLAYERS.PLAYER1 ? LayerMask.GetMask("UnitP1","Units_ignore_units") : LayerMask.GetMask("UnitP2","Units_ignore_units");
 		return Physics.Raycast(transform.position, (path[currentWP] - transform.position).normalized, rayCastDist, layer);
 	}
 

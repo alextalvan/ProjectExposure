@@ -17,6 +17,7 @@ public class FreezeCard : ActionCard
 
 	protected override void DoCardEffect ()
 	{
+		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
 		List<Transform> groupsWithUnits = new List<Transform>(enemyData.unitGroups.Count);
 
 		foreach(Transform tr in enemyData.unitGroups)
