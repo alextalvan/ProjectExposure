@@ -512,15 +512,21 @@ MonoBehaviour:
   maximumCards: 4
   cardsToSpawn: 2
   cardPrefabs:
-  - {fileID: 121820, guid: 685a97124ce0bad47ae4e12817906835, type: 2}
-  - {fileID: 136590, guid: 8e048e0cfdf1d344eb275d394f6ece52, type: 2}
-  - {fileID: 143114, guid: d33ccf6cbd692b24eafe4504dad57af5, type: 2}
-  - {fileID: 196752, guid: 042fd8aca12727749bbb2bc48c0a308f, type: 2}
-  - {fileID: 123974, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}
-  - {fileID: 121820, guid: 11cfcbfe86589c54593669ccaa62bf40, type: 2}
-  - {fileID: 123974, guid: 4b0fd97b6916390469dcd82fab5d42d2, type: 2}
-  - {fileID: 123974, guid: b7851014e1ff214448ad9f9dcb94a60a, type: 2}
-  - {fileID: 121820, guid: 11cfcbfe86589c54593669ccaa62bf40, type: 2}
+  - {fileID: 11401974, guid: 4b0fd97b6916390469dcd82fab5d42d2, type: 2}
+  - {fileID: 11497394, guid: 8c2305e667fdd304c96a46d3fd0d8bf3, type: 2}
+  - {fileID: 11438194, guid: b7851014e1ff214448ad9f9dcb94a60a, type: 2}
+  - {fileID: 11496926, guid: 8e048e0cfdf1d344eb275d394f6ece52, type: 2}
+  - {fileID: 11466648, guid: 685a97124ce0bad47ae4e12817906835, type: 2}
+  - {fileID: 11466648, guid: 11cfcbfe86589c54593669ccaa62bf40, type: 2}
+  - {fileID: 11445196, guid: d33ccf6cbd692b24eafe4504dad57af5, type: 2}
+  - {fileID: 11424542, guid: 042fd8aca12727749bbb2bc48c0a308f, type: 2}
+  - {fileID: 11479500, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}
+  - {fileID: 11466648, guid: 40d79168b3e188e478bbd66b48e67570, type: 2}
+  cardDrawPossibilities:
+  - {fileID: 11466648, guid: 685a97124ce0bad47ae4e12817906835, type: 2}
+  - {fileID: 11479500, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}
+  - {fileID: 11466648, guid: 11cfcbfe86589c54593669ccaa62bf40, type: 2}
+  - {fileID: 11424542, guid: 042fd8aca12727749bbb2bc48c0a308f, type: 2}
   timeAccumulator: 0
   cardCount: 0
 --- !u!61 &74957524
@@ -5187,15 +5193,21 @@ MonoBehaviour:
   maximumCards: 4
   cardsToSpawn: 2
   cardPrefabs:
-  - {fileID: 121820, guid: 685a97124ce0bad47ae4e12817906835, type: 2}
-  - {fileID: 136590, guid: 8e048e0cfdf1d344eb275d394f6ece52, type: 2}
-  - {fileID: 143114, guid: d33ccf6cbd692b24eafe4504dad57af5, type: 2}
-  - {fileID: 196752, guid: 042fd8aca12727749bbb2bc48c0a308f, type: 2}
-  - {fileID: 123974, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}
-  - {fileID: 121820, guid: 11cfcbfe86589c54593669ccaa62bf40, type: 2}
-  - {fileID: 123974, guid: 4b0fd97b6916390469dcd82fab5d42d2, type: 2}
-  - {fileID: 123974, guid: b7851014e1ff214448ad9f9dcb94a60a, type: 2}
-  - {fileID: 121820, guid: 11cfcbfe86589c54593669ccaa62bf40, type: 2}
+  - {fileID: 11401974, guid: 4b0fd97b6916390469dcd82fab5d42d2, type: 2}
+  - {fileID: 11497394, guid: 8c2305e667fdd304c96a46d3fd0d8bf3, type: 2}
+  - {fileID: 11438194, guid: b7851014e1ff214448ad9f9dcb94a60a, type: 2}
+  - {fileID: 11496926, guid: 8e048e0cfdf1d344eb275d394f6ece52, type: 2}
+  - {fileID: 11466648, guid: 685a97124ce0bad47ae4e12817906835, type: 2}
+  - {fileID: 11466648, guid: 11cfcbfe86589c54593669ccaa62bf40, type: 2}
+  - {fileID: 11445196, guid: d33ccf6cbd692b24eafe4504dad57af5, type: 2}
+  - {fileID: 11424542, guid: 042fd8aca12727749bbb2bc48c0a308f, type: 2}
+  - {fileID: 11479500, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}
+  - {fileID: 11466648, guid: 40d79168b3e188e478bbd66b48e67570, type: 2}
+  cardDrawPossibilities:
+  - {fileID: 11466648, guid: 685a97124ce0bad47ae4e12817906835, type: 2}
+  - {fileID: 11479500, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}
+  - {fileID: 11466648, guid: 11cfcbfe86589c54593669ccaa62bf40, type: 2}
+  - {fileID: 11424542, guid: 042fd8aca12727749bbb2bc48c0a308f, type: 2}
   timeAccumulator: 0
   cardCount: 0
 --- !u!61 &1517283318
@@ -5681,8 +5693,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4150eebb26c24418944be7c4d258ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player1money: 0
-  _player2money: 0
+  MONEY_UPDATE_RATE: 2.5
+  _player1money: 4
+  _player2money: 4
   _player1score: 0
   _player2score: 0
   moneyRate: 1

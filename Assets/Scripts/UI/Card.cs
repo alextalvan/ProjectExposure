@@ -42,6 +42,9 @@ public abstract class Card : GameManagerSearcher
 	public int MoneyCost { get { return moneyCost; } }
 
 	[SerializeField]
+	float deletionTime = 15.0f;
+
+	[SerializeField]
 	GameObject highlight = null;
 
 	void OnDestroy()
@@ -54,18 +57,33 @@ public abstract class Card : GameManagerSearcher
 	{
 		if(highlight)
 			highlight.SetActive(false);
+
+		Destroy(this.gameObject,deletionTime);
 	}
 
 
-	protected virtual bool HighlightCondition()
+	protected virtual bool CalculatePlayCondition()
 	{
 		return false;
+	}
+
+	protected virtual void DoCardEffect()
+	{
+		
+	}
+
+	protected virtual void OnMouseUp()
+	{
+		if(CalculatePlayCondition())
+			DoCardEffect();
+
+		gameManager.raycastedOn2DObject = true;
 	}
 
 	protected virtual void Update()
 	{
 		if(highlight)
-			highlight.SetActive(HighlightCondition());
+			highlight.SetActive(CalculatePlayCondition());
 	}
 
 	//utility function for checking if the card can be afforded

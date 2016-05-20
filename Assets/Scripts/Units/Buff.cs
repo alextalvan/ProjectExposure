@@ -5,10 +5,11 @@ using System.Collections.Generic;
 public enum BUFF_TYPES
 {
 	FREEZE,
-	SLOW
+	SPEED_MODIFIER
 }
 
 
+//used for generic buffs
 [System.Serializable]
 public class Buff 
 {
@@ -18,11 +19,19 @@ public class Buff
 	public BUFF_TYPES type;
 }
 
-//[System.Serializable]
+//slow buffs also have a slow strength
+public class SpeedBuff : Buff
+{
+	public SpeedBuff(float speedMod, float duration) : base (BUFF_TYPES.SPEED_MODIFIER, duration) { speedModifier = speedMod; }
+	public float speedModifier = 0.5f;
+}
+
+
+[System.Serializable]
 public class BuffList
 {
-	[SerializeField]
-	private List<Buff> _buffs = new List<Buff>();
+	//[SerializeField]
+	public List<Buff> _buffs = new List<Buff>();
 
 	public void AddBuff(Buff b)
 	{
@@ -46,7 +55,7 @@ public class BuffList
 	/// <summary>
 	/// Returns all the buffs of the specified type that the list contains
 	/// </summary>
-	List<Buff> HasBuffs(BUFF_TYPES type)
+	public List<Buff> HasBuffs(BUFF_TYPES type)
 	{
 		List<Buff> ret = new List<Buff>();
 		foreach(Buff b in _buffs)
@@ -58,18 +67,33 @@ public class BuffList
 	}
 
 	/// <summary>
+	/// Removes ALL buffs of the given type.
+	/// </summary>
+	/// <param name="type">Type.</param>
+	public void RemoveBuffs(BUFF_TYPES type)
+	{
+		for(int i = _buffs.Count - 1; i > -1; --i)
+		{
+			if(_buffs[i].type == type)
+				_buffs.RemoveAt(i);
+		}
+	}
+
+	/// <summary>
 	/// Update all the buff timers and removes the ones that wear out.
 	/// It uses the frame delta time (Time.deltaTime)
 	/// </summary>
 	public void Update()
 	{
-		foreach(Buff b in _buffs)
-		{
-			b.currentDuration += Time.deltaTime;
-		}
+//		foreach(Buff b in _buffs)
+//		{
+//			b.currentDuration += Time.deltaTime;
+//		}
 
 		for(int i = _buffs.Count - 1; i > -1; --i)
 		{
+			_buffs[i].currentDuration += Time.deltaTime;
+
 			if(_buffs[i].currentDuration >= _buffs[i].maxDuration)
 				_buffs.RemoveAt(i);
 		}

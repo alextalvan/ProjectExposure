@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class UnitAI : GameManagerSearcher 
 {
-	enum AiState { Idle, Freeze, Run, Fight, Wander, Cheer };
+	enum AiState { Idle, Run, Fight, Wander, Cheer };
 	private AiState currentState = AiState.Run;
 
 	[SerializeField]
@@ -16,8 +16,8 @@ public class UnitAI : GameManagerSearcher
 	[SerializeField]
 	float rayCastDist = 1f;
 
-	[SerializeField]
-	float freezeTime = 1f;
+//	[SerializeField]
+//	float freezeTime = 1f;
 	[SerializeField]
 	float fightAnimTime = 1f;
 	[SerializeField]
@@ -28,10 +28,16 @@ public class UnitAI : GameManagerSearcher
 	[SerializeField]
 	int scoreReward = 10;
 
-	private float freezeTimer;
+	//[SerializeField]
+	public BuffList buffList = new BuffList();
+
+	//private float freezeTimer;
 	private float fightTimer;
 	private float wanderTimer;
 	private float cheerTimer;
+
+	//temp for sprint meeting
+	Color baseColor;
 
 	private bool isOnCityTile = false;
     private int currentWP = 0;
@@ -48,12 +54,14 @@ public class UnitAI : GameManagerSearcher
 		wanderTimer = wanderAnimTime;
 		fightTimer = fightAnimTime;
 		cheerTimer = cheerAnimTime;
+		baseColor = GetComponent<Renderer>().material.color;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		Debug.Log (currentState.ToString ());
+		//Debug.Log (currentState.ToString ());
+		buffList.Update();
 		Behave();
     }
 
@@ -62,9 +70,6 @@ public class UnitAI : GameManagerSearcher
 		switch (currentState) {
 		case AiState.Idle:
 			Idle ();
-			break;
-		case AiState.Freeze:
-			Freeze ();
 			break;
 		case AiState.Run:
 			Run ();
@@ -86,21 +91,47 @@ public class UnitAI : GameManagerSearcher
 			currentState = AiState.Run;
 	}
 
-	void Freeze () {
-		if (freezeTimer > 0f) {
-			freezeTimer -= Time.deltaTime;
-			if (freezeTimer <= 0f) {
-				freezeTimer = 0;
-				currentState = AiState.Run;
+//	void Freeze () {
+//		if (freezeTimer > 0f) {
+//			freezeTimer -= Time.deltaTime;
+//			if (freezeTimer <= 0f) {
+//				freezeTimer = 0;
+//				currentState = AiState.Run;
+//			}
+//		}
+//	}
+
+	float CalculateSpeed()
+	{
+		float speed = unitSpeed;
+
+		foreach(Buff buff in buffList._buffs)
+		{
+			switch(buff.type)
+			{
+				case BUFF_TYPES.FREEZE:
+					return 0.0f;
+				
+				case BUFF_TYPES.SPEED_MODIFIER:
+					speed *= ((SpeedBuff)buff).speedModifier;
+					break;
+					
 			}
 		}
+		return speed;
 	}
+
 
 	void Run()
 	{
+		if(currentWP == path.Count)
+			return;
+
 		Vector3 dirVec = new Vector3(path[currentWP].x, transform.position.y, path[currentWP].z) - transform.position;
 
-		transform.position += dirVec.normalized * unitSpeed;
+		float speed = CalculateSpeed();
+
+		transform.position += dirVec.normalized * speed;
 
 		if (dirVec.magnitude <= distanceToWP) {
 			currentWP++;
@@ -128,7 +159,7 @@ public class UnitAI : GameManagerSearcher
 
 	void Wander() {
 		wanderTimer -= Time.deltaTime;
-		Debug.Log(cityTile.HasHostileUnits (owner));
+		//Debug.Log(cityTile.HasHostileUnits (owner));
 		if (wanderTimer <= 0f) {
 			transform.GetComponent<Rigidbody> ().isKinematic = true;
 			transform.GetComponent<Collider> ().isTrigger = true;
@@ -147,10 +178,10 @@ public class UnitAI : GameManagerSearcher
 		}
 	}
 
-	public void FreezeUnit() {
-		currentState = AiState.Idle;
-		freezeTimer = freezeTime;
-	}
+//	public void FreezeUnit() {
+//		currentState = AiState.Idle;
+//		freezeTimer = freezeTime;
+//	}
 
 	void CustomDestroy() {
 		cityTile.RemoveUnit (transform, owner);
@@ -164,7 +195,11 @@ public class UnitAI : GameManagerSearcher
 		this.owner = owner;
 	}
 
-	bool HasUnitInFront() {
+	bool HasUnitInFront() 
+	{
+		if(currentWP == path.Count)
+			return false;
+
 		RaycastHit hit;
 		LayerMask layer = owner == PLAYERS.PLAYER1 ? LayerMask.GetMask("UnitP1") : LayerMask.GetMask("UnitP2");
 		return Physics.Raycast(transform.position, (path[currentWP] - transform.position).normalized, rayCastDist, layer);
@@ -192,5 +227,13 @@ public class UnitAI : GameManagerSearcher
 				gameManager.Player2Score += scoreReward;
 				break;
 		}
+	}
+
+
+	//unfreeze
+	void OnMouseUp()
+	{
+		buffList.RemoveBuffs(BUFF_TYPES.FREEZE);
+		GetComponent<Renderer>().material.color = baseColor;
 	}
 }

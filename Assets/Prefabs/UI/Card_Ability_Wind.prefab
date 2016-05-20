@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11499304}
   - 61: {fileID: 6180630}
   - 50: {fileID: 5076066}
-  - 114: {fileID: 11443282}
+  - 114: {fileID: 11497394}
   m_Layer: 5
   m_Name: Card_Ability_Wind
   m_TagString: Untagged
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11443282
+--- !u!114 &11497394
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -103,13 +103,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 123974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2e6f2905ca460b4c8c89ced6877ac72, type: 3}
+  m_Script: {fileID: 11500000, guid: 5530f930372f8454397e448fb26e77f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 0
   cardType: 8
-  moneyCost: 0
+  moneyCost: 1
   highlight: {fileID: 181092}
+  duration: 5
+  speedModifier: 0.5
 --- !u!114 &11499304
 MonoBehaviour:
   m_ObjectHideFlags: 1

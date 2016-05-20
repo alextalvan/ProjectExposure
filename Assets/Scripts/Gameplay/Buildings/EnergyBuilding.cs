@@ -7,20 +7,32 @@ public class EnergyBuilding : GameManagerSearcher
 	public PLAYERS Owner { get { return owner; } set { owner = value; } }
 
 	[SerializeField]
-	float lifeTime = 30.0f;
+	float maxlifeTime = 30.0f;
+
+	[SerializeField]
+	float lifeTimeLeft;
+
+	public float MaxLifeTime { get { return maxlifeTime; } }
+	public float CurrentLifeTimeLeft { get { return lifeTimeLeft; } }
 
 	public delegate void BuildingDestructionDelegate();
 	public event BuildingDestructionDelegate OnDestruction = null;
 
 	void Start()
 	{
-		Destroy(this.gameObject,lifeTime);
+		Destroy(this.gameObject,maxlifeTime);
+		lifeTimeLeft = maxlifeTime;
 	}
 
 	void OnDestroy()
 	{
 		if(OnDestruction != null)
 			OnDestruction();
+	}
+
+	void Update()
+	{
+		lifeTimeLeft -= Time.deltaTime;
 	}
 
 //	[SerializeField]

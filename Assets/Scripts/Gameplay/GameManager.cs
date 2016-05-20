@@ -23,7 +23,7 @@ public enum ENERGY_BUILDING_TYPES
 public class GameManager : MonoBehaviour 
 {
 	//money updaterate in seconds
-	public const float MONEY_UPDATE_RATE = 2.0f;
+	public float MONEY_UPDATE_RATE = 2.0f;
 	float timeAccumulatorMoney = 0.0f;
 
 	//[SerializeField]
@@ -114,6 +114,13 @@ public class GameManager : MonoBehaviour
 	PlayerGameDataList _playerData = new PlayerGameDataList();
 
 	public PlayerGameDataList playerData { get { return _playerData; } }
+
+	void Start()
+	{
+		//forcing refresh at start because of inspector filling of starting money
+		Player1Money = Player1Money;
+		Player2Money = Player2Money;
+	}
 
 	void Update () 
 	{

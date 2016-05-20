@@ -12,16 +12,24 @@ public class BuildingCard : Card
 	public EnergyBuildingType BuildingType { get { return _buildingType; } }
 
 
-
-
-	void OnMouseUp()
+	protected override void DoCardEffect ()
 	{
+		PlayerGameData pdata = gameManager.playerData[this.Owner];
+		pdata.currentSelectedCard = this;
+		gameManager.StartEnergyBuildingTileSelection(this);
 
-		//Debug.Log("card");
+		gameManager.raycastedOn2DObject = true;
+	}
+
+	protected override bool CalculatePlayCondition ()
+	{
+		if(!CheckMoneyCost())
+			return false;
+
 		PlayerGameData pdata = gameManager.playerData[this.Owner];
 
 		if(pdata.currentInputState != INPUT_STATES.FREE)
-			return;
+			return false;
 
 		bool oneFreeTile = false;
 
@@ -32,21 +40,9 @@ public class BuildingCard : Card
 			break;
 		}
 
-		bool moneyCheck = CheckMoneyCost();
+		if(!oneFreeTile)
+			return false;
 
-		if(oneFreeTile && moneyCheck)
-		{
-			pdata.currentSelectedCard = this;
-			gameManager.StartEnergyBuildingTileSelection(this);
-
-		}
-
-
-		gameManager.raycastedOn2DObject = true;
-	}
-
-	protected override bool HighlightCondition ()
-	{
-		return CheckMoneyCost();
+		return true;
 	}
 }
