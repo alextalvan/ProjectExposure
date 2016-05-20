@@ -21,6 +21,10 @@ public class TimeBar : MonoBehaviour
 	{
 		startScale = transform.localScale;
 		_renderer = GetComponent<Renderer>();
+
+		_building.OnDestruction += () => { Destroy(this.gameObject); };
+		this.transform.SetParent(null);
+		this.transform.localScale = startScale;
 	}
 
 	void Update () 

@@ -14,6 +14,7 @@ public class BuildingCard : Card
 
 	protected override void DoCardEffect ()
 	{
+		
 		PlayerGameData pdata = gameManager.playerData[this.Owner];
 		pdata.currentSelectedCard = this;
 		gameManager.StartEnergyBuildingTileSelection(this);
@@ -23,6 +24,7 @@ public class BuildingCard : Card
 
 	protected override bool CalculatePlayCondition ()
 	{
+		
 		if(!CheckMoneyCost())
 			return false;
 
