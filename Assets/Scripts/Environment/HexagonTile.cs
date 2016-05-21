@@ -35,6 +35,10 @@ public class HexagonTile : GameManagerSearcher
 	//GameObject currentEnergyBuilding = null;
 	GameObject visualObject = null;
 
+	//each hexagon tile knows the unit group its spawned units are parented to
+	[SerializeField]
+	Transform spawnedUnitsParent;
+
 	void Start () 
 	{
 		int randomType = Random.Range(0,tileTypes.Count);
@@ -58,6 +62,7 @@ public class HexagonTile : GameManagerSearcher
 
 	void OnMouseUp()
 	{
+		
 		//mosue fix for 2d object raycasts to supress 3d object raycasts
 		if(gameManager.raycastedOn2DObject)
 			return;
@@ -78,7 +83,16 @@ public class HexagonTile : GameManagerSearcher
 					_allowBuild = false;
 					//currentEnergyBuilding = energyBuilding;
 
-					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(aiPathRoot,spawnPoint,owner);
+					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(aiPathRoot,spawnPoint,spawnedUnitsParent,owner);
+
+					EnergyBuilding enComp = energyBuilding.GetComponent<EnergyBuilding>();
+					enComp.OnDestruction += () => {this._allowBuild = true;};
+					enComp.Owner = this.Owner;
+
+					if(this.Owner == PLAYERS.PLAYER1)
+						gameManager.Player1Money -= pdata.currentSelectedCard.MoneyCost;
+					else
+						gameManager.Player2Money -= pdata.currentSelectedCard.MoneyCost;
 
 					visualObject.GetComponent<TileVisual>().DestroyTopVisual();
 					Destroy(bc.gameObject);

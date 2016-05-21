@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class BuildingCard : ActionCard 
+public class BuildingCard : Card 
 {
 	//for now use mouse input for testing
 
@@ -12,16 +12,26 @@ public class BuildingCard : ActionCard
 	public EnergyBuildingType BuildingType { get { return _buildingType; } }
 
 
-
-
-	void OnMouseUp()
+	protected override void DoCardEffect ()
 	{
+		
+		PlayerGameData pdata = gameManager.playerData[this.Owner];
+		pdata.currentSelectedCard = this;
+		gameManager.StartEnergyBuildingTileSelection(this);
 
-		//Debug.Log("card");
+		gameManager.raycastedOn2DObject = true;
+	}
+
+	protected override bool CalculatePlayCondition ()
+	{
+		
+		if(!CheckMoneyCost())
+			return false;
+
 		PlayerGameData pdata = gameManager.playerData[this.Owner];
 
 		if(pdata.currentInputState != INPUT_STATES.FREE)
-			return;
+			return false;
 
 		bool oneFreeTile = false;
 
@@ -32,13 +42,9 @@ public class BuildingCard : ActionCard
 			break;
 		}
 
-		if(oneFreeTile)
-		{
-			pdata.currentSelectedCard = this;
-			gameManager.StartEnergyBuildingTileSelection(this);
-		}
+		if(!oneFreeTile)
+			return false;
 
-
-		gameManager.raycastedOn2DObject = true;
+		return true;
 	}
 }

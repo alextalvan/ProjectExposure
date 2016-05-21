@@ -2,73 +2,238 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class UnitAI : MonoBehaviour {
+public class UnitAI : GameManagerSearcher 
+{
+	enum AiState { Idle, Run, Fight, Wander, Cheer };
+	private AiState currentState = AiState.Run;
 
+	[SerializeField]
+	int unitStrength = 1;
 	[SerializeField]
 	float unitSpeed = 1f;
     [SerializeField]
     float distanceToWP;
 	[SerializeField]
-	float animationTime = 1f;
-    private List<Vector3> path;
+	float rayCastDist = 1f;
 
+//	[SerializeField]
+//	float freezeTime = 1f;
+	[SerializeField]
+	float fightAnimTime = 1f;
+	[SerializeField]
+	float wanderAnimTime = 1f;
+	[SerializeField]
+	float cheerAnimTime = 1f;
+
+	[SerializeField]
+	int scoreReward = 10;
+
+	//[SerializeField]
+	public BuffList buffList = new BuffList();
+
+	//private float freezeTimer;
+	private float fightTimer;
+	private float wanderTimer;
+	private float cheerTimer;
+
+	//temp for sprint meeting
+	Color baseColor;
+
+	private bool isOnCityTile = false;
     private int currentWP = 0;
     private int pathLength;
-	private bool fighting = false;
+	private bool allowCollision = true;
+	private PLAYERS owner;
+	public PLAYERS Owner { get { return owner; } }
 
-    // Use this for initialization
-    void Start ()
-    {
-		
-    }
+	private List<Vector3> path;
+	private CityTileTrigger cityTile;
+	public CityTileTrigger CityTile { set { cityTile = value; } }
+
+	void Start() {
+		wanderTimer = wanderAnimTime;
+		fightTimer = fightAnimTime;
+		cheerTimer = cheerAnimTime;
+		baseColor = GetComponent<Renderer>().material.color;
+	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        Move ();
-		Fight ();
+		//Debug.Log (currentState.ToString ());
+		buffList.Update();
+		Behave();
     }
 
-	void Move()
-    {
-        if (!fighting && pathLength > currentWP)
-        {
-            Vector3 dirVec = path[currentWP] - transform.position;
+	void Behave() 
+	{
+		switch (currentState) {
+		case AiState.Idle:
+			Idle ();
+			break;
+		case AiState.Run:
+			Run ();
+			break;
+		case AiState.Fight:
+			Fight ();
+			break;
+		case AiState.Wander:
+			Wander ();
+			break;
+		case AiState.Cheer:
+			Cheer ();
+			break;
+		}
+	}
 
-			//Quaternion lookRotation = Quaternion.LookRotation(dirVec);
-			//transform.rotation = Quaternion.LookRotation(dirVec);
+	void Idle() {
+		if (!HasUnitInFront ())
+			currentState = AiState.Run;
+	}
 
-			transform.position += dirVec.normalized * unitSpeed;
+//	void Freeze () {
+//		if (freezeTimer > 0f) {
+//			freezeTimer -= Time.deltaTime;
+//			if (freezeTimer <= 0f) {
+//				freezeTimer = 0;
+//				currentState = AiState.Run;
+//			}
+//		}
+//	}
 
-			if (dirVec.magnitude <= distanceToWP)
-            {
-                currentWP++;
-                if (pathLength <= currentWP)
-                {
-                    Destroy(gameObject);
-                }
-            }
-        }
+	float CalculateSpeed()
+	{
+		float speed = unitSpeed;
+
+		foreach(Buff buff in buffList._buffs)
+		{
+			switch(buff.type)
+			{
+				case BUFF_TYPES.FREEZE:
+					return 0.0f;
+				
+				case BUFF_TYPES.SPEED_MODIFIER:
+					speed *= ((SpeedBuff)buff).speedModifier;
+					break;
+					
+			}
+		}
+		return speed;
+	}
+
+
+	void Run()
+	{
+		if(currentWP == path.Count)
+			return;
+
+		Vector3 dirVec = new Vector3(path[currentWP].x, transform.position.y, path[currentWP].z) - transform.position;
+
+		float speed = CalculateSpeed();
+
+		transform.position += dirVec.normalized * speed;
+
+		if (dirVec.magnitude <= distanceToWP) {
+			currentWP++;
+
+			if (HasUnitInFront())
+				currentState = AiState.Idle;
+			if (currentWP == pathLength - 1 && !cityTile.HasHostileUnits(owner))
+				currentState = AiState.Wander;
+		}
     }
 
 	void Fight() {
-		if (fighting) {
-			animationTime -= Time.deltaTime;
-			if (animationTime <= 0f) {
-				fighting = false;
-				Destroy (gameObject);
+		fightTimer -= Time.deltaTime;
+		if (fightTimer <= 0f) {
+			unitStrength--;
+			if (unitStrength > 0) {
+				transform.GetComponent<Rigidbody> ().isKinematic = true;
+				transform.GetComponent<Collider> ().isTrigger = true;
+				currentState = AiState.Cheer;
+			} else {
+				CustomDestroy ();
 			}
 		}
 	}
 
-    public void SetPath(List<Vector3> unitPath)
+	void Wander() {
+		wanderTimer -= Time.deltaTime;
+		//Debug.Log(cityTile.HasHostileUnits (owner));
+		if (wanderTimer <= 0f) {
+			transform.GetComponent<Rigidbody> ().isKinematic = true;
+			transform.GetComponent<Collider> ().isTrigger = true;
+			currentState = AiState.Cheer;
+		} else if (cityTile.HasHostileUnits (owner)) {
+			wanderTimer = wanderAnimTime;
+			currentState = AiState.Run;
+		}
+	}
+
+	void Cheer() {
+		cheerTimer -= Time.deltaTime;
+		if (cheerTimer <= 0f) {
+			GenerateScore ();
+			CustomDestroy ();
+		}
+	}
+
+//	public void FreezeUnit() {
+//		currentState = AiState.Idle;
+//		freezeTimer = freezeTime;
+//	}
+
+	void CustomDestroy() {
+		cityTile.RemoveUnit (transform, owner);
+		Destroy (gameObject);
+	}
+
+	public void SetData(List<Vector3> unitPath, PLAYERS owner)
     {
         path = unitPath;
         pathLength = path.Count;
-    }
+		this.owner = owner;
+	}
 
-	void OnCollisionEnter(Collision col) {
-		if (col.transform.GetComponent<UnitAI> ())
-			fighting = true;
+	bool HasUnitInFront() 
+	{
+		if(currentWP == path.Count)
+			return false;
+
+		RaycastHit hit;
+		LayerMask layer = owner == PLAYERS.PLAYER1 ? LayerMask.GetMask("UnitP1","Units_ignore_units") : LayerMask.GetMask("UnitP2","Units_ignore_units");
+		return Physics.Raycast(transform.position, (path[currentWP] - transform.position).normalized, rayCastDist, layer);
+	}
+
+	void OnCollisionEnter(Collision col) 
+	{
+		if(!allowCollision)
+			return;
+		
+		if (col.collider.gameObject.GetComponent<UnitAI> ()) {
+			currentState = AiState.Fight;
+			allowCollision = false;
+		}
+	}
+
+	void GenerateScore()
+	{
+		switch(owner)
+		{
+			case PLAYERS.PLAYER1:
+				gameManager.Player1Score += scoreReward;
+				break;
+			case PLAYERS.PLAYER2:
+				gameManager.Player2Score += scoreReward;
+				break;
+		}
+	}
+
+
+	//unfreeze
+	void OnMouseUp()
+	{
+		buffList.RemoveBuffs(BUFF_TYPES.FREEZE);
+		GetComponent<Renderer>().material.color = baseColor;
 	}
 }

@@ -12,9 +12,10 @@ public enum PLAYERS
 public class PlayerGameData 
 {
 	public PLAYERS player;
-	public ActionCard currentSelectedCard = null;
+	public Card currentSelectedCard = null;
 	public INPUT_STATES currentInputState = INPUT_STATES.FREE;
 	public List<HexagonTile> tiles = new List<HexagonTile>();
+	public List<Transform> unitGroups = new List<Transform>();
 
 
 	public void SetAllTilesHighlight(bool show)

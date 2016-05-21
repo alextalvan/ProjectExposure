@@ -1,20 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-[RequireComponent(typeof(Collider2D))]
-public abstract class ActionCard : GameManagerSearcher 
+
+public class ActionCard : Card 
 {
-	public delegate void CardDestructionDelegate();
-	public event CardDestructionDelegate OnDestruction = null;
+	protected PlayerGameData enemyData;
 
-	[SerializeField]
-	PLAYERS owner;
-
-	public PLAYERS Owner { get { return owner; } set { owner = value; } }
-
-	void OnDestroy()
+	protected override void Start ()
 	{
-		if(OnDestruction!=null)
-			OnDestruction();
+		base.Start ();
+
 	}
+		
+	protected bool EnemyHasUnits()
+	{
+		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
+		foreach(Transform tr in enemyData.unitGroups)
+		{
+			if(tr.childCount > 0)
+				return true;
+		}
+		return false;
+	}
+
 }
