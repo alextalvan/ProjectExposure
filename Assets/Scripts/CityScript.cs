@@ -56,40 +56,35 @@ public class CityScript : MonoBehaviour {
 	/// Adds random offsets.
 	/// </summary>
 	void InitializeGrid() {
-		//Get size of top district
-		Vector2 size = new Vector2(Vector3.Distance(topDistrict.GetChild(2).position, topDistrict.GetChild(3).position), 
-			Vector3.Distance(topDistrict.GetChild(0).position, topDistrict.GetChild(1).position));
+		//Get bounds of top district
+		Bounds bounds = topDistrict.GetComponent<Collider> ().bounds;
 		//Calculate number of columns
-		int numx = (int)(size.x / distBetweenBuldings);
+		int numx = (int)(bounds.size.x / distBetweenBuldings);
 		//Calculate number of rows
-		int numz = (int)(size.y / distBetweenBuldings);
+		int numz = (int)(bounds.size.z / distBetweenBuldings);
 		//Calculate starting point (1st column / 1st row cell)
-		Vector3 startPnt = new Vector3 (topDistrict.position.x - size.x * 0.5f + distBetweenBuldings * 0.5f, 
-			topDistrict.position.y, topDistrict.position.z - size.y * 0.5f + distBetweenBuldings * 0.5f);
+		Vector3 startPnt = new Vector3 (topDistrict.position.x - bounds.extents.x + ((bounds.size.x - numx * distBetweenBuldings) * 0.5f) + distBetweenBuldings * 0.5f, topDistrict.position.y, topDistrict.position.z + - bounds.extents.z + ((bounds.size.z - numz * distBetweenBuldings) * 0.5f) + distBetweenBuldings * 0.5f);
 		for (int x = 0; x < numx; ++x) {
             float lineOffset = Random.Range(minRndLineOffset, maxRndLineOffset);
             for (int z = 0; z < numz; ++z) {
 				//Calculate new point and add random offset to it
-				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 
-					0,  distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset)) + startPnt;
+				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 0,  distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset)) + startPnt;
 				//If is in city radius
-				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius * ((transform.lossyScale.x + transform.lossyScale.z) * 0.5f))
+				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius * transform.lossyScale.x)
 					grid.Add (newPnt); //Add to points list
 			}
 		}
 		//same for bottom district
-		size = new Vector2(Vector3.Distance(bottomDistrict.GetChild(2).position, bottomDistrict.GetChild(3).position), 
-			Vector3.Distance(bottomDistrict.GetChild(0).position, bottomDistrict.GetChild(1).position));
-		numx = (int)(size.x / distBetweenBuldings);
-		numz = (int)(size.y / distBetweenBuldings);
-		startPnt = new Vector3 (bottomDistrict.position.x - size.x * 0.5f + distBetweenBuldings * 0.5f, 
-			bottomDistrict.position.y, bottomDistrict.position.z - size.y * 0.5f + distBetweenBuldings * 0.5f);
+		bounds = bottomDistrict.GetComponent<Collider> ().bounds;
+		numx = (int)(bounds.size.x / distBetweenBuldings);
+		numz = (int)(bounds.size.z / distBetweenBuldings);
+		startPnt = new Vector3 (bottomDistrict.position.x - bounds.extents.x + ((bounds.size.x - numx * distBetweenBuldings) * 0.5f) + distBetweenBuldings * 0.5f, bottomDistrict.position.y, bottomDistrict.position.z + - bounds.extents.z + ((bounds.size.z - numz * distBetweenBuldings) * 0.5f) + distBetweenBuldings * 0.5f);
 		for (int x = 0; x < numx; ++x)
         {
             float lineOffset = Random.Range(minRndLineOffset, maxRndLineOffset);
             for (int z = 0; z < numz; ++z) {
 				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 0,  distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset)) + startPnt;
-				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius * ((transform.lossyScale.x + transform.lossyScale.z) * 0.5f))
+				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius * transform.lossyScale.x)
 					grid.Add (newPnt);
 			}
 		}

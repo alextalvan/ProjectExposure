@@ -18,6 +18,7 @@ public class UnitSpawner : MonoBehaviour
     [SerializeField]
 	int unitsPerSpawn = 1;
 	Transform activeUnit;
+	bool lateSpawn = false;
 
 	PLAYERS owner;
     private List<Vector3> unitPath = new List<Vector3>();
