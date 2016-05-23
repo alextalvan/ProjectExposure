@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class PathScript : MonoBehaviour
 {
     public Color gizmosColor = Color.blue;
-    //private Vector3 startPos;
 
     void OnDrawGizmos()
     {
@@ -30,17 +29,11 @@ public class PathScript : MonoBehaviour
 
     void Start()
     {
-        //startPos = transform.GetChild(0).position;
+		
     }
 
     void Update()
     {
 
-    }
-
-    void SpawnNewEnemy()
-    {
-        //GameObject newEnemy = Instantiate(Resources.Load("Enemy"), startPos, Quaternion.identity) as GameObject;
-        //newEnemy.GetComponent<EnemyScript>().pathGroup = transform;
     }
 }
