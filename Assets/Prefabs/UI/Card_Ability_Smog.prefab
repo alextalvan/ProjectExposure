@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11499304}
   - 61: {fileID: 6180630}
   - 50: {fileID: 5076066}
-  - 114: {fileID: 11443282}
+  - 114: {fileID: 11486734}
   m_Layer: 5
   m_Name: Card_Ability_Smog
   m_TagString: Untagged
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11443282
+--- !u!114 &11486734
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -103,13 +103,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 123974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2e6f2905ca460b4c8c89ced6877ac72, type: 3}
+  m_Script: {fileID: 11500000, guid: 58bfa03a69cc13343b8a4c82e2859e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 0
-  cardType: 11
-  moneyCost: 0
+  cardType: 9
+  moneyCost: 1
+  deletionTime: 15
   highlight: {fileID: 166842}
+  effectDuration: 15
+  tapCountToUndo: 5
+  materialTint: {r: 0.123107694, g: 0.41195416, b: 0.50735295, a: 1}
 --- !u!114 &11499304
 MonoBehaviour:
   m_ObjectHideFlags: 1

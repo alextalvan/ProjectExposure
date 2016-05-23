@@ -47,7 +47,7 @@ public class UnitAI : GameManagerSearcher
 	public PLAYERS Owner { get { return owner; } }
 
 	private List<Vector3> path;
-	private CityTileTrigger cityTile;
+	private CityTileTrigger cityTile = null;
 	public CityTileTrigger CityTile { set { cityTile = value; } }
 
 	void Start() {
@@ -105,14 +105,14 @@ public class UnitAI : GameManagerSearcher
 	{
 		float speed = unitSpeed;
 
-		foreach(Buff buff in buffList._buffs)
+		foreach(Buff buff in buffList.buffs)
 		{
 			switch(buff.type)
 			{
-				case BUFF_TYPES.FREEZE:
+				case BUFF_TYPES.UNIT_FREEZE:
 					return 0.0f;
 				
-				case BUFF_TYPES.SPEED_MODIFIER:
+				case BUFF_TYPES.UNIT_SPEED_MODIFIER:
 					speed *= ((SpeedBuff)buff).speedModifier;
 					break;
 					
@@ -155,7 +155,7 @@ public class UnitAI : GameManagerSearcher
 				transform.GetComponent<Collider> ().isTrigger = true;
 				currentState = AiState.Cheer;
 			} else {
-				CustomDestroy ();
+				Destroy(this.gameObject);
 			}
 		}
 	}
@@ -176,7 +176,7 @@ public class UnitAI : GameManagerSearcher
 		cheerTimer -= Time.deltaTime;
 		if (cheerTimer <= 0f) {
 			GenerateScore ();
-			CustomDestroy ();
+			Destroy(this.gameObject);
 		}
 	}
 
@@ -185,14 +185,16 @@ public class UnitAI : GameManagerSearcher
 //		freezeTimer = freezeTime;
 //	}
 
-	void CustomDestroy() {
-		cityTile.RemoveUnit (transform, owner);
-		Destroy (gameObject);
+
+	void OnDestroy()
+	{
+		if(cityTile)
+			cityTile.RemoveUnit (transform, owner);
 	}
 
 	public void SetData(List<Vector3> unitPath, PLAYERS owner)
     {
-        path = unitPath;
+		path = new List<Vector3>(unitPath);
         pathLength = path.Count;
 		this.owner = owner;
 	}
@@ -235,7 +237,7 @@ public class UnitAI : GameManagerSearcher
 	//unfreeze
 	void OnMouseUp()
 	{
-		buffList.RemoveBuffs(BUFF_TYPES.FREEZE);
+		buffList.RemoveBuffs(BUFF_TYPES.UNIT_FREEZE);
 		GetComponent<Renderer>().material.color = baseColor;
 	}
 }

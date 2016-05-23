@@ -8,7 +8,7 @@ public class Image_Manipulator : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		Debug.Log("test");
+		//Debug.Log("test");
 	}
 
 		

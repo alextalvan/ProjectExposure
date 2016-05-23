@@ -15,6 +15,9 @@ public class TimeBar : MonoBehaviour
 
 	Vector3 startScale;
 
+	//the time bar will reposition itself above the building in the event that the building gets moved
+	Vector3 storedOffset;
+
 	Renderer _renderer;
 
 	void Start()
@@ -25,6 +28,7 @@ public class TimeBar : MonoBehaviour
 		_building.OnDestruction += () => { Destroy(this.gameObject); };
 		this.transform.SetParent(null);
 		this.transform.localScale = startScale;
+		storedOffset = this.transform.position - _building.transform.position;
 	}
 
 	void Update () 
@@ -33,5 +37,7 @@ public class TimeBar : MonoBehaviour
 		transform.localScale = new Vector3(startScale.x * coef, startScale.y, startScale.z);
 
 		_renderer.material.color = Color.Lerp(minLifeColor,maxLifeColor,coef);
+
+		transform.position =  _building.transform.position + storedOffset;
 	}
 }

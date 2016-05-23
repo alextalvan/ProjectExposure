@@ -18,6 +18,9 @@ public class EnergyBuilding : GameManagerSearcher
 	public delegate void BuildingDestructionDelegate();
 	public event BuildingDestructionDelegate OnDestruction = null;
 
+	//buildings can also be buffed
+	public BuffList buffList = new BuffList();
+
 	void Start()
 	{
 		Destroy(this.gameObject,maxlifeTime);
@@ -33,6 +36,59 @@ public class EnergyBuilding : GameManagerSearcher
 	void Update()
 	{
 		lifeTimeLeft -= Time.deltaTime;
+
+
+
+		bool wasDisabled = false;
+
+		foreach(Buff b in buffList.buffs)
+		if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
+		{
+			wasDisabled = true;
+			break;
+		}
+
+
+		buffList.Update();
+
+
+		if(wasDisabled)
+		{
+			bool isNowDisabled = false;
+
+			foreach(Buff b in buffList.buffs)
+			if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
+			{
+				isNowDisabled = true;
+				break;
+			}
+
+			if(!isNowDisabled)
+			{
+				GetComponent<UnitSpawner>().enabled = true;
+				foreach(Renderer r in GetComponentsInChildren<Renderer>())
+					r.material.color = Color.white;
+			}
+		}
+	}
+
+	void OnMouseUp()
+	{
+		if(gameManager.playerData[Owner].currentInputState != INPUT_STATES.FREE)
+			return;
+
+		foreach(Buff b in buffList.buffs)
+		{
+			if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
+			{
+				BuildingStunBuff bstun = ((BuildingStunBuff)b);
+				bstun.currentTapCount--;
+				if(bstun.currentTapCount == 0) 
+					bstun.currentDuration = bstun.maxDuration + 1.0f;
+
+			}
+		}
+			
 	}
 
 //	[SerializeField]
