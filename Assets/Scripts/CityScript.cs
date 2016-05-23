@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CityScript : MonoBehaviour {
-
+	
 	[SerializeField]
 	float buildingSpawnCoolDown = 1f;
 	[SerializeField]
@@ -121,6 +121,7 @@ public class CityScript : MonoBehaviour {
 			if (rnd > dist) { //If random is in range of distance between center and point
 				GameObject newBuilding = Instantiate (buildingPrefabs [0], pnt, Quaternion.identity) as GameObject; //Instantiate new building
 				newBuilding.transform.parent = buildings; //Insert as a child into buildings
+				newBuilding.transform.rotation = buildings.rotation;
 				lastBuildingDist = Vector3.Distance (newBuilding.transform.position, transform.position); //Store distance from that building to city center
 				grid.RemoveAt (0); //Remove used point from list
 			} else {
@@ -164,6 +165,7 @@ public class CityScript : MonoBehaviour {
         Destroy (building.gameObject); //Remove current building
 		GameObject upgradedBuilding = Instantiate (buildingPrefabs [prefabIndex], position, Quaternion.identity) as GameObject; //Instantiate new building
 		upgradedBuilding.transform.parent = buildings; //Set parent to buildings
+		upgradedBuilding.transform.rotation = buildings.rotation;
 		return upgradedBuilding; //Return it back
 	}
 }
