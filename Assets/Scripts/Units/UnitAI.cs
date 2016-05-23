@@ -61,8 +61,8 @@ public class UnitAI : GameManagerSearcher
 	void Update ()
     {
 		//Debug.Log (currentState.ToString ());
-		buffList.Update();
-		Behave();
+		buffList.Update ();
+		Behave ();
     }
 
 	void Behave() 
@@ -124,9 +124,17 @@ public class UnitAI : GameManagerSearcher
 
 	void Run()
 	{
-		if(currentWP == path.Count)
+		if (HasUnitInFront ()) {
+			currentState = AiState.Idle;
 			return;
-
+		}
+		if (currentWP == pathLength && !cityTile.HasHostileUnits (owner)) {
+			currentState = AiState.Wander;
+			return;
+		}
+		if(currentWP == pathLength)
+			return;
+		
 		Vector3 dirVec = new Vector3(path[currentWP].x, transform.position.y, path[currentWP].z) - transform.position;
 
 		float speed = CalculateSpeed();
@@ -135,11 +143,6 @@ public class UnitAI : GameManagerSearcher
 
 		if (dirVec.magnitude <= distanceToWP) {
 			currentWP++;
-
-			if (HasUnitInFront())
-				currentState = AiState.Idle;
-			if (currentWP == pathLength - 1 && !cityTile.HasHostileUnits(owner))
-				currentState = AiState.Wander;
 		}
     }
 
@@ -159,7 +162,6 @@ public class UnitAI : GameManagerSearcher
 
 	void Wander() {
 		wanderTimer -= Time.deltaTime;
-		//Debug.Log(cityTile.HasHostileUnits (owner));
 		if (wanderTimer <= 0f) {
 			transform.GetComponent<Rigidbody> ().isKinematic = true;
 			transform.GetComponent<Collider> ().isTrigger = true;
@@ -197,7 +199,7 @@ public class UnitAI : GameManagerSearcher
 
 	bool HasUnitInFront() 
 	{
-		if(currentWP == path.Count)
+		if(currentWP == pathLength)
 			return false;
 
 		RaycastHit hit;
