@@ -78,6 +78,7 @@ GameObject:
   - 4: {fileID: 465952}
   - 114: {fileID: 11464352}
   - 114: {fileID: 11454152}
+  - 65: {fileID: 6585128}
   m_Layer: 0
   m_Name: Nuclear_Plant
   m_TagString: Untagged
@@ -276,6 +277,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104642}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &6585128
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.05, y: 4.1, z: 8.92}
+  m_Center: {x: 0.46, y: 1.98, z: 0}
 --- !u!114 &11418824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,6 +314,7 @@ MonoBehaviour:
   spawnCoolDown: 5
   unit: {fileID: 102548, guid: bc288322a36b9574da48b3eb042980d4, type: 2}
   unitsPerSpawn: 1
+  _energyBuilding: {fileID: 11464352}
 --- !u!114 &11464352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,6 +328,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxlifeTime: 30
   lifeTimeLeft: 0
+  buffList:
+    _buffs: []
 --- !u!114 &11481020
 MonoBehaviour:
   m_ObjectHideFlags: 1

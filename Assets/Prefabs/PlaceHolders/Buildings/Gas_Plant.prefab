@@ -61,6 +61,7 @@ GameObject:
   - 4: {fileID: 465952}
   - 114: {fileID: 11464352}
   - 114: {fileID: 11454152}
+  - 65: {fileID: 6522090}
   m_Layer: 0
   m_Name: Gas_Plant
   m_TagString: Untagged
@@ -185,6 +186,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134504}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &6522090
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.28, y: 6.27, z: 6.67}
+  m_Center: {x: -0.3, y: 2.99, z: 0.21}
 --- !u!114 &11408194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,6 +237,7 @@ MonoBehaviour:
   spawnCoolDown: 5
   unit: {fileID: 152352, guid: 45e0df6d86bb9b6448eb39838a2f475f, type: 2}
   unitsPerSpawn: 1
+  _energyBuilding: {fileID: 11464352}
 --- !u!114 &11464352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,6 +251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxlifeTime: 45
   lifeTimeLeft: 0
+  buffList:
+    _buffs: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

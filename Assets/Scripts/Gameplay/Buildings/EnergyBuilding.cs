@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Collider))]
 public class EnergyBuilding : GameManagerSearcher 
 {
 	PLAYERS owner;
@@ -18,6 +19,9 @@ public class EnergyBuilding : GameManagerSearcher
 	public delegate void BuildingDestructionDelegate();
 	public event BuildingDestructionDelegate OnDestruction = null;
 
+	//buildings can also be buffed
+	public BuffList buffList = new BuffList();
+
 	void Start()
 	{
 		Destroy(this.gameObject,maxlifeTime);
@@ -33,6 +37,21 @@ public class EnergyBuilding : GameManagerSearcher
 	void Update()
 	{
 		lifeTimeLeft -= Time.deltaTime;
+		buffList.Update();
+	}
+
+	void OnMouseUp()
+	{
+		//buffList.RemoveBuffs(BUFF_TYPES.BUILDING_TEMPORARY_DISABLE);
+		foreach(Buff b in buffList.buffs)
+		{
+			if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
+			{
+				BuildingStunBuff bstun = ((BuildingStunBuff)b);
+				if(--bstun.currentTapCount == 0) 
+					bstun.currentDuration = -1.0f;
+			}
+		}
 	}
 
 //	[SerializeField]

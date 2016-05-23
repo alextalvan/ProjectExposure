@@ -39,6 +39,10 @@ public class HexagonTile : GameManagerSearcher
 	[SerializeField]
 	Transform spawnedUnitsParent;
 
+	//each hexagon knows its energy building
+	private EnergyBuilding _energyBuilding = null;
+	public EnergyBuilding CurrentEnergyBuilding { get { return _energyBuilding; } }
+
 	void Start () 
 	{
 		int randomType = Random.Range(0,tileTypes.Count);
@@ -85,9 +89,9 @@ public class HexagonTile : GameManagerSearcher
 
 					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(aiPathRoot,spawnPoint,spawnedUnitsParent,owner);
 
-					EnergyBuilding enComp = energyBuilding.GetComponent<EnergyBuilding>();
-					enComp.OnDestruction += () => {this._allowBuild = true;};
-					enComp.Owner = this.Owner;
+					_energyBuilding = energyBuilding.GetComponent<EnergyBuilding>();
+					_energyBuilding.OnDestruction += () => {this._allowBuild = true; this._energyBuilding = null;};
+					_energyBuilding.Owner = this.Owner;
 
 					if(this.Owner == PLAYERS.PLAYER1)
 						gameManager.Player1Money -= pdata.currentSelectedCard.MoneyCost;

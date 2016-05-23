@@ -105,14 +105,14 @@ public class UnitAI : GameManagerSearcher
 	{
 		float speed = unitSpeed;
 
-		foreach(Buff buff in buffList._buffs)
+		foreach(Buff buff in buffList.buffs)
 		{
 			switch(buff.type)
 			{
-				case BUFF_TYPES.FREEZE:
+				case BUFF_TYPES.UNIT_FREEZE:
 					return 0.0f;
 				
-				case BUFF_TYPES.SPEED_MODIFIER:
+				case BUFF_TYPES.UNIT_SPEED_MODIFIER:
 					speed *= ((SpeedBuff)buff).speedModifier;
 					break;
 					
@@ -233,7 +233,7 @@ public class UnitAI : GameManagerSearcher
 	//unfreeze
 	void OnMouseUp()
 	{
-		buffList.RemoveBuffs(BUFF_TYPES.FREEZE);
+		buffList.RemoveBuffs(BUFF_TYPES.UNIT_FREEZE);
 		GetComponent<Renderer>().material.color = baseColor;
 	}
 }

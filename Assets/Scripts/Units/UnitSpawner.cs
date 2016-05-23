@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class UnitSpawner : MonoBehaviour {
+[RequireComponent(typeof(EnergyBuilding))]
+public class UnitSpawner : MonoBehaviour 
+{
 	
 	private Transform pathGroup;
 	private Transform spawnPoint;
@@ -21,6 +23,9 @@ public class UnitSpawner : MonoBehaviour {
 	PLAYERS owner;
     private List<Vector3> unitPath = new List<Vector3>();
 
+	//to check if the energy building is debuffed
+	[SerializeField]
+	private EnergyBuilding _energyBuilding;
 
 	void Start() {
 		spawnTimer = spawnCoolDown;

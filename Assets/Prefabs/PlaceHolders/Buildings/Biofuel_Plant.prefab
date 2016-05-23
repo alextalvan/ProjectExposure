@@ -129,6 +129,7 @@ GameObject:
   - 4: {fileID: 490554}
   - 114: {fileID: 11469912}
   - 114: {fileID: 11448006}
+  - 65: {fileID: 6571494}
   m_Layer: 0
   m_Name: Biofuel_Plant
   m_TagString: Untagged
@@ -500,6 +501,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164084}
   m_Mesh: {fileID: 4300000, guid: bd93046e9bf2ce24dad5053d25dbb565, type: 3}
+--- !u!65 &6571494
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.18, y: 2.05, z: 7.08}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &11430692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -528,6 +541,7 @@ MonoBehaviour:
   spawnCoolDown: 5
   unit: {fileID: 127346, guid: 271156387e23f1a448d0fcfa497ade2a, type: 2}
   unitsPerSpawn: 1
+  _energyBuilding: {fileID: 11469912}
 --- !u!114 &11457712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -552,6 +566,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxlifeTime: 180
   lifeTimeLeft: 0
+  buffList:
+    _buffs: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 public enum BUFF_TYPES
 {
-	FREEZE,
-	SPEED_MODIFIER
+	UNIT_FREEZE,
+	UNIT_SPEED_MODIFIER,
+	BUILDING_TEMPORARY_DISABLE
 }
 
 
@@ -22,8 +23,15 @@ public class Buff
 //slow buffs also have a slow strength
 public class SpeedBuff : Buff
 {
-	public SpeedBuff(float speedMod, float duration) : base (BUFF_TYPES.SPEED_MODIFIER, duration) { speedModifier = speedMod; }
+	public SpeedBuff(float speedMod, float duration) : base (BUFF_TYPES.UNIT_SPEED_MODIFIER, duration) { speedModifier = speedMod; }
 	public float speedModifier = 0.5f;
+}
+
+//slow buffs also have a slow strength
+public class BuildingStunBuff : Buff
+{
+	public BuildingStunBuff(int tapCountForUndo, float duration) : base (BUFF_TYPES.BUILDING_TEMPORARY_DISABLE, duration) { currentTapCount = tapCountForUndo; }
+	public int currentTapCount;
 }
 
 
@@ -31,11 +39,11 @@ public class SpeedBuff : Buff
 public class BuffList
 {
 	//[SerializeField]
-	public List<Buff> _buffs = new List<Buff>();
+	public List<Buff> buffs = new List<Buff>();
 
 	public void AddBuff(Buff b)
 	{
-		_buffs.Add(b);
+		buffs.Add(b);
 	}
 
 	/// <summary>
@@ -43,7 +51,7 @@ public class BuffList
 	/// </summary>
 	public bool HasBuff(BUFF_TYPES type)
 	{
-		foreach(Buff b in _buffs)
+		foreach(Buff b in buffs)
 		{
 			if(b.type == type)
 				return true;
@@ -58,7 +66,7 @@ public class BuffList
 	public List<Buff> HasBuffs(BUFF_TYPES type)
 	{
 		List<Buff> ret = new List<Buff>();
-		foreach(Buff b in _buffs)
+		foreach(Buff b in buffs)
 		{
 			if(b.type == type)
 				ret.Add(b);
@@ -72,10 +80,10 @@ public class BuffList
 	/// <param name="type">Type.</param>
 	public void RemoveBuffs(BUFF_TYPES type)
 	{
-		for(int i = _buffs.Count - 1; i > -1; --i)
+		for(int i = buffs.Count - 1; i > -1; --i)
 		{
-			if(_buffs[i].type == type)
-				_buffs.RemoveAt(i);
+			if(buffs[i].type == type)
+				buffs.RemoveAt(i);
 		}
 	}
 
@@ -90,12 +98,12 @@ public class BuffList
 //			b.currentDuration += Time.deltaTime;
 //		}
 
-		for(int i = _buffs.Count - 1; i > -1; --i)
+		for(int i = buffs.Count - 1; i > -1; --i)
 		{
-			_buffs[i].currentDuration += Time.deltaTime;
+			buffs[i].currentDuration += Time.deltaTime;
 
-			if(_buffs[i].currentDuration >= _buffs[i].maxDuration)
-				_buffs.RemoveAt(i);
+			if(buffs[i].currentDuration >= buffs[i].maxDuration)
+				buffs.RemoveAt(i);
 		}
 	}
 }

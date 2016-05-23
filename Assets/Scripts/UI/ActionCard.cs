@@ -24,4 +24,15 @@ public class ActionCard : Card
 		return false;
 	}
 
+	protected bool EnemyHasBuildings()
+	{
+		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
+		foreach(HexagonTile tile in enemyData.tiles)
+		{
+			if(tile.CurrentEnergyBuilding!=null)
+				return true;
+		}
+		return false;
+	}
+
 }

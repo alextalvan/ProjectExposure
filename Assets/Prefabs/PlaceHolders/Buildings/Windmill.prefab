@@ -231,6 +231,7 @@ GameObject:
   - 4: {fileID: 462296}
   - 114: {fileID: 11469864}
   - 114: {fileID: 11451464}
+  - 65: {fileID: 6565420}
   m_Layer: 0
   m_Name: Windmill
   m_TagString: Untagged
@@ -878,6 +879,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165146}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &6565420
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191906}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.08, y: 7.21, z: 6.94}
+  m_Center: {x: 1.06, y: 3.47, z: 0}
 --- !u!114 &11413628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -906,6 +919,7 @@ MonoBehaviour:
   spawnCoolDown: 5
   unit: {fileID: 175424, guid: 1a0d99ef0b6195a4c80bf4589ad99fbe, type: 2}
   unitsPerSpawn: 1
+  _energyBuilding: {fileID: 11469864}
 --- !u!114 &11460858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -930,6 +944,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxlifeTime: 90
   lifeTimeLeft: 0
+  buffList:
+    _buffs: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
