@@ -24,6 +24,6 @@ public class TouchTest2 : MonoBehaviour {
 
 	void OnMouseUp()
 	{
-		Debug.Log("test");
+		//Debug.Log("test");
 	}
 }

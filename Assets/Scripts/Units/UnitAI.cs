@@ -47,7 +47,7 @@ public class UnitAI : GameManagerSearcher
 	public PLAYERS Owner { get { return owner; } }
 
 	private List<Vector3> path;
-	private CityTileTrigger cityTile;
+	private CityTileTrigger cityTile = null;
 	public CityTileTrigger CityTile { set { cityTile = value; } }
 
 	void Start() {
@@ -155,7 +155,7 @@ public class UnitAI : GameManagerSearcher
 				transform.GetComponent<Collider> ().isTrigger = true;
 				currentState = AiState.Cheer;
 			} else {
-				CustomDestroy ();
+				Destroy(this.gameObject);
 			}
 		}
 	}
@@ -176,7 +176,7 @@ public class UnitAI : GameManagerSearcher
 		cheerTimer -= Time.deltaTime;
 		if (cheerTimer <= 0f) {
 			GenerateScore ();
-			CustomDestroy ();
+			Destroy(this.gameObject);
 		}
 	}
 
@@ -185,9 +185,11 @@ public class UnitAI : GameManagerSearcher
 //		freezeTimer = freezeTime;
 //	}
 
-	void CustomDestroy() {
-		cityTile.RemoveUnit (transform, owner);
-		Destroy (gameObject);
+
+	void OnDestroy()
+	{
+		if(cityTile)
+			cityTile.RemoveUnit (transform, owner);
 	}
 
 	public void SetData(List<Vector3> unitPath, PLAYERS owner)

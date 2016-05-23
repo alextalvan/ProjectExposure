@@ -36,7 +36,9 @@ public class SmogCard : ActionCard
 		EnergyBuilding building = candidateBuildings[Random.Range(0,candidateBuildings.Count)];
 		building.buffList.AddBuff(b);
 		building.GetComponent<UnitSpawner>().enabled = false;
-		building.GetComponentInChildren<Renderer>().material.color = materialTint;
+
+		foreach(Renderer r in building.GetComponentsInChildren<Renderer>())
+			r.material.color = materialTint;
 
 		Destroy(this.gameObject);
 	}

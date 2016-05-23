@@ -77,7 +77,7 @@ public class TouchInputManager : MonoBehaviour
 
 					if(beginCondition2D)
 					{
-						targetObject.SendMessage("TouchEnter",touch);
+						targetObject.SendMessageUpwards("TouchEnter",touch);
 						focusedObjects[touch.fingerId] = targetObject;
 					}
 
@@ -105,7 +105,7 @@ public class TouchInputManager : MonoBehaviour
 						//else
 						//	focusedObjects2D[touch.fingerId] = col2d.gameObject;
 
-						oldFocusedObj.SendMessage("TouchExit",touch);
+						oldFocusedObj.SendMessageUpwards("TouchExit",touch);
 					}
 
 					oldFocusedObj = focusedObjects[touch.fingerId];
@@ -120,7 +120,7 @@ public class TouchInputManager : MonoBehaviour
 						//update focused object at end
 						focusedObjects[touch.fingerId] = targetObject;
 
-						targetObject.SendMessage("TouchEnter",touch);
+						targetObject.SendMessageUpwards("TouchEnter",touch);
 					}
 
 
@@ -136,7 +136,7 @@ public class TouchInputManager : MonoBehaviour
 
 					if(moveCondition)
 					{
-						focusedObjects[touch.fingerId].SendMessage("TouchMove",touch);
+						focusedObjects[touch.fingerId].SendMessageUpwards("TouchMove",touch);
 					}
 
 
@@ -149,7 +149,7 @@ public class TouchInputManager : MonoBehaviour
 
 					if(stayCondition)
 					{
-						focusedObjects[touch.fingerId].SendMessage("TouchStay",touch);
+						focusedObjects[touch.fingerId].SendMessageUpwards("TouchStay",touch);
 					}
 
 					//UIConsole.Log("Touch index " + touch.fingerId + " is stationary at position " + touch.position);
@@ -158,7 +158,7 @@ public class TouchInputManager : MonoBehaviour
 
 					//current object test
 					if(targetObject!= null && CanInteractWithObject(touch,targetObject))
-						targetObject.SendMessage("TouchEnd",touch);
+						targetObject.SendMessageUpwards("TouchEnd",touch);
 
 					
 					//focusedObjects2D[touch.fingerId] = null;

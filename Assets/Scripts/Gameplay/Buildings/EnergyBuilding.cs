@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Collider))]
 public class EnergyBuilding : GameManagerSearcher 
 {
 	PLAYERS owner;
@@ -42,7 +41,9 @@ public class EnergyBuilding : GameManagerSearcher
 
 	void OnMouseUp()
 	{
-		//buffList.RemoveBuffs(BUFF_TYPES.BUILDING_TEMPORARY_DISABLE);
+		if(gameManager.playerData[Owner].currentInputState != INPUT_STATES.FREE)
+			return;
+
 		bool revertUnitDisable = true;
 
 		foreach(Buff b in buffList.buffs)
@@ -50,10 +51,13 @@ public class EnergyBuilding : GameManagerSearcher
 			if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
 			{
 				BuildingStunBuff bstun = ((BuildingStunBuff)b);
-				if(--bstun.currentTapCount == 0) 
-					bstun.currentDuration = -1.0f;
+				bstun.currentTapCount--;
+				if(bstun.currentTapCount == 0) 
+					bstun.currentDuration = bstun.maxDuration + 1.0f;
 
-				if(bstun.currentDuration > 0.0f)
+				//Debug.Log(bstun.currentTapCount);
+
+				if(bstun.currentDuration < bstun.maxDuration)
 					revertUnitDisable = false;
 			}
 		}
@@ -61,7 +65,8 @@ public class EnergyBuilding : GameManagerSearcher
 		if(revertUnitDisable)
 		{
 			GetComponent<UnitSpawner>().enabled = true;
-			GetComponentInChildren<Renderer>().material.color = Color.white;
+			foreach(Renderer r in GetComponentsInChildren<Renderer>())
+				r.material.color = Color.white;
 		}
 	}
 
