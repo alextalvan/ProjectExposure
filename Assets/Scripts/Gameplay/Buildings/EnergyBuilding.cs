@@ -36,15 +36,46 @@ public class EnergyBuilding : GameManagerSearcher
 	void Update()
 	{
 		lifeTimeLeft -= Time.deltaTime;
+
+
+
+		bool wasDisabled = false;
+
+		foreach(Buff b in buffList.buffs)
+		if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
+		{
+			wasDisabled = true;
+			break;
+		}
+
+
 		buffList.Update();
+
+
+		if(wasDisabled)
+		{
+			bool isNowDisabled = false;
+
+			foreach(Buff b in buffList.buffs)
+			if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
+			{
+				isNowDisabled = true;
+				break;
+			}
+
+			if(!isNowDisabled)
+			{
+				GetComponent<UnitSpawner>().enabled = true;
+				foreach(Renderer r in GetComponentsInChildren<Renderer>())
+					r.material.color = Color.white;
+			}
+		}
 	}
 
 	void OnMouseUp()
 	{
 		if(gameManager.playerData[Owner].currentInputState != INPUT_STATES.FREE)
 			return;
-
-		bool revertUnitDisable = true;
 
 		foreach(Buff b in buffList.buffs)
 		{
@@ -55,19 +86,9 @@ public class EnergyBuilding : GameManagerSearcher
 				if(bstun.currentTapCount == 0) 
 					bstun.currentDuration = bstun.maxDuration + 1.0f;
 
-				//Debug.Log(bstun.currentTapCount);
-
-				if(bstun.currentDuration < bstun.maxDuration)
-					revertUnitDisable = false;
 			}
 		}
-
-		if(revertUnitDisable)
-		{
-			GetComponent<UnitSpawner>().enabled = true;
-			foreach(Renderer r in GetComponentsInChildren<Renderer>())
-				r.material.color = Color.white;
-		}
+			
 	}
 
 //	[SerializeField]

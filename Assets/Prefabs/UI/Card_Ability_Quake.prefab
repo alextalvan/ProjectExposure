@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11499304}
   - 61: {fileID: 6180630}
   - 50: {fileID: 5076066}
-  - 114: {fileID: 11443282}
+  - 114: {fileID: 11486224}
   m_Layer: 5
   m_Name: Card_Ability_Quake
   m_TagString: Untagged
@@ -68,21 +68,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
---- !u!114 &11443282
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2e6f2905ca460b4c8c89ced6877ac72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owner: 0
-  cardType: 12
-  moneyCost: 0
-  highlight: {fileID: 132128}
 --- !u!114 &11481746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,6 +95,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11486224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90c9b67bc8a20645aeec9f959ccb1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: 0
+  cardType: 12
+  moneyCost: 0
+  deletionTime: 15
+  highlight: {fileID: 132128}
 --- !u!114 &11499304
 MonoBehaviour:
   m_ObjectHideFlags: 1
