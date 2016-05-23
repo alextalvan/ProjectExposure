@@ -43,6 +43,8 @@ public class EnergyBuilding : GameManagerSearcher
 	void OnMouseUp()
 	{
 		//buffList.RemoveBuffs(BUFF_TYPES.BUILDING_TEMPORARY_DISABLE);
+		bool revertUnitDisable = true;
+
 		foreach(Buff b in buffList.buffs)
 		{
 			if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
@@ -50,7 +52,16 @@ public class EnergyBuilding : GameManagerSearcher
 				BuildingStunBuff bstun = ((BuildingStunBuff)b);
 				if(--bstun.currentTapCount == 0) 
 					bstun.currentDuration = -1.0f;
+
+				if(bstun.currentDuration > 0.0f)
+					revertUnitDisable = false;
 			}
+		}
+
+		if(revertUnitDisable)
+		{
+			GetComponent<UnitSpawner>().enabled = true;
+			GetComponentInChildren<Renderer>().material.color = Color.white;
 		}
 	}
 

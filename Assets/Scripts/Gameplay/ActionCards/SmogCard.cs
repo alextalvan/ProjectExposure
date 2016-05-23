@@ -10,9 +10,11 @@ public class SmogCard : ActionCard
 	[SerializeField]
 	int tapCountToUndo = 10;
 
+	[SerializeField]
+	Color materialTint = Color.red;
+
 	protected override bool CalculatePlayCondition ()
 	{
-
 		if(!CheckMoneyCost())
 			return false;
 
@@ -31,8 +33,12 @@ public class SmogCard : ActionCard
 		}
 
 		BuildingStunBuff b = new BuildingStunBuff(tapCountToUndo,effectDuration);
-		candidateBuildings[Random.Range(0,candidateBuildings.Count)].buffList.AddBuff(b);
-		//Destroy(this.gameObject);
+		EnergyBuilding building = candidateBuildings[Random.Range(0,candidateBuildings.Count)];
+		building.buffList.AddBuff(b);
+		building.GetComponent<UnitSpawner>().enabled = false;
+		building.GetComponentInChildren<Renderer>().material.color = materialTint;
+
+		Destroy(this.gameObject);
 	}
 
 }
