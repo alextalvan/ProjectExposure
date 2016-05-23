@@ -9,6 +9,7 @@ public class FreezeCard : ActionCard
 
 	protected override bool CalculatePlayCondition ()
 	{
+		
 		if(!CheckMoneyCost())
 			return false;
 

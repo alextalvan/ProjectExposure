@@ -22,6 +22,12 @@ public enum ENERGY_BUILDING_TYPES
 
 public class GameManager : MonoBehaviour 
 {
+	[SerializeField]
+	float gameTimer = 300.0f;
+
+	[SerializeField]
+	Text gameTimerText;
+
 	//money updaterate in seconds
 	public float MONEY_UPDATE_RATE = 2.0f;
 	float timeAccumulatorMoney = 0.0f;
@@ -132,6 +138,13 @@ public class GameManager : MonoBehaviour
 			UpdateMoney();
 
 		}
+
+
+		gameTimer -= Time.deltaTime;
+		int seconds = ((int)gameTimer) % 60;
+		int minutes = ((int)gameTimer) / 60;
+		gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
+
 		/*
 		timeAccumulatorWaves += Time.deltaTime;
 

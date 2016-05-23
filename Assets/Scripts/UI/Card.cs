@@ -49,8 +49,24 @@ public abstract class Card : GameManagerSearcher
 
 	void OnDestroy()
 	{
+
+		//if a card is destroyed while the player is in the middle of using it, handle it proeprly
+		foreach(PLAYERS p in System.Enum.GetValues(typeof(PLAYERS)))
+		{
+			PlayerGameData pdata = gameManager.playerData[p];
+			if(pdata.currentSelectedCard == this)
+			{
+				pdata.currentInputState = INPUT_STATES.FREE;
+				pdata.currentSelectedCard = null;
+				pdata.SetAllTilesHighlight(false);
+				break;
+			}
+		}
+
 		if(OnDestruction!=null)
 			OnDestruction();
+
+		//transform.wo
 	}
 
 	protected virtual void Start()
