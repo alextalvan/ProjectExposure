@@ -16,8 +16,6 @@ public class UnitAI : GameManagerSearcher
 	[SerializeField]
 	float rayCastDist = 1f;
 
-//	[SerializeField]
-//	float freezeTime = 1f;
 	[SerializeField]
 	float fightAnimTime = 1f;
 	[SerializeField]
@@ -28,10 +26,8 @@ public class UnitAI : GameManagerSearcher
 	[SerializeField]
 	int scoreReward = 10;
 
-	//[SerializeField]
 	public BuffList buffList = new BuffList();
 
-	//private float freezeTimer;
 	private float fightTimer;
 	private float wanderTimer;
 	private float cheerTimer;
@@ -39,7 +35,6 @@ public class UnitAI : GameManagerSearcher
 	//temp for sprint meeting
 	Color baseColor;
 
-	private bool isOnCityTile = false;
     private int currentWP = 0;
     private int pathLength;
 	private bool allowCollision = true;
@@ -60,7 +55,6 @@ public class UnitAI : GameManagerSearcher
 	// Update is called once per frame
 	void Update ()
     {
-		//Debug.Log (currentState.ToString ());
 		buffList.Update ();
 		Behave ();
     }
@@ -90,16 +84,6 @@ public class UnitAI : GameManagerSearcher
 		if (!HasUnitInFront ())
 			currentState = AiState.Run;
 	}
-
-//	void Freeze () {
-//		if (freezeTimer > 0f) {
-//			freezeTimer -= Time.deltaTime;
-//			if (freezeTimer <= 0f) {
-//				freezeTimer = 0;
-//				currentState = AiState.Run;
-//			}
-//		}
-//	}
 
 	float CalculateSpeed()
 	{
@@ -180,12 +164,6 @@ public class UnitAI : GameManagerSearcher
 		}
 	}
 
-//	public void FreezeUnit() {
-//		currentState = AiState.Idle;
-//		freezeTimer = freezeTime;
-//	}
-
-
 	void OnDestroy()
 	{
 		if(cityTile)
@@ -204,7 +182,6 @@ public class UnitAI : GameManagerSearcher
 		if(currentWP == pathLength)
 			return false;
 
-		RaycastHit hit;
 		LayerMask layer = owner == PLAYERS.PLAYER1 ? LayerMask.GetMask("UnitP1","Units_ignore_units") : LayerMask.GetMask("UnitP2","Units_ignore_units");
 		return Physics.Raycast(transform.position, (path[currentWP] - transform.position).normalized, rayCastDist, layer);
 	}
@@ -232,7 +209,6 @@ public class UnitAI : GameManagerSearcher
 				break;
 		}
 	}
-
 
 	//unfreeze
 	void OnMouseUp()
