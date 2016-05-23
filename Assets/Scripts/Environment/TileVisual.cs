@@ -31,8 +31,8 @@ public class TileVisual : MonoBehaviour
 
 	public void DestroyTopVisual()
 	{
-		if(_topVisual)
-			Destroy(_topVisual);
-		_topVisual = null;
+		//if(_topVisual)
+		//	Destroy(_topVisual);
+		//_topVisual = null;
 	}
 }
