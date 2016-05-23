@@ -18,6 +18,9 @@ public class Buff
 	public float maxDuration = 5.0f;
 	public float currentDuration = 0.0f;
 	public BUFF_TYPES type;
+
+//	public delegate void BuffEndDelegate();
+//	public event BuffEndDelegate OnExpiration = null;
 }
 
 //slow buffs also have a slow strength

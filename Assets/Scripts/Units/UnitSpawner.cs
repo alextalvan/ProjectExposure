@@ -28,8 +28,7 @@ public class UnitSpawner : MonoBehaviour
 	private EnergyBuilding _energyBuilding;
 
 	void Start() {
-		spawnTimer = spawnCoolDown;
-		spTrigger = spawnPoint.GetComponent<SpawnPointTrigger> ();
+		
 		//gameManager.OnNewWave += this.SpawnUnits;
 	}
 
@@ -41,6 +40,8 @@ public class UnitSpawner : MonoBehaviour
     void CreateUnitPath()
     {
         bool start = false;
+		unitPath.Clear();
+
         foreach(Transform child in pathGroup)
         {
             if (start == true)
@@ -64,14 +65,14 @@ public class UnitSpawner : MonoBehaviour
 	{
 		if (!activeUnit && spawnTimer <= 0f && spTrigger.Available)
         {
-			for (int i = 0; i < unitsPerSpawn; ++i) {
+			//for (int i = 0; i < unitsPerSpawn; ++i) {
 				GameObject newUnit = Instantiate (unit, spawnPoint.position, Quaternion.identity) as GameObject;
 				newUnit.GetComponent<UnitAI> ().SetData (unitPath, owner);
 				newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
 				newUnit.transform.parent = unitGroupParent;
 				newUnit.transform.rotation = transform.rotation;
 				activeUnit = newUnit.transform;
-			}
+			//}
 			spawnTimer += spawnCoolDown;
         }
 	}
@@ -90,5 +91,8 @@ public class UnitSpawner : MonoBehaviour
 		owner = powner;
 		this.unitGroupParent = unitGroupParent;
 		CreateUnitPath ();
+
+		spawnTimer = spawnCoolDown;
+		spTrigger = spawnPoint.GetComponent<SpawnPointTrigger> ();
 	}
 }

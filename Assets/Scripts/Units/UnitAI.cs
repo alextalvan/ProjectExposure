@@ -194,7 +194,7 @@ public class UnitAI : GameManagerSearcher
 
 	public void SetData(List<Vector3> unitPath, PLAYERS owner)
     {
-        path = unitPath;
+		path = new List<Vector3>(unitPath);
         pathLength = path.Count;
 		this.owner = owner;
 	}
