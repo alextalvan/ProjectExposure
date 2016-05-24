@@ -73,6 +73,9 @@ public class CityScript : MonoBehaviour {
 				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 
 					0,  distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset)) + startPnt;
 				//If is in city radius
+				Vector3 dir = newPnt - transform.position; // get point direction relative to pivot
+				dir = Quaternion.Euler(transform.eulerAngles) * dir; // rotate it
+				newPnt = dir + transform.position; // calculate rotated point
 				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius * ((transform.lossyScale.x + transform.lossyScale.z) * 0.5f))
 					grid.Add (newPnt); //Add to points list
 			}
@@ -88,7 +91,11 @@ public class CityScript : MonoBehaviour {
         {
             float lineOffset = Random.Range(minRndLineOffset, maxRndLineOffset);
             for (int z = 0; z < numz; ++z) {
-				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 0,  distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset)) + startPnt;
+				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 
+					0,  distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset)) + startPnt;
+				Vector3 dir = newPnt - transform.position; // get point direction relative to pivot
+				dir = Quaternion.Euler(transform.eulerAngles) * dir; // rotate it
+				newPnt = dir + transform.position; // calculate rotated point
 				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius * ((transform.lossyScale.x + transform.lossyScale.z) * 0.5f))
 					grid.Add (newPnt);
 			}
@@ -126,7 +133,7 @@ public class CityScript : MonoBehaviour {
 			if (rnd > dist) { //If random is in range of distance between center and point
 				GameObject newBuilding = Instantiate (buildingPrefabs [0], pnt, Quaternion.identity) as GameObject; //Instantiate new building
 				newBuilding.transform.parent = buildings; //Insert as a child into buildings
-				newBuilding.transform.rotation = buildings.rotation;
+				newBuilding.transform.rotation = transform.rotation;
 				lastBuildingDist = Vector3.Distance (newBuilding.transform.position, transform.position); //Store distance from that building to city center
 				grid.RemoveAt (0); //Remove used point from list
 			} else {
@@ -170,7 +177,7 @@ public class CityScript : MonoBehaviour {
         Destroy (building.gameObject); //Remove current building
 		GameObject upgradedBuilding = Instantiate (buildingPrefabs [prefabIndex], position, Quaternion.identity) as GameObject; //Instantiate new building
 		upgradedBuilding.transform.parent = buildings; //Set parent to buildings
-		upgradedBuilding.transform.rotation = buildings.rotation;
+		upgradedBuilding.transform.rotation = transform.rotation;
 		return upgradedBuilding; //Return it back
 	}
 }
