@@ -110,7 +110,11 @@ public class HexagonTile : GameManagerSearcher
 	}
 	
 
+	#if TOUCH_INPUT
+	void TouchEnd()
+	#else
 	void OnMouseUp()
+	#endif
 	{
 		
 		//mosue fix for 2d object raycasts to supress 3d object raycasts

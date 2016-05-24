@@ -118,7 +118,6 @@ GameObject:
   - 114: {fileID: 11478562}
   - 54: {fileID: 5496286}
   - 136: {fileID: 13660124}
-  - 95: {fileID: 9544930}
   m_Layer: 0
   m_Name: CoalUnit TEST
   m_TagString: Untagged
@@ -1684,7 +1683,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 484056}
@@ -2624,7 +2623,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 150.46834, y: -11.6016655, z: 73.08583}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 411284}
@@ -2905,23 +2904,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!95 &9544930
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 107830}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 92bb3a5adc45b4329a0b4b0427bd7331, type: 3}
-  m_Controller: {fileID: 9100000, guid: 67b9719ff83a54265b2e0112ced18d8f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &9550680
 Animator:
   serializedVersion: 3
@@ -2959,7 +2941,7 @@ MonoBehaviour:
   cheerAnimTime: 1
   scoreReward: 10
   buffList:
-    _buffs: []
+    buffs: []
 --- !u!136 &13660124
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2983,7 +2965,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6a27ee300aa5e49f5b2a97e598269d34, type: 2}
+  - {fileID: 2100000, guid: f0a9e393428e9473492da3610c7d010f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

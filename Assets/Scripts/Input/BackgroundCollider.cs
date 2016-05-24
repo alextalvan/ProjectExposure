@@ -7,7 +7,11 @@ public class BackgroundCollider : GameManagerSearcher
 	[SerializeField]
 	PLAYERS owner;
 
+	#if TOUCH_INPUT
+	void TouchEnd()
+	#else
 	void OnMouseUp()
+	#endif
 	{
 		//UIConsole.LogWithRandomColor("Background.");
 		PlayerGameData pdata = gameManager.playerData[owner];

@@ -88,7 +88,11 @@ public abstract class Card : GameManagerSearcher
 		
 	}
 
+	#if TOUCH_INPUT
+	protected virtual void TouchEnd()
+	#else
 	protected virtual void OnMouseUp()
+	#endif
 	{
 		if(CalculatePlayCondition())
 			DoCardEffect();

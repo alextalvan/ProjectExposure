@@ -72,7 +72,12 @@ public class EnergyBuilding : GameManagerSearcher
 		}
 	}
 
+
+	#if TOUCH_INPUT
+	void TouchEnd()
+	#else
 	void OnMouseUp()
+	#endif
 	{
 		if(gameManager.playerData[Owner].currentInputState != INPUT_STATES.FREE)
 			return;
@@ -90,6 +95,7 @@ public class EnergyBuilding : GameManagerSearcher
 		}
 			
 	}
+
 
 //	[SerializeField]
 //	protected float currentPollution;

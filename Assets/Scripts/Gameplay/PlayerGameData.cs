@@ -16,6 +16,7 @@ public class PlayerGameData
 	public INPUT_STATES currentInputState = INPUT_STATES.FREE;
 	public List<HexagonTile> tiles = new List<HexagonTile>();
 	public List<Transform> unitGroups = new List<Transform>();
+	public List<SwampSpot> swampSpots = new List<SwampSpot>();
 
 
 	public void SetAllTilesHighlight(bool show)

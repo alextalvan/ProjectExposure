@@ -6,10 +6,5 @@ using UnityEngine.UI;
 public class Image_Manipulator : MonoBehaviour 
 {
 
-	void OnMouseDown()
-	{
-		//Debug.Log("test");
-	}
-
 		
 }

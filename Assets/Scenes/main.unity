@@ -524,6 +524,7 @@ MonoBehaviour:
   - {fileID: 11438194, guid: b7851014e1ff214448ad9f9dcb94a60a, type: 2}
   - {fileID: 11486734, guid: ac2d5365222580149b027c75bc9e9c0e, type: 2}
   - {fileID: 11486224, guid: ee31a7706fa416844ae3d6f1187b600c, type: 2}
+  - {fileID: 11421280, guid: bf3bc4bea1008a84d9515e1e6ba35813, type: 2}
   - {fileID: 11496926, guid: 8e048e0cfdf1d344eb275d394f6ece52, type: 2}
   - {fileID: 11466648, guid: 685a97124ce0bad47ae4e12817906835, type: 2}
   - {fileID: 11466648, guid: 11cfcbfe86589c54593669ccaa62bf40, type: 2}
@@ -1020,6 +1021,7 @@ GameObject:
   - 33: {fileID: 205850436}
   - 135: {fileID: 205850435}
   - 23: {fileID: 205850434}
+  - 114: {fileID: 205850437}
   m_Layer: 13
   m_Name: Swamp
   m_TagString: Untagged
@@ -1049,7 +1051,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dc82de081e2dbfc4a8363f1c97cc6bfc, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1084,6 +1086,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 205850432}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &205850437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 205850432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e3cf7d5467d1c40a25f0890e05074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &215746738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,6 +1783,7 @@ GameObject:
   - 33: {fileID: 316886634}
   - 135: {fileID: 316886633}
   - 23: {fileID: 316886632}
+  - 114: {fileID: 316886635}
   m_Layer: 13
   m_Name: Swamp (1)
   m_TagString: Untagged
@@ -1799,7 +1813,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dc82de081e2dbfc4a8363f1c97cc6bfc, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1834,6 +1848,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 316886630}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &316886635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 316886630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e3cf7d5467d1c40a25f0890e05074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &324456067
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,6 +3492,34 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &823571155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 823571156}
+  m_Layer: 0
+  m_Name: Camera Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &823571156
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823571155}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1270339940}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!1001 &827474041
 Prefab:
   m_ObjectHideFlags: 0
@@ -3675,6 +3728,7 @@ GameObject:
   - 33: {fileID: 846038053}
   - 135: {fileID: 846038052}
   - 23: {fileID: 846038051}
+  - 114: {fileID: 846038054}
   m_Layer: 13
   m_Name: Swamp (2)
   m_TagString: Untagged
@@ -3704,7 +3758,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dc82de081e2dbfc4a8363f1c97cc6bfc, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3739,6 +3793,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 846038049}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &846038054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 846038049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e3cf7d5467d1c40a25f0890e05074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &860069025
 GameObject:
   m_ObjectHideFlags: 0
@@ -5034,6 +5099,8 @@ GameObject:
   - 124: {fileID: 1270339938}
   - 92: {fileID: 1270339937}
   - 81: {fileID: 1270339936}
+  - 114: {fileID: 1270339941}
+  - 114: {fileID: 1270339942}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -5110,8 +5177,30 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 823571156}
+  m_RootOrder: 0
+--- !u!114 &1270339941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1270339935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed3cc2aafed6df498a890c42e2dd4a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1270339942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1270339935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f704d81a879bcdd49b7ff44b460f8598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1281250691
 GameObject:
   m_ObjectHideFlags: 0
@@ -6117,6 +6206,7 @@ GameObject:
   - 33: {fileID: 1448200798}
   - 135: {fileID: 1448200797}
   - 23: {fileID: 1448200796}
+  - 114: {fileID: 1448200799}
   m_Layer: 13
   m_Name: Swamp (1)
   m_TagString: Untagged
@@ -6146,7 +6236,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dc82de081e2dbfc4a8363f1c97cc6bfc, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -6181,6 +6271,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1448200794}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1448200799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1448200794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e3cf7d5467d1c40a25f0890e05074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1449377522
 GameObject:
   m_ObjectHideFlags: 0
@@ -6718,6 +6819,7 @@ MonoBehaviour:
   - {fileID: 11438194, guid: b7851014e1ff214448ad9f9dcb94a60a, type: 2}
   - {fileID: 11486734, guid: ac2d5365222580149b027c75bc9e9c0e, type: 2}
   - {fileID: 11486224, guid: ee31a7706fa416844ae3d6f1187b600c, type: 2}
+  - {fileID: 11421280, guid: bf3bc4bea1008a84d9515e1e6ba35813, type: 2}
   - {fileID: 11496926, guid: 8e048e0cfdf1d344eb275d394f6ece52, type: 2}
   - {fileID: 11466648, guid: 685a97124ce0bad47ae4e12817906835, type: 2}
   - {fileID: 11466648, guid: 11cfcbfe86589c54593669ccaa62bf40, type: 2}
@@ -7226,6 +7328,7 @@ GameObject:
   - 33: {fileID: 1590247327}
   - 135: {fileID: 1590247326}
   - 23: {fileID: 1590247325}
+  - 114: {fileID: 1590247328}
   m_Layer: 13
   m_Name: Swamp (2)
   m_TagString: Untagged
@@ -7255,7 +7358,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dc82de081e2dbfc4a8363f1c97cc6bfc, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -7290,6 +7393,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1590247323}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1590247328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1590247323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e3cf7d5467d1c40a25f0890e05074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1595984064
 GameObject:
   m_ObjectHideFlags: 0
@@ -7582,6 +7696,10 @@ MonoBehaviour:
       - {fileID: 187558096}
       - {fileID: 978283786}
       - {fileID: 1432326733}
+      swampSpots:
+      - {fileID: 205850437}
+      - {fileID: 316886635}
+      - {fileID: 846038054}
     - player: 1
       currentSelectedCard: {fileID: 0}
       currentInputState: 0
@@ -7599,6 +7717,10 @@ MonoBehaviour:
       - {fileID: 938618811}
       - {fileID: 1640691033}
       - {fileID: 997643867}
+      swampSpots:
+      - {fileID: 1921689820}
+      - {fileID: 1448200799}
+      - {fileID: 1590247328}
   raycastedOn2DObject: 0
 --- !u!4 &1638074582
 Transform:
@@ -9065,6 +9187,7 @@ GameObject:
   - 33: {fileID: 1921689819}
   - 135: {fileID: 1921689818}
   - 23: {fileID: 1921689817}
+  - 114: {fileID: 1921689820}
   m_Layer: 13
   m_Name: Swamp
   m_TagString: Untagged
@@ -9094,7 +9217,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dc82de081e2dbfc4a8363f1c97cc6bfc, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -9129,6 +9252,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1921689815}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1921689820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1921689815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e3cf7d5467d1c40a25f0890e05074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1987283496
 GameObject:
   m_ObjectHideFlags: 0

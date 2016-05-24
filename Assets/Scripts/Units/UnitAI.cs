@@ -141,6 +141,8 @@ public class UnitAI : GameManagerSearcher
 
 		transform.position += dirVec.normalized * speed;
 
+		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(dirVec,Physics.gravity * -1.0f),0.15f);
+
 		if (dirVec.magnitude <= distanceToWP) {
 			currentWP++;
 		}
@@ -235,7 +237,11 @@ public class UnitAI : GameManagerSearcher
 
 
 	//unfreeze
+	#if TOUCH_INPUT
+	void TouchEnd()
+	#else
 	void OnMouseUp()
+	#endif
 	{
 		buffList.RemoveBuffs(BUFF_TYPES.UNIT_FREEZE);
 		GetComponent<Renderer>().material.color = baseColor;

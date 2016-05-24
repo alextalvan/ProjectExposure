@@ -22,7 +22,11 @@ public class TouchTest2 : MonoBehaviour {
 //		}
 //	}
 
+	#if TOUCH_INPUT
+	void TouchEnd()
+	#else
 	void OnMouseUp()
+	#endif
 	{
 		//Debug.Log("test");
 	}
