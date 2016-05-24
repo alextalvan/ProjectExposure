@@ -1859,7 +1859,7 @@ Transform:
   m_GameObject: {fileID: 159944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 444778}
   - {fileID: 413798}
@@ -2934,7 +2934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkInterval: 0.25
-  _targetRenderer: {fileID: 13782054}
+  _targetObject: {fileID: 159944}
 --- !u!114 &11480674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2953,7 +2953,7 @@ MonoBehaviour:
   fightAnimTime: 1
   wanderAnimTime: 5
   cheerAnimTime: 1
-  scoreReward: 10
+  scoreReward: 20
   buffList:
     buffs: []
 --- !u!135 &13539680
@@ -2966,8 +2966,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 2.16
+  m_Center: {x: 0, y: 1.1, z: -0.14}
 --- !u!137 &13782054
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

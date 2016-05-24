@@ -2934,7 +2934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkInterval: 0.25
-  _targetRenderer: {fileID: 13719162}
+  _targetObject: {fileID: 134946}
 --- !u!114 &11479440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2953,7 +2953,7 @@ MonoBehaviour:
   fightAnimTime: 1
   wanderAnimTime: 5
   cheerAnimTime: 1
-  scoreReward: 10
+  scoreReward: 15
   buffList:
     buffs: []
 --- !u!135 &13539934
@@ -2966,8 +2966,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.09
+  m_Center: {x: 0, y: 0.06, z: -0.06}
 --- !u!137 &13719162
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

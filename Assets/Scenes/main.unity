@@ -477,7 +477,6 @@ GameObject:
   - 4: {fileID: 70261374}
   - 33: {fileID: 70261376}
   - 23: {fileID: 70261375}
-  - 114: {fileID: 70261377}
   m_Layer: 13
   m_Name: SwampModel
   m_TagString: Untagged
@@ -530,19 +529,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 70261373}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &70261377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 70261373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetRenderer: {fileID: 70261375}
 --- !u!1 &74957521
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,6 +1082,7 @@ GameObject:
   - 4: {fileID: 205850433}
   - 135: {fileID: 205850435}
   - 114: {fileID: 205850437}
+  - 114: {fileID: 205850434}
   m_Layer: 13
   m_Name: Swamp
   m_TagString: Untagged
@@ -1116,6 +1103,19 @@ Transform:
   - {fileID: 1942410658}
   m_Father: {fileID: 14413614}
   m_RootOrder: 0
+--- !u!114 &205850434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 205850432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkInterval: 0.25
+  _targetObject: {fileID: 1942410657}
 --- !u!135 &205850435
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1139,7 +1139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e3cf7d5467d1c40a25f0890e05074b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempBlink: {fileID: 1942410661}
+  tempBlink: {fileID: 205850434}
+  tapCountForUndo: 5
 --- !u!1 &215746738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1825,6 +1826,7 @@ GameObject:
   - 4: {fileID: 316886631}
   - 135: {fileID: 316886633}
   - 114: {fileID: 316886635}
+  - 114: {fileID: 316886632}
   m_Layer: 13
   m_Name: Swamp (1)
   m_TagString: Untagged
@@ -1845,6 +1847,19 @@ Transform:
   - {fileID: 519111098}
   m_Father: {fileID: 14413614}
   m_RootOrder: 1
+--- !u!114 &316886632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 316886630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkInterval: 0.25
+  _targetObject: {fileID: 519111097}
 --- !u!135 &316886633
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1868,7 +1883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e3cf7d5467d1c40a25f0890e05074b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempBlink: {fileID: 519111101}
+  tempBlink: {fileID: 316886632}
+  tapCountForUndo: 5
 --- !u!1 &324456067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,7 +2387,6 @@ GameObject:
   - 4: {fileID: 519111098}
   - 33: {fileID: 519111100}
   - 23: {fileID: 519111099}
-  - 114: {fileID: 519111101}
   m_Layer: 13
   m_Name: SwampModel
   m_TagString: Untagged
@@ -2424,19 +2439,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519111097}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &519111101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 519111097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetRenderer: {fileID: 519111099}
 --- !u!1 &525413732
 GameObject:
   m_ObjectHideFlags: 0
@@ -2688,7 +2690,6 @@ GameObject:
   - 4: {fileID: 577903804}
   - 33: {fileID: 577903806}
   - 23: {fileID: 577903805}
-  - 114: {fileID: 577903807}
   m_Layer: 13
   m_Name: SwampModel
   m_TagString: Untagged
@@ -2741,19 +2742,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 577903803}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &577903807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 577903803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetRenderer: {fileID: 577903805}
 --- !u!1 &579183384
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,7 +3652,6 @@ GameObject:
   - 4: {fileID: 813639881}
   - 33: {fileID: 813639883}
   - 23: {fileID: 813639882}
-  - 114: {fileID: 813639884}
   m_Layer: 13
   m_Name: SwampModel
   m_TagString: Untagged
@@ -3717,19 +3704,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 813639880}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &813639884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 813639880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetRenderer: {fileID: 813639882}
 --- !u!1 &823571155
 GameObject:
   m_ObjectHideFlags: 0
@@ -3965,6 +3939,7 @@ GameObject:
   - 4: {fileID: 846038050}
   - 135: {fileID: 846038052}
   - 114: {fileID: 846038054}
+  - 114: {fileID: 846038051}
   m_Layer: 13
   m_Name: Swamp (2)
   m_TagString: Untagged
@@ -3985,6 +3960,19 @@ Transform:
   - {fileID: 70261374}
   m_Father: {fileID: 14413614}
   m_RootOrder: 2
+--- !u!114 &846038051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 846038049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkInterval: 0.25
+  _targetObject: {fileID: 70261373}
 --- !u!135 &846038052
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4008,7 +3996,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e3cf7d5467d1c40a25f0890e05074b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempBlink: {fileID: 70261377}
+  tempBlink: {fileID: 846038051}
+  tapCountForUndo: 5
 --- !u!1 &860069025
 GameObject:
   m_ObjectHideFlags: 0
@@ -4106,7 +4095,6 @@ GameObject:
   - 4: {fileID: 874000201}
   - 33: {fileID: 874000203}
   - 23: {fileID: 874000202}
-  - 114: {fileID: 874000204}
   m_Layer: 13
   m_Name: SwampModel
   m_TagString: Untagged
@@ -4159,19 +4147,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 874000200}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &874000204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 874000200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetRenderer: {fileID: 874000202}
 --- !u!1 &911564453
 GameObject:
   m_ObjectHideFlags: 0
@@ -6486,6 +6461,7 @@ GameObject:
   - 4: {fileID: 1448200795}
   - 135: {fileID: 1448200797}
   - 114: {fileID: 1448200799}
+  - 114: {fileID: 1448200796}
   m_Layer: 13
   m_Name: Swamp (1)
   m_TagString: Untagged
@@ -6506,6 +6482,19 @@ Transform:
   - {fileID: 874000201}
   m_Father: {fileID: 762807085}
   m_RootOrder: 1
+--- !u!114 &1448200796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1448200794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkInterval: 0.25
+  _targetObject: {fileID: 874000200}
 --- !u!135 &1448200797
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6529,7 +6518,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e3cf7d5467d1c40a25f0890e05074b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempBlink: {fileID: 874000204}
+  tempBlink: {fileID: 1448200796}
+  tapCountForUndo: 5
 --- !u!1 &1449377522
 GameObject:
   m_ObjectHideFlags: 0
@@ -7575,6 +7565,7 @@ GameObject:
   - 4: {fileID: 1590247324}
   - 135: {fileID: 1590247326}
   - 114: {fileID: 1590247328}
+  - 114: {fileID: 1590247325}
   m_Layer: 13
   m_Name: Swamp (2)
   m_TagString: Untagged
@@ -7595,6 +7586,19 @@ Transform:
   - {fileID: 813639881}
   m_Father: {fileID: 762807085}
   m_RootOrder: 2
+--- !u!114 &1590247325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1590247323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkInterval: 0.25
+  _targetObject: {fileID: 813639880}
 --- !u!135 &1590247326
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7618,7 +7622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e3cf7d5467d1c40a25f0890e05074b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempBlink: {fileID: 813639884}
+  tempBlink: {fileID: 1590247325}
+  tapCountForUndo: 5
 --- !u!1 &1595984064
 GameObject:
   m_ObjectHideFlags: 0
@@ -7882,7 +7887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTimer: 300
   gameTimerText: {fileID: 222098380}
-  MONEY_UPDATE_RATE: 5
+  MONEY_UPDATE_RATE: 3
   _player1money: 4
   _player2money: 4
   _player1score: 0
@@ -9401,6 +9406,7 @@ GameObject:
   - 4: {fileID: 1921689816}
   - 135: {fileID: 1921689818}
   - 114: {fileID: 1921689820}
+  - 114: {fileID: 1921689817}
   m_Layer: 13
   m_Name: Swamp
   m_TagString: Untagged
@@ -9421,6 +9427,19 @@ Transform:
   - {fileID: 577903804}
   m_Father: {fileID: 762807085}
   m_RootOrder: 0
+--- !u!114 &1921689817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1921689815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkInterval: 0.25
+  _targetObject: {fileID: 577903803}
 --- !u!135 &1921689818
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9444,7 +9463,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e3cf7d5467d1c40a25f0890e05074b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempBlink: {fileID: 577903807}
+  tempBlink: {fileID: 1921689817}
+  tapCountForUndo: 5
 --- !u!1 &1942410657
 GameObject:
   m_ObjectHideFlags: 0
@@ -9455,7 +9475,6 @@ GameObject:
   - 4: {fileID: 1942410658}
   - 33: {fileID: 1942410660}
   - 23: {fileID: 1942410659}
-  - 114: {fileID: 1942410661}
   m_Layer: 13
   m_Name: SwampModel
   m_TagString: Untagged
@@ -9508,19 +9527,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1942410657}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1942410661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1942410657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetRenderer: {fileID: 1942410659}
 --- !u!1 &1987283496
 GameObject:
   m_ObjectHideFlags: 0

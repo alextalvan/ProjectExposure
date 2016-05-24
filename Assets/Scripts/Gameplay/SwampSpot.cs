@@ -10,6 +10,10 @@ public class SwampSpot : MonoBehaviour
 	[SerializeField]
 	TemporaryBlink tempBlink;
 
+	[SerializeField]
+	int tapCountForUndo = 10;
+	int currentTapCount;
+
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.GetComponent<UnitAI>())
@@ -22,6 +26,7 @@ public class SwampSpot : MonoBehaviour
 		uptimer = duration;
 		this.gameObject.SetActive(true);
 		tempBlink.Begin(duration);
+		currentTapCount = 0;
 	}
 
 	public void ToggleOff()
@@ -45,7 +50,10 @@ public class SwampSpot : MonoBehaviour
 	void OnMouseUp()
 	#endif
 	{
-		ToggleOff();
+		currentTapCount++;
+
+		if(currentTapCount == tapCountForUndo)
+			ToggleOff();
 	}
 		
 

@@ -47,6 +47,8 @@ public class UnitAI : GameManagerSearcher
 	private CityTileTrigger cityTile = null;
 	public CityTileTrigger CityTile { set { cityTile = value; } }
 
+	private int fightingTargetStrength;
+
 	void Start() {
 		wanderTimer = wanderAnimTime;
 		fightTimer = fightAnimTime;
@@ -147,8 +149,8 @@ public class UnitAI : GameManagerSearcher
 	void Fight() {
 		fightTimer -= Time.deltaTime;
 		if (fightTimer <= 0f) {
-			unitStrength--;
-			if (unitStrength > 0) {
+			//unitStrength--;
+			if (this.unitStrength > fightingTargetStrength) {
 				transform.GetComponent<Rigidbody> ().isKinematic = true;
 				transform.GetComponent<Collider> ().isTrigger = true;
 				currentState = AiState.Cheer;
@@ -211,10 +213,12 @@ public class UnitAI : GameManagerSearcher
 	{
 		if(!allowCollision)
 			return;
-		
-		if (col.collider.gameObject.GetComponent<UnitAI> ()) {
+
+		UnitAI otherAI = col.collider.gameObject.GetComponent<UnitAI> ();
+		if (otherAI) {
 			currentState = AiState.Fight;
 			allowCollision = false;
+			fightingTargetStrength = otherAI.unitStrength;
 		}
 	}
 
