@@ -7,6 +7,9 @@ public class SwampSpot : MonoBehaviour
 
 	public bool IsRunning { get { return uptimer > 0.0f; } }
 
+	[SerializeField]
+	TemporaryBlink tempBlink;
+
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.GetComponent<UnitAI>())
@@ -18,6 +21,7 @@ public class SwampSpot : MonoBehaviour
 	{
 		uptimer = duration;
 		this.gameObject.SetActive(true);
+		tempBlink.Begin(duration);
 	}
 
 	public void ToggleOff()

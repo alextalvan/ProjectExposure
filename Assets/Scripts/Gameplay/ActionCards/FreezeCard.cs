@@ -37,7 +37,7 @@ public class FreezeCard : ActionCard
 			{
 				Buff freezeBuff = new Buff(BUFF_TYPES.UNIT_FREEZE,freezeDuration);
 				aiComp.buffList.AddBuff(freezeBuff);
-				unit.GetComponent<Renderer>().material.color = Color.cyan;
+				unit.GetComponent<TemporaryBlink>().Begin(freezeDuration);
 			}
 		}
 

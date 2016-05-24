@@ -36,9 +36,6 @@ public class UnitAI : GameManagerSearcher
 	private float wanderTimer;
 	private float cheerTimer;
 
-	//temp for sprint meeting
-	Color baseColor;
-
 	private bool isOnCityTile = false;
     private int currentWP = 0;
     private int pathLength;
@@ -54,7 +51,6 @@ public class UnitAI : GameManagerSearcher
 		wanderTimer = wanderAnimTime;
 		fightTimer = fightAnimTime;
 		cheerTimer = cheerAnimTime;
-		baseColor = GetComponent<Renderer>().material.color;
 	}
 	
 	// Update is called once per frame
@@ -244,6 +240,6 @@ public class UnitAI : GameManagerSearcher
 	#endif
 	{
 		buffList.RemoveBuffs(BUFF_TYPES.UNIT_FREEZE);
-		GetComponent<Renderer>().material.color = baseColor;
+		GetComponent<TemporaryBlink>().Stop();
 	}
 }

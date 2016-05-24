@@ -80,6 +80,7 @@ GameObject:
   - 4: {fileID: 465952}
   - 114: {fileID: 11464352}
   - 114: {fileID: 11454152}
+  - 114: {fileID: 11498432}
   m_Layer: 0
   m_Name: Gas_Plant
   m_TagString: Untagged
@@ -316,6 +317,19 @@ MonoBehaviour:
   lifeTimeLeft: 0
   buffList:
     buffs: []
+--- !u!114 &11498432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkInterval: 0.25
+  _targetRenderer: {fileID: 2361360}
 --- !u!135 &13518284
 SphereCollider:
   m_ObjectHideFlags: 1

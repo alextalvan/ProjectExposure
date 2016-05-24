@@ -250,6 +250,7 @@ GameObject:
   - 4: {fileID: 462296}
   - 114: {fileID: 11469864}
   - 114: {fileID: 11451464}
+  - 114: {fileID: 11414986}
   m_Layer: 0
   m_Name: Windmill
   m_TagString: Untagged
@@ -491,7 +492,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 24eae458e4f93fd4bb5063c991ce28f3, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -543,7 +544,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 49de4686cfa564243bedbcdf266abe8b, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -647,7 +648,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 99bcf47a8b360e94bb33c04447f51593, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -957,6 +958,19 @@ MonoBehaviour:
   _building: {fileID: 11469864}
   maxLifeColor: {r: 0, g: 1, b: 0, a: 1}
   minLifeColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &11414986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkInterval: 0.25
+  _targetRenderer: {fileID: 2380402}
 --- !u!114 &11451464
 MonoBehaviour:
   m_ObjectHideFlags: 1
