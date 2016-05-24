@@ -14,9 +14,14 @@ public class ParticleScript : MonoBehaviour {
 	float originalSize;
 	float originalDist;
 
+	float Hnear;
+	float Wnear;
+
 	// Use this for initialization
 	void Start () {
 		particleSys = GetComponent<ParticleSystem>();
+		Hnear = 2 * Mathf.Tan ((Mathf.Deg2Rad * Camera.main.fieldOfView) / 2) * Camera.main.nearClipPlane;
+		Wnear = Hnear * Camera.main.aspect;
 		originalSize = particleSys.startSize;
 	}
 
