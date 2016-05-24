@@ -36,9 +36,6 @@ public class UnitAI : GameManagerSearcher
 	private float wanderTimer;
 	private float cheerTimer;
 
-	//temp for sprint meeting
-	Color baseColor;
-
 	private bool isOnCityTile = false;
     private int currentWP = 0;
     private int pathLength;
@@ -50,11 +47,12 @@ public class UnitAI : GameManagerSearcher
 	private CityTileTrigger cityTile = null;
 	public CityTileTrigger CityTile { set { cityTile = value; } }
 
+	private int fightingTargetStrength;
+
 	void Start() {
 		wanderTimer = wanderAnimTime;
 		fightTimer = fightAnimTime;
 		cheerTimer = cheerAnimTime;
-		baseColor = GetComponent<Renderer>().material.color;
 	}
 	
 	// Update is called once per frame
@@ -151,8 +149,8 @@ public class UnitAI : GameManagerSearcher
 	void Fight() {
 		fightTimer -= Time.deltaTime;
 		if (fightTimer <= 0f) {
-			unitStrength--;
-			if (unitStrength > 0) {
+			//unitStrength--;
+			if (this.unitStrength > fightingTargetStrength) {
 				transform.GetComponent<Rigidbody> ().isKinematic = true;
 				transform.GetComponent<Collider> ().isTrigger = true;
 				currentState = AiState.Cheer;
@@ -215,10 +213,12 @@ public class UnitAI : GameManagerSearcher
 	{
 		if(!allowCollision)
 			return;
-		
-		if (col.collider.gameObject.GetComponent<UnitAI> ()) {
+
+		UnitAI otherAI = col.collider.gameObject.GetComponent<UnitAI> ();
+		if (otherAI) {
 			currentState = AiState.Fight;
 			allowCollision = false;
+			fightingTargetStrength = otherAI.unitStrength;
 		}
 	}
 
@@ -244,6 +244,6 @@ public class UnitAI : GameManagerSearcher
 	#endif
 	{
 		buffList.RemoveBuffs(BUFF_TYPES.UNIT_FREEZE);
-		GetComponent<Renderer>().material.color = baseColor;
+		GetComponent<TemporaryBlink>().Stop();
 	}
 }

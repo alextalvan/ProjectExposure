@@ -130,6 +130,9 @@ public class GameManager : MonoBehaviour
 
 	void Update () 
 	{
+		if(Input.GetKeyUp(KeyCode.Escape))
+			Application.Quit();
+
 		timeAccumulatorMoney += Time.deltaTime;
 
 		while(timeAccumulatorMoney >= MONEY_UPDATE_RATE)

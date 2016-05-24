@@ -12,7 +12,7 @@ public class SwampCard : ActionCard
 
 		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
 
-		int inactiveSwamps = 0;
+		//int inactiveSwamps = 0;
 
 		foreach(SwampSpot s in enemyData.swampSpots)
 			if(!s.IsRunning)

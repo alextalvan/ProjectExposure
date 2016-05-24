@@ -1079,7 +1079,8 @@ GameObject:
   - 23: {fileID: 2392478}
   - 114: {fileID: 11444518}
   - 54: {fileID: 5452816}
-  - 136: {fileID: 13634574}
+  - 114: {fileID: 11415322}
+  - 135: {fileID: 13520290}
   m_Layer: 0
   m_Name: WindUnit
   m_TagString: Untagged
@@ -2921,6 +2922,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11415322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkInterval: 0.25
+  _targetObject: {fileID: 174036}
 --- !u!114 &11444518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2939,11 +2953,11 @@ MonoBehaviour:
   fightAnimTime: 1
   wanderAnimTime: 5
   cheerAnimTime: 1
-  scoreReward: 10
+  scoreReward: 20
   buffList:
     buffs: []
---- !u!136 &13634574
-CapsuleCollider:
+--- !u!135 &13520290
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -2951,10 +2965,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 1.09
+  m_Center: {x: 0, y: 0.06, z: -0.06}
 --- !u!137 &13773992
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

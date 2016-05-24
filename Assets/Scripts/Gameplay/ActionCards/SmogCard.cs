@@ -37,8 +37,7 @@ public class SmogCard : ActionCard
 		building.buffList.AddBuff(b);
 		building.GetComponent<UnitSpawner>().enabled = false;
 
-		foreach(Renderer r in building.GetComponentsInChildren<Renderer>())
-			r.material.color = materialTint;
+		building.GetComponent<TemporaryBlink>().Begin(effectDuration);
 
 		Destroy(this.gameObject);
 	}

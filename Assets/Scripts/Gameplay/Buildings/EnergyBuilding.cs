@@ -66,8 +66,7 @@ public class EnergyBuilding : GameManagerSearcher
 			if(!isNowDisabled)
 			{
 				GetComponent<UnitSpawner>().enabled = true;
-				foreach(Renderer r in GetComponentsInChildren<Renderer>())
-					r.material.color = Color.white;
+				GetComponent<TemporaryBlink>().Stop();
 			}
 		}
 	}

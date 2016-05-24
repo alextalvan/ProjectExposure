@@ -57,7 +57,8 @@ GameObject:
   - 23: {fileID: 2338000}
   - 114: {fileID: 11480674}
   - 54: {fileID: 5413658}
-  - 136: {fileID: 13634742}
+  - 114: {fileID: 11415638}
+  - 135: {fileID: 13539680}
   m_Layer: 0
   m_Name: NuclearUnit
   m_TagString: Untagged
@@ -1858,7 +1859,7 @@ Transform:
   m_GameObject: {fileID: 159944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 444778}
   - {fileID: 413798}
@@ -2921,6 +2922,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11415638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkInterval: 0.25
+  _targetObject: {fileID: 159944}
 --- !u!114 &11480674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2939,11 +2953,11 @@ MonoBehaviour:
   fightAnimTime: 1
   wanderAnimTime: 5
   cheerAnimTime: 1
-  scoreReward: 10
+  scoreReward: 20
   buffList:
     buffs: []
---- !u!136 &13634742
-CapsuleCollider:
+--- !u!135 &13539680
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -2951,10 +2965,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 2.16
+  m_Center: {x: 0, y: 1.1, z: -0.14}
 --- !u!137 &13782054
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

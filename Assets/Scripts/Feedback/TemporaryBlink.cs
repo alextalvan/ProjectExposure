@@ -3,26 +3,32 @@ using System.Collections;
 
 public class TemporaryBlink : MonoBehaviour 
 {
-	//the target gameobject that gets toggled on and off
-	[SerializeField]
-	GameObject target;
-
 	//the interval at which it switches from on to off
 	[SerializeField]
-	float blinkInterval = 0.75f;
+	float blinkInterval = 0.25f;
 
 	//internal members
 	float totalTimer = -1.0f;
 	float blinkTimer;
-	bool objectIsActive = true;
+	bool objectIsVisible = true;
+
+
+	[SerializeField]
+	GameObject _targetObject;
+
 
 
 	public void Begin(float duration = 5.0f)
 	{
 		totalTimer = duration;
 		blinkTimer = blinkInterval;
-		objectIsActive = false;
-		target.SetActive(false);
+		objectIsVisible = true;
+		_targetObject.SetActive(true);
+	}
+
+	public void Stop()
+	{
+		totalTimer = -1.0f;
 	}
 
 	void Update()
@@ -32,15 +38,15 @@ public class TemporaryBlink : MonoBehaviour
 
 		if(totalTimer <= 0.0f)
 		{
-			target.SetActive(true);
+			_targetObject.SetActive(true);
 			return;
 		}
 
 		if(blinkTimer <= 0.0f)
 		{
 			blinkTimer = blinkInterval;
-			objectIsActive = !objectIsActive;
-			target.SetActive(objectIsActive);
+			objectIsVisible = !objectIsVisible;
+			_targetObject.SetActive(objectIsVisible);
 		}
 
 	}
