@@ -26,9 +26,9 @@ public class HexagonTile : GameManagerSearcher
 	GameObject outline;
 
 	[SerializeField]
-	private bool _allowBuild = true;
+	private bool _hasBuildingOnTop = false;
 
-	public bool AllowBuild { get { return _allowBuild; } }
+	public bool AllowBuild { get { return !_hasBuildingOnTop && blockTime <= 0.0f; } }
 
 	public PLAYERS Owner { get { return owner; } }
 
@@ -42,6 +42,9 @@ public class HexagonTile : GameManagerSearcher
 	//each hexagon knows its energy building
 	private EnergyBuilding _energyBuilding = null;
 	public EnergyBuilding CurrentEnergyBuilding { get { return _energyBuilding; } private set { _energyBuilding = value; } }
+
+	//hexagon tiles can be temporarily blocked
+	float blockTime = -1.0f;
 
 	void Start () 
 	{
@@ -57,14 +60,29 @@ public class HexagonTile : GameManagerSearcher
 		outline.SetActive(false);
 	}
 
-
+	/// <summary>
+	/// Toggle the outline object.
+	/// </summary>
+	/// <param name="active">If set to <c>true</c> active.</param>
 	public void SetOutline(bool active)
 	{
 		outline.SetActive(active);
 	}
 
+	void Update()
+	{
+		blockTime -= Time.deltaTime;
+	}
+
+	/// <summary>
+	/// Swaps the building (if any) with the target hexagon tile
+	/// </summary>
+	/// <param name="other">Other.</param>
 	public void SwapBuilding(HexagonTile other)
 	{
+		if(this == other)
+			return;
+
 		EnergyBuilding myB = _energyBuilding;
 		EnergyBuilding otherB = other.CurrentEnergyBuilding;
 
@@ -84,7 +102,9 @@ public class HexagonTile : GameManagerSearcher
 			other.visualObject.GetComponent<TileVisual>().DestroyTopVisual();
 
 			if(otherB == null)
-				_allowBuild = true;
+				_hasBuildingOnTop = false;
+			else
+				_hasBuildingOnTop = true;
 		}
 
 		if(otherB!=null)
@@ -103,13 +123,19 @@ public class HexagonTile : GameManagerSearcher
 			this.visualObject.GetComponent<TileVisual>().DestroyTopVisual();
 
 			if(myB == null)
-				other._allowBuild = true;
+				other._hasBuildingOnTop = false;
+			else
+				other._hasBuildingOnTop = true;
+				
 		}
 		
 
 	}
 	
 
+	/// <summary>
+	/// Callback for the finger being lifted on top of this collider
+	/// </summary>
 	#if TOUCH_INPUT
 	void TouchEnd()
 	#else
@@ -118,8 +144,8 @@ public class HexagonTile : GameManagerSearcher
 	{
 		
 		//mosue fix for 2d object raycasts to supress 3d object raycasts
-		if(gameManager.raycastedOn2DObject)
-			return;
+		//if(gameManager.raycastedOn2DObject)
+		//	return;
 
 		
 		PlayerGameData pdata = gameManager.playerData[this.Owner];
@@ -127,14 +153,14 @@ public class HexagonTile : GameManagerSearcher
 		//Debug.Log(pdata.currentInputState);
 		if(pdata.currentInputState == INPUT_STATES.PICKING_BUILDING_CARD_TARGET)
 		{
-			if(_allowBuild)
+			if(AllowBuild)
 			{
 				BuildingCard bc = pdata.currentSelectedCard as BuildingCard;
 				if(bc!=null)
 				{
 					GameObject energyBuilding = (GameObject)Instantiate(bc.BuildingType.prefab);
 					energyBuilding.transform.SetParent(this.transform,false);
-					_allowBuild = false;
+					this._hasBuildingOnTop = true;
 					//currentEnergyBuilding = energyBuilding;
 
 					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(aiPathRoot,spawnPoint,spawnedUnitsParent,owner);
@@ -160,9 +186,19 @@ public class HexagonTile : GameManagerSearcher
 	}
 
 
+	/// <summary>
+	/// Cleanup the after building is destroyed. Used for event callbacks on the building destruction
+	/// </summary>
 	void CleanupAfterBuildingIsDestroyed()
 	{
-		this._allowBuild = true; 
+		this._hasBuildingOnTop = false; 
 		this._energyBuilding = null;
+	}
+
+
+	void StartBuildBlock(float duration)
+	{
+		if(duration > blockTime)
+			blockTime = duration;
 	}
 }

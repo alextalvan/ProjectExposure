@@ -452,7 +452,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 101829101}
   spawnPoint: {fileID: 1221725772}
   outline: {fileID: 1066858867}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 938618811}
 --- !u!64 &58675858
 MeshCollider:
@@ -904,10 +904,10 @@ MonoBehaviour:
     visualPrefab: {fileID: 123284, guid: 463be204914d2a44c9407dc5e04e5d34, type: 2}
   - environmentType: 4
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
-  aiPathRoot: {fileID: 101829101}
-  spawnPoint: {fileID: 169491932}
+  aiPathRoot: {fileID: 1319725937}
+  spawnPoint: {fileID: 764385146}
   outline: {fileID: 297077595}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
 --- !u!64 &153915149
 MeshCollider:
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 1226101485}
   spawnPoint: {fileID: 1814183125}
   outline: {fileID: 1918022776}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1640691033}
 --- !u!64 &252654712
 MeshCollider:
@@ -2018,7 +2018,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 450040157}
   spawnPoint: {fileID: 307158500}
   outline: {fileID: 843189955}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 997643867}
 --- !u!64 &327329075
 MeshCollider:
@@ -3194,7 +3194,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 667643914}
   spawnPoint: {fileID: 630250519}
   outline: {fileID: 1746147825}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 978283786}
 --- !u!64 &658398794
 MeshCollider:
@@ -3417,7 +3417,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 101829101}
   spawnPoint: {fileID: 1221725772}
   outline: {fileID: 420222765}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 938618811}
 --- !u!64 &733978407
 MeshCollider:
@@ -4200,10 +4200,10 @@ MonoBehaviour:
     visualPrefab: {fileID: 123284, guid: 463be204914d2a44c9407dc5e04e5d34, type: 2}
   - environmentType: 4
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
-  aiPathRoot: {fileID: 101829101}
-  spawnPoint: {fileID: 420786141}
+  aiPathRoot: {fileID: 1319725937}
+  spawnPoint: {fileID: 1740646356}
   outline: {fileID: 1891453965}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
 --- !u!64 &911564456
 MeshCollider:
@@ -5328,7 +5328,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 450040157}
   spawnPoint: {fileID: 1288441802}
   outline: {fileID: 1424927611}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 997643867}
 --- !u!64 &1263588879
 MeshCollider:
@@ -5823,7 +5823,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 667643914}
   spawnPoint: {fileID: 630250519}
   outline: {fileID: 352048135}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 978283786}
 --- !u!64 &1368118114
 MeshCollider:
@@ -5946,7 +5946,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 1226101485}
   spawnPoint: {fileID: 1814183125}
   outline: {fileID: 1689420607}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1640691033}
 --- !u!64 &1386126881
 MeshCollider:
@@ -6066,10 +6066,10 @@ MonoBehaviour:
     visualPrefab: {fileID: 123284, guid: 463be204914d2a44c9407dc5e04e5d34, type: 2}
   - environmentType: 4
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
-  aiPathRoot: {fileID: 101829101}
-  spawnPoint: {fileID: 1221725772}
+  aiPathRoot: {fileID: 1319725937}
+  spawnPoint: {fileID: 553157464}
   outline: {fileID: 1533858746}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
 --- !u!64 &1403439274
 MeshCollider:
@@ -6360,7 +6360,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 1688369721}
   spawnPoint: {fileID: 530562465}
   outline: {fileID: 258738725}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1432326733}
 --- !u!64 &1436558387
 MeshCollider:
@@ -6753,7 +6753,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 450040157}
   spawnPoint: {fileID: 1131198266}
   outline: {fileID: 1580200442}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 997643867}
 --- !u!64 &1497244475
 MeshCollider:
@@ -6912,7 +6912,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 1688369721}
   spawnPoint: {fileID: 311484474}
   outline: {fileID: 1875970503}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1432326733}
 --- !u!64 &1505605942
 MeshCollider:
@@ -7843,7 +7843,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 101829101}
   spawnPoint: {fileID: 1221725772}
   outline: {fileID: 1348819173}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 938618811}
 --- !u!64 &1632546433
 MeshCollider:
@@ -8707,7 +8707,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 1688369721}
   spawnPoint: {fileID: 1227653749}
   outline: {fileID: 1335497728}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1432326733}
 --- !u!64 &1793725490
 MeshCollider:
@@ -8830,7 +8830,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 667643914}
   spawnPoint: {fileID: 630250519}
   outline: {fileID: 673214676}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 978283786}
 --- !u!64 &1864490448
 MeshCollider:
@@ -9670,7 +9670,7 @@ MonoBehaviour:
   aiPathRoot: {fileID: 1226101485}
   spawnPoint: {fileID: 1814183125}
   outline: {fileID: 608482468}
-  _allowBuild: 1
+  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1640691033}
 --- !u!64 &2001545583
 MeshCollider:
