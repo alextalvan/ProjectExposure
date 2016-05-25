@@ -1,28 +1,35 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class SpawnPointTrigger : MonoBehaviour {
 
-	private bool colliding = false;
-	private bool available = true;
 
-	public bool Available { get { return available; } }
+    List<Collider> colList = new List<Collider>();
+    public bool Available { get { return colList.Count == 0; } }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (colliding)
-			available = false;
-		else
-			available = true;
-		colliding = false;
+
 	}
 
-	void OnTriggerStay(Collider col) {
-		colliding = true;
-	}
+	void OnTriggerEnter(Collider col) {
+        colList.Add(col);
+        col.transform.GetComponent<UnitAI>().OnDestruction += () => { Remove(col); };
+    }
+
+    void Remove(Collider col)
+    {
+        if (colList.Contains(col))
+            colList.Remove(col);
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        colList.Remove(col);
+    }
 }

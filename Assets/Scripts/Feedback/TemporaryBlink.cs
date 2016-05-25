@@ -16,8 +16,6 @@ public class TemporaryBlink : MonoBehaviour
 	[SerializeField]
 	GameObject _targetObject;
 
-
-
 	public void Begin(float duration = 5.0f)
 	{
 		totalTimer = duration;

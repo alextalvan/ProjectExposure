@@ -12,12 +12,10 @@ public class UnitAI : GameManagerSearcher
 	[SerializeField]
 	float unitSpeed = 1f;
     [SerializeField]
-    float distanceToWP;
+    float distanceToWP = 1f;
 	[SerializeField]
 	float rayCastDist = 1f;
 
-//	[SerializeField]
-//	float freezeTime = 1f;
 	[SerializeField]
 	float fightAnimTime = 1f;
 	[SerializeField]
@@ -28,37 +26,42 @@ public class UnitAI : GameManagerSearcher
 	[SerializeField]
 	int scoreReward = 10;
 
-	//[SerializeField]
+    private Animator anim;
+
 	public BuffList buffList = new BuffList();
 
-	//private float freezeTimer;
 	private float fightTimer;
 	private float wanderTimer;
 	private float cheerTimer;
-
-	private bool isOnCityTile = false;
+    
     private int currentWP = 0;
     private int pathLength;
 	private bool allowCollision = true;
 	private PLAYERS owner;
 	public PLAYERS Owner { get { return owner; } }
+    SpeedBuff speedUpBuff = null;
+    bool speedUp = false;
 
-	private List<Vector3> path;
+    private List<Vector3> path;
 	private CityTileTrigger cityTile = null;
 	public CityTileTrigger CityTile { set { cityTile = value; } }
+    public delegate void DestructionDelegate();
+    public event DestructionDelegate OnDestruction = null;
 
 	private int fightingTargetStrength;
 
-	void Start() {
-		wanderTimer = wanderAnimTime;
+	void Start()
+    {
+        speedUpBuff = new SpeedBuff(2f, 2f);
+        wanderTimer = wanderAnimTime;
 		fightTimer = fightAnimTime;
 		cheerTimer = cheerAnimTime;
+        anim = transform.GetChild(0).GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		//Debug.Log (currentState.ToString ());
 		buffList.Update ();
 		Behave ();
     }
@@ -86,18 +89,8 @@ public class UnitAI : GameManagerSearcher
 
 	void Idle() {
 		if (!HasUnitInFront ())
-			currentState = AiState.Run;
+            SetAiState(AiState.Run);
 	}
-
-//	void Freeze () {
-//		if (freezeTimer > 0f) {
-//			freezeTimer -= Time.deltaTime;
-//			if (freezeTimer <= 0f) {
-//				freezeTimer = 0;
-//				currentState = AiState.Run;
-//			}
-//		}
-//	}
 
 	float CalculateSpeed()
 	{
@@ -119,21 +112,22 @@ public class UnitAI : GameManagerSearcher
 		return speed;
 	}
 
-
 	void Run()
 	{
-		if (HasUnitInFront ()) {
-			currentState = AiState.Idle;
-			return;
+		if (HasUnitInFront ())
+        {
+            SetAiState(AiState.Idle);
+            return;
 		}
-		if (currentWP == pathLength && !cityTile.HasHostileUnits (owner)) {
-			currentState = AiState.Wander;
-			return;
+		if (currentWP == pathLength && !cityTile.HasHostileUnits (owner))
+        {
+            SetAiState(AiState.Wander);
+            return;
 		}
 		if(currentWP == pathLength)
 			return;
 		
-		Vector3 dirVec = new Vector3(path[currentWP].x, transform.position.y, path[currentWP].z) - transform.position;
+		Vector3 dirVec = path[currentWP] - transform.position;
 
 		float speed = CalculateSpeed();
 
@@ -149,12 +143,11 @@ public class UnitAI : GameManagerSearcher
 	void Fight() {
 		fightTimer -= Time.deltaTime;
 		if (fightTimer <= 0f) {
-			//unitStrength--;
 			if (this.unitStrength > fightingTargetStrength) {
 				transform.GetComponent<Rigidbody> ().isKinematic = true;
 				transform.GetComponent<Collider> ().isTrigger = true;
-				currentState = AiState.Cheer;
-			} else {
+                SetAiState(AiState.Cheer);
+            } else {
 				Destroy(this.gameObject);
 			}
 		}
@@ -165,11 +158,11 @@ public class UnitAI : GameManagerSearcher
 		if (wanderTimer <= 0f) {
 			transform.GetComponent<Rigidbody> ().isKinematic = true;
 			transform.GetComponent<Collider> ().isTrigger = true;
-			currentState = AiState.Cheer;
-		} else if (cityTile.HasHostileUnits (owner)) {
+            SetAiState(AiState.Cheer);
+        } else if (cityTile.HasHostileUnits (owner)) {
 			wanderTimer = wanderAnimTime;
-			currentState = AiState.Run;
-		}
+            SetAiState(AiState.Run);
+        }
 	}
 
 	void Cheer() {
@@ -180,16 +173,12 @@ public class UnitAI : GameManagerSearcher
 		}
 	}
 
-//	public void FreezeUnit() {
-//		currentState = AiState.Idle;
-//		freezeTimer = freezeTime;
-//	}
-
-
 	void OnDestroy()
 	{
 		if(cityTile)
 			cityTile.RemoveUnit (transform, owner);
+        if (OnDestruction != null)
+            OnDestruction();
 	}
 
 	public void SetData(List<Vector3> unitPath, PLAYERS owner)
@@ -204,7 +193,6 @@ public class UnitAI : GameManagerSearcher
 		if(currentWP == pathLength)
 			return false;
 
-		RaycastHit hit;
 		LayerMask layer = owner == PLAYERS.PLAYER1 ? LayerMask.GetMask("UnitP1","Units_ignore_units") : LayerMask.GetMask("UnitP2","Units_ignore_units");
 		return Physics.Raycast(transform.position, (path[currentWP] - transform.position).normalized, rayCastDist, layer);
 	}
@@ -215,12 +203,20 @@ public class UnitAI : GameManagerSearcher
 			return;
 
 		UnitAI otherAI = col.collider.gameObject.GetComponent<UnitAI> ();
-		if (otherAI) {
-			currentState = AiState.Fight;
-			allowCollision = false;
+		if (otherAI)
+        {
+            SetAiState(AiState.Fight);
+            allowCollision = false;
 			fightingTargetStrength = otherAI.unitStrength;
 		}
 	}
+
+    void SetAiState(AiState state)
+    {
+        anim.SetBool(currentState.ToString(), false);
+        currentState = state;
+        anim.SetBool(currentState.ToString(), true);
+    }
 
 	void GenerateScore()
 	{
@@ -235,7 +231,6 @@ public class UnitAI : GameManagerSearcher
 		}
 	}
 
-
 	//unfreeze
 	#if TOUCH_INPUT
 	void TouchEnd()
@@ -245,5 +240,14 @@ public class UnitAI : GameManagerSearcher
 	{
 		buffList.RemoveBuffs(BUFF_TYPES.UNIT_FREEZE);
 		GetComponent<TemporaryBlink>().Stop();
+
+        if (!speedUp)
+        {
+            buffList.AddBuff(speedUpBuff);
+            speedUpBuff.currentDuration = 0.0f;
+            speedUp = true;
+
+            speedUpBuff.OnExpiration += () => { speedUp = false; };
+        }
 	}
 }

@@ -19,8 +19,14 @@ public class Buff
 	public float currentDuration = 0.0f;
 	public BUFF_TYPES type;
 
-//	public delegate void BuffEndDelegate();
-//	public event BuffEndDelegate OnExpiration = null;
+    public delegate void BuffEndDelegate();
+    public event BuffEndDelegate OnExpiration = null;
+
+    public void InvokeEndEvent()
+    {
+        if (OnExpiration != null)
+            OnExpiration();
+    }
 }
 
 //slow buffs also have a slow strength
@@ -106,7 +112,10 @@ public class BuffList
 			buffs[i].currentDuration += Time.deltaTime;
 
 			if(buffs[i].currentDuration >= buffs[i].maxDuration)
-				buffs.RemoveAt(i);
+            {
+                buffs[i].InvokeEndEvent();
+                buffs.RemoveAt(i);
+            }
 		}
 	}
 }

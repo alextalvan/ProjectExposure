@@ -18,7 +18,6 @@ public class UnitSpawner : MonoBehaviour
     [SerializeField]
 	int unitsPerSpawn = 1;
 	Transform activeUnit;
-	bool lateSpawn = false;
 
 	PLAYERS owner;
     private List<Vector3> unitPath = new List<Vector3>();
@@ -63,7 +62,7 @@ public class UnitSpawner : MonoBehaviour
 	/// </summary>
 	void SpawnUnits() 
 	{
-		if (!activeUnit && spawnTimer <= 0f && spTrigger.Available)
+		if (spawnTimer <= 0f && spTrigger.Available)
         {
 			//for (int i = 0; i < unitsPerSpawn; ++i) {
 				GameObject newUnit = Instantiate (unit, spawnPoint.position, Quaternion.identity) as GameObject;
