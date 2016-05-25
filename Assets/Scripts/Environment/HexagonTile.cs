@@ -88,7 +88,7 @@ public class HexagonTile : GameManagerSearcher
 	/// <param name="other">Other.</param>
 	public void SwapBuilding(HexagonTile other)
 	{
-		if(this == other)
+		if(this == other || this.blockTime > 0.0f || other.blockTime > 0.0f)
 			return;
 
 		EnergyBuilding myB = _energyBuilding;

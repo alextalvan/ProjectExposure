@@ -12,7 +12,7 @@ public class UnitAI : GameManagerSearcher
 	[SerializeField]
 	float unitSpeed = 1f;
     [SerializeField]
-    float distanceToWP = 1f;
+    float waypointSwitchThreshold = 1f;
 	[SerializeField]
 	float rayCastDist = 1f;
 
@@ -128,14 +128,24 @@ public class UnitAI : GameManagerSearcher
 			return;
 		
 		Vector3 dirVec = path[currentWP] - transform.position;
-
+		float distanceToNextWP = dirVec.magnitude;
 		float speed = CalculateSpeed();
 
 		transform.position += dirVec.normalized * speed;
 
-		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(dirVec,Physics.gravity * -1.0f),0.15f);
 
-		if (dirVec.magnitude <= distanceToWP) {
+		//orientation
+		Vector3 worldUp = Physics.gravity.normalized * -1.0f;
+		float heightDiff = Vector3.Dot(worldUp,path[currentWP]) - Vector3.Dot(worldUp,transform.position);
+		Vector3 lookTargetPoint = path[currentWP] -  heightDiff * worldUp;
+
+		Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position,worldUp);
+		transform.rotation = Quaternion.Slerp(transform.rotation,targetRot,0.1f);
+
+
+
+
+			if (distanceToNextWP <= waypointSwitchThreshold) {
 			currentWP++;
 		}
     }
