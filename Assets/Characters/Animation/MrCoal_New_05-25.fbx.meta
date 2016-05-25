@@ -285,11 +285,11 @@ ModelImporter:
     400276: MrCoal:mrCOAL
     4300000: MrCoal:mrCOAL
     7400000: Idle
-    7400002: Move
+    7400002: Run
     7400004: Die
-    7400006: Atack
-    7400008: TurnToPoint
-    7400010: Wait
+    7400006: Fight
+    7400008: Cheer
+    7400010: Wander
     9500000: //RootNode
     13700000: MrCoal:mrCOAL
   materials:
@@ -620,7 +620,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Move
+      name: Run
       takeName: Take 001
       firstFrame: 30
       lastFrame: 63
@@ -1232,7 +1232,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Atack
+      name: Fight
       takeName: Take 001
       firstFrame: 360
       lastFrame: 395
@@ -1538,7 +1538,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: TurnToPoint
+      name: Cheer
       takeName: Take 001
       firstFrame: 220
       lastFrame: 247
@@ -1844,7 +1844,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Wait
+      name: Wander
       takeName: Take 001
       firstFrame: 110
       lastFrame: 204
