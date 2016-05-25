@@ -12,8 +12,17 @@ public class EnergyBuilding : GameManagerSearcher
 	[SerializeField]
 	float lifeTimeLeft;
 
+	//each building can leave the tile blocked after it is destroyed
+	[SerializeField]
+	float blockTime = 0.0f;
+
+	[SerializeField]
+	GameObject pollutionPrefab = null;
+
 	public float MaxLifeTime { get { return maxlifeTime; } }
 	public float CurrentLifeTimeLeft { get { return lifeTimeLeft; } }
+	public float BlockTime { get { return blockTime; } }
+	public GameObject PollutionPrefab { get { return pollutionPrefab; } }
 
 	public delegate void BuildingDestructionDelegate();
 	public event BuildingDestructionDelegate OnDestruction = null;

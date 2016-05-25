@@ -46,6 +46,9 @@ public class HexagonTile : GameManagerSearcher
 	//hexagon tiles can be temporarily blocked
 	float blockTime = -1.0f;
 
+	[SerializeField]
+	GameObject buildingBlockedObject;
+
 	void Start () 
 	{
 		int randomType = Random.Range(0,tileTypes.Count);
@@ -72,6 +75,11 @@ public class HexagonTile : GameManagerSearcher
 	void Update()
 	{
 		blockTime -= Time.deltaTime;
+		if(blockTime <= 0.0f && buildingBlockedObject !=null)
+		{
+			Destroy(buildingBlockedObject.gameObject);
+			buildingBlockedObject = null;
+		}
 	}
 
 	/// <summary>
@@ -191,14 +199,20 @@ public class HexagonTile : GameManagerSearcher
 	/// </summary>
 	void CleanupAfterBuildingIsDestroyed()
 	{
+		StartBuildBlock(this._energyBuilding);
 		this._hasBuildingOnTop = false; 
 		this._energyBuilding = null;
 	}
 
 
-	void StartBuildBlock(float duration)
+	void StartBuildBlock(EnergyBuilding building)
 	{
-		if(duration > blockTime)
-			blockTime = duration;
+		if(building.PollutionPrefab==null || building.BlockTime < blockTime)
+			return;
+
+		blockTime = building.BlockTime;
+
+		buildingBlockedObject = (GameObject)Instantiate(building.PollutionPrefab);
+		buildingBlockedObject.transform.SetParent(this.transform,false);
 	}
 }
