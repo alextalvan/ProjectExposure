@@ -62,7 +62,7 @@ public class UnitSpawner : MonoBehaviour
 	/// </summary>
 	void SpawnUnits() 
 	{
-		if (spawnTimer <= 0f && spTrigger.Available)
+		if (!activeUnit && spawnTimer <= 0f && spTrigger.Available && SpawnIsFree())
         {
 			//for (int i = 0; i < unitsPerSpawn; ++i) {
 				GameObject newUnit = Instantiate (unit, spawnPoint.position, Quaternion.identity) as GameObject;
@@ -75,6 +75,17 @@ public class UnitSpawner : MonoBehaviour
 			spawnTimer += spawnCoolDown;
         }
 	}
+
+    bool SpawnIsFree()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(spawnPoint.position, spawnPoint.GetComponent<SphereCollider>().radius);
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            if (hitColliders[i].transform.GetComponent<UnitAI>())
+                return false;
+        }
+        return true;
+    }
 
 	/// <summary>
 	/// Sets the spawn information depending on the hexagon tile this building was put on.
