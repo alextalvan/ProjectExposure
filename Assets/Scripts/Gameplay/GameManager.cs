@@ -103,6 +103,9 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	int moneyRate = 0;
 
+	[SerializeField]
+	int forcedMaxMoney = 10;
+
 
 	[SerializeField]
 	Text player1moneyText;
@@ -161,8 +164,8 @@ public class GameManager : MonoBehaviour
 
 	void UpdateMoney()
 	{
-		Player1Money += moneyRate;
-		Player2Money += moneyRate;
+		Player1Money += moneyRate; if(Player1Money > forcedMaxMoney) Player1Money = forcedMaxMoney;
+		Player2Money += moneyRate; if(Player2Money > forcedMaxMoney) Player2Money = forcedMaxMoney;
 	}
 
 	public void StartEnergyBuildingTileSelection(Card card)
