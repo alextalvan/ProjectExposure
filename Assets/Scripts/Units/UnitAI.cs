@@ -140,7 +140,7 @@ public class UnitAI : GameManagerSearcher
 		Vector3 lookTargetPoint = path[currentWP] -  heightDiff * worldUp;
 
 		Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position,worldUp);
-		transform.rotation = Quaternion.Slerp(transform.rotation,targetRot,0.1f);
+		transform.rotation = Quaternion.Slerp(transform.rotation,targetRot,0.05f);
 
 
 

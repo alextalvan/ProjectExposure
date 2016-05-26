@@ -29,10 +29,11 @@ public class TileVisual : MonoBehaviour
 		_topVisual.transform.SetParent(this.transform,false);
 	}
 
-	public void DestroyTopVisual()
+	public void ToggleTopVisual(bool state)
 	{
-		if(_topVisual)
-			Destroy(_topVisual);
-		_topVisual = null;
+		//if(_topVisual)
+		//	Destroy(_topVisual);
+		//_topVisual = null;
+		_topVisual.SetActive(state);
 	}
 }

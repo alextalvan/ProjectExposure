@@ -79,6 +79,7 @@ public class HexagonTile : GameManagerSearcher
 		{
 			Destroy(buildingBlockedObject.gameObject);
 			buildingBlockedObject = null;
+			this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(true);
 		}
 	}
 
@@ -91,12 +92,15 @@ public class HexagonTile : GameManagerSearcher
 		if(this == other || this.blockTime > 0.0f || other.blockTime > 0.0f)
 			return;
 
+		if(!this._hasBuildingOnTop && !other._hasBuildingOnTop)
+			return;
+
 		EnergyBuilding myB = _energyBuilding;
-		EnergyBuilding otherB = other.CurrentEnergyBuilding;
+		EnergyBuilding otherB = other._energyBuilding;
 
 		if(myB!=null)
 		{
-			other.CurrentEnergyBuilding = myB;
+			
 			myB.transform.SetParent(other.transform);
 			myB.transform.localPosition = Vector3.zero;
 			myB.transform.localRotation = Quaternion.identity;
@@ -107,17 +111,18 @@ public class HexagonTile : GameManagerSearcher
 
 			myB.GetComponent<UnitSpawner>().SetSpawnInformation(other.aiPathRoot,other.spawnPoint,other.spawnedUnitsParent,other.owner);
 
-			other.visualObject.GetComponent<TileVisual>().DestroyTopVisual();
+			//other.visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 
-			if(otherB == null)
-				_hasBuildingOnTop = false;
-			else
-				_hasBuildingOnTop = true;
+
 		}
+
+		other.CurrentEnergyBuilding = myB;
+		other._hasBuildingOnTop = (myB != null);
+		other.visualObject.GetComponent<TileVisual>().ToggleTopVisual(myB == null);
 
 		if(otherB!=null)
 		{
-			this.CurrentEnergyBuilding = otherB;
+			
 			otherB.transform.SetParent(this.transform);
 			otherB.transform.localPosition = Vector3.zero;
 			otherB.transform.localRotation = Quaternion.identity;
@@ -128,16 +133,13 @@ public class HexagonTile : GameManagerSearcher
 
 			otherB.GetComponent<UnitSpawner>().SetSpawnInformation(this.aiPathRoot,this.spawnPoint,this.spawnedUnitsParent,this.owner);
 
-			this.visualObject.GetComponent<TileVisual>().DestroyTopVisual();
-
-			if(myB == null)
-				other._hasBuildingOnTop = false;
-			else
-				other._hasBuildingOnTop = true;
+			//this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 				
 		}
-		
 
+		this.CurrentEnergyBuilding = otherB;
+		this._hasBuildingOnTop = (otherB != null);
+		this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(otherB == null);
 	}
 	
 
@@ -182,7 +184,7 @@ public class HexagonTile : GameManagerSearcher
 					else
 						gameManager.Player2Money -= pdata.currentSelectedCard.MoneyCost;
 
-					visualObject.GetComponent<TileVisual>().DestroyTopVisual();
+					visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 					Destroy(bc.gameObject);
 				}
 			}
@@ -199,9 +201,13 @@ public class HexagonTile : GameManagerSearcher
 	/// </summary>
 	void CleanupAfterBuildingIsDestroyed()
 	{
+		this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(this._energyBuilding.PollutionPrefab == null);
 		StartBuildBlock(this._energyBuilding);
 		this._hasBuildingOnTop = false; 
 		this._energyBuilding = null;
+
+		//if(this._energyBuilding.PollutionPrefab
+
 	}
 
 
