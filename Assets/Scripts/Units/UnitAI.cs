@@ -243,7 +243,7 @@ public class UnitAI : GameManagerSearcher
 
 	//unfreeze
 	#if TOUCH_INPUT
-	void TouchEnd()
+	void PenetratingTouchEnd()
 	#else
 	void OnMouseUp()
 	#endif

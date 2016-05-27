@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public enum INPUT_STATES
 {
@@ -160,6 +161,7 @@ public class GameManager : MonoBehaviour
 			if(OnNewWave != null)
 				OnNewWave();
 		}	*/
+
 	}
 
 	void UpdateMoney()
@@ -191,4 +193,5 @@ public class GameManager : MonoBehaviour
 	{
 		raycastedOn2DObject = false;
 	}
+
 }

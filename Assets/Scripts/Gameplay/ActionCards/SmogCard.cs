@@ -23,6 +23,8 @@ public class SmogCard : ActionCard
 
 	protected override void DoCardEffect ()
 	{
+		base.DoCardEffect();
+
 		List<EnergyBuilding> candidateBuildings = new List<EnergyBuilding>();
 		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
 

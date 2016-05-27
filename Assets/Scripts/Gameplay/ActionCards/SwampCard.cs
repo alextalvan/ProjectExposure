@@ -23,6 +23,8 @@ public class SwampCard : ActionCard
 
 	protected override void DoCardEffect ()
 	{
+		base.DoCardEffect();
+
 		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
 
 		List<SwampSpot> inactiveSpots = new List<SwampSpot>();

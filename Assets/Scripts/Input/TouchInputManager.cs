@@ -25,9 +25,10 @@ public class TouchInputManager : MonoBehaviour
 	//null value means the touch is not locked to any object
 	private Dictionary<int,GameObject> lockedObjects = new Dictionary<int, GameObject>();
 
-	//used to keep track of the last 2D object under each touch
+	//used to keep track of the last object under each touch
 	private Dictionary<int,GameObject> focusedObjects = new Dictionary<int, GameObject>();
-
+	//the same thing, but for penetrating callbacks
+	private Dictionary<int,List<GameObject>> focusedPenetratedObjects = new Dictionary<int, List<GameObject>>();
 
 	void Update () 
 	{
@@ -52,7 +53,9 @@ public class TouchInputManager : MonoBehaviour
 
 			Collider2D col2d = Get2DColliderUnderTouch(touch);
 			Collider   col3d = Get3DColliderUnderTouch(touch);
-
+			RaycastHit[] allCol3D = GetAll3DCollidersUnderTouch(touch);
+			List<GameObject> newPenetratedObjectsList = new List<GameObject>();
+			foreach(RaycastHit rhit in allCol3D) newPenetratedObjectsList.Add(rhit.collider.gameObject);
 
 			GameObject targetObject = null;
 
@@ -72,14 +75,26 @@ public class TouchInputManager : MonoBehaviour
 					InitializeNewTouch(touch);
 
 
-					bool beginCondition2D = (targetObject != null) && CanInteractWithObject(touch,targetObject);
+					bool beginCondition = (targetObject != null) && CanInteractWithObject(touch,targetObject);
 
 
-					if(beginCondition2D)
+					if(beginCondition)
 					{
 						targetObject.SendMessageUpwards("TouchEnter",touch);
 						focusedObjects[touch.fingerId] = targetObject;
 					}
+
+
+					//penetrating touch callbacks
+					foreach(RaycastHit rhit in allCol3D)
+					{
+						GameObject tObj = rhit.collider.gameObject;
+						if(CanInteractWithObject(touch,tObj))
+						{
+							tObj.SendMessageUpwards("PenetratingTouchEnter");
+						}
+					}
+
 
 					if(OnTouchBegin != null)
 						OnTouchBegin(touch);
@@ -110,6 +125,18 @@ public class TouchInputManager : MonoBehaviour
 
 					oldFocusedObj = focusedObjects[touch.fingerId];
 
+					//penetrating exit
+					List<GameObject> oldPenetratedObjects = focusedPenetratedObjects[touch.fingerId];
+
+					foreach(GameObject oldPenObj in oldPenetratedObjects)
+					{
+						if(CanInteractWithObject(touch,oldPenObj) && !newPenetratedObjectsList.Contains(oldPenObj))
+							oldPenObj.SendMessageUpwards("PenetratingTouchExit");
+					}
+
+
+
+
 
 					bool enterCondition = (targetObject != null) && 
 										  CanInteractWithObject(touch,targetObject) && 
@@ -125,11 +152,22 @@ public class TouchInputManager : MonoBehaviour
 
 
 
+					//penetrating enter from movement
+					foreach(GameObject newPenObj in newPenetratedObjectsList)
+					{
+						if(CanInteractWithObject(touch,newPenObj) && !oldPenetratedObjects.Contains(newPenObj))
+							newPenObj.SendMessageUpwards("PenetratingTouchEnter");
+					}
+
+
 
 
 					//touchEnter and touchExit overrides touchMove
 					if(enterCondition || exitCondition)
+					{
+						focusedPenetratedObjects[touch.fingerId] = newPenetratedObjectsList;
 						break;
+					}
 
 					bool moveCondition = (oldFocusedObj !=null) &&
 										 CanInteractWithObject(touch,oldFocusedObj);
@@ -138,6 +176,16 @@ public class TouchInputManager : MonoBehaviour
 					{
 						focusedObjects[touch.fingerId].SendMessageUpwards("TouchMove",touch);
 					}
+
+
+					//penetrating move
+					foreach(GameObject newPenObj in newPenetratedObjectsList)
+					{
+						if(CanInteractWithObject(touch,newPenObj))
+							newPenObj.SendMessageUpwards("PenetratingTouchMove");
+					}
+
+					focusedPenetratedObjects[touch.fingerId] = newPenetratedObjectsList;
 
 
 					//UIConsole.Log("Touch index " + touch.fingerId + " has moved by " + touch.deltaPosition);
@@ -152,6 +200,16 @@ public class TouchInputManager : MonoBehaviour
 						focusedObjects[touch.fingerId].SendMessageUpwards("TouchStay",touch);
 					}
 
+
+					//penetrating stay
+					foreach(GameObject newPenObj in newPenetratedObjectsList)
+					{
+						if(CanInteractWithObject(touch,newPenObj))
+							newPenObj.SendMessageUpwards("PenetratingTouchStay");
+					}
+
+					focusedPenetratedObjects[touch.fingerId] = newPenetratedObjectsList;
+
 					//UIConsole.Log("Touch index " + touch.fingerId + " is stationary at position " + touch.position);
 					break;
 				case TouchPhase.Ended:
@@ -160,6 +218,14 @@ public class TouchInputManager : MonoBehaviour
 					if(targetObject!= null && CanInteractWithObject(touch,targetObject))
 						targetObject.SendMessageUpwards("TouchEnd",touch);
 
+
+					//penetrating stay
+					foreach(GameObject newPenObj in newPenetratedObjectsList)
+					{
+						if(CanInteractWithObject(touch,newPenObj))
+							newPenObj.SendMessageUpwards("PenetratingTouchEnd");
+					}
+						
 					
 					//focusedObjects2D[touch.fingerId] = null;
 
@@ -183,6 +249,7 @@ public class TouchInputManager : MonoBehaviour
 	{
 		lockedObjects[t.fingerId] = null;
 		focusedObjects[t.fingerId] = null;
+		focusedPenetratedObjects[t.fingerId] = new List<GameObject>();
 	}
 
 
@@ -190,6 +257,7 @@ public class TouchInputManager : MonoBehaviour
 	{
 		lockedObjects.Remove(t.fingerId);
 		focusedObjects.Remove(t.fingerId);
+		focusedPenetratedObjects.Remove(t.fingerId);
 	}
 
 
@@ -216,6 +284,15 @@ public class TouchInputManager : MonoBehaviour
 			return hitinfo.collider;
 		else
 			return null;
+	}
+
+	RaycastHit[] GetAll3DCollidersUnderTouch(Touch t)
+	{
+		Ray ray = Camera.main.ScreenPointToRay(new Vector3(t.position.x,t.position.y,0));
+
+		RaycastHit[] hitinfos = Physics.RaycastAll(ray);
+
+		return hitinfos;
 	}
 
 

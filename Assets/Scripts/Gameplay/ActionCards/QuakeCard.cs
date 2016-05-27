@@ -13,6 +13,8 @@ public class QuakeCard : ActionCard
 
 	protected override void DoCardEffect ()
 	{
+		base.DoCardEffect();
+
 		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
 
 		for(int i=0; i < enemyData.tiles.Count - 1; ++i)
