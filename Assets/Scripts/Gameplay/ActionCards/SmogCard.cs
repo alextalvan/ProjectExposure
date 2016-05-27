@@ -15,8 +15,11 @@ public class SmogCard : ActionCard
 
 	protected override bool CalculatePlayCondition ()
 	{
-		if(!CheckMoneyCost())
+		if(!enabled)
 			return false;
+
+//		if(!CheckMoneyCost())
+//			return false;
 
 		return EnemyHasBuildings();
 	}

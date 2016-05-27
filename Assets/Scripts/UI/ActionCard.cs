@@ -37,10 +37,10 @@ public class ActionCard : Card
 
 	protected override void DoCardEffect ()
 	{
-		if(this.Owner == PLAYERS.PLAYER1)
-			gameManager.Player1Money -= this.MoneyCost;
-		else
-			gameManager.Player2Money -= this.MoneyCost;
+//		if(this.Owner == PLAYERS.PLAYER1)
+//			gameManager.Player1Money -= this.MoneyCost;
+//		else
+//			gameManager.Player2Money -= this.MoneyCost;
 	}
 
 }

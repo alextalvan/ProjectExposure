@@ -179,10 +179,10 @@ public class HexagonTile : GameManagerSearcher
 					_energyBuilding.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
 					_energyBuilding.Owner = this.Owner;
 
-					if(this.Owner == PLAYERS.PLAYER1)
-						gameManager.Player1Money -= pdata.currentSelectedCard.MoneyCost;
-					else
-						gameManager.Player2Money -= pdata.currentSelectedCard.MoneyCost;
+//					if(this.Owner == PLAYERS.PLAYER1)
+//						gameManager.Player1Money -= pdata.currentSelectedCard.MoneyCost;
+//					else
+//						gameManager.Player2Money -= pdata.currentSelectedCard.MoneyCost;
 
 					visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 					Destroy(bc.gameObject);

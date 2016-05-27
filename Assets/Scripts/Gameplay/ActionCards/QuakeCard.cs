@@ -5,8 +5,12 @@ public class QuakeCard : ActionCard
 {
 	protected override bool CalculatePlayCondition ()
 	{
-		if(!CheckMoneyCost())
+
+		if(!enabled)
 			return false;
+
+//		if(!CheckMoneyCost())
+//			return false;
 
 		return EnemyHasBuildings();
 	}

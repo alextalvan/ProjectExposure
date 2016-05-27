@@ -7,8 +7,11 @@ public class SwampCard : ActionCard
 
 	protected override bool CalculatePlayCondition ()
 	{
-		if(!CheckMoneyCost())
+		if(!enabled)
 			return false;
+
+//		if(!CheckMoneyCost())
+//			return false;
 
 		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
 

@@ -66,6 +66,8 @@ public abstract class Card : GameManagerSearcher
 		if(OnDestruction!=null)
 			OnDestruction();
 
+		UIConsole.LogWithRandomColor("destroyed");
+
 		//transform.wo
 	}
 
@@ -74,7 +76,7 @@ public abstract class Card : GameManagerSearcher
 		if(highlight)
 			highlight.SetActive(false);
 
-		Destroy(this.gameObject,deletionTime);
+		//Destroy(this.gameObject,deletionTime);
 	}
 
 

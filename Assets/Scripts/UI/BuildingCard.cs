@@ -24,9 +24,12 @@ public class BuildingCard : Card
 
 	protected override bool CalculatePlayCondition ()
 	{
-		
-		if(!CheckMoneyCost())
+
+		if(!enabled)
 			return false;
+
+//		if(!CheckMoneyCost())
+//			return false;
 
 		PlayerGameData pdata = gameManager.playerData[this.Owner];
 
