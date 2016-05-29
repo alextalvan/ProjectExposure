@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class UnitAI : GameManagerSearcher 
 {
-	enum AiState { Idle, Run, Fight, Wander, Cheer };
+	enum AiState { Idle, Run, Fight, Wander, Cheer, Die };
 	private AiState currentState = AiState.Run;
 
 	[SerializeField]
@@ -22,9 +23,15 @@ public class UnitAI : GameManagerSearcher
 	float wanderAnimTime = 1f;
 	[SerializeField]
 	float cheerAnimTime = 1f;
+    [SerializeField]
+    float deathAnimTime = 1f;
 
-	[SerializeField]
+    [SerializeField]
 	int scoreReward = 10;
+    [SerializeField]
+    float speedBuffMod = 2f;
+    [SerializeField]
+    float speedBuffDuration = 2f;
 
     private Animator anim;
 
@@ -33,6 +40,7 @@ public class UnitAI : GameManagerSearcher
 	private float fightTimer;
 	private float wanderTimer;
 	private float cheerTimer;
+    private float deathTimer;
     
     private int currentWP = 0;
     private int pathLength;
@@ -48,14 +56,15 @@ public class UnitAI : GameManagerSearcher
     public delegate void DestructionDelegate();
     public event DestructionDelegate OnDestruction = null;
 
-	private int fightingTargetStrength;
+    private int fightingTargetStrength;
 
 	void Start()
     {
-        speedUpBuff = new SpeedBuff(2f, 2f);
+        speedUpBuff = new SpeedBuff(speedBuffMod, speedBuffDuration);
         wanderTimer = wanderAnimTime;
 		fightTimer = fightAnimTime;
 		cheerTimer = cheerAnimTime;
+        deathTimer = deathAnimTime;
         anim = transform.GetChild(0).GetComponent<Animator>();
 	}
 	
@@ -84,10 +93,13 @@ public class UnitAI : GameManagerSearcher
 		case AiState.Cheer:
 			Cheer ();
 			break;
-		}
+        case AiState.Die:
+            Die();
+            break;
+        }
 	}
 
-	void Idle() {
+    void Idle() {
 		if (!HasUnitInFront ())
             SetAiState(AiState.Run);
 	}
@@ -112,7 +124,7 @@ public class UnitAI : GameManagerSearcher
 		return speed;
 	}
 
-	void Run()
+    private void Run()
 	{
 		if (HasUnitInFront ())
         {
@@ -150,24 +162,25 @@ public class UnitAI : GameManagerSearcher
 		}
     }
 
-	void Fight() {
+    private void Fight() {
 		fightTimer -= Time.deltaTime;
 		if (fightTimer <= 0f) {
 			if (this.unitStrength > fightingTargetStrength) {
 				transform.GetComponent<Rigidbody> ().isKinematic = true;
-				transform.GetComponent<Collider> ().isTrigger = true;
                 SetAiState(AiState.Cheer);
-            } else {
-				Destroy(this.gameObject);
-			}
+            }
+            else
+            {
+                transform.GetComponent<Rigidbody>().isKinematic = true;
+                SetAiState(AiState.Die);
+            }
 		}
 	}
 
-	void Wander() {
+    private void Wander() {
 		wanderTimer -= Time.deltaTime;
 		if (wanderTimer <= 0f) {
 			transform.GetComponent<Rigidbody> ().isKinematic = true;
-			transform.GetComponent<Collider> ().isTrigger = true;
             SetAiState(AiState.Cheer);
         } else if (cityTile.HasHostileUnits (owner)) {
 			wanderTimer = wanderAnimTime;
@@ -175,15 +188,25 @@ public class UnitAI : GameManagerSearcher
         }
 	}
 
-	void Cheer() {
+    private void Cheer() {
 		cheerTimer -= Time.deltaTime;
 		if (cheerTimer <= 0f) {
 			GenerateScore ();
 			Destroy(this.gameObject);
 		}
-	}
+    }
 
-	void OnDestroy()
+    private void Die()
+    {
+        Debug.Log("A");
+        deathTimer -= Time.deltaTime;
+        if (deathTimer <= 0f)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void OnDestroy()
 	{
 		if(cityTile)
 			cityTile.RemoveUnit (transform, owner);
