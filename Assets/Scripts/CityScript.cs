@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CityScript : MonoBehaviour {
-	
+    
 	[SerializeField]
 	float buildingSpawnCoolDown = 1f;
 	[SerializeField]
@@ -23,8 +23,8 @@ public class CityScript : MonoBehaviour {
     [SerializeField]
     int upgradeRndShuffleRate = 3; //used as divider for list count when swapping items in list (lesser - farer items it might swap)
 
-	[SerializeField]
-	List<GameObject> buildingPrefabs = new List<GameObject>(); //storage for prefabs
+    [SerializeField]
+    List<GameObject> buildingPrefabs = new List<GameObject>(); //storage for prefabs
 
 	[SerializeField]
 	Transform topDistrict;
@@ -39,64 +39,56 @@ public class CityScript : MonoBehaviour {
 	private float spawnTimer;
 	private int maxBuildingType;
 	private float lastBuildingDist;
-
-	// Use this for initialization
-	void Start () {
+    
+    // Use this for initialization
+    void Start () {
 		cityBound = GetComponent<SphereCollider> ();
 		//max building type (int)
 		maxBuildingType = buildingPrefabs [buildingPrefabs.Count - 1].transform.GetComponent<CityBuildingScript> ().Type;
 		InitializeGrid ();
 		//RandomizeGrid ();
 		//sort list of points so it goes from closest points to farest
-		grid.Sort((x, y) => Vector3.Distance(x, transform.position).CompareTo(Vector3.Distance(y, transform.position)));
-	}
+		grid.Sort((x, y) => Vector3.Distance(x, transform.localPosition).CompareTo(Vector3.Distance(y, transform.localPosition)));
+        Debug.Log(grid.Count);
+    }
 
-	/// <summary>
-	/// Creates points for buildings and stores them into list. 
-	/// Adds random offsets.
-	/// </summary>
-	void InitializeGrid() {
+    /// <summary>
+    /// Creates points for buildings and stores them into list. 
+    /// Adds random offsets.
+    /// </summary>
+    void InitializeGrid() {
 		//Get size of top district
-		Vector2 size = new Vector2(Vector3.Distance(topDistrict.GetChild(2).position, topDistrict.GetChild(3).position), 
-			Vector3.Distance(topDistrict.GetChild(0).position, topDistrict.GetChild(1).position));
+		Vector2 size = new Vector2(Vector3.Distance(topDistrict.GetChild(2).localPosition, topDistrict.GetChild(3).localPosition) * topDistrict.localScale.x, 
+			Vector3.Distance(topDistrict.GetChild(0).localPosition, topDistrict.GetChild(1).localPosition) * topDistrict.localScale.z);
 		//Calculate number of columns
 		int numx = (int)(size.x / distBetweenBuldings);
 		//Calculate number of rows
 		int numz = (int)(size.y / distBetweenBuldings);
 		//Calculate starting point (1st column / 1st row cell)
-		Vector3 startPnt = new Vector3 (topDistrict.position.x - size.x * 0.5f + distBetweenBuldings * 0.5f, 
-			topDistrict.position.y, topDistrict.position.z - size.y * 0.5f + distBetweenBuldings * 0.5f);
+		Vector3 startPnt = topDistrict.localPosition + new Vector3 (-size.x * 0.5f + distBetweenBuldings * 0.5f, 0, -size.y * 0.5f + distBetweenBuldings * 0.5f);
 		for (int x = 0; x < numx; ++x) {
             float lineOffset = Random.Range(minRndLineOffset, maxRndLineOffset);
             for (int z = 0; z < numz; ++z) {
 				//Calculate new point and add random offset to it
 				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 
-					0,  distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset)) + startPnt;
-				//If is in city radius
-				Vector3 dir = newPnt - transform.position; // get point direction relative to pivot
-				dir = Quaternion.Euler(transform.eulerAngles) * dir; // rotate it
-				newPnt = dir + transform.position; // calculate rotated point
-				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius * ((transform.lossyScale.x + transform.lossyScale.z) * 0.5f))
+                    0, distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset) + lineOffset) + startPnt;
+				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius)
 					grid.Add (newPnt); //Add to points list
 			}
 		}
-		//same for bottom district
-		size = new Vector2(Vector3.Distance(bottomDistrict.GetChild(2).position, bottomDistrict.GetChild(3).position), 
-			Vector3.Distance(bottomDistrict.GetChild(0).position, bottomDistrict.GetChild(1).position));
+        //same for bottom district
+        size = new Vector2(Vector3.Distance(bottomDistrict.GetChild(2).localPosition, bottomDistrict.GetChild(3).localPosition) * bottomDistrict.localScale.x, 
+			Vector3.Distance(bottomDistrict.GetChild(0).localPosition, bottomDistrict.GetChild(1).localPosition) * bottomDistrict.localScale.z);
 		numx = (int)(size.x / distBetweenBuldings);
 		numz = (int)(size.y / distBetweenBuldings);
-		startPnt = new Vector3 (bottomDistrict.position.x - size.x * 0.5f + distBetweenBuldings * 0.5f, 
-			bottomDistrict.position.y, bottomDistrict.position.z - size.y * 0.5f + distBetweenBuldings * 0.5f);
+		startPnt = bottomDistrict.localPosition + new Vector3 (-size.x * 0.5f + distBetweenBuldings * 0.5f, 0, -size.y * 0.5f + distBetweenBuldings * 0.5f);
 		for (int x = 0; x < numx; ++x)
         {
             float lineOffset = Random.Range(minRndLineOffset, maxRndLineOffset);
             for (int z = 0; z < numz; ++z) {
 				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 
-					0,  distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset)) + startPnt;
-				Vector3 dir = newPnt - transform.position; // get point direction relative to pivot
-				dir = Quaternion.Euler(transform.eulerAngles) * dir; // rotate it
-				newPnt = dir + transform.position; // calculate rotated point
-				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius * ((transform.lossyScale.x + transform.lossyScale.z) * 0.5f))
+                    0, distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset) + lineOffset) + startPnt;
+				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius)
 					grid.Add (newPnt);
 			}
 		}
@@ -113,28 +105,27 @@ public class CityScript : MonoBehaviour {
 			grid[randomIndex] = temp;
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		if (spawnTimer > 0)
 			spawnTimer -= Time.deltaTime;
 		SpawnNewBuilding ();
 		UpgradeBuildings ();
 	}
-
+    
 	/// <summary>
 	/// Spawns the new building.
 	/// </summary>
 	void SpawnNewBuilding() {
 		if (grid.Count > 0 && spawnTimer <= 0) { //If there are free spots for buildings to spawn and no cooldown
 			Vector3 pnt = grid[0]; //Get first point from the list
-			float dist = Vector3.Distance (pnt, transform.position); //Calculate distance from that point to center of city
-			float rnd = Random.Range(0, cityBound.radius * transform.lossyScale.x); //Randomize value in range from 0 to city bound (radius)
+			float dist = Vector3.Distance (pnt, transform.localPosition); //Calculate distance from that point to center of city
+			float rnd = Random.Range(0, cityBound.radius); //Randomize value in range from 0 to city bound (radius)
 			if (rnd > dist) { //If random is in range of distance between center and point
-				GameObject newBuilding = Instantiate (buildingPrefabs [0], pnt, Quaternion.identity) as GameObject; //Instantiate new building
-				newBuilding.transform.parent = buildings; //Insert as a child into buildings
-				newBuilding.transform.rotation = transform.rotation;
-				lastBuildingDist = Vector3.Distance (newBuilding.transform.position, transform.position); //Store distance from that building to city center
+                GameObject newBuilding = Instantiate (buildingPrefabs [0], pnt, Quaternion.identity) as GameObject; //Instantiate new building
+				newBuilding.transform.SetParent(buildings, false); //Insert as a child into buildings
+                lastBuildingDist = Vector3.Distance (newBuilding.transform.localPosition, transform.localPosition); //Store distance from that building to city center
 				grid.RemoveAt (0); //Remove used point from list
 			} else {
 				if (grid.Count > 1) {
@@ -159,7 +150,7 @@ public class CityScript : MonoBehaviour {
 					int rnd = Random.Range (0, rndUpgradeSkipRate); //Randomize if will be upgraded now or not
 					if (rnd != 0)
 						return;
-					if (Vector3.Distance (building.position, transform.position) < lastBuildingDist / ((buildingType + 2)) * upgradeRange) //If meets the condition (weird formula out of ass :))
+					if (Vector3.Distance (building.localPosition, transform.localPosition) < lastBuildingDist / ((buildingType + 2)) * upgradeRange) //If meets the condition (weird formula out of ass :))
 						upgradedBuildings.Add (ReplaceBuilding (building)); //Upgrade
 				}
 			}
@@ -172,12 +163,11 @@ public class CityScript : MonoBehaviour {
 	/// <returns>The building.</returns>
 	/// <param name="building">Building.</param>
 	GameObject ReplaceBuilding(Transform building) {
-		Vector3 position = building.position; //Store current building position
+		Vector3 position = building.localPosition; //Store current building position
         int prefabIndex = ++building.transform.GetComponent<CityBuildingScript> ().Type; //Increment current building type
         Destroy (building.gameObject); //Remove current building
 		GameObject upgradedBuilding = Instantiate (buildingPrefabs [prefabIndex], position, Quaternion.identity) as GameObject; //Instantiate new building
-		upgradedBuilding.transform.parent = buildings; //Set parent to buildings
-		upgradedBuilding.transform.rotation = transform.rotation;
-		return upgradedBuilding; //Return it back
+        upgradedBuilding.transform.SetParent(buildings, false); //Insert as a child into buildings
+        return upgradedBuilding; //Return it back
 	}
 }

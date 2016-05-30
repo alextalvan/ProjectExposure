@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d2002a23a8ec5457bb0a76b15e4774cf
-timeCreated: 1464270585
+guid: ff537a50c55684fcba15863a7038ce0f
+timeCreated: 1464356492
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -289,8 +289,9 @@ ModelImporter:
     7400004: COAL_Fight
     7400006: COAL_Wander
     7400008: COAL_Cheer
-    7400010: COAL_Dance
-    7400012: COAL_Die
+    7400010: COAL_Die
+    7400012: COAL_Dance
+    7400014: COAL_RunBONUS
     9500000: //RootNode
     13700000: MrCoal:mrCOAL
   materials:
@@ -930,14 +931,14 @@ ModelImporter:
       name: COAL_Fight
       takeName: Take 001
       firstFrame: 360
-      lastFrame: 395
+      lastFrame: 419
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1845,10 +1846,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: COAL_Dance
+      name: COAL_Die
       takeName: Take 001
-      firstFrame: 400
-      lastFrame: 423
+      firstFrame: 320
+      lastFrame: 355
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -2151,10 +2152,316 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: COAL_Die
+      name: COAL_Dance
       takeName: Take 001
-      firstFrame: 320
-      lastFrame: 355
+      firstFrame: 450
+      lastFrame: 473
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group
+        weight: 1
+      - path: group/MrCoal1:Character1_Ctrl_Reference
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_LeftUpLeg
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_LeftUpLeg/MrCoal1:Character1_LeftLeg
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_LeftUpLeg/MrCoal1:Character1_LeftLeg/MrCoal1:Character1_LeftFoot
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_LeftUpLeg/MrCoal1:Character1_LeftLeg/MrCoal1:Character1_LeftFoot/MrCoal1:Character1_LeftToeBase
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_RightUpLeg
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_RightUpLeg/MrCoal1:Character1_RightLeg
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_RightUpLeg/MrCoal1:Character1_RightLeg/MrCoal1:Character1_RightFoot
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_RightUpLeg/MrCoal1:Character1_RightLeg/MrCoal1:Character1_RightFoot/MrCoal1:Character1_RightToeBase
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_LeftShoulder
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_LeftShoulder/MrCoal1:Character1_LeftArm
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_LeftShoulder/MrCoal1:Character1_LeftArm/MrCoal1:Character1_LeftForeArm
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_LeftShoulder/MrCoal1:Character1_LeftArm/MrCoal1:Character1_LeftForeArm/MrCoal1:Character1_LeftHand
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_LeftShoulder/MrCoal1:Character1_LeftArm/MrCoal1:Character1_LeftForeArm/MrCoal1:Character1_LeftHand/MrCoal1:Character1_LeftHandIndex1
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_LeftShoulder/MrCoal1:Character1_LeftArm/MrCoal1:Character1_LeftForeArm/MrCoal1:Character1_LeftHand/MrCoal1:Character1_LeftHandIndex1/MrCoal1:Character1_LeftHandIndex2
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_LeftShoulder/MrCoal1:Character1_LeftArm/MrCoal1:Character1_LeftForeArm/MrCoal1:Character1_LeftHand/MrCoal1:Character1_LeftHandRing1
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_LeftShoulder/MrCoal1:Character1_LeftArm/MrCoal1:Character1_LeftForeArm/MrCoal1:Character1_LeftHand/MrCoal1:Character1_LeftHandRing1/MrCoal1:Character1_LeftHandRing2
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_LeftShoulder/MrCoal1:Character1_LeftArm/MrCoal1:Character1_LeftForeArm/MrCoal1:Character1_LeftHand/MrCoal1:Character1_LeftHandThumb1
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_LeftShoulder/MrCoal1:Character1_LeftArm/MrCoal1:Character1_LeftForeArm/MrCoal1:Character1_LeftHand/MrCoal1:Character1_LeftHandThumb1/MrCoal1:Character1_LeftHandThumb2
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_Neck
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_Neck/MrCoal1:Character1_Neck1
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_Neck/MrCoal1:Character1_Neck1/MrCoal1:Character1_Neck2
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_Neck/MrCoal1:Character1_Neck1/MrCoal1:Character1_Neck2/MrCoal1:Character1_Head
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_RightShoulder
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_RightShoulder/MrCoal1:Character1_RightArm
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_RightShoulder/MrCoal1:Character1_RightArm/MrCoal1:Character1_RightForeArm
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_RightShoulder/MrCoal1:Character1_RightArm/MrCoal1:Character1_RightForeArm/MrCoal1:Character1_RightHand
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_RightShoulder/MrCoal1:Character1_RightArm/MrCoal1:Character1_RightForeArm/MrCoal1:Character1_RightHand/MrCoal1:Character1_RightHandIndex1
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_RightShoulder/MrCoal1:Character1_RightArm/MrCoal1:Character1_RightForeArm/MrCoal1:Character1_RightHand/MrCoal1:Character1_RightHandIndex1/MrCoal1:Character1_RightHandIndex2
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_RightShoulder/MrCoal1:Character1_RightArm/MrCoal1:Character1_RightForeArm/MrCoal1:Character1_RightHand/MrCoal1:Character1_RightHandRing1
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_RightShoulder/MrCoal1:Character1_RightArm/MrCoal1:Character1_RightForeArm/MrCoal1:Character1_RightHand/MrCoal1:Character1_RightHandRing1/MrCoal1:Character1_RightHandRing2
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_RightShoulder/MrCoal1:Character1_RightArm/MrCoal1:Character1_RightForeArm/MrCoal1:Character1_RightHand/MrCoal1:Character1_RightHandThumb1
+        weight: 1
+      - path: group/MrCoal1:Character1_Reference/MrCoal1:Character1_Hips/MrCoal1:Character1_Spine/MrCoal1:Character1_Spine1/MrCoal1:Character1_Spine2/MrCoal1:Character1_RightShoulder/MrCoal1:Character1_RightArm/MrCoal1:Character1_RightForeArm/MrCoal1:Character1_RightHand/MrCoal1:Character1_RightHandThumb1/MrCoal1:Character1_RightHandThumb2
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_ChestEndEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_ChestOriginEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_HeadEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_LeftUpLeg
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_LeftUpLeg/MrCoal:Character1_Ctrl_LeftLeg
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_LeftUpLeg/MrCoal:Character1_Ctrl_LeftLeg/MrCoal:Character1_Ctrl_LeftFoot
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_LeftUpLeg/MrCoal:Character1_Ctrl_LeftLeg/MrCoal:Character1_Ctrl_LeftFoot/MrCoal:Character1_Ctrl_LeftToeBase
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_RightUpLeg
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_RightUpLeg/MrCoal:Character1_Ctrl_RightLeg
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_RightUpLeg/MrCoal:Character1_Ctrl_RightLeg/MrCoal:Character1_Ctrl_RightFoot
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_RightUpLeg/MrCoal:Character1_Ctrl_RightLeg/MrCoal:Character1_Ctrl_RightFoot/MrCoal:Character1_Ctrl_RightToeBase
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_LeftShoulder
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_LeftShoulder/MrCoal:Character1_Ctrl_LeftArm
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_LeftShoulder/MrCoal:Character1_Ctrl_LeftArm/MrCoal:Character1_Ctrl_LeftForeArm
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_LeftShoulder/MrCoal:Character1_Ctrl_LeftArm/MrCoal:Character1_Ctrl_LeftForeArm/MrCoal:Character1_Ctrl_LeftHand
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_LeftShoulder/MrCoal:Character1_Ctrl_LeftArm/MrCoal:Character1_Ctrl_LeftForeArm/MrCoal:Character1_Ctrl_LeftHand/MrCoal:Character1_Ctrl_LeftHandIndex1
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_LeftShoulder/MrCoal:Character1_Ctrl_LeftArm/MrCoal:Character1_Ctrl_LeftForeArm/MrCoal:Character1_Ctrl_LeftHand/MrCoal:Character1_Ctrl_LeftHandIndex1/MrCoal:Character1_Ctrl_LeftHandIndex2
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_LeftShoulder/MrCoal:Character1_Ctrl_LeftArm/MrCoal:Character1_Ctrl_LeftForeArm/MrCoal:Character1_Ctrl_LeftHand/MrCoal:Character1_Ctrl_LeftHandRing1
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_LeftShoulder/MrCoal:Character1_Ctrl_LeftArm/MrCoal:Character1_Ctrl_LeftForeArm/MrCoal:Character1_Ctrl_LeftHand/MrCoal:Character1_Ctrl_LeftHandRing1/MrCoal:Character1_Ctrl_LeftHandRing2
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_LeftShoulder/MrCoal:Character1_Ctrl_LeftArm/MrCoal:Character1_Ctrl_LeftForeArm/MrCoal:Character1_Ctrl_LeftHand/MrCoal:Character1_Ctrl_LeftHandThumb1
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_LeftShoulder/MrCoal:Character1_Ctrl_LeftArm/MrCoal:Character1_Ctrl_LeftForeArm/MrCoal:Character1_Ctrl_LeftHand/MrCoal:Character1_Ctrl_LeftHandThumb1/MrCoal:Character1_Ctrl_LeftHandThumb2
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_Neck
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_Neck/MrCoal:Character1_Ctrl_Neck1
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_Neck/MrCoal:Character1_Ctrl_Neck1/MrCoal:Character1_Ctrl_Neck2
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_Neck/MrCoal:Character1_Ctrl_Neck1/MrCoal:Character1_Ctrl_Neck2/MrCoal:Character1_Ctrl_Head
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_RightShoulder
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_RightShoulder/MrCoal:Character1_Ctrl_RightArm
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_RightShoulder/MrCoal:Character1_Ctrl_RightArm/MrCoal:Character1_Ctrl_RightForeArm
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_RightShoulder/MrCoal:Character1_Ctrl_RightArm/MrCoal:Character1_Ctrl_RightForeArm/MrCoal:Character1_Ctrl_RightHand
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_RightShoulder/MrCoal:Character1_Ctrl_RightArm/MrCoal:Character1_Ctrl_RightForeArm/MrCoal:Character1_Ctrl_RightHand/MrCoal:Character1_Ctrl_RightHandIndex1
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_RightShoulder/MrCoal:Character1_Ctrl_RightArm/MrCoal:Character1_Ctrl_RightForeArm/MrCoal:Character1_Ctrl_RightHand/MrCoal:Character1_Ctrl_RightHandIndex1/MrCoal:Character1_Ctrl_RightHandIndex2
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_RightShoulder/MrCoal:Character1_Ctrl_RightArm/MrCoal:Character1_Ctrl_RightForeArm/MrCoal:Character1_Ctrl_RightHand/MrCoal:Character1_Ctrl_RightHandRing1
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_RightShoulder/MrCoal:Character1_Ctrl_RightArm/MrCoal:Character1_Ctrl_RightForeArm/MrCoal:Character1_Ctrl_RightHand/MrCoal:Character1_Ctrl_RightHandRing1/MrCoal:Character1_Ctrl_RightHandRing2
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_RightShoulder/MrCoal:Character1_Ctrl_RightArm/MrCoal:Character1_Ctrl_RightForeArm/MrCoal:Character1_Ctrl_RightHand/MrCoal:Character1_Ctrl_RightHandThumb1
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_Hips/MrCoal:Character1_Ctrl_Spine/MrCoal:Character1_Ctrl_Spine1/MrCoal:Character1_Ctrl_Spine2/MrCoal:Character1_Ctrl_RightShoulder/MrCoal:Character1_Ctrl_RightArm/MrCoal:Character1_Ctrl_RightForeArm/MrCoal:Character1_Ctrl_RightHand/MrCoal:Character1_Ctrl_RightHandThumb1/MrCoal:Character1_Ctrl_RightHandThumb2
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_HipsEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_LeftAnkleEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_LeftElbowEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_LeftFootEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_LeftHandIndexEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_LeftHandRingEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_LeftHandThumbEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_LeftHipEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_LeftKneeEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_LeftShoulderEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_LeftWristEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_RightAnkleEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_RightElbowEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_RightFootEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_RightHandIndexEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_RightHandRingEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_RightHandThumbEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_RightHipEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_RightKneeEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_RightShoulderEffector
+        weight: 1
+      - path: MrCoal:Character1_Ctrl_Reference/MrCoal:Character1_Ctrl_RightWristEffector
+        weight: 1
+      - path: MrCoal:Character1_Reference
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_LeftUpLeg
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_LeftUpLeg/MrCoal:Character1_LeftLeg
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_LeftUpLeg/MrCoal:Character1_LeftLeg/MrCoal:Character1_LeftFoot
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_LeftUpLeg/MrCoal:Character1_LeftLeg/MrCoal:Character1_LeftFoot/MrCoal:Character1_LeftToeBase
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_RightUpLeg
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_RightUpLeg/MrCoal:Character1_RightLeg
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_RightUpLeg/MrCoal:Character1_RightLeg/MrCoal:Character1_RightFoot
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_RightUpLeg/MrCoal:Character1_RightLeg/MrCoal:Character1_RightFoot/MrCoal:Character1_RightToeBase
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_LeftShoulder
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_LeftShoulder/MrCoal:Character1_LeftArm
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_LeftShoulder/MrCoal:Character1_LeftArm/MrCoal:Character1_LeftForeArm
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_LeftShoulder/MrCoal:Character1_LeftArm/MrCoal:Character1_LeftForeArm/MrCoal:Character1_LeftHand
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_LeftShoulder/MrCoal:Character1_LeftArm/MrCoal:Character1_LeftForeArm/MrCoal:Character1_LeftHand/MrCoal:Character1_LeftHandIndex1
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_LeftShoulder/MrCoal:Character1_LeftArm/MrCoal:Character1_LeftForeArm/MrCoal:Character1_LeftHand/MrCoal:Character1_LeftHandIndex1/MrCoal:Character1_LeftHandIndex2
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_LeftShoulder/MrCoal:Character1_LeftArm/MrCoal:Character1_LeftForeArm/MrCoal:Character1_LeftHand/MrCoal:Character1_LeftHandRing1
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_LeftShoulder/MrCoal:Character1_LeftArm/MrCoal:Character1_LeftForeArm/MrCoal:Character1_LeftHand/MrCoal:Character1_LeftHandRing1/MrCoal:Character1_LeftHandRing2
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_LeftShoulder/MrCoal:Character1_LeftArm/MrCoal:Character1_LeftForeArm/MrCoal:Character1_LeftHand/MrCoal:Character1_LeftHandThumb1
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_LeftShoulder/MrCoal:Character1_LeftArm/MrCoal:Character1_LeftForeArm/MrCoal:Character1_LeftHand/MrCoal:Character1_LeftHandThumb1/MrCoal:Character1_LeftHandThumb2
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_Neck
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_Neck/MrCoal:Character1_Neck1
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_Neck/MrCoal:Character1_Neck1/MrCoal:Character1_Neck2
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_Neck/MrCoal:Character1_Neck1/MrCoal:Character1_Neck2/MrCoal:Character1_Head
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_RightShoulder
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_RightShoulder/MrCoal:Character1_RightArm
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_RightShoulder/MrCoal:Character1_RightArm/MrCoal:Character1_RightForeArm
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_RightShoulder/MrCoal:Character1_RightArm/MrCoal:Character1_RightForeArm/MrCoal:Character1_RightHand
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_RightShoulder/MrCoal:Character1_RightArm/MrCoal:Character1_RightForeArm/MrCoal:Character1_RightHand/MrCoal:Character1_RightHandIndex1
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_RightShoulder/MrCoal:Character1_RightArm/MrCoal:Character1_RightForeArm/MrCoal:Character1_RightHand/MrCoal:Character1_RightHandIndex1/MrCoal:Character1_RightHandIndex2
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_RightShoulder/MrCoal:Character1_RightArm/MrCoal:Character1_RightForeArm/MrCoal:Character1_RightHand/MrCoal:Character1_RightHandRing1
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_RightShoulder/MrCoal:Character1_RightArm/MrCoal:Character1_RightForeArm/MrCoal:Character1_RightHand/MrCoal:Character1_RightHandRing1/MrCoal:Character1_RightHandRing2
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_RightShoulder/MrCoal:Character1_RightArm/MrCoal:Character1_RightForeArm/MrCoal:Character1_RightHand/MrCoal:Character1_RightHandThumb1
+        weight: 1
+      - path: MrCoal:Character1_Reference/MrCoal:Character1_Hips/MrCoal:Character1_Spine/MrCoal:Character1_Spine1/MrCoal:Character1_Spine2/MrCoal:Character1_RightShoulder/MrCoal:Character1_RightArm/MrCoal:Character1_RightForeArm/MrCoal:Character1_RightHand/MrCoal:Character1_RightHandThumb1/MrCoal:Character1_RightHandThumb2
+        weight: 1
+      - path: MrCoal:mrCOAL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: COAL_RunBONUS
+      takeName: Take 001
+      firstFrame: 480
+      lastFrame: 515
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
