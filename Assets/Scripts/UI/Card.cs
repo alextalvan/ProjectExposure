@@ -66,7 +66,7 @@ public abstract class Card : GameManagerSearcher
 		if(OnDestruction!=null)
 			OnDestruction();
 
-		UIConsole.LogWithRandomColor("destroyed");
+		//UIConsole.LogWithRandomColor("destroyed");
 
 		//transform.wo
 	}

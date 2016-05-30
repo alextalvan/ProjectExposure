@@ -104,21 +104,21 @@ public class NeutralCardSpawner : GameManagerSearcher
 			{
 				currentCard.GetComponent<CardGlide>().SetTarget(holderGroup.ActionCardSpawnPoint);
 				holderGroup.RegisterCard(cardComp,holderGroup.ActionCardSpawnPoint);
-				currentCard.transform.parent = holderGroup.ActionCardSpawnPoint;
+				currentCard.transform.SetParent(holderGroup.ActionCardSpawnPoint);
 			}
 
 			if(greenBuildingCardTypes.Contains(cardComp.CardType))
 			{
 				currentCard.GetComponent<CardGlide>().SetTarget(holderGroup.GreenBuildingCardSpawnPoint);
 				holderGroup.RegisterCard(cardComp,holderGroup.GreenBuildingCardSpawnPoint);
-				currentCard.transform.parent = holderGroup.GreenBuildingCardSpawnPoint;
+				currentCard.transform.SetParent(holderGroup.GreenBuildingCardSpawnPoint);
 			}
 
 			if(fossilBuildingactionCardTypes.Contains(cardComp.CardType))
 			{
 				currentCard.GetComponent<CardGlide>().SetTarget(holderGroup.FossilBuildingCardSpawnPoint);
 				holderGroup.RegisterCard(cardComp,holderGroup.FossilBuildingCardSpawnPoint);
-				currentCard.transform.parent = holderGroup.FossilBuildingCardSpawnPoint;
+				currentCard.transform.SetParent(holderGroup.FossilBuildingCardSpawnPoint);
 			}
 
 
@@ -138,21 +138,21 @@ public class NeutralCardSpawner : GameManagerSearcher
 			{
 				currentCard.GetComponent<CardGlide>().SetTarget(holderGroup.ActionCardSpawnPoint);
 				holderGroup.RegisterCard(cardComp,holderGroup.ActionCardSpawnPoint);
-				currentCard.transform.parent = holderGroup.ActionCardSpawnPoint;
+				currentCard.transform.SetParent(holderGroup.ActionCardSpawnPoint);
 			}
 
 			if(greenBuildingCardTypes.Contains(cardComp.CardType))
 			{
 				currentCard.GetComponent<CardGlide>().SetTarget(holderGroup.GreenBuildingCardSpawnPoint);
 				holderGroup.RegisterCard(cardComp,holderGroup.GreenBuildingCardSpawnPoint);
-				currentCard.transform.parent = holderGroup.GreenBuildingCardSpawnPoint;
+				currentCard.transform.SetParent(holderGroup.GreenBuildingCardSpawnPoint);
 			}
 
 			if(fossilBuildingactionCardTypes.Contains(cardComp.CardType))
 			{
 				currentCard.GetComponent<CardGlide>().SetTarget(holderGroup.FossilBuildingCardSpawnPoint);
 				holderGroup.RegisterCard(cardComp,holderGroup.FossilBuildingCardSpawnPoint);
-				currentCard.transform.parent = holderGroup.FossilBuildingCardSpawnPoint;
+				currentCard.transform.SetParent(holderGroup.FossilBuildingCardSpawnPoint);
 			}
 
 			player2BlockTime = blockDuration;
