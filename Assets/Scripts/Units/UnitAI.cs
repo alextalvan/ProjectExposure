@@ -154,10 +154,7 @@ public class UnitAI : GameManagerSearcher
 		Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position,worldUp);
 		transform.rotation = Quaternion.Slerp(transform.rotation,targetRot,0.05f);
 
-
-
-
-			if (distanceToNextWP <= waypointSwitchThreshold) {
+		if (distanceToNextWP <= waypointSwitchThreshold) {
 			currentWP++;
 		}
     }
@@ -278,7 +275,7 @@ public class UnitAI : GameManagerSearcher
             buffList.AddBuff(speedUpBuff);
             speedUpBuff.currentDuration = 0.0f;
             speedUp = true;
-
+            transform.GetComponent<ParticleSystem>().Play();
             speedUpBuff.OnExpiration += () => { speedUp = false; };
         }
 	}
