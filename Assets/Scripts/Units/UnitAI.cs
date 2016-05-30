@@ -198,7 +198,6 @@ public class UnitAI : GameManagerSearcher
 
     private void Die()
     {
-        Debug.Log("A");
         deathTimer -= Time.deltaTime;
         if (deathTimer <= 0f)
         {
