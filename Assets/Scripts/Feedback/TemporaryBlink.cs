@@ -46,6 +46,5 @@ public class TemporaryBlink : MonoBehaviour
 			objectIsVisible = !objectIsVisible;
 			_targetObject.SetActive(objectIsVisible);
 		}
-
 	}
 }

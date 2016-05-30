@@ -5,6 +5,11 @@ using System.Collections.Generic;
 public class ZapCard : ActionCard 
 {
 
+    [SerializeField]
+    GameObject thunderPrefab;
+    [SerializeField]
+    float unitDestructionDelay = 1f;
+
 	protected override bool CalculatePlayCondition ()
 	{
 		if(!enabled)
@@ -33,7 +38,9 @@ public class ZapCard : ActionCard
 
 		foreach(Transform unit in randomGroup)
 		{
-			Destroy(unit.gameObject);
+            Instantiate(thunderPrefab, unit.position + Vector3.up * 2f - Vector3.forward * 15f, Quaternion.identity);
+            Destroy(unit.gameObject, unitDestructionDelay);
+            //Destroy(unit.gameObject);
 		}
 
 		Destroy(this.gameObject);

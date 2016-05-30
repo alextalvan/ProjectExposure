@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class SmogCard : ActionCard 
 {
+    [SerializeField]
+    GameObject smogPrefab;
+
 	[SerializeField]
 	float effectDuration = 10.0f;
 
@@ -41,8 +44,10 @@ public class SmogCard : ActionCard
 		EnergyBuilding building = candidateBuildings[Random.Range(0,candidateBuildings.Count)];
 		building.buffList.AddBuff(b);
 		building.GetComponent<UnitSpawner>().enabled = false;
+        building.smog = (GameObject)Instantiate(smogPrefab, building.transform.position + Vector3.up * 2f - Vector3.forward * 15f, Quaternion.identity);
+        building.smog.transform.parent = building.transform;
 
-		building.GetComponent<TemporaryBlink>().Begin(effectDuration);
+        //building.GetComponent<TemporaryBlink>().Begin(effectDuration);
 
 		Destroy(this.gameObject);
 	}
