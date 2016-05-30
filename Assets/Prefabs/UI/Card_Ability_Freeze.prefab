@@ -13,6 +13,7 @@ GameObject:
   - 61: {fileID: 6180630}
   - 50: {fileID: 5076066}
   - 114: {fileID: 11401974}
+  - 114: {fileID: 11448444}
   m_Layer: 5
   m_Name: Card_Ability_Freeze
   m_TagString: Untagged
@@ -49,7 +50,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 20
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -60,7 +61,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123974}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -112,6 +113,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11448444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d3da3b83e300b41bafd803621f31cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interpolationSpeed: 0.2
+  snapThreshold: 2
+  toggleList:
+  - {fileID: 6180630}
+  - {fileID: 11401974}
+  toggleRigidBody2D: 1
 --- !u!114 &11499304
 MonoBehaviour:
   m_ObjectHideFlags: 1
