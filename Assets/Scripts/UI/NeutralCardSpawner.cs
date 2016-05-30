@@ -42,14 +42,31 @@ public class NeutralCardSpawner : GameManagerSearcher
 	[SerializeField]
 	Image player2ButtonImage;
 
+	[SerializeField]
+	float changeTolerance = 0.1f;
+	float toleranceAccumulator;
+
+	[SerializeField]
+	IconTimer newCardTimer;
+
+	[SerializeField]
+	IconTimer player1BlockTimeFeedback;
+
+	[SerializeField]
+	IconTimer player2BlockTimeFeedback;
+
 	void Start()
 	{
 		spawnPossibilities = new List<GameObject>(cardList);
+		player1BlockTimeFeedback.Reset(player1BlockTime);
+		player2BlockTimeFeedback.Reset(player2BlockTime);
 	}
 
 	void Update()
 	{
 		switchTimerAccumulator += Time.deltaTime;
+		toleranceAccumulator += Time.deltaTime;
+
 		if(switchTimerAccumulator >= switchCooldown)
 		{
 			if(currentCard != null)
@@ -62,6 +79,9 @@ public class NeutralCardSpawner : GameManagerSearcher
 
 
 			switchTimerAccumulator = 0;
+			toleranceAccumulator = 0;
+
+			newCardTimer.Reset(switchCooldown);
 			//currentCard = (GameObject)Instantiate
 		}
 
@@ -87,7 +107,7 @@ public class NeutralCardSpawner : GameManagerSearcher
 	public void BuyCardAttempt(PLAYERS player, CardHolderGroup holderGroup)
 	{
 
-		if(currentCard == null)
+		if(currentCard == null || toleranceAccumulator <= changeTolerance)
 			return;
 
 		Card cardComp = currentCard.GetComponent<Card>();
@@ -123,6 +143,7 @@ public class NeutralCardSpawner : GameManagerSearcher
 
 
 			player1BlockTime = blockDuration;
+			player1BlockTimeFeedback.Reset(blockDuration);
 
 			currentCard = null;
 			return;
@@ -156,6 +177,7 @@ public class NeutralCardSpawner : GameManagerSearcher
 			}
 
 			player2BlockTime = blockDuration;
+			player2BlockTimeFeedback.Reset(blockDuration);
 
 			currentCard = null;
 			return;
