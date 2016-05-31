@@ -39,9 +39,10 @@ public class ZapCard : ActionCard
 		foreach(Transform unit in randomGroup)
 		{
             Instantiate(thunderPrefab, unit.position + Vector3.up * 2f - Vector3.forward * 15f, Quaternion.identity);
-            Destroy(unit.gameObject, unitDestructionDelay);
+            //Destroy(unit.gameObject, unitDestructionDelay);
+            unit.GetComponent<UnitAI>().CustomDestroy();
             //Destroy(unit.gameObject);
-		}
+        }
 
 		Destroy(this.gameObject);
 	}

@@ -216,6 +216,13 @@ public class UnitAI : GameManagerSearcher
         }
     }
 
+    public void CustomDestroy()
+    {
+        transform.GetComponent<Rigidbody>().isKinematic = true;
+        transform.GetComponent<Collider>().isTrigger = true;
+        SetAiState(AiState.Die);
+    }
+
     void OnDestroy()
 	{
 		if(cityTile)
