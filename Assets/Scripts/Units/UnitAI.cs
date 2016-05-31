@@ -33,6 +33,10 @@ public class UnitAI : GameManagerSearcher
     [SerializeField]
     float speedBuffDuration = 2f;
 
+    [SerializeField]
+    GameObject model;
+    private Material mat;
+
     private Animator anim;
 
 	public BuffList buffList = new BuffList();
@@ -66,7 +70,8 @@ public class UnitAI : GameManagerSearcher
 		cheerTimer = cheerAnimTime;
         deathTimer = deathAnimTime;
         anim = transform.GetChild(0).GetComponent<Animator>();
-	}
+        mat = model.GetComponent<Renderer>().material;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -190,7 +195,8 @@ public class UnitAI : GameManagerSearcher
 
     private void Cheer() {
 		cheerTimer -= Time.deltaTime;
-		if (cheerTimer <= 0f) {
+        mat.SetFloat("_Visibility", Mathf.Clamp01(cheerTimer / cheerAnimTime));
+        if (cheerTimer <= 0f) {
 			GenerateScore ();
 			Destroy(this.gameObject);
 		}
@@ -199,6 +205,7 @@ public class UnitAI : GameManagerSearcher
     private void Die()
     {
         deathTimer -= Time.deltaTime;
+        mat.SetFloat("_Visibility", Mathf.Clamp01(deathTimer/deathAnimTime));
         if (deathTimer <= 0f)
         {
             Destroy(this.gameObject);

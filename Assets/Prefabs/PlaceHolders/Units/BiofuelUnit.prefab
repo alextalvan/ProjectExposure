@@ -1826,7 +1826,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 440668}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &435900
 Transform:
   m_ObjectHideFlags: 1
@@ -1902,8 +1902,8 @@ Transform:
   m_Children:
   - {fileID: 419886}
   - {fileID: 447174}
-  - {fileID: 435556}
   - {fileID: 453564}
+  - {fileID: 435556}
   m_Father: {fileID: 479420}
   m_RootOrder: 0
 --- !u!4 &440938
@@ -2064,7 +2064,7 @@ Transform:
   - {fileID: 444194}
   - {fileID: 415592}
   m_Father: {fileID: 440668}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &456904
 Transform:
   m_ObjectHideFlags: 1
@@ -2614,10 +2614,11 @@ MonoBehaviour:
   fightAnimTime: 2
   wanderAnimTime: 3
   cheerAnimTime: 1
-  deathAnimTime: 1
+  deathAnimTime: 3
   scoreReward: 30
   speedBuffMod: 2
   speedBuffDuration: 60
+  model: {fileID: 149548}
   buffList:
     buffs: []
 --- !u!114 &11487686
