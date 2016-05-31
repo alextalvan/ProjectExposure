@@ -38,27 +38,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Base_Color
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Normal_Map
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Noise
-        second:
-          m_Texture: {fileID: 2800000, guid: fd007d02d6b063a419e56fe3939af343, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -101,6 +80,27 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Base_Color
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal_Map
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Noise
+        second:
+          m_Texture: {fileID: 2800000, guid: fd007d02d6b063a419e56fe3939af343, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Metallic_map
         second:
           m_Texture: {fileID: 0}
@@ -135,40 +135,16 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
-          name: _Visibility
-        second: 1
-      data:
-        first:
-          name: _Normal_Map_Intensity
-        second: 0
-      data:
-        first:
-          name: _Glossiness
-        second: 0.5
-      data:
-        first:
-          name: _Noise_Brightness
-        second: 0
-      data:
-        first:
-          name: _Edge_width
-        second: 52.45775
-      data:
-        first:
-          name: _Edge_Glow_Power
-        second: 3
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
         first:
           name: _ZWrite
         second: 1
+      data:
+        first:
+          name: _Glossiness
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -189,6 +165,30 @@ Material:
         first:
           name: _Mode
         second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
+          name: _Visibility
+        second: 1
+      data:
+        first:
+          name: _Normal_Map_Intensity
+        second: 0
+      data:
+        first:
+          name: _Noise_Brightness
+        second: 0
+      data:
+        first:
+          name: _Edge_width
+        second: 52.45775
+      data:
+        first:
+          name: _Edge_Glow_Power
+        second: 3
       data:
         first:
           name: _Visibility_multiplier
