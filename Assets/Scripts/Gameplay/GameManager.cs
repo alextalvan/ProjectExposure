@@ -203,8 +203,9 @@ public class GameManager : MonoBehaviour
 	public void SpawnUICoin(PLAYERS targetOwner, Vector3 worldpos, int moneyValue)
 	{
 		GameObject coin = (GameObject)Instantiate(UI_moneyPrefab,Vector3.zero,Quaternion.identity);
-		coin.transform.parent = UI_root;
-		coin.transform.position = Camera.main.WorldToScreenPoint(worldpos);
+		coin.transform.SetParent(UI_root);
+		coin.transform.position = Camera.main.WorldToViewportPoint(worldpos);
+		coin.transform.localScale = Vector3.one;
 		CardGlide glideComp = coin.GetComponent<CardGlide>();
 
 

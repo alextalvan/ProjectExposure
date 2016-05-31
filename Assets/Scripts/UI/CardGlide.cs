@@ -50,7 +50,7 @@ public class CardGlide : MonoBehaviour {
 			{
 				if(destroyOnArrival)
 				{
-					Destroy(transform.root.gameObject);
+					Destroy(transform.gameObject);
 					return;
 				}
 

@@ -13,8 +13,6 @@ public class SmogCard : ActionCard
 	[SerializeField]
 	int tapCountToUndo = 10;
 
-	[SerializeField]
-	Color materialTint = Color.red;
 
 	protected override bool CalculatePlayCondition ()
 	{

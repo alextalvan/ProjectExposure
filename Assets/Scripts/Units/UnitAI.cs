@@ -28,6 +28,9 @@ public class UnitAI : GameManagerSearcher
 
     [SerializeField]
 	int scoreReward = 10;
+	[SerializeField]
+	int moneyReward = 1;
+
     [SerializeField]
     float speedBuffMod = 2f;
     [SerializeField]
@@ -198,6 +201,7 @@ public class UnitAI : GameManagerSearcher
         mat.SetFloat("_Visibility", Mathf.Clamp01(cheerTimer / cheerAnimTime));
         if (cheerTimer <= 0f) {
 			GenerateScore ();
+			gameManager.SpawnUICoin(this.owner,this.transform.position,moneyReward);
 			Destroy(this.gameObject);
 		}
     }

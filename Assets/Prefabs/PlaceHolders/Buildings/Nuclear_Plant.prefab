@@ -328,7 +328,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131306}
-  m_Mesh: {fileID: 4300000, guid: 42337c0265f4f94419c3d1ffcad45ccb, type: 3}
+  m_Mesh: {fileID: 4300000, guid: aa0289e6976aa0247af2e331a5d25894, type: 3}
 --- !u!33 &3387700
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -408,6 +408,7 @@ MonoBehaviour:
   lifeTimeLeft: 0
   blockTime: 1e+14
   pollutionPrefab: {fileID: 199198, guid: 8395e58cb37b5dd4782e5274b313224c, type: 2}
+  smog: {fileID: 0}
   buffList:
     buffs: []
 --- !u!114 &11473468
