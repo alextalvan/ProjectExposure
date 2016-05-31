@@ -8584,9 +8584,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTimer: 300
   gameTimerText: {fileID: 222098380}
-  MONEY_UPDATE_RATE: 3
-  _player1money: 4
-  _player2money: 4
+  MONEY_UPDATE_RATE: 900000
+  _player1money: 10
+  _player2money: 10
   _player1score: 0
   _player2score: 0
   moneyRate: 1
@@ -8633,6 +8633,8 @@ MonoBehaviour:
       - {fileID: 1921689820}
       - {fileID: 1448200799}
       - {fileID: 1590247328}
+  UI_root: {fileID: 1483353235}
+  UI_moneyPrefab: {fileID: 189870, guid: 754343a333242fe40a3b245f79d28a8b, type: 2}
   raycastedOn2DObject: 0
 --- !u!4 &1638074582
 Transform:

@@ -39,7 +39,13 @@ public class CityTileTrigger : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		AddUnit (col.transform, col.transform.GetComponent<UnitAI> ().Owner);
-		col.GetComponent<UnitAI> ().CityTile = this;
+
+		UnitAI unitComp = col.gameObject.GetComponent<UnitAI>();
+
+		if(unitComp)
+		{
+			AddUnit (col.transform, unitComp.Owner);
+			unitComp.CityTile = this;
+		}
 	}
 }

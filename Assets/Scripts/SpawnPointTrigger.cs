@@ -17,9 +17,15 @@ public class SpawnPointTrigger : MonoBehaviour {
 
 	}
 
-	void OnTriggerEnter(Collider col) {
-        colList.Add(col);
-        col.transform.GetComponent<UnitAI>().OnDestruction += () => { Remove(col); };
+	void OnTriggerEnter(Collider col) 
+	{
+		UnitAI aiComp =  col.transform.GetComponent<UnitAI>();
+
+		if(aiComp)
+		{
+        	colList.Add(col);
+			aiComp.OnDestruction += () => { Remove(col); };
+		}
     }
 
     void Remove(Collider col)
