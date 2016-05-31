@@ -98,6 +98,7 @@ GameObject:
   - 114: {fileID: 11464352}
   - 114: {fileID: 11454152}
   - 114: {fileID: 11445498}
+  - 114: {fileID: 11473468}
   m_Layer: 0
   m_Name: Nuclear_Plant
   m_TagString: Untagged
@@ -409,6 +410,19 @@ MonoBehaviour:
   pollutionPrefab: {fileID: 199198, guid: 8395e58cb37b5dd4782e5274b313224c, type: 2}
   buffList:
     buffs: []
+--- !u!114 &11473468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cd63af8e6152a43b2d80893045602f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveTime: 3
+  _renderer: {fileID: 2368036}
 --- !u!114 &11481020
 MonoBehaviour:
   m_ObjectHideFlags: 1
