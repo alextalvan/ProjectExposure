@@ -48,7 +48,7 @@ public class CityScript : MonoBehaviour {
 		InitializeGrid ();
 		//RandomizeGrid ();
 		//sort list of points so it goes from closest points to farest
-		grid.Sort((x, y) => Vector3.Distance(x, transform.localPosition).CompareTo(Vector3.Distance(y, transform.localPosition)));
+		grid.Sort((x, y) => Vector3.Distance(transform.localPosition + x, transform.localPosition).CompareTo(Vector3.Distance(transform.localPosition + y, transform.localPosition)));
         Debug.Log(grid.Count);
     }
 
@@ -72,7 +72,7 @@ public class CityScript : MonoBehaviour {
 				//Calculate new point and add random offset to it
 				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 
                     0, distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset) + lineOffset) + startPnt;
-				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius)
+				if (Vector3.Distance (transform.localPosition + newPnt, transform.localPosition) < cityBound.radius)
 					grid.Add (newPnt); //Add to points list
 			}
 		}
@@ -88,7 +88,8 @@ public class CityScript : MonoBehaviour {
             for (int z = 0; z < numz; ++z) {
 				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 
                     0, distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset) + lineOffset) + startPnt;
-				if (Vector3.Distance (newPnt, transform.position) < cityBound.radius)
+                Debug.Log(Vector3.Distance(newPnt, transform.localPosition));
+				if (Vector3.Distance (transform.localPosition + newPnt, transform.localPosition) < cityBound.radius)
 					grid.Add (newPnt);
 			}
 		}
@@ -120,12 +121,12 @@ public class CityScript : MonoBehaviour {
 	void SpawnNewBuilding() {
 		if (grid.Count > 0 && spawnTimer <= 0) { //If there are free spots for buildings to spawn and no cooldown
 			Vector3 pnt = grid[0]; //Get first point from the list
-			float dist = Vector3.Distance (pnt, transform.localPosition); //Calculate distance from that point to center of city
+			float dist = Vector3.Distance (transform.localPosition + pnt, transform.localPosition); //Calculate distance from that point to center of city
 			float rnd = Random.Range(0, cityBound.radius); //Randomize value in range from 0 to city bound (radius)
 			if (rnd > dist) { //If random is in range of distance between center and point
                 GameObject newBuilding = Instantiate (buildingPrefabs [0], pnt, Quaternion.identity) as GameObject; //Instantiate new building
 				newBuilding.transform.SetParent(buildings, false); //Insert as a child into buildings
-                lastBuildingDist = Vector3.Distance (newBuilding.transform.localPosition, transform.localPosition); //Store distance from that building to city center
+                lastBuildingDist = Vector3.Distance (transform.localPosition + newBuilding.transform.localPosition, transform.localPosition); //Store distance from that building to city center
 				grid.RemoveAt (0); //Remove used point from list
 			} else {
 				if (grid.Count > 1) {
@@ -148,9 +149,9 @@ public class CityScript : MonoBehaviour {
 				int buildingType = building.GetComponent<CityBuildingScript> ().Type; //Get current building type
 				if (buildingType != maxBuildingType) { //If can be upgraded (not max type (level))
 					int rnd = Random.Range (0, rndUpgradeSkipRate); //Randomize if will be upgraded now or not
-					if (rnd != 0)
-						return;
-					if (Vector3.Distance (building.localPosition, transform.localPosition) < lastBuildingDist / ((buildingType + 2)) * upgradeRange) //If meets the condition (weird formula out of ass :))
+					//if (rnd != 0)
+					//	return;
+					if (Vector3.Distance (transform.localPosition + building.localPosition, transform.localPosition) < lastBuildingDist / ((buildingType + 2)) * upgradeRange) //If meets the condition (weird formula out of ass :))
 						upgradedBuildings.Add (ReplaceBuilding (building)); //Upgrade
 				}
 			}

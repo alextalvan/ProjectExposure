@@ -18,6 +18,7 @@ public class EnergyBuilding : GameManagerSearcher
 
 	[SerializeField]
 	GameObject pollutionPrefab = null;
+    public GameObject smog = null;
 
 	public float MaxLifeTime { get { return maxlifeTime; } }
 	public float CurrentLifeTimeLeft { get { return lifeTimeLeft; } }
@@ -40,7 +41,8 @@ public class EnergyBuilding : GameManagerSearcher
 	{
 		if(OnDestruction != null)
 			OnDestruction();
-	}
+        Destroy(smog);
+    }
 
 	void Update()
 	{
@@ -75,7 +77,8 @@ public class EnergyBuilding : GameManagerSearcher
 			if(!isNowDisabled)
 			{
 				GetComponent<UnitSpawner>().enabled = true;
-				GetComponent<TemporaryBlink>().Stop();
+                //GetComponent<TemporaryBlink>().Stop();
+                Destroy(smog);
 			}
 		}
 	}

@@ -76,6 +76,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 478574}
+  - 114: {fileID: 11491656}
   m_Layer: 0
   m_Name: ThunderstormPRFB
   m_TagString: Untagged
@@ -114,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.8, y: 24.1, z: -5.5}
+  m_LocalPosition: {x: 63.88192, y: -14.7, z: 33.725822}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 491900}
@@ -147,6 +148,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 478574}
   m_RootOrder: 0
+--- !u!114 &11491656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07356f88e3bb36641a7be4aa1bd2eceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 2
 --- !u!198 &19845316
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -192,7 +205,7 @@ ParticleSystem:
     minMaxState: 0
   speed: 1
   randomSeed: 0
-  looping: 1
+  looping: 0
   prewarm: 1
   playOnAwake: 1
   moveWithTransform: 1
@@ -381,7 +394,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.75
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -577,8 +590,8 @@ ParticleSystem:
           inSlope: -0.45712262
           outSlope: -0.45712262
           tangentMode: 0
-        - time: 1
-          value: 0.4978355
+        - time: 0.98832685
+          value: 0.24107876
           inSlope: -1.1238911
           outSlope: -1.1238911
           tangentMode: 0
@@ -825,7 +838,7 @@ ParticleSystem:
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -843,7 +856,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 1
-    tilesX: 3
+    tilesX: 4
     tilesY: 2
     animationType: 0
     rowIndex: 0
@@ -1646,8 +1659,8 @@ ParticleSystem:
     minMaxState: 0
   speed: 1
   randomSeed: 0
-  looping: 1
-  prewarm: 0
+  looping: 0
+  prewarm: 1
   playOnAwake: 1
   moveWithTransform: 1
   scalingMode: 1
@@ -3145,7 +3158,7 @@ ParticleSystem:
     minMaxState: 0
   speed: 1
   randomSeed: 0
-  looping: 1
+  looping: 0
   prewarm: 1
   playOnAwake: 1
   moveWithTransform: 1
@@ -4629,8 +4642,8 @@ ParticleSystem:
     minMaxState: 0
   speed: 1
   randomSeed: 0
-  looping: 1
-  prewarm: 0
+  looping: 0
+  prewarm: 1
   playOnAwake: 1
   moveWithTransform: 1
   scalingMode: 1
