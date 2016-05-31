@@ -10,86 +10,16 @@ Material:
   m_Shader: {fileID: 4800000, guid: e68f798c29a56af4e8a35346cfba79cc, type: 3}
   m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
       data:
         first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: c05ef7411e57d4c9d962d4844bbdbe7c, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _BumpMap
-        second:
-          m_Texture: {fileID: 2800000, guid: 5daec1f9f22af43cd96da8059e5823ea, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DetailNormalMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _OcclusionMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _EmissionMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DetailMask
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DetailAlbedoMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MetallicGlossMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Noise
-        second:
-          m_Texture: {fileID: 2800000, guid: 2273a4aba54d947a891b0b7570b53ce3, type: 3}
-          m_Scale: {x: 0.1, y: 0.1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Base_Color
         second:
-          m_Texture: {fileID: 2800000, guid: 5fac9b270f6dfc64680c224040872d8c, type: 3}
+          m_Texture: {fileID: 2800000, guid: c05ef7411e57d4c9d962d4844bbdbe7c, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -99,50 +29,25 @@ Material:
           m_Texture: {fileID: 2800000, guid: 2a6494ba07ee18448963d0cf2761ec7a, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Noise
+        second:
+          m_Texture: {fileID: 2800000, guid: fd007d02d6b063a419e56fe3939af343, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
-      data:
-        first:
-          name: _SrcBlend
-        second: 1
-      data:
-        first:
-          name: _DstBlend
-        second: 0
       data:
         first:
           name: _Cutoff
         second: 0.5
       data:
         first:
-          name: _Parallax
-        second: 0.02
-      data:
-        first:
-          name: _ZWrite
+          name: _Visibility
         second: 1
       data:
         first:
-          name: _Glossiness
-        second: 0.5
-      data:
-        first:
-          name: _BumpScale
-        second: 1
-      data:
-        first:
-          name: _OcclusionStrength
-        second: 1
-      data:
-        first:
-          name: _DetailNormalMapScale
-        second: 1
-      data:
-        first:
-          name: _UVSec
-        second: 0
-      data:
-        first:
-          name: _Mode
+          name: _Normal_Map_Intensity
         second: 0
       data:
         first:
@@ -150,23 +55,7 @@ Material:
         second: 0
       data:
         first:
-          name: _Spec_Glos
-        second: 4.6
-      data:
-        first:
-          name: _Spec_Intensity
-        second: 3.6
-      data:
-        first:
-          name: _Visibility
-        second: 2
-      data:
-        first:
-          name: _Edge_width
-        second: 68
-      data:
-        first:
-          name: _Normal_Map_Intensity
+          name: _Glossiness
         second: 0
       data:
         first:
@@ -174,17 +63,29 @@ Material:
         second: 0
       data:
         first:
+          name: _Edge_width
+        second: 52.45775
+      data:
+        first:
           name: _Edge_Glow_Power
         second: 3
+      data:
+        first:
+          name: _Edge_Power
+        second: 5.461538
+      data:
+        first:
+          name: _Visibility_multiplier
+        second: 2.880344
+      data:
+        first:
+          name: _Visibility_floor
+        second: 0.5
+      data:
+        first:
+          name: _Visibility_power
+        second: 0.8471476
     m_Colors:
-      data:
-        first:
-          name: _EmissionColor
-        second: {r: 0, g: 0, b: 0, a: 1}
-      data:
-        first:
-          name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _Tint
