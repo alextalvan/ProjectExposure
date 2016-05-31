@@ -17,8 +17,14 @@ public class CardGlide : MonoBehaviour {
 	[SerializeField]
 	List<Behaviour> toggleList = new List<Behaviour>();
 
-	[SerializeField]
-	bool toggleRigidBody2D = true;
+	//[SerializeField]
+	public bool toggleRigidBody2D = true;
+
+	//[SerializeField]
+	public bool destroyOnArrival = false;
+
+	public delegate void OnDestructionDelegate();
+	public event OnDestructionDelegate OnDestruction = null;
 
 
 	public void SetTarget(Transform target)
@@ -33,6 +39,7 @@ public class CardGlide : MonoBehaviour {
 	}
 
 
+
 	
 	void FixedUpdate()
 	{
@@ -41,6 +48,12 @@ public class CardGlide : MonoBehaviour {
 			transform.position = Vector3.Lerp(transform.position,_target.position, interpolationSpeed);
 			if((transform.position - _target.transform.position).magnitude <= snapThreshold)
 			{
+				if(destroyOnArrival)
+				{
+					Destroy(transform.root.gameObject);
+					return;
+				}
+
 				gliding = false;
 
 				foreach(Behaviour beh in toggleList)
@@ -52,5 +65,11 @@ public class CardGlide : MonoBehaviour {
 				transform.position = _target.transform.position;
 			}
 		}
+	}
+
+	void OnDestroy()
+	{
+		if(OnDestruction!=null)
+			OnDestruction();
 	}
 }

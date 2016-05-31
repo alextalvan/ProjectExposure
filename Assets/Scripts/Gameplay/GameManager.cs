@@ -125,6 +125,12 @@ public class GameManager : MonoBehaviour
 
 	public PlayerGameDataList playerData { get { return _playerData; } }
 
+	[SerializeField]
+	Transform UI_root;
+
+	[SerializeField]
+	GameObject UI_moneyPrefab;
+
 	void Start()
 	{
 		//forcing refresh at start because of inspector filling of starting money
@@ -192,6 +198,26 @@ public class GameManager : MonoBehaviour
 	void LateUpdate()
 	{
 		raycastedOn2DObject = false;
+	}
+
+	public void SpawnUICoin(PLAYERS targetOwner, Vector3 worldpos, int moneyValue)
+	{
+		GameObject coin = (GameObject)Instantiate(UI_moneyPrefab,Vector3.zero,Quaternion.identity);
+		coin.transform.parent = UI_root;
+		coin.transform.position = Camera.main.WorldToScreenPoint(worldpos);
+		CardGlide glideComp = coin.GetComponent<CardGlide>();
+
+
+		if(targetOwner == PLAYERS.PLAYER1)
+		{
+			glideComp.SetTarget(player1moneyText.transform);
+			glideComp.OnDestruction += () => { Player1Money += moneyValue; };
+		}
+		else
+		{
+			glideComp.SetTarget(player2moneyText.transform);
+			glideComp.OnDestruction += () => { Player2Money += moneyValue; };
+		}
 	}
 
 }
