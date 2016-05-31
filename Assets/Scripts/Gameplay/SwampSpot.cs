@@ -11,15 +11,21 @@ public class SwampSpot : MonoBehaviour
 	TemporaryBlink tempBlink;
 
 	[SerializeField]
-	int tapCountForUndo = 10;
+	int tapCountForUndo = 1;
 	int currentTapCount;
+
+    bool used = false;
 
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.GetComponent<UnitAI>())
-			Destroy(other.gameObject);
+        {
+            other.GetComponent<Collider>().isTrigger = true;
+            Destroy(other.gameObject, 3f);
+            used = true;
+        }
+		//Destroy(other.gameObject);
 	}
-		
 
 	public void ToggleOn (float duration = 10.0f)
 	{
@@ -31,21 +37,26 @@ public class SwampSpot : MonoBehaviour
 
 	public void ToggleOff()
 	{
-		uptimer = -1.0f;
+        used = false;
+        uptimer = -1.0f;
 		this.gameObject.SetActive(false);
 	}
 
-
 	void Update()
 	{
-		uptimer -= Time.deltaTime;
+        if (used)
+        {
+            uptimer -= Time.deltaTime;
 
-		if(uptimer <= 0.0f)
-			this.gameObject.SetActive(false);
+            if (uptimer <= 0.0f)
+            {
+                ToggleOff();
+            }
+        }
 	}
 
 	#if TOUCH_INPUT
-	void TouchEnd()
+	void PenetratingTouchEnd()
 	#else
 	void OnMouseUp()
 	#endif

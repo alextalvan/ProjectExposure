@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class SwampCard : ActionCard 
 {
+    [SerializeField]
+    float afterUseDur = 3f;
 
 	protected override bool CalculatePlayCondition ()
 	{
@@ -36,7 +38,9 @@ public class SwampCard : ActionCard
 			if(!s.IsRunning)
 				inactiveSpots.Add(s);
 
-		inactiveSpots[Random.Range(0,inactiveSpots.Count)].ToggleOn();
+        foreach(SwampSpot s in inactiveSpots)
+            s.ToggleOn(afterUseDur);
+		//inactiveSpots[Random.Range(0,inactiveSpots.Count)].ToggleOn();
 		Destroy(this.gameObject);
 
 	}
