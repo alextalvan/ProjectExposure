@@ -164,11 +164,13 @@ public class UnitAI : GameManagerSearcher
 		if (fightTimer <= 0f) {
 			if (this.unitStrength > fightingTargetStrength) {
 				transform.GetComponent<Rigidbody> ().isKinematic = true;
+                transform.GetComponent<Collider>().isTrigger = true;
                 SetAiState(AiState.Cheer);
             }
             else
             {
                 transform.GetComponent<Rigidbody>().isKinematic = true;
+                transform.GetComponent<Collider>().isTrigger = true;
                 SetAiState(AiState.Die);
             }
 		}
@@ -178,6 +180,7 @@ public class UnitAI : GameManagerSearcher
 		wanderTimer -= Time.deltaTime;
 		if (wanderTimer <= 0f) {
 			transform.GetComponent<Rigidbody> ().isKinematic = true;
+            transform.GetComponent<Collider>().isTrigger = true;
             SetAiState(AiState.Cheer);
         } else if (cityTile.HasHostileUnits (owner)) {
 			wanderTimer = wanderAnimTime;
