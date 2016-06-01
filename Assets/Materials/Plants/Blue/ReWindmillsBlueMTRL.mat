@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: DissolveMat
+  m_Name: ReWindmillsBlueMTRL
   m_Shader: {fileID: 4800000, guid: e68f798c29a56af4e8a35346cfba79cc, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2450
   stringTagMap: {}
@@ -19,14 +19,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: c2bfcac6e2072084b884224c77c278c2, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: d396de785e65a034d95d1f278ffa34f3, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -75,28 +75,35 @@ Material:
         first:
           name: _MetallicGlossMap
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 0525584f5d7f61545a0d7fc0b5b6a191, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Base_Color
+        second:
+          m_Texture: {fileID: 2800000, guid: c2bfcac6e2072084b884224c77c278c2, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal_Map
+        second:
+          m_Texture: {fileID: 2800000, guid: d396de785e65a034d95d1f278ffa34f3, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Noise
         second:
-          m_Texture: {fileID: 2800000, guid: 7c622d8d4c916054eb11f6c92320bbf1, type: 3}
-          m_Scale: {x: 1, y: 5}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Base_Color
-        second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: fd007d02d6b063a419e56fe3939af343, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Metallic_map
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 0525584f5d7f61545a0d7fc0b5b6a191, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -108,16 +115,9 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Normal_Map
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Emission_map
         second:
-          m_Texture: {fileID: 2800000, guid: be933de2695ae4440a0958f28008c03f, type: 3}
+          m_Texture: {fileID: 2800000, guid: c2bfcac6e2072084b884224c77c278c2, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -168,47 +168,35 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0
-      data:
-        first:
-          name: _Spec_Intensity
-        second: 1
-      data:
-        first:
-          name: _Spec_Glos
         second: 1
       data:
         first:
           name: _Visibility
-        second: 0
-      data:
-        first:
-          name: _Edge_width
-        second: 3.22
+        second: 1
       data:
         first:
           name: _Normal_Map_Intensity
         second: 0
       data:
         first:
-          name: _Emssion_power
-        second: 2.918127
-      data:
-        first:
           name: _Noise_Brightness
         second: 0
       data:
         first:
+          name: _Edge_width
+        second: 52.45775
+      data:
+        first:
           name: _Edge_Glow_Power
-        second: 3
+        second: 0
       data:
         first:
           name: _Visibility_multiplier
-        second: 10
+        second: 2.880344
       data:
         first:
           name: _Edge_Power
-        second: 2.08
+        second: 5.461538
       data:
         first:
           name: _Visibility_floor
@@ -217,6 +205,10 @@ Material:
         first:
           name: _Visibility_power
         second: 0.8471476
+      data:
+        first:
+          name: _Emssion_power
+        second: 0
     m_Colors:
       data:
         first:
@@ -228,9 +220,9 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _Glow_color
-        second: {r: 0.94482756, g: 1, b: 0, a: 1}
-      data:
-        first:
           name: _Tint
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Glow_color
+        second: {r: 0, g: 1, b: 1, a: 1}
