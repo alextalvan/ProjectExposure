@@ -2668,7 +2668,7 @@ MonoBehaviour:
   unitStrength: 3
   unitSpeed: 0.025
   waypointSwitchThreshold: 1.31
-  rayCastDist: 1
+  rayCastDist: 5
   fightAnimTime: 2
   wanderAnimTime: 3
   cheerAnimTime: 1
@@ -2677,7 +2677,8 @@ MonoBehaviour:
   moneyReward: 1
   speedBuffMod: 2
   speedBuffDuration: 60
-  model: {fileID: 0}
+  model: {fileID: 175078}
+  attackPrefab: {fileID: 100152}
   buffList:
     buffs: []
 --- !u!114 &11487686
@@ -2692,7 +2693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkInterval: 0.25
-  _targetObject: {fileID: 0}
+  _targetObject: {fileID: 175078}
 --- !u!135 &13564874
 SphereCollider:
   m_ObjectHideFlags: 1
