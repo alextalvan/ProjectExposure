@@ -43,6 +43,9 @@ public class UnitAI : GameManagerSearcher
     [SerializeField]
     GameObject attackPrefab;
 
+    [SerializeField]
+    GameObject conversionPrefab;
+
     private Animator anim;
 
 	public BuffList buffList = new BuffList();
@@ -65,6 +68,7 @@ public class UnitAI : GameManagerSearcher
 	public CityTileTrigger CityTile { get { return cityTile; } set { cityTile = value; } }
     public delegate void DestructionDelegate();
     public event DestructionDelegate OnDestruction = null;
+
 
     private int fightingTargetStrength;
 
@@ -178,6 +182,7 @@ public class UnitAI : GameManagerSearcher
                 transform.GetComponent<Collider>().isTrigger = true;
                 if (attackPrefab)
                     attackPrefab.SetActive(false);
+                Instantiate(conversionPrefab, transform.position, transform.rotation);
                 SetAiState(AiState.Cheer);
             }
             else
@@ -196,6 +201,7 @@ public class UnitAI : GameManagerSearcher
 		if (wanderTimer <= 0f) {
 			transform.GetComponent<Rigidbody> ().isKinematic = true;
             transform.GetComponent<Collider>().isTrigger = true;
+            Instantiate(conversionPrefab, transform.position, transform.rotation);
             SetAiState(AiState.Cheer);
         } else if (cityTile.HasHostileUnits (owner)) {
 			wanderTimer = wanderAnimTime;
