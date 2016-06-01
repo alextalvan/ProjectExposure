@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class FreezeCard : ActionCard 
 {
-    [SerializeField]
-    GameObject blizzardPrefab;
 	[SerializeField]
 	float freezeDuration = 5.0f;
 
@@ -34,7 +32,6 @@ public class FreezeCard : ActionCard
 				groupsWithUnits.Add(tr);
 		}
 
-        if (groupsWithUnits.Count < 1) return;
 		Transform randomGroup = groupsWithUnits[Random.Range(0,groupsWithUnits.Count)];
 
 		foreach(Transform unit in randomGroup)
@@ -46,7 +43,6 @@ public class FreezeCard : ActionCard
 				Buff freezeBuff = new Buff(BUFF_TYPES.UNIT_FREEZE,freezeDuration);
 				aiComp.buffList.AddBuff(freezeBuff);
 				unit.GetComponent<TemporaryBlink>().Begin(freezeDuration);
-                Instantiate(blizzardPrefab, unit.position, Quaternion.identity);
 			}
 		}
 

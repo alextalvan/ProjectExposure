@@ -40,6 +40,12 @@ public class UnitAI : GameManagerSearcher
     GameObject model;
     private Material mat;
 
+    [SerializeField]
+    GameObject attackPrefab;
+
+    [SerializeField]
+    GameObject conversionPrefab;
+
     private Animator anim;
 
 	public BuffList buffList = new BuffList();
@@ -63,8 +69,6 @@ public class UnitAI : GameManagerSearcher
     public delegate void DestructionDelegate();
     public event DestructionDelegate OnDestruction = null;
 
-	[SerializeField]
-	CoinPickup coinSpawnPrefab;
 
     private int fightingTargetStrength;
 
@@ -176,12 +180,17 @@ public class UnitAI : GameManagerSearcher
 			if (this.unitStrength > fightingTargetStrength) {
 				transform.GetComponent<Rigidbody> ().isKinematic = true;
                 transform.GetComponent<Collider>().isTrigger = true;
+                if (attackPrefab)
+                    attackPrefab.SetActive(false);
+                Instantiate(conversionPrefab, transform.position, transform.rotation);
                 SetAiState(AiState.Cheer);
             }
             else
             {
                 transform.GetComponent<Rigidbody>().isKinematic = true;
                 transform.GetComponent<Collider>().isTrigger = true;
+                if (attackPrefab)
+                    attackPrefab.SetActive(false);
                 SetAiState(AiState.Die);
             }
 		}
@@ -192,6 +201,7 @@ public class UnitAI : GameManagerSearcher
 		if (wanderTimer <= 0f) {
 			transform.GetComponent<Rigidbody> ().isKinematic = true;
             transform.GetComponent<Collider>().isTrigger = true;
+            Instantiate(conversionPrefab, transform.position, transform.rotation);
             SetAiState(AiState.Cheer);
         } else if (cityTile.HasHostileUnits (owner)) {
 			wanderTimer = wanderAnimTime;
@@ -204,13 +214,7 @@ public class UnitAI : GameManagerSearcher
         mat.SetFloat("_Visibility", Mathf.Clamp01(cheerTimer / cheerAnimTime));
         if (cheerTimer <= 0f) {
 			GenerateScore ();
-			//gameManager.SpawnUICoin(this.owner,this.transform.position,moneyReward);
-
-			GameObject coin = (GameObject)Instantiate(coinSpawnPrefab.gameObject,this.transform.position,Quaternion.identity);
-			CoinPickup pickupComp = coin.GetComponent<CoinPickup>();
-			pickupComp.owner = this.owner;
-			pickupComp.StartGlide();
-
+			gameManager.SpawnUICoin(this.owner,this.transform.position,moneyReward);
 			Destroy(this.gameObject);
 		}
     }
@@ -265,6 +269,8 @@ public class UnitAI : GameManagerSearcher
 		if (otherAI)
         {
             SetAiState(AiState.Fight);
+            if (attackPrefab)
+                attackPrefab.SetActive(true);
             allowCollision = false;
 			fightingTargetStrength = otherAI.unitStrength;
 		}
