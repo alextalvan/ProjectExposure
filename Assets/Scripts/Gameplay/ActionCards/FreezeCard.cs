@@ -28,7 +28,7 @@ public class FreezeCard : ActionCard
 
 		foreach(Transform tr in enemyData.unitGroups)
 		{
-			if(tr.childCount > 0)
+			if(tr.childCount > 0 && IsGoodGroup(tr))
 				groupsWithUnits.Add(tr);
 		}
 
@@ -37,8 +37,8 @@ public class FreezeCard : ActionCard
 		foreach(Transform unit in randomGroup)
 		{
 			UnitAI aiComp = unit.GetComponent<UnitAI>();
-
-			if(aiComp)
+            
+			if(aiComp && !aiComp.CityTile && !aiComp.buffList.HasBuff(BUFF_TYPES.UNIT_FREEZE))
 			{
 				Buff freezeBuff = new Buff(BUFF_TYPES.UNIT_FREEZE,freezeDuration);
 				aiComp.buffList.AddBuff(freezeBuff);
@@ -49,4 +49,17 @@ public class FreezeCard : ActionCard
 		Destroy(this.gameObject);
 	}
 
+    private bool IsGoodGroup(Transform tr)
+    {
+        int count = 0;
+        foreach (Transform unit in tr)
+        {
+            UnitAI aiComp = unit.GetComponent<UnitAI>();
+            if (aiComp.CityTile || aiComp.buffList.HasBuff(BUFF_TYPES.UNIT_FREEZE))
+                count++;
+        }
+        if (count >= tr.childCount)
+            return false;
+        return true;
+    }
 }

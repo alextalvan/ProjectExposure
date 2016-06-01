@@ -59,7 +59,7 @@ public class UnitAI : GameManagerSearcher
 
     private List<Vector3> path;
 	private CityTileTrigger cityTile = null;
-	public CityTileTrigger CityTile { set { cityTile = value; } }
+	public CityTileTrigger CityTile { get { return cityTile; } set { cityTile = value; } }
     public delegate void DestructionDelegate();
     public event DestructionDelegate OnDestruction = null;
 

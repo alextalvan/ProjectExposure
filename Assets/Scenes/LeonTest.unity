@@ -5701,6 +5701,7 @@ MonoBehaviour:
   _player1score: 0
   _player2score: 0
   moneyRate: 1
+  forcedMaxMoney: 10
   player1moneyText: {fileID: 1510166214}
   player2moneyText: {fileID: 269881726}
   player1scoreText: {fileID: 2130365981}
@@ -5743,6 +5744,8 @@ MonoBehaviour:
       - {fileID: 1640691033}
       - {fileID: 997643867}
       swampSpots: []
+  UI_root: {fileID: 0}
+  UI_moneyPrefab: {fileID: 0}
   raycastedOn2DObject: 0
 --- !u!4 &1638074582
 Transform:
