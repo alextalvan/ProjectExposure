@@ -49,7 +49,6 @@ public class CityScript : MonoBehaviour {
 		//RandomizeGrid ();
 		//sort list of points so it goes from closest points to farest
 		grid.Sort((x, y) => Vector3.Distance(transform.localPosition + x, transform.localPosition).CompareTo(Vector3.Distance(transform.localPosition + y, transform.localPosition)));
-        Debug.Log(grid.Count);
     }
 
     /// <summary>
@@ -88,7 +87,6 @@ public class CityScript : MonoBehaviour {
             for (int z = 0; z < numz; ++z) {
 				Vector3 newPnt = new Vector3 (distBetweenBuldings * x + Random.Range(minRndOffset, maxRndOffset) + lineOffset, 
                     0, distBetweenBuldings * z + Random.Range(minRndOffset, maxRndOffset) + lineOffset) + startPnt;
-                Debug.Log(Vector3.Distance(newPnt, transform.localPosition));
 				if (Vector3.Distance (transform.localPosition + newPnt, transform.localPosition) < cityBound.radius)
 					grid.Add (newPnt);
 			}

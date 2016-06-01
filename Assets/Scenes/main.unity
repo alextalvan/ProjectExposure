@@ -678,7 +678,7 @@ GameObject:
   - 4: {fileID: 153915147}
   - 64: {fileID: 153915149}
   - 114: {fileID: 153915148}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HexaTile (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -727,9 +727,6 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   buildingBlockedObject: {fileID: 0}
-  coinSpawnPrefab: {fileID: 162262, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
-  coinSpawnInterval: 2
-  coinSpawnProbability: 0.11
 --- !u!64 &153915149
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -962,7 +959,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &205850437
 MonoBehaviour:
@@ -976,7 +973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 205850434}
-  tapCountForUndo: 1
 --- !u!1 &215746738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,7 +1318,7 @@ GameObject:
   - 4: {fileID: 252654710}
   - 64: {fileID: 252654712}
   - 114: {fileID: 252654711}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HexaTile (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1371,9 +1367,6 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1640691033}
   buildingBlockedObject: {fileID: 0}
-  coinSpawnPrefab: {fileID: 162262, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
-  coinSpawnInterval: 2
-  coinSpawnProbability: 0.11
 --- !u!64 &252654712
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1682,6 +1675,30 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 404404, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_PrefabInternal: {fileID: 1611916023}
+--- !u!114 &284818459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 284818455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee251e1ec2df66428a28ef7e7cd69cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tapCountForUndo: 1
+--- !u!135 &284818460
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 284818455}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &297077595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,7 +1921,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &316886635
 MonoBehaviour:
@@ -1918,7 +1935,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 316886632}
-  tapCountForUndo: 1
 --- !u!1 &319178245
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,7 +2121,7 @@ GameObject:
   - 4: {fileID: 327329073}
   - 64: {fileID: 327329075}
   - 114: {fileID: 327329074}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HexaTile (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2154,9 +2170,6 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 997643867}
   buildingBlockedObject: {fileID: 0}
-  coinSpawnPrefab: {fileID: 162262, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
-  coinSpawnInterval: 2
-  coinSpawnProbability: 0.11
 --- !u!64 &327329075
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2253,6 +2266,10 @@ Prefab:
     - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
       propertyPath: m_Name
       value: SwampPTCL_PRFB (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
@@ -3374,7 +3391,7 @@ GameObject:
   - 4: {fileID: 658398792}
   - 64: {fileID: 658398794}
   - 114: {fileID: 658398793}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HexaTile (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3423,9 +3440,6 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 978283786}
   buildingBlockedObject: {fileID: 0}
-  coinSpawnPrefab: {fileID: 162262, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
-  coinSpawnInterval: 2
-  coinSpawnProbability: 0.11
 --- !u!64 &658398794
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3606,7 +3620,7 @@ GameObject:
   - 4: {fileID: 733978405}
   - 64: {fileID: 733978407}
   - 114: {fileID: 733978406}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HexaTile (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3655,9 +3669,6 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 938618811}
   buildingBlockedObject: {fileID: 0}
-  coinSpawnPrefab: {fileID: 162262, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
-  coinSpawnInterval: 2
-  coinSpawnProbability: 0.11
 --- !u!64 &733978407
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3950,6 +3961,10 @@ Prefab:
     - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
       propertyPath: m_Name
       value: SwampPTCL_PRFB (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
@@ -4362,7 +4377,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &846038054
 MonoBehaviour:
@@ -4376,7 +4391,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 846038051}
-  tapCountForUndo: 1
 --- !u!1 &848025801
 GameObject:
   m_ObjectHideFlags: 0
@@ -4800,7 +4814,7 @@ GameObject:
   - 4: {fileID: 911564454}
   - 64: {fileID: 911564456}
   - 114: {fileID: 911564455}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HexaTile (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4849,9 +4863,6 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   buildingBlockedObject: {fileID: 0}
-  coinSpawnPrefab: {fileID: 162262, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
-  coinSpawnInterval: 2
-  coinSpawnProbability: 0.11
 --- !u!64 &911564456
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5179,6 +5190,10 @@ Prefab:
     - target: {fileID: 404404, guid: a298a284d4044c545828a4c49c21c670, type: 2}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
@@ -6173,7 +6188,7 @@ GameObject:
   - 4: {fileID: 1263588877}
   - 64: {fileID: 1263588879}
   - 114: {fileID: 1263588878}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HexaTile (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6222,9 +6237,6 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 997643867}
   buildingBlockedObject: {fileID: 0}
-  coinSpawnPrefab: {fileID: 162262, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
-  coinSpawnInterval: 2
-  coinSpawnProbability: 0.11
 --- !u!64 &1263588879
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6464,6 +6476,30 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 404404, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_PrefabInternal: {fileID: 347166108}
+--- !u!114 &1295346402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1295346398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee251e1ec2df66428a28ef7e7cd69cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tapCountForUndo: 1
+--- !u!135 &1295346403
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1295346398}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1317680706 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
@@ -6472,6 +6508,30 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 404404, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_PrefabInternal: {fileID: 1056318740}
+--- !u!114 &1317680710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317680706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee251e1ec2df66428a28ef7e7cd69cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tapCountForUndo: 1
+--- !u!135 &1317680711
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317680706}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1319725936
 GameObject:
   m_ObjectHideFlags: 0
@@ -6687,7 +6747,7 @@ GameObject:
   - 4: {fileID: 1368118112}
   - 64: {fileID: 1368118114}
   - 114: {fileID: 1368118113}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HexaTile (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6736,9 +6796,6 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 978283786}
   buildingBlockedObject: {fileID: 0}
-  coinSpawnPrefab: {fileID: 162262, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
-  coinSpawnInterval: 2
-  coinSpawnProbability: 0.11
 --- !u!64 &1368118114
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6895,7 +6952,7 @@ GameObject:
   - 4: {fileID: 1386126879}
   - 64: {fileID: 1386126881}
   - 114: {fileID: 1386126880}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HexaTile (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6944,9 +7001,6 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1640691033}
   buildingBlockedObject: {fileID: 0}
-  coinSpawnPrefab: {fileID: 162262, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
-  coinSpawnInterval: 2
-  coinSpawnProbability: 0.11
 --- !u!64 &1386126881
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7165,7 +7219,7 @@ GameObject:
   - 4: {fileID: 1436558385}
   - 64: {fileID: 1436558387}
   - 114: {fileID: 1436558386}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HexaTile (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7214,9 +7268,6 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1432326733}
   buildingBlockedObject: {fileID: 0}
-  coinSpawnPrefab: {fileID: 162262, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
-  coinSpawnInterval: 2
-  coinSpawnProbability: 0.11
 --- !u!64 &1436558387
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7360,7 +7411,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1448200799
 MonoBehaviour:
@@ -7374,7 +7425,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 1448200796}
-  tapCountForUndo: 1
 --- !u!1 &1483353231
 GameObject:
   m_ObjectHideFlags: 0
@@ -7516,6 +7566,30 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 404404, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_PrefabInternal: {fileID: 2114999580}
+--- !u!114 &1499936590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1499936586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee251e1ec2df66428a28ef7e7cd69cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tapCountForUndo: 1
+--- !u!135 &1499936591
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1499936586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1502542041
 GameObject:
   m_ObjectHideFlags: 0
@@ -7898,6 +7972,30 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 404404, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_PrefabInternal: {fileID: 784279965}
+--- !u!114 &1531556784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1531556780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee251e1ec2df66428a28ef7e7cd69cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tapCountForUndo: 1
+--- !u!135 &1531556785
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1531556780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1547406836
 GameObject:
   m_ObjectHideFlags: 0
@@ -8133,7 +8231,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1590247328
 MonoBehaviour:
@@ -8147,7 +8245,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 1590247325}
-  tapCountForUndo: 1
 --- !u!1 &1595984064
 GameObject:
   m_ObjectHideFlags: 0
@@ -8405,6 +8502,10 @@ Prefab:
       propertyPath: m_Name
       value: SwampPTCL_PRFB (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_IsPrefabParent: 0
@@ -8535,7 +8636,7 @@ GameObject:
   - 4: {fileID: 1632546431}
   - 64: {fileID: 1632546433}
   - 114: {fileID: 1632546432}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HexaTile (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8584,9 +8685,6 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 938618811}
   buildingBlockedObject: {fileID: 0}
-  coinSpawnPrefab: {fileID: 162262, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
-  coinSpawnInterval: 2
-  coinSpawnProbability: 0.11
 --- !u!64 &1632546433
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8635,7 +8733,7 @@ MonoBehaviour:
   _player1score: 0
   _player2score: 0
   moneyRate: 1
-  forcedMaxMoney: 700
+  forcedMaxMoney: 10
   player1moneyText: {fileID: 1510166214}
   player2moneyText: {fileID: 269881726}
   player1scoreText: {fileID: 2130365981}
@@ -9520,7 +9618,7 @@ GameObject:
   - 4: {fileID: 1793725488}
   - 64: {fileID: 1793725490}
   - 114: {fileID: 1793725489}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HexaTile (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9569,9 +9667,6 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1432326733}
   buildingBlockedObject: {fileID: 0}
-  coinSpawnPrefab: {fileID: 162262, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
-  coinSpawnInterval: 2
-  coinSpawnProbability: 0.11
 --- !u!64 &1793725490
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10155,6 +10250,10 @@ Prefab:
       propertyPath: m_Name
       value: SwampPTCL_PRFB (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_IsPrefabParent: 0
@@ -10490,7 +10589,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1921689820
 MonoBehaviour:
@@ -10504,7 +10603,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 1921689817}
-  tapCountForUndo: 1
 --- !u!1 &1987283496
 GameObject:
   m_ObjectHideFlags: 0
@@ -11121,6 +11219,10 @@ Prefab:
       propertyPath: m_Name
       value: SwampPTCL_PRFB (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_IsPrefabParent: 0
@@ -11215,6 +11317,30 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 404404, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_PrefabInternal: {fileID: 1908478133}
+--- !u!114 &2127626071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2127626067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee251e1ec2df66428a28ef7e7cd69cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tapCountForUndo: 1
+--- !u!135 &2127626072
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2127626067}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2130365979
 GameObject:
   m_ObjectHideFlags: 0

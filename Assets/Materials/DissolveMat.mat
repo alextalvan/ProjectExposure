@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: DissolveMat
-  m_Shader: {fileID: 4800000, guid: e68f798c29a56af4e8a35346cfba79cc, type: 3}
+  m_Shader: {fileID: 4800000, guid: 38f06761198e04b95bfc95eb2e47901a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -82,42 +82,7 @@ Material:
         first:
           name: _Noise
         second:
-          m_Texture: {fileID: 2800000, guid: 7c622d8d4c916054eb11f6c92320bbf1, type: 3}
-          m_Scale: {x: 1, y: 5}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Base_Color
-        second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Metallic_map
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Gloss_map
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Normal_Map
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Emission_map
-        second:
-          m_Texture: {fileID: 2800000, guid: be933de2695ae4440a0958f28008c03f, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -180,43 +145,11 @@ Material:
       data:
         first:
           name: _Visibility
-        second: 0
+        second: 0.9648734
       data:
         first:
           name: _Edge_width
-        second: 3.22
-      data:
-        first:
-          name: _Normal_Map_Intensity
-        second: 0
-      data:
-        first:
-          name: _Emssion_power
-        second: 2.918127
-      data:
-        first:
-          name: _Noise_Brightness
-        second: 0
-      data:
-        first:
-          name: _Edge_Glow_Power
-        second: 3
-      data:
-        first:
-          name: _Visibility_multiplier
-        second: 10
-      data:
-        first:
-          name: _Edge_Power
-        second: 2.08
-      data:
-        first:
-          name: _Visibility_floor
-        second: 0.5
-      data:
-        first:
-          name: _Visibility_power
-        second: 0.8471476
+        second: 1
     m_Colors:
       data:
         first:
@@ -229,8 +162,4 @@ Material:
       data:
         first:
           name: _Glow_color
-        second: {r: 0.94482756, g: 1, b: 0, a: 1}
-      data:
-        first:
-          name: _Tint
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0, g: 1, b: 1, a: 1}

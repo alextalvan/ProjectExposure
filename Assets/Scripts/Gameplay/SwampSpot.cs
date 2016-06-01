@@ -10,10 +10,6 @@ public class SwampSpot : MonoBehaviour
 	[SerializeField]
 	TemporaryBlink tempBlink;
 
-	[SerializeField]
-	int tapCountForUndo = 1;
-	int currentTapCount;
-
     bool used = false;
 
 	void OnTriggerEnter(Collider other)
@@ -32,7 +28,6 @@ public class SwampSpot : MonoBehaviour
 		uptimer = duration;
 		this.gameObject.SetActive(true);
 		tempBlink.Begin(duration);
-		currentTapCount = 0;
 	}
 
 	public void ToggleOff()
@@ -53,18 +48,6 @@ public class SwampSpot : MonoBehaviour
                 ToggleOff();
             }
         }
-	}
-
-	#if TOUCH_INPUT
-	void PenetratingTouchEnd()
-	#else
-	void OnMouseUp()
-	#endif
-	{
-		currentTapCount++;
-
-		if(currentTapCount == tapCountForUndo)
-			ToggleOff();
 	}
 		
 

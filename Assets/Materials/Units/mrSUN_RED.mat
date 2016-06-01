@@ -89,7 +89,7 @@ Material:
         first:
           name: _Normal_Map
         second:
-          m_Texture: {fileID: 2800000, guid: 92a1121943cc15149a34773ac5e1474d, type: 3}
+          m_Texture: {fileID: 2800000, guid: 31869c17d733746a88140ca4bea9a0b9, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -103,7 +103,7 @@ Material:
         first:
           name: _Metallic_map
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 4a8029c3b2d63473d917587e3dd77b02, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -144,7 +144,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -176,7 +176,7 @@ Material:
       data:
         first:
           name: _Normal_Map_Intensity
-        second: 1
+        second: 0
       data:
         first:
           name: _Noise_Brightness
