@@ -4043,7 +4043,7 @@ MonoBehaviour:
   unitStrength: 4
   unitSpeed: 0.05
   waypointSwitchThreshold: 3
-  rayCastDist: 1
+  rayCastDist: 5
   fightAnimTime: 2
   wanderAnimTime: 3
   cheerAnimTime: 1
@@ -4053,6 +4053,7 @@ MonoBehaviour:
   speedBuffMod: 2
   speedBuffDuration: 60
   model: {fileID: 170894}
+  attackPrefab: {fileID: 0}
   buffList:
     buffs: []
   coinSpawnPrefab: {fileID: 11472550, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}

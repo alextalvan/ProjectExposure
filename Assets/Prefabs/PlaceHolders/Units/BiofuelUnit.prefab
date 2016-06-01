@@ -1677,7 +1677,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145982}
   m_LocalRotation: {x: 0.09229597, y: 0.7010575, z: -0.09229598, w: 0.7010574}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.23, y: 0.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 466936}
@@ -2668,7 +2668,7 @@ MonoBehaviour:
   unitStrength: 3
   unitSpeed: 0.025
   waypointSwitchThreshold: 1.31
-  rayCastDist: 1
+  rayCastDist: 5
   fightAnimTime: 2
   wanderAnimTime: 3
   cheerAnimTime: 1
@@ -2678,6 +2678,7 @@ MonoBehaviour:
   speedBuffMod: 2
   speedBuffDuration: 60
   model: {fileID: 175078}
+  attackPrefab: {fileID: 100152}
   buffList:
     buffs: []
   coinSpawnPrefab: {fileID: 11472550, guid: 4aebbd6434e278447a2aa15cd7c6b1e6, type: 2}
@@ -4309,7 +4310,7 @@ ParticleSystem:
     minMaxState: 0
   speed: 1
   randomSeed: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1

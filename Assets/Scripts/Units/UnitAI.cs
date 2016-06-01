@@ -40,6 +40,9 @@ public class UnitAI : GameManagerSearcher
     GameObject model;
     private Material mat;
 
+    [SerializeField]
+    GameObject attackPrefab;
+
     private Animator anim;
 
 	public BuffList buffList = new BuffList();
@@ -176,12 +179,16 @@ public class UnitAI : GameManagerSearcher
 			if (this.unitStrength > fightingTargetStrength) {
 				transform.GetComponent<Rigidbody> ().isKinematic = true;
                 transform.GetComponent<Collider>().isTrigger = true;
+                if (attackPrefab)
+                    attackPrefab.SetActive(false);
                 SetAiState(AiState.Cheer);
             }
             else
             {
                 transform.GetComponent<Rigidbody>().isKinematic = true;
                 transform.GetComponent<Collider>().isTrigger = true;
+                if (attackPrefab)
+                    attackPrefab.SetActive(false);
                 SetAiState(AiState.Die);
             }
 		}
@@ -265,6 +272,8 @@ public class UnitAI : GameManagerSearcher
 		if (otherAI)
         {
             SetAiState(AiState.Fight);
+            if (attackPrefab)
+                attackPrefab.SetActive(true);
             allowCollision = false;
 			fightingTargetStrength = otherAI.unitStrength;
 		}
