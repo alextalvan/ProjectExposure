@@ -81,6 +81,7 @@ GameObject:
   - 114: {fileID: 11464352}
   - 114: {fileID: 11454152}
   - 114: {fileID: 11498432}
+  - 114: {fileID: 11426250}
   m_Layer: 0
   m_Name: Gas_Plant
   m_TagString: Untagged
@@ -262,6 +263,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba3a7f6350faf54a9308dabfe0cc433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11426250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cd63af8e6152a43b2d80893045602f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveTime: 3
+  _renderer: {fileID: 2361360}
 --- !u!114 &11430078
 MonoBehaviour:
   m_ObjectHideFlags: 1
