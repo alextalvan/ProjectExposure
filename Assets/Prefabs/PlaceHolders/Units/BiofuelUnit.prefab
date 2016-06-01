@@ -2295,7 +2295,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127346}
   m_LocalRotation: {x: 0, y: 0.6517494, z: 0, w: 0.7584345}
-  m_LocalPosition: {x: 16.57, y: 17.635777, z: 21.22}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 437822}
@@ -2619,7 +2619,7 @@ MonoBehaviour:
   moneyReward: 1
   speedBuffMod: 2
   speedBuffDuration: 60
-  model: {fileID: 0}
+  model: {fileID: 175078}
   buffList:
     buffs: []
 --- !u!114 &11487686
@@ -2634,7 +2634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkInterval: 0.25
-  _targetObject: {fileID: 0}
+  _targetObject: {fileID: 175078}
 --- !u!135 &13564874
 SphereCollider:
   m_ObjectHideFlags: 1
