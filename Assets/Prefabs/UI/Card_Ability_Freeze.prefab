@@ -85,6 +85,7 @@ MonoBehaviour:
   moneyCost: 2
   deletionTime: 15
   highlight: {fileID: 169758}
+  blizzardPrefab: {fileID: 127746, guid: 949166d4fc1160d43860979b65a31faa, type: 2}
   freezeDuration: 100000000
 --- !u!114 &11441122
 MonoBehaviour:
@@ -130,6 +131,7 @@ MonoBehaviour:
   - {fileID: 6180630}
   - {fileID: 11401974}
   toggleRigidBody2D: 1
+  destroyOnArrival: 0
 --- !u!114 &11499304
 MonoBehaviour:
   m_ObjectHideFlags: 1

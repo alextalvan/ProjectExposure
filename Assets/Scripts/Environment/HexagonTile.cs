@@ -199,7 +199,7 @@ public class HexagonTile : GameManagerSearcher
 	/// Callback for the finger being lifted on top of this collider
 	/// </summary>
 	#if TOUCH_INPUT
-	void TouchEnd()
+	void PenetratingTouchEnd()
 	#else
 	void OnMouseUp()
 	#endif
