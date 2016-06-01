@@ -80,17 +80,24 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Noise
-        second:
-          m_Texture: {fileID: 2800000, guid: 7c622d8d4c916054eb11f6c92320bbf1, type: 3}
-          m_Scale: {x: 5, y: 5}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Base_Color
         second:
           m_Texture: {fileID: 2800000, guid: 4d0205cd6d7809247a3165d5aad8c975, type: 3}
           m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal_Map
+        second:
+          m_Texture: {fileID: 2800000, guid: 1ac490a45c641ac4ba23d276f50631c3, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Noise
+        second:
+          m_Texture: {fileID: 2800000, guid: d2b213d71a1c65640b457b6e27b7207c, type: 3}
+          m_Scale: {x: 5, y: 5}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -104,13 +111,6 @@ Material:
           name: _Gloss_map
         second:
           m_Texture: {fileID: 2800000, guid: fcd5c85e731aaf54fb23860a566fd70d, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Normal_Map
-        second:
-          m_Texture: {fileID: 2800000, guid: 1ac490a45c641ac4ba23d276f50631c3, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -175,20 +175,16 @@ Material:
         second: 0
       data:
         first:
-          name: _Edge_width
-        second: 3.22
-      data:
-        first:
           name: _Normal_Map_Intensity
         second: 0
       data:
         first:
-          name: _Emssion_power
-        second: 0.03
-      data:
-        first:
           name: _Noise_Brightness
         second: 0
+      data:
+        first:
+          name: _Edge_width
+        second: 3.22
       data:
         first:
           name: _Edge_Glow_Power
@@ -209,6 +205,10 @@ Material:
         first:
           name: _Visibility_power
         second: 0.8471476
+      data:
+        first:
+          name: _Emssion_power
+        second: 0.03
     m_Colors:
       data:
         first:
@@ -220,9 +220,9 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _Glow_color
-        second: {r: 0.90344834, g: 1, b: 0, a: 1}
-      data:
-        first:
           name: _Tint
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Glow_color
+        second: {r: 0.90344834, g: 1, b: 0, a: 1}
