@@ -63,6 +63,9 @@ public class UnitAI : GameManagerSearcher
     public delegate void DestructionDelegate();
     public event DestructionDelegate OnDestruction = null;
 
+	[SerializeField]
+	CoinPickup coinSpawnPrefab;
+
     private int fightingTargetStrength;
 
 	void Start()
@@ -201,7 +204,13 @@ public class UnitAI : GameManagerSearcher
         mat.SetFloat("_Visibility", Mathf.Clamp01(cheerTimer / cheerAnimTime));
         if (cheerTimer <= 0f) {
 			GenerateScore ();
-			gameManager.SpawnUICoin(this.owner,this.transform.position,moneyReward);
+			//gameManager.SpawnUICoin(this.owner,this.transform.position,moneyReward);
+
+			GameObject coin = (GameObject)Instantiate(coinSpawnPrefab.gameObject,this.transform.position,Quaternion.identity);
+			CoinPickup pickupComp = coin.GetComponent<CoinPickup>();
+			pickupComp.owner = this.owner;
+			pickupComp.StartGlide();
+
 			Destroy(this.gameObject);
 		}
     }
