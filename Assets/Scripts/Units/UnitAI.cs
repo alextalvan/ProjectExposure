@@ -72,6 +72,9 @@ public class UnitAI : GameManagerSearcher
 
     private int fightingTargetStrength;
 
+	[SerializeField]
+	TextMesh scoreGainFeedbackPrefab;
+
 	void Start()
     {
         speedUpBuff = new SpeedBuff(speedBuffMod, speedBuffDuration);
@@ -215,6 +218,12 @@ public class UnitAI : GameManagerSearcher
         if (cheerTimer <= 0f) {
 			GenerateScore ();
 			gameManager.SpawnUICoin(this.owner,this.transform.position,moneyReward);
+
+			GameObject scoreTextFeedback =(GameObject)Instantiate(scoreGainFeedbackPrefab.gameObject,this.transform.position + new Vector3(0,2,0),Quaternion.identity);
+			scoreTextFeedback.GetComponent<TextMesh>().text = "+" + this.scoreReward.ToString();
+			Destroy(scoreTextFeedback,3.0f);
+
+
 			Destroy(this.gameObject);
 		}
     }

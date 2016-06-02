@@ -12,11 +12,16 @@ public class IconTimer : MonoBehaviour
 	[SerializeField]
 	float currentTime;
 
-	Material _mat;
+	[SerializeField]
+	Material circleTimerMaterialPrefab;
+
+	Material _material;
 
 	void Start()
 	{
-		_mat = GetComponent<Image>().material;
+		//force material instantiation
+		_material = (Material)Instantiate(circleTimerMaterialPrefab);
+		GetComponent<Image>().material = _material;
 	}
 
 	public void Reset(float duration)
@@ -29,6 +34,6 @@ public class IconTimer : MonoBehaviour
 	{
 		currentTime -= Time.deltaTime;
 		float normValue = Mathf.Clamp01(currentTime / totalTime);
-		_mat.SetFloat("_Health",normValue);
+		_material.SetFloat("_Health",normValue);
 	}
 }
