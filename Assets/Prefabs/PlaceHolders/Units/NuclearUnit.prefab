@@ -3460,7 +3460,7 @@ Transform:
   m_GameObject: {fileID: 102548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496224}
   m_Father: {fileID: 0}
@@ -3900,8 +3900,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.06, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 462000}
   - {fileID: 423732}
@@ -4042,7 +4042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitStrength: 4
   unitSpeed: 0.05
-  waypointSwitchThreshold: 3
+  waypointSwitchThreshold: 2
   rayCastDist: 5
   fightAnimTime: 2
   wanderAnimTime: 3
@@ -4054,6 +4054,7 @@ MonoBehaviour:
   speedBuffDuration: 60
   model: {fileID: 170894}
   attackPrefab: {fileID: 0}
+  conversionPrefab: {fileID: 124668, guid: 09aa07568625990408235ce0eafac3e2, type: 2}
   buffList:
     buffs: []
 --- !u!135 &13539680
@@ -4066,7 +4067,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.15
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &13775396
 SkinnedMeshRenderer:

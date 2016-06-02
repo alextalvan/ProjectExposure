@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11403598}
   - 114: {fileID: 11424624}
   - 114: {fileID: 11481880}
+  - 114: {fileID: 11459654}
   m_Layer: 0
   m_Name: Solar_Panels
   m_TagString: Untagged
@@ -162,7 +163,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1514c1c7f21ee624caf67c0f182f6c9a, type: 2}
+  - {fileID: 2100000, guid: cbd2f49f2b76e3c439fb22bd152530b5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -309,6 +310,19 @@ MonoBehaviour:
   _building: {fileID: 11403598}
   maxLifeColor: {r: 0, g: 1, b: 0, a: 1}
   minLifeColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &11459654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cd63af8e6152a43b2d80893045602f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveTime: 3
+  _renderer: {fileID: 2307562}
 --- !u!114 &11472356
 MonoBehaviour:
   m_ObjectHideFlags: 1

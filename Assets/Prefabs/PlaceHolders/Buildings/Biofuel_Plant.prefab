@@ -98,6 +98,7 @@ GameObject:
   - 114: {fileID: 11469912}
   - 114: {fileID: 11448006}
   - 114: {fileID: 11437464}
+  - 114: {fileID: 11400404}
   m_Layer: 0
   m_Name: Biofuel_Plant
   m_TagString: Untagged
@@ -314,6 +315,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164084}
   m_Mesh: {fileID: 4300002, guid: 73356c72b8124e24d91ce6d7e67adf5e, type: 3}
+--- !u!114 &11400404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cd63af8e6152a43b2d80893045602f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveTime: 3
+  _renderer: {fileID: 2302754}
 --- !u!114 &11430692
 MonoBehaviour:
   m_ObjectHideFlags: 1

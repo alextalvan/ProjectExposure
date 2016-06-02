@@ -804,7 +804,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454994, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 454994, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_LocalScale.x
@@ -836,7 +836,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11424666, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: buildingSpawnCoolDown
-      value: 4
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 466288, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_LocalPosition.y
@@ -976,6 +976,9 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   buildingBlockedObject: {fileID: 0}
+  coinSpawnPrefab: {fileID: 0}
+  coinSpawnInterval: 2
+  coinSpawnProbability: 0.24999
 --- !u!64 &153915149
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1617,6 +1620,9 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1640691033}
   buildingBlockedObject: {fileID: 0}
+  coinSpawnPrefab: {fileID: 0}
+  coinSpawnInterval: 2
+  coinSpawnProbability: 0.24999
 --- !u!64 &252654712
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2407,6 +2413,9 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 997643867}
   buildingBlockedObject: {fileID: 0}
+  coinSpawnPrefab: {fileID: 0}
+  coinSpawnInterval: 2
+  coinSpawnProbability: 0.24999
 --- !u!64 &327329075
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3784,7 +3793,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454994, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 454994, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_LocalScale.x
@@ -4020,6 +4029,9 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 978283786}
   buildingBlockedObject: {fileID: 0}
+  coinSpawnPrefab: {fileID: 0}
+  coinSpawnInterval: 2
+  coinSpawnProbability: 0.24999
 --- !u!64 &658398794
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4345,6 +4357,9 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 938618811}
   buildingBlockedObject: {fileID: 0}
+  coinSpawnPrefab: {fileID: 0}
+  coinSpawnInterval: 2
+  coinSpawnProbability: 0.24999
 --- !u!64 &733978407
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4891,7 +4906,7 @@ Transform:
   m_Children:
   - {fileID: 1270339940}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!1001 &827474041
 Prefab:
   m_ObjectHideFlags: 0
@@ -5635,6 +5650,9 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   buildingBlockedObject: {fileID: 0}
+  coinSpawnPrefab: {fileID: 0}
+  coinSpawnInterval: 2
+  coinSpawnProbability: 0.24999
 --- !u!64 &911564456
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5716,7 +5734,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454994, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 454994, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_LocalScale.x
@@ -7337,6 +7355,9 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 997643867}
   buildingBlockedObject: {fileID: 0}
+  coinSpawnPrefab: {fileID: 0}
+  coinSpawnInterval: 2
+  coinSpawnProbability: 0.24999
 --- !u!64 &1263588879
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7553,7 +7574,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 478574, guid: f3dcd4f66ae321a48ac6ebacdb484f1e, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3dcd4f66ae321a48ac6ebacdb484f1e, type: 2}
@@ -7895,6 +7916,9 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 978283786}
   buildingBlockedObject: {fileID: 0}
+  coinSpawnPrefab: {fileID: 0}
+  coinSpawnInterval: 2
+  coinSpawnProbability: 0.24999
 --- !u!64 &1368118114
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8100,6 +8124,9 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1640691033}
   buildingBlockedObject: {fileID: 0}
+  coinSpawnPrefab: {fileID: 0}
+  coinSpawnInterval: 2
+  coinSpawnProbability: 0.24999
 --- !u!64 &1386126881
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8372,6 +8399,9 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1432326733}
   buildingBlockedObject: {fileID: 0}
+  coinSpawnPrefab: {fileID: 0}
+  coinSpawnInterval: 2
+  coinSpawnProbability: 0.24999
 --- !u!64 &1436558387
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9852,6 +9882,9 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 938618811}
   buildingBlockedObject: {fileID: 0}
+  coinSpawnPrefab: {fileID: 0}
+  coinSpawnInterval: 2
+  coinSpawnProbability: 0.24999
 --- !u!64 &1632546433
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11019,6 +11052,9 @@ MonoBehaviour:
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1432326733}
   buildingBlockedObject: {fileID: 0}
+  coinSpawnPrefab: {fileID: 0}
+  coinSpawnInterval: 2
+  coinSpawnProbability: 0.24999
 --- !u!64 &1793725490
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12292,7 +12328,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2025985340}
-  m_LocalRotation: {x: 0.25228173, y: -0.66057104, z: 0.2522817, w: -0.6605709}
+  m_LocalRotation: {x: 0.2522817, y: -0.660571, z: 0.25228167, w: -0.66057086}
   m_LocalPosition: {x: 0, y: 0, z: 61.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
