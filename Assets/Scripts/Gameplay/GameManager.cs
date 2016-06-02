@@ -200,24 +200,54 @@ public class GameManager : MonoBehaviour
 		raycastedOn2DObject = false;
 	}
 
-	public void SpawnUICoin(PLAYERS targetOwner, Vector3 worldpos, int moneyValue)
+//	public void SpawnUICoin(PLAYERS targetOwner, Vector3 worldpos, int moneyValue)
+//	{
+//		GameObject coin = (GameObject)Instantiate(UI_moneyPrefab,Vector3.zero,Quaternion.identity);
+//
+//
+//		//Vector2 viewportPos = Camera.main.WorldToViewportPoint(worldpos);
+//		//Vector2 screenPos = new Vector2(Camera.main.pixelWidth/2, Camera.main.pixelWidth/2);
+//		//Vector3 scrn = Camera.main.WorldToScreenPoint(worldpos);
+//
+//		Vector3 viewportPos =  Camera.main.WorldToViewportPoint(worldpos);
+//
+//
+//
+//		//Debug.Log(newPos);
+//
+//		coin.transform.SetParent(UI_root,false);
+//
+//		//EditorApplication.isPaused = true;
+//
+//		CardGlide glideComp = coin.GetComponent<CardGlide>();
+//
+//
+//		if(targetOwner == PLAYERS.PLAYER1)
+//		{
+//			glideComp.SetTarget(player1moneyText.transform);
+//			glideComp.OnDestruction += () => { Player1Money += moneyValue; };
+//		}
+//		else
+//		{
+//			glideComp.SetTarget(player2moneyText.transform);
+//			glideComp.OnDestruction += () => { Player2Money += moneyValue; };
+//		}
+//	}
+
+	public void StartCoinGlide(CoinPickup coin)
 	{
-		GameObject coin = (GameObject)Instantiate(UI_moneyPrefab,Vector3.zero,Quaternion.identity);
-		coin.transform.SetParent(UI_root);
-		coin.transform.position = Camera.main.WorldToViewportPoint(worldpos);
-		coin.transform.localScale = Vector3.one;
-		CardGlide glideComp = coin.GetComponent<CardGlide>();
-
-
-		if(targetOwner == PLAYERS.PLAYER1)
+		CardGlide glide = coin.GetComponent<CardGlide>();
+		glide.enabled = true;
+		if(coin.owner == PLAYERS.PLAYER1)
 		{
-			glideComp.SetTarget(player1moneyText.transform);
-			glideComp.OnDestruction += () => { Player1Money += moneyValue; };
+			
+			glide.SetTarget(player1moneyText.transform);
+			coin.OnDestruction += () => { Player1Money += coin.valueAwarded; };
 		}
 		else
 		{
-			glideComp.SetTarget(player2moneyText.transform);
-			glideComp.OnDestruction += () => { Player2Money += moneyValue; };
+			glide.SetTarget(player2moneyText.transform);
+			coin.OnDestruction += () => { Player2Money += coin.valueAwarded; };
 		}
 	}
 
