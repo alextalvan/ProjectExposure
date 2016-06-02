@@ -27,7 +27,9 @@ public class SwampTouchScript : MonoBehaviour
     {
         currentTapCount++;
 
-        if (currentTapCount == tapCountForUndo)
+        if (currentTapCount == tapCountForUndo) { 
             transform.parent.GetComponent<SwampSpot>().ToggleOff();
+            currentTapCount = 0;
+        }
     }
 }
