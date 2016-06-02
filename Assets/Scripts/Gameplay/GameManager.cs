@@ -209,25 +209,22 @@ public class GameManager : MonoBehaviour
 		raycastedOn2DObject = false;
 	}
 
-	public void SpawnUICoin(PLAYERS targetOwner, Vector3 worldpos, int moneyValue)
-	{
-		GameObject coin = (GameObject)Instantiate(UI_moneyPrefab,Vector3.zero,Quaternion.identity);
-		coin.transform.SetParent(UI_root);
-		coin.transform.position = Camera.main.WorldToViewportPoint(worldpos);
-		coin.transform.localScale = Vector3.one;
-		CardGlide glideComp = coin.GetComponent<CardGlide>();
+    public void StartCoinGlide(CoinPickup coin)
+    {
+        CardGlide glide = coin.GetComponent<CardGlide>();
+        glide.enabled = true;
+        if (coin.owner == PLAYERS.PLAYER1)
+        {
 
-		if(targetOwner == PLAYERS.PLAYER1)
-		{
-			glideComp.SetTarget(player1moneyText.transform);
-			glideComp.OnDestruction += () => { Player1Money += moneyValue; };
-		}
-		else
-		{
-			glideComp.SetTarget(player2moneyText.transform);
-			glideComp.OnDestruction += () => { Player2Money += moneyValue; };
-		}
-	}
+            glide.SetTarget(player1moneyText.transform);
+            coin.OnDestruction += () => { Player1Money += coin.valueAwarded; };
+        }
+        else
+        {
+            glide.SetTarget(player2moneyText.transform);
+            coin.OnDestruction += () => { Player2Money += coin.valueAwarded; };
+        }
+    }
 
     public void SetPlayer(int index)
     {
