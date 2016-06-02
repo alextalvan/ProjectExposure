@@ -20,10 +20,18 @@ public enum ENERGY_BUILDING_TYPES
 	GAS
 }
 
-
 public class GameManager : MonoBehaviour 
 {
-	[SerializeField]
+    [SerializeField]
+    TouchInputManager touchInputManager;
+
+    [SerializeField]
+    AIPlayer AI1;
+
+    [SerializeField]
+    AIPlayer AI2;
+
+    [SerializeField]
 	float gameTimer = 300.0f;
 
 	[SerializeField]
@@ -100,13 +108,11 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-
 	[SerializeField]
 	int moneyRate = 0;
 
 	[SerializeField]
 	int forcedMaxMoney = 10;
-
 
 	[SerializeField]
 	Text player1moneyText;
@@ -131,7 +137,13 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	GameObject UI_moneyPrefab;
 
-	void Start()
+    [SerializeField]
+    Dropdown player1DD;
+
+    [SerializeField]
+    Dropdown player2DD;
+
+    void Start()
 	{
 		//forcing refresh at start because of inspector filling of starting money
 		Player1Money = Player1Money;
@@ -149,9 +161,7 @@ public class GameManager : MonoBehaviour
 		{
 			timeAccumulatorMoney -= MONEY_UPDATE_RATE;
 			UpdateMoney();
-
 		}
-
 
 		gameTimer -= Time.deltaTime;
 		int seconds = ((int)gameTimer) % 60;
@@ -187,7 +197,6 @@ public class GameManager : MonoBehaviour
 		}
 			
 		pdata.currentInputState = INPUT_STATES.PICKING_BUILDING_CARD_TARGET;
-
 	}
 
 
@@ -208,7 +217,6 @@ public class GameManager : MonoBehaviour
 		coin.transform.localScale = Vector3.one;
 		CardGlide glideComp = coin.GetComponent<CardGlide>();
 
-
 		if(targetOwner == PLAYERS.PLAYER1)
 		{
 			glideComp.SetTarget(player1moneyText.transform);
@@ -221,4 +229,13 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+    public void SetPlayer(int index)
+    {
+        bool ai = index == 1 ? player1DD.value == 1 : player2DD.value == 1;
+        playerData.data[index - 1].AI = ai;
+        if (ai)
+            touchInputManager.BlockHalf(index);
+        else
+            touchInputManager.EnableHalf(index);
+    }
 }
