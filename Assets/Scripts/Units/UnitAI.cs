@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System;
+//using System;
 
 public class UnitAI : GameManagerSearcher 
 {
@@ -77,6 +77,10 @@ public class UnitAI : GameManagerSearcher
 
 	[SerializeField]
 	CoinPickup coinSpawnPrefab;
+
+	[SerializeField]
+	GameObject iceBlockPrefab;
+	GameObject currentIceBlock = null;
 
 	void Start()
     {
@@ -313,6 +317,21 @@ public class UnitAI : GameManagerSearcher
 		}
 	}
 
+	public void AddFreezeBuff(Buff b)
+	{
+		if(currentIceBlock == null)
+		{
+			currentIceBlock = (GameObject)Instantiate(iceBlockPrefab);
+			currentIceBlock.transform.SetParent(this.transform,false);
+
+			float sphereSize = GetComponent<SphereCollider>().radius;
+			currentIceBlock.transform.localScale = new Vector3(sphereSize,sphereSize,sphereSize);
+		}
+
+		buffList.AddBuff(b);
+		anim.speed = 0.0f;
+	}
+
 	//unfreeze
 	#if TOUCH_INPUT
 	void PenetratingTouchEnd()
@@ -321,7 +340,17 @@ public class UnitAI : GameManagerSearcher
 	#endif
 	{
 		buffList.RemoveBuffs(BUFF_TYPES.UNIT_FREEZE);
-		GetComponent<TemporaryBlink>().Stop();
+		//GetComponent<TemporaryBlink>().Stop();
+
+		anim.speed = 1.0f;
+
+		if(currentIceBlock !=null)
+		{
+			currentIceBlock.GetComponent<IceBlock>().Shatter();
+			Destroy(currentIceBlock);
+			currentIceBlock = null;
+		}
+
 
         if (!speedUp)
         {
