@@ -1225,7 +1225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 205850434}
-  tapCountForUndo: 1
 --- !u!1 &215746738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,6 +1494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalTime: 0
   currentTime: 0
+  circleTimerMaterialPrefab: {fileID: 0}
 --- !u!114 &234889937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2172,7 +2172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 316886632}
-  tapCountForUndo: 1
 --- !u!1 &319178245
 GameObject:
   m_ObjectHideFlags: 0
@@ -5172,7 +5171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 846038051}
-  tapCountForUndo: 1
 --- !u!1 &848025801
 GameObject:
   m_ObjectHideFlags: 0
@@ -5221,6 +5219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalTime: 0
   currentTime: 0
+  circleTimerMaterialPrefab: {fileID: 0}
 --- !u!114 &848025804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8013,6 +8012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalTime: 0
   currentTime: 0
+  circleTimerMaterialPrefab: {fileID: 0}
 --- !u!1 &1371074175
 GameObject:
   m_ObjectHideFlags: 0
@@ -8559,7 +8559,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 1448200796}
-  tapCountForUndo: 1
 --- !u!1001 &1455923389
 Prefab:
   m_ObjectHideFlags: 0
@@ -9445,7 +9444,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 1590247325}
-  tapCountForUndo: 1
 --- !u!1 &1595984064
 GameObject:
   m_ObjectHideFlags: 0
@@ -9925,6 +9923,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4150eebb26c24418944be7c4d258ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchInputManager: {fileID: 0}
+  AI1: {fileID: 0}
+  AI2: {fileID: 0}
   gameTimer: 300
   gameTimerText: {fileID: 222098380}
   MONEY_UPDATE_RATE: 3
@@ -9958,6 +9959,7 @@ MonoBehaviour:
       - {fileID: 205850437}
       - {fileID: 316886635}
       - {fileID: 846038054}
+      AI: 0
     - player: 1
       currentSelectedCard: {fileID: 0}
       currentInputState: 0
@@ -9976,8 +9978,11 @@ MonoBehaviour:
       - {fileID: 1921689820}
       - {fileID: 1448200799}
       - {fileID: 1590247328}
+      AI: 0
   UI_root: {fileID: 0}
   UI_moneyPrefab: {fileID: 0}
+  player1DD: {fileID: 0}
+  player2DD: {fileID: 0}
   raycastedOn2DObject: 0
 --- !u!4 &1638074582
 Transform:
@@ -12081,7 +12086,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 1921689817}
-  tapCountForUndo: 1
 --- !u!1001 &1968573978
 Prefab:
   m_ObjectHideFlags: 0
