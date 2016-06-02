@@ -16,6 +16,4 @@ public class AIPlayer : MonoBehaviour {
 	void Update () {
 	    
 	}
-
-
 }

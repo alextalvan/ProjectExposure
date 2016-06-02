@@ -231,8 +231,8 @@ public class GameManager : MonoBehaviour
         bool ai = index == 1 ? player1DD.value == 1 : player2DD.value == 1;
         playerData.data[index - 1].AI = ai;
         if (ai)
-            touchInputManager.BlockHalf(index);
+            touchInputManager.BlockHalf(index-1);
         else
-            touchInputManager.EnableHalf(index);
+            touchInputManager.EnableHalf(index-1);
     }
 }

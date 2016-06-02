@@ -51,8 +51,8 @@ public class TouchInputManager : MonoBehaviour
 		{
 			Touch touch = Input.GetTouch(i);
 
-            if (half1Blocked && touch.position.x < Screen.width * 0.5f) return;
-            if (half2Blocked && touch.position.x > Screen.width * 0.5f) return;
+            if (half1Blocked && touch.position.x < Screen.width / 2) continue;
+            if (half2Blocked && touch.position.x > Screen.width / 2) continue;
 
             TouchPhase phase = touch.phase;
 

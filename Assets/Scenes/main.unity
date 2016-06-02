@@ -10199,7 +10199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd648814e8ca05489a5dddfdb500e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingAs: 0
+  playingAs: 1
 --- !u!114 &1638074584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13285,6 +13285,10 @@ Prefab:
     - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
