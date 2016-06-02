@@ -2684,6 +2684,7 @@ MonoBehaviour:
     buffs: []
   scoreGainFeedbackPrefab: {fileID: 10253516, guid: 6421baf5968a30048bb875aec8bab27a,
     type: 2}
+  coinSpawnPrefab: {fileID: 0}
 --- !u!114 &11487686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4677,12 +4678,12 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 8
-    cnt1: 6
+    cnt0: 12
+    cnt1: 8
     cnt2: 30
     cnt3: 30
-    cntmax0: 12
-    cntmax1: 8
+    cntmax0: 20
+    cntmax1: 10
     cntmax2: 30
     cntmax3: 30
     time0: 0.33
