@@ -32,6 +32,9 @@ public class FreezeCard : ActionCard
 				groupsWithUnits.Add(tr);
 		}
 
+		if(groupsWithUnits.Count < 1)
+			return;
+
 		Transform randomGroup = groupsWithUnits[Random.Range(0,groupsWithUnits.Count)];
 
 		foreach(Transform unit in randomGroup)
@@ -41,8 +44,9 @@ public class FreezeCard : ActionCard
 			if(aiComp && !aiComp.CityTile && !aiComp.buffList.HasBuff(BUFF_TYPES.UNIT_FREEZE))
 			{
 				Buff freezeBuff = new Buff(BUFF_TYPES.UNIT_FREEZE,freezeDuration);
-				aiComp.buffList.AddBuff(freezeBuff);
-				unit.GetComponent<TemporaryBlink>().Begin(freezeDuration);
+				//aiComp.buffList.AddBuff(freezeBuff);
+				aiComp.AddFreezeBuff(freezeBuff);
+				//unit.GetComponent<TemporaryBlink>().Begin(freezeDuration);
 			}
 		}
 

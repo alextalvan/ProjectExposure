@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System;
+//using System;
 
 public class UnitAI : GameManagerSearcher 
 {
@@ -74,6 +74,13 @@ public class UnitAI : GameManagerSearcher
 
 	[SerializeField]
 	TextMesh scoreGainFeedbackPrefab;
+
+	[SerializeField]
+	CoinPickup coinSpawnPrefab;
+
+	[SerializeField]
+	GameObject iceBlockPrefab;
+	GameObject currentIceBlock = null;
 
 	void Start()
     {
@@ -217,11 +224,16 @@ public class UnitAI : GameManagerSearcher
         mat.SetFloat("_Visibility", Mathf.Clamp01(cheerTimer / cheerAnimTime));
         if (cheerTimer <= 0f) {
 			GenerateScore ();
-			gameManager.SpawnUICoin(this.owner,this.transform.position,moneyReward);
+			//gameManager.SpawnUICoin(this.owner,this.transform.position,moneyReward);
 
 			GameObject scoreTextFeedback =(GameObject)Instantiate(scoreGainFeedbackPrefab.gameObject,this.transform.position + new Vector3(0,2,0),Quaternion.identity);
 			scoreTextFeedback.GetComponent<TextMesh>().text = "+" + this.scoreReward.ToString();
 			Destroy(scoreTextFeedback,3.0f);
+
+			GameObject coin = (GameObject)Instantiate(coinSpawnPrefab.gameObject,this.transform.position,Quaternion.identity);
+			CoinPickup pickupComp = coin.GetComponent<CoinPickup>();
+			pickupComp.owner = this.owner;
+			pickupComp.StartGlide();
 
 
 			Destroy(this.gameObject);
@@ -305,6 +317,21 @@ public class UnitAI : GameManagerSearcher
 		}
 	}
 
+	public void AddFreezeBuff(Buff b)
+	{
+		if(currentIceBlock == null)
+		{
+			currentIceBlock = (GameObject)Instantiate(iceBlockPrefab);
+			currentIceBlock.transform.SetParent(this.transform,false);
+
+			float sphereSize = GetComponent<SphereCollider>().radius;
+			currentIceBlock.transform.localScale = new Vector3(sphereSize,sphereSize,sphereSize);
+		}
+
+		buffList.AddBuff(b);
+		anim.speed = 0.0f;
+	}
+
 	//unfreeze
 	#if TOUCH_INPUT
 	void PenetratingTouchEnd()
@@ -313,7 +340,17 @@ public class UnitAI : GameManagerSearcher
 	#endif
 	{
 		buffList.RemoveBuffs(BUFF_TYPES.UNIT_FREEZE);
-		GetComponent<TemporaryBlink>().Stop();
+		//GetComponent<TemporaryBlink>().Stop();
+
+		anim.speed = 1.0f;
+
+		if(currentIceBlock !=null)
+		{
+			currentIceBlock.GetComponent<IceBlock>().Shatter();
+			Destroy(currentIceBlock);
+			currentIceBlock = null;
+		}
+
 
         if (!speedUp)
         {

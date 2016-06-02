@@ -96,7 +96,7 @@ public class TouchInputManager : MonoBehaviour
 						GameObject tObj = rhit.collider.gameObject;
 						if(CanInteractWithObject(touch,tObj))
 						{
-							tObj.SendMessageUpwards("PenetratingTouchEnter");
+							tObj.SendMessageUpwards("PenetratingTouchEnter",touch);
 						}
 					}
 
@@ -136,7 +136,7 @@ public class TouchInputManager : MonoBehaviour
 					foreach(GameObject oldPenObj in oldPenetratedObjects)
 					{
 						if(CanInteractWithObject(touch,oldPenObj) && !newPenetratedObjectsList.Contains(oldPenObj))
-							oldPenObj.SendMessageUpwards("PenetratingTouchExit");
+							oldPenObj.SendMessageUpwards("PenetratingTouchExit",touch);
 					}
 
 
@@ -161,7 +161,7 @@ public class TouchInputManager : MonoBehaviour
 					foreach(GameObject newPenObj in newPenetratedObjectsList)
 					{
 						if(CanInteractWithObject(touch,newPenObj) && !oldPenetratedObjects.Contains(newPenObj))
-							newPenObj.SendMessageUpwards("PenetratingTouchEnter");
+							newPenObj.SendMessageUpwards("PenetratingTouchEnter",touch);
 					}
 
 
@@ -187,7 +187,7 @@ public class TouchInputManager : MonoBehaviour
 					foreach(GameObject newPenObj in newPenetratedObjectsList)
 					{
 						if(CanInteractWithObject(touch,newPenObj))
-							newPenObj.SendMessageUpwards("PenetratingTouchMove");
+							newPenObj.SendMessageUpwards("PenetratingTouchMove",touch);
 					}
 
 					focusedPenetratedObjects[touch.fingerId] = newPenetratedObjectsList;
@@ -210,7 +210,7 @@ public class TouchInputManager : MonoBehaviour
 					foreach(GameObject newPenObj in newPenetratedObjectsList)
 					{
 						if(CanInteractWithObject(touch,newPenObj))
-							newPenObj.SendMessageUpwards("PenetratingTouchStay");
+							newPenObj.SendMessageUpwards("PenetratingTouchStay",touch);
 					}
 
 					focusedPenetratedObjects[touch.fingerId] = newPenetratedObjectsList;
@@ -228,7 +228,7 @@ public class TouchInputManager : MonoBehaviour
 					foreach(GameObject newPenObj in newPenetratedObjectsList)
 					{
 						if(CanInteractWithObject(touch,newPenObj))
-							newPenObj.SendMessageUpwards("PenetratingTouchEnd");
+							newPenObj.SendMessageUpwards("PenetratingTouchEnd",touch);
 					}
 						
 					
