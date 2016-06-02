@@ -29,11 +29,12 @@ public class TouchInputManager : MonoBehaviour
 	private Dictionary<int,GameObject> focusedObjects = new Dictionary<int, GameObject>();
 	//the same thing, but for penetrating callbacks
 	private Dictionary<int,List<GameObject>> focusedPenetratedObjects = new Dictionary<int, List<GameObject>>();
+    bool half1Blocked = false;
+    bool half2Blocked = false;
 
 	void Update () 
 	{
 		HandleTouchInput();
-			
 	}
 
 	void Awake()
@@ -49,7 +50,11 @@ public class TouchInputManager : MonoBehaviour
 		for (int i = 0; i < nbTouches; i++)
 		{
 			Touch touch = Input.GetTouch(i);
-			TouchPhase phase = touch.phase;
+
+            if (half1Blocked && touch.position.x < Screen.width * 0.5f) return;
+            if (half2Blocked && touch.position.x > Screen.width * 0.5f) return;
+
+            TouchPhase phase = touch.phase;
 
 			Collider2D col2d = Get2DColliderUnderTouch(touch);
 			Collider   col3d = Get3DColliderUnderTouch(touch);
@@ -341,6 +346,21 @@ public class TouchInputManager : MonoBehaviour
 		focusedObjects[t.fingerId] = target;
 	}
 
+    public void BlockHalf(int index)
+    {
+        if (index == 0)
+            half1Blocked = true;
+        else
+            half2Blocked = true;
+    }
+
+    public void EnableHalf(int index)
+    {
+        if (index == 0)
+            half1Blocked = false;
+        else
+            half2Blocked = false;
+    }
 
 //	void OnGUI()
 //	{

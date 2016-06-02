@@ -20,10 +20,18 @@ public enum ENERGY_BUILDING_TYPES
 	GAS
 }
 
-
 public class GameManager : MonoBehaviour 
 {
-	[SerializeField]
+    [SerializeField]
+    TouchInputManager touchInputManager;
+
+    [SerializeField]
+    AIPlayer AI1;
+
+    [SerializeField]
+    AIPlayer AI2;
+
+    [SerializeField]
 	float gameTimer = 300.0f;
 
 	[SerializeField]
@@ -100,13 +108,11 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-
 	[SerializeField]
 	int moneyRate = 0;
 
 	[SerializeField]
 	int forcedMaxMoney = 10;
-
 
 	[SerializeField]
 	Text player1moneyText;
@@ -131,7 +137,13 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	GameObject UI_moneyPrefab;
 
-	void Start()
+    [SerializeField]
+    Dropdown player1DD;
+
+    [SerializeField]
+    Dropdown player2DD;
+
+    void Start()
 	{
 		//forcing refresh at start because of inspector filling of starting money
 		Player1Money = Player1Money;
@@ -149,9 +161,7 @@ public class GameManager : MonoBehaviour
 		{
 			timeAccumulatorMoney -= MONEY_UPDATE_RATE;
 			UpdateMoney();
-
 		}
-
 
 		gameTimer -= Time.deltaTime;
 		int seconds = ((int)gameTimer) % 60;
@@ -187,7 +197,6 @@ public class GameManager : MonoBehaviour
 		}
 			
 		pdata.currentInputState = INPUT_STATES.PICKING_BUILDING_CARD_TARGET;
-
 	}
 
 
@@ -200,55 +209,30 @@ public class GameManager : MonoBehaviour
 		raycastedOn2DObject = false;
 	}
 
-//	public void SpawnUICoin(PLAYERS targetOwner, Vector3 worldpos, int moneyValue)
-//	{
-//		GameObject coin = (GameObject)Instantiate(UI_moneyPrefab,Vector3.zero,Quaternion.identity);
-//
-//
-//		//Vector2 viewportPos = Camera.main.WorldToViewportPoint(worldpos);
-//		//Vector2 screenPos = new Vector2(Camera.main.pixelWidth/2, Camera.main.pixelWidth/2);
-//		//Vector3 scrn = Camera.main.WorldToScreenPoint(worldpos);
-//
-//		Vector3 viewportPos =  Camera.main.WorldToViewportPoint(worldpos);
-//
-//
-//
-//		//Debug.Log(newPos);
-//
-//		coin.transform.SetParent(UI_root,false);
-//
-//		//EditorApplication.isPaused = true;
-//
-//		CardGlide glideComp = coin.GetComponent<CardGlide>();
-//
-//
-//		if(targetOwner == PLAYERS.PLAYER1)
-//		{
-//			glideComp.SetTarget(player1moneyText.transform);
-//			glideComp.OnDestruction += () => { Player1Money += moneyValue; };
-//		}
-//		else
-//		{
-//			glideComp.SetTarget(player2moneyText.transform);
-//			glideComp.OnDestruction += () => { Player2Money += moneyValue; };
-//		}
-//	}
+    public void StartCoinGlide(CoinPickup coin)
+    {
+        CardGlide glide = coin.GetComponent<CardGlide>();
+        glide.enabled = true;
+        if (coin.owner == PLAYERS.PLAYER1)
+        {
 
-	public void StartCoinGlide(CoinPickup coin)
-	{
-		CardGlide glide = coin.GetComponent<CardGlide>();
-		glide.enabled = true;
-		if(coin.owner == PLAYERS.PLAYER1)
-		{
-			
-			glide.SetTarget(player1moneyText.transform);
-			coin.OnDestruction += () => { Player1Money += coin.valueAwarded; };
-		}
-		else
-		{
-			glide.SetTarget(player2moneyText.transform);
-			coin.OnDestruction += () => { Player2Money += coin.valueAwarded; };
-		}
-	}
+            glide.SetTarget(player1moneyText.transform);
+            coin.OnDestruction += () => { Player1Money += coin.valueAwarded; };
+        }
+        else
+        {
+            glide.SetTarget(player2moneyText.transform);
+            coin.OnDestruction += () => { Player2Money += coin.valueAwarded; };
+        }
+    }
 
+    public void SetPlayer(int index)
+    {
+        bool ai = index == 1 ? player1DD.value == 1 : player2DD.value == 1;
+        playerData.data[index - 1].AI = ai;
+        if (ai)
+            touchInputManager.BlockHalf(index);
+        else
+            touchInputManager.EnableHalf(index);
+    }
 }
