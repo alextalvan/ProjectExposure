@@ -1,0 +1,340 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: OutlineHex
+  m_Shader: {fileID: 4800000, guid: c3743ea2ddbce4d71b959bd28c31194c, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailNormalMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _OcclusionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _EmissionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailMask
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailAlbedoMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_1138
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: 4992f9e1c64af50478454d8e7756f171, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Base_texture
+        second:
+          m_Texture: {fileID: 2800000, guid: db40b72bca07d4bb0a8a2805123ae566, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal_map
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse_texture
+        second:
+          m_Texture: {fileID: 2800000, guid: db40b72bca07d4bb0a8a2805123ae566, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _AO
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _SrcBlend
+        second: 1
+      data:
+        first:
+          name: _DstBlend
+        second: 0
+      data:
+        first:
+          name: _Cutoff
+        second: 0.5
+      data:
+        first:
+          name: _Spec_Intensity
+        second: 3.3
+      data:
+        first:
+          name: _Metallic
+        second: 0.07
+      data:
+        first:
+          name: _Glossiness
+        second: 0
+      data:
+        first:
+          name: _Parallax
+        second: 0.02
+      data:
+        first:
+          name: _ZWrite
+        second: 1
+      data:
+        first:
+          name: _BumpScale
+        second: 1
+      data:
+        first:
+          name: _OcclusionStrength
+        second: 1
+      data:
+        first:
+          name: _DetailNormalMapScale
+        second: 1
+      data:
+        first:
+          name: _UVSec
+        second: 0
+      data:
+        first:
+          name: _Mode
+        second: 0
+      data:
+        first:
+          name: _Width
+        second: 0.31
+      data:
+        first:
+          name: _EXP
+        second: 1
+      data:
+        first:
+          name: _Edge_glow
+        second: 0
+      data:
+        first:
+          name: _Glow_intensity
+        second: 1.2
+      data:
+        first:
+          name: _OutlineWidth
+        second: -0.09
+      data:
+        first:
+          name: _node_1524
+        second: 1
+      data:
+        first:
+          name: _Opacity
+        second: 1
+      data:
+        first:
+          name: _node_6459
+        second: 0
+      data:
+        first:
+          name: _node_3253
+        second: 1
+      data:
+        first:
+          name: _Glow
+        second: 1
+      data:
+        first:
+          name: _Glow_Int
+        second: 2.86
+      data:
+        first:
+          name: _Rotate_Texture
+        second: 11
+      data:
+        first:
+          name: _Rotate_Speed_Texture
+        second: 0.23
+      data:
+        first:
+          name: _Scale_UV
+        second: 0
+      data:
+        first:
+          name: _Hei
+        second: 0.66
+      data:
+        first:
+          name: _Dep
+        second: 0.98
+      data:
+        first:
+          name: _Ref
+        second: 1.31
+      data:
+        first:
+          name: _Spec_gloss
+        second: 1
+      data:
+        first:
+          name: _Spec_power
+        second: 1
+      data:
+        first:
+          name: _Spec_intensity
+        second: 1.9
+      data:
+        first:
+          name: _Desaturate
+        second: 6.2
+      data:
+        first:
+          name: _Spec_brightness
+        second: 6.6
+      data:
+        first:
+          name: _Spec_levels
+        second: 2.38
+      data:
+        first:
+          name: _node_5291
+        second: 2.04
+      data:
+        first:
+          name: _node_6365
+        second: 0
+      data:
+        first:
+          name: _GlosMet
+        second: 0
+      data:
+        first:
+          name: _node_9296
+        second: 0.41
+      data:
+        first:
+          name: _UV_Tiler
+        second: 1.661371
+    m_Colors:
+      data:
+        first:
+          name: _EmissionColor
+        second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _Color
+        second: {r: 0.51203316, g: 0.98529404, b: 0.057958353, a: 1}
+      data:
+        first:
+          name: _Base_Color
+        second: {r: 0.14705884, g: 0.64705867, b: 1, a: 1}
+      data:
+        first:
+          name: _Glow_Color
+        second: {r: 0.078431346, g: 0.39215687, b: 0.7843137, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0, g: 0.99264705, b: 0.21222103, a: 1}
+      data:
+        first:
+          name: _node_7846
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      data:
+        first:
+          name: _node_418
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      data:
+        first:
+          name: _node_1096
+        second: {r: 0, g: 1, b: 0.21379295, a: 1}
+      data:
+        first:
+          name: _Select_color
+        second: {r: 0.5367647, g: 0.39489326, b: 0.26048878, a: 1}
+      data:
+        first:
+          name: _Color_a
+        second: {r: 0.9264706, g: 0.9264706, b: 0.9264706, a: 1}
+      data:
+        first:
+          name: _Color_b
+        second: {r: 0.26470587, g: 0.26470587, b: 0.26470587, a: 1}
+      data:
+        first:
+          name: _node_6457
+        second: {r: 0.52551895, g: 0.9926471, b: 0.6253877, a: 1}
+      data:
+        first:
+          name: _node_2862
+        second: {r: 1, g: 0, b: 0, a: 1}
