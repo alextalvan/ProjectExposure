@@ -10178,6 +10178,7 @@ MonoBehaviour:
       - {fileID: 316886635}
       - {fileID: 846038054}
       AI: 0
+      coinUp: 0
     - player: 1
       currentSelectedCard: {fileID: 0}
       currentInputState: 0
@@ -10197,6 +10198,7 @@ MonoBehaviour:
       - {fileID: 1448200799}
       - {fileID: 1590247328}
       AI: 0
+      coinUp: 0
   UI_root: {fileID: 1483353235}
   UI_moneyPrefab: {fileID: 189870, guid: 754343a333242fe40a3b245f79d28a8b, type: 2}
   player1DD: {fileID: 1905220159}
@@ -10226,6 +10228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playingAs: 1
+  actionCardsHolder: {fileID: 351929028}
+  greenBuildingCardsHolder: {fileID: 82018076}
+  fossilBuildingCardsHolder: {fileID: 402021771}
 --- !u!114 &1638074584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10238,6 +10243,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playingAs: 0
+  actionCardsHolder: {fileID: 241226544}
+  greenBuildingCardsHolder: {fileID: 736994559}
+  fossilBuildingCardsHolder: {fileID: 1078372221}
 --- !u!114 &1638074585
 MonoBehaviour:
   m_ObjectHideFlags: 0
