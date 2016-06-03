@@ -763,6 +763,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 162262, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.1
+  allowCoinSpawn: 0
 --- !u!64 &153915149
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1159,7 +1160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &222098379
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1481,6 +1482,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 162262, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.1
+  allowCoinSpawn: 0
 --- !u!64 &252654712
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2435,6 +2437,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 162262, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.1
+  allowCoinSpawn: 0
 --- !u!64 &327329075
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4010,6 +4013,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 162262, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.1
+  allowCoinSpawn: 0
 --- !u!64 &658398794
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4315,6 +4319,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 162262, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.1
+  allowCoinSpawn: 0
 --- !u!64 &733978407
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4749,7 +4754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &799392439
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5662,6 +5667,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 162262, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.1
+  allowCoinSpawn: 0
 --- !u!64 &911564456
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6920,6 +6926,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 123974, guid: 4b0fd97b6916390469dcd82fab5d42d2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b0fd97b6916390469dcd82fab5d42d2, type: 2}
   m_IsPrefabParent: 0
@@ -7511,6 +7521,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 162262, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.1
+  allowCoinSpawn: 0
 --- !u!64 &1263588879
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8073,6 +8084,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 162262, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.1
+  allowCoinSpawn: 0
 --- !u!64 &1368118114
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8283,6 +8295,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 162262, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.1
+  allowCoinSpawn: 0
 --- !u!64 &1386126881
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8553,6 +8566,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 162262, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.1
+  allowCoinSpawn: 0
 --- !u!64 &1436558387
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9689,6 +9703,10 @@ Prefab:
       propertyPath: owner
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 123974, guid: 4b0fd97b6916390469dcd82fab5d42d2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b0fd97b6916390469dcd82fab5d42d2, type: 2}
   m_IsPrefabParent: 0
@@ -9997,6 +10015,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 123974, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}
   m_IsPrefabParent: 0
@@ -10073,6 +10095,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 162262, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.1
+  allowCoinSpawn: 0
 --- !u!64 &1632546433
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10097,6 +10120,7 @@ GameObject:
   - 114: {fileID: 1638074581}
   - 114: {fileID: 1638074584}
   - 114: {fileID: 1638074583}
+  - 114: {fileID: 1638074585}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -10116,11 +10140,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchInputManager: {fileID: 1915953432}
+  gameStarted: 0
   AI1: {fileID: 1638074584}
   AI2: {fileID: 1638074583}
   gameTimer: 300
   gameTimerText: {fileID: 222098380}
   MONEY_UPDATE_RATE: 900000
+  neutralCardSpawner: {fileID: 799392438}
   _player1money: 10
   _player2money: 10
   _player1score: 0
@@ -10212,6 +10238,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playingAs: 0
+--- !u!114 &1638074585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638074580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 909ac54e00a816640a3ce13fafb7d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstWaveCards:
+  - {fileID: 1643170372}
+  - {fileID: 116057177}
+  secondWaveCards:
+  - {fileID: 1846120161}
+  - {fileID: 1630506004}
+  thirdWaveCards:
+  - {fileID: 1139972512}
+  - {fileID: 1597873718}
 --- !u!1 &1640691032
 GameObject:
   m_ObjectHideFlags: 0
@@ -11480,6 +11526,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 162262, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.1
+  allowCoinSpawn: 0
 --- !u!64 &1793725490
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11750,6 +11797,10 @@ Prefab:
     - target: {fileID: 11479500, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}
       propertyPath: owner
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 123974, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}

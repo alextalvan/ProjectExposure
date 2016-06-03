@@ -59,6 +59,9 @@ public class HexagonTile : GameManagerSearcher
 	[SerializeField]
 	float coinSpawnProbability = 0.24999f;
 
+	[SerializeField]
+	bool allowCoinSpawn = false;
+
 	GameObject currentCoin = null;
 
 	void Start () 
@@ -106,7 +109,7 @@ public class HexagonTile : GameManagerSearcher
 		{
 			coinSpawnAccumulator = 0.0f;
 
-			if(currentCoin != null || CurrentEnergyBuilding != null)
+			if(currentCoin != null || CurrentEnergyBuilding != null || !allowCoinSpawn)
 				return;
 
 			//the roll
@@ -272,5 +275,10 @@ public class HexagonTile : GameManagerSearcher
 
 		buildingBlockedObject = (GameObject)Instantiate(building.PollutionPrefab);
 		buildingBlockedObject.transform.SetParent(this.transform,false);
+	}
+
+	public void StartCoinSpawn()
+	{
+		allowCoinSpawn = true;
 	}
 }

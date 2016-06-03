@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TouchInputManager touchInputManager;
 
+	[SerializeField]
+	bool gameStarted = false;
+
     [SerializeField]
     AIPlayer AI1;
 
@@ -49,6 +52,9 @@ public class GameManager : MonoBehaviour
 
 	//public delegate void WaveTriggerDelegate();
 	//public event WaveTriggerDelegate OnNewWave = null;
+
+	[SerializeField]
+	GameObject neutralCardSpawner;
 
 
 	[SerializeField]
@@ -155,6 +161,9 @@ public class GameManager : MonoBehaviour
 		if(Input.GetKeyUp(KeyCode.Escape))
 			Application.Quit();
 
+		if(!gameStarted)
+			return;
+
 		timeAccumulatorMoney += Time.deltaTime;
 
 		while(timeAccumulatorMoney >= MONEY_UPDATE_RATE)
@@ -235,4 +244,15 @@ public class GameManager : MonoBehaviour
         else
             touchInputManager.EnableHalf(index-1);
     }
+
+	public void StartGame()
+	{
+		gameStarted = true;
+		gameTimerText.gameObject.SetActive(true);
+		neutralCardSpawner.SetActive(true);
+
+		foreach(PlayerGameData pdata in _playerData.data)
+			foreach(HexagonTile tile in pdata.tiles)
+				tile.StartCoinSpawn();
+	}
 }
