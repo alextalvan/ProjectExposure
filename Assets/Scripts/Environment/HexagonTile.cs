@@ -109,7 +109,7 @@ public class HexagonTile : GameManagerSearcher
 		{
 			coinSpawnAccumulator = 0.0f;
 
-			if(currentCoin != null || CurrentEnergyBuilding != null || !allowCoinSpawn)
+			if(currentCoin != null || CurrentEnergyBuilding != null || !allowCoinSpawn || gameManager.playerData[Owner].coinUp)
 				return;
 
 			//the roll
@@ -131,8 +131,10 @@ public class HexagonTile : GameManagerSearcher
 				currentCoin = coin;
 
 				CoinPickup coinComp = coin.GetComponent<CoinPickup>();
-				coinComp.OnDestruction += () => { this.currentCoin = null; };
+				coinComp.OnDestruction += () => { this.currentCoin = null; gameManager.playerData[Owner].coinUp = false; };
 				coinComp.owner = this.Owner;
+
+				gameManager.playerData[Owner].coinUp = true;
 			}
 		}
 	}
