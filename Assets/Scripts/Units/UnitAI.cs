@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 //using System;
-
 public class UnitAI : GameManagerSearcher 
 {
 	enum AiState { Idle, Run, Fight, Wander, Cheer, Die };
@@ -82,8 +81,13 @@ public class UnitAI : GameManagerSearcher
 	GameObject iceBlockPrefab;
 	GameObject currentIceBlock = null;
 
-	void Start()
+	[SerializeField]
+	UnitStrengthDisplayer strengthDisplay;
+	bool hpFadeStarted = false;
+
+    protected override void Awake()
     {
+        base.Awake();
         speedUpBuff = new SpeedBuff(speedBuffMod, speedBuffDuration);
         wanderTimer = wanderAnimTime;
 		fightTimer = fightAnimTime;
@@ -91,6 +95,7 @@ public class UnitAI : GameManagerSearcher
         deathTimer = deathAnimTime;
         anim = transform.GetChild(0).GetComponent<Animator>();
         mat = model.GetComponent<Renderer>().material;
+		strengthDisplay.SetHealth(unitStrength);
     }
 	
 	// Update is called once per frame
@@ -186,6 +191,13 @@ public class UnitAI : GameManagerSearcher
 
     private void Fight() {
 		fightTimer -= Time.deltaTime;
+
+		if(fightTimer <= fightAnimTime * 0.5f && !hpFadeStarted)
+		{
+			strengthDisplay.TakeDamage(fightingTargetStrength, fightAnimTime * 0.45f);
+			hpFadeStarted = true;
+		}
+
 		if (fightTimer <= 0f) {
 			if (this.unitStrength > fightingTargetStrength) {
 				transform.GetComponent<Rigidbody> ().isKinematic = true;

@@ -7,10 +7,9 @@ public abstract class GameManagerSearcher : MonoBehaviour
 	private GameManager _gameManager;
 	protected GameManager gameManager { get { return _gameManager; } }
 
-	void Awake()
+    protected virtual void Awake()
 	{
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
 	}
 		
 }
