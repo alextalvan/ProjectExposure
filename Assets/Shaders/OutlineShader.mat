@@ -10,7 +10,7 @@ Material:
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -78,6 +78,20 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_1138
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: 4992f9e1c64af50478454d8e7756f171, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -93,16 +107,20 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Metallic
+        second: 0.07
+      data:
+        first:
+          name: _Glossiness
+        second: 0
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
         first:
           name: _ZWrite
         second: 1
-      data:
-        first:
-          name: _Glossiness
-        second: 0
       data:
         first:
           name: _BumpScale
@@ -125,8 +143,36 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
+          name: _Glow_intensity
+        second: 1.2
+      data:
+        first:
+          name: _OutlineWidth
+        second: -0.09
+      data:
+        first:
+          name: _node_1524
+        second: 1
+      data:
+        first:
+          name: _Opacity
+        second: 1
+      data:
+        first:
+          name: _node_6459
         second: 0
+      data:
+        first:
+          name: _node_3253
+        second: 1
+      data:
+        first:
+          name: _Glow
+        second: 1
+      data:
+        first:
+          name: _Glow_Int
+        second: 0.85
     m_Colors:
       data:
         first:
@@ -135,4 +181,24 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.19999993, g: 1, b: 0, a: 1}
+        second: {r: 0, g: 1, b: 0.33793116, a: 1}
+      data:
+        first:
+          name: _Base_Color
+        second: {r: 0.14705884, g: 0.64705867, b: 1, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0, g: 0.99264705, b: 0.21222103, a: 1}
+      data:
+        first:
+          name: _node_7846
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      data:
+        first:
+          name: _node_418
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      data:
+        first:
+          name: _node_1096
+        second: {r: 0, g: 1, b: 0.21379295, a: 1}
