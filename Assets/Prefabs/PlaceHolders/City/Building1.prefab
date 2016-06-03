@@ -26,6 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 409138}
   - 114: {fileID: 11463000}
+  - 114: {fileID: 11426598}
   m_Layer: 0
   m_Name: Building1
   m_TagString: Untagged
@@ -91,6 +92,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170184}
   m_Mesh: {fileID: 4300000, guid: ee8a15291c21bad479e326acdd107dfc, type: 3}
+--- !u!114 &11426598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cd63af8e6152a43b2d80893045602f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveTime: 5
+  _renderer: {fileID: 2355002}
 --- !u!114 &11463000
 MonoBehaviour:
   m_ObjectHideFlags: 1
