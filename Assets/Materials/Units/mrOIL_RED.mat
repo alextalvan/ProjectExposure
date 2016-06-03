@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: mrOIL
+  m_Name: mrOIL_RED
   m_Shader: {fileID: 4800000, guid: e68f798c29a56af4e8a35346cfba79cc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -82,14 +82,14 @@ Material:
         first:
           name: _Base_Color
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 21b6b679ca1b948449512a8ea20d7d38, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Normal_Map
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: dfc733e9896d34afe844cd6d7b7cf377, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -103,21 +103,21 @@ Material:
         first:
           name: _Metallic_map
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: eed36c93dd7cc45888690167f61abcf9, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Gloss_map
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: eed36c93dd7cc45888690167f61abcf9, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Emission_map
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 1f9ab010375134ceb9faf6eac584085b, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -144,7 +144,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.5
+        second: 0
       data:
         first:
           name: _BumpScale
@@ -176,7 +176,7 @@ Material:
       data:
         first:
           name: _Normal_Map_Intensity
-        second: 0
+        second: 0.52
       data:
         first:
           name: _Noise_Brightness
@@ -208,7 +208,7 @@ Material:
       data:
         first:
           name: _Emssion_power
-        second: 2.918127
+        second: 4.77
     m_Colors:
       data:
         first:
