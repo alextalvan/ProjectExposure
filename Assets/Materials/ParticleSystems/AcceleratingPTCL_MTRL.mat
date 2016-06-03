@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MouseClickPTCL_MTRL
-  m_Shader: {fileID: 208, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: AcceleratingPTCL_MTRL
+  m_Shader: {fileID: 202, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 2370b9d63473e4a4caabf9ac2ea85ce0, type: 3}
+          m_Texture: {fileID: 2800000, guid: a53a35bf396ae7141835332ff53d2f3d, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -142,9 +142,5 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _TintColor
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-      data:
-        first:
           name: _EmisColor
-        second: {r: 1, g: 0.915213, b: 0.44117647, a: 0}
+        second: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 0}
