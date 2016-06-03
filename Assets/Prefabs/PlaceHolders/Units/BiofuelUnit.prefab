@@ -940,6 +940,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &160366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 417352}
+  - 114: {fileID: 11450144}
+  - 114: {fileID: 11410252}
+  m_Layer: 0
+  m_Name: HealthDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &161470
 GameObject:
   m_ObjectHideFlags: 1
@@ -1595,6 +1612,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 488010}
   m_RootOrder: 21
+--- !u!4 &417352
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 479420}
+  m_RootOrder: 2
 --- !u!4 &417660
 Transform:
   m_ObjectHideFlags: 1
@@ -2357,6 +2386,7 @@ Transform:
   m_Children:
   - {fileID: 437822}
   - {fileID: 466936}
+  - {fileID: 417352}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &479436
@@ -2635,7 +2665,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!95 &9579030
 Animator:
@@ -2654,6 +2684,33 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11410252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba3a7f6350faf54a9308dabfe0cc433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11450144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6d0b5047b350941864950e756deb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointPrefab: {fileID: 131970, guid: d47be8742e69ae9459db67e3e9ff7eaa, type: 2}
+  distance: 2.5
+  health: 0
+  currentHitpointObjects: []
+  startCapacity: 4
 --- !u!114 &11485242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2686,6 +2743,7 @@ MonoBehaviour:
     type: 2}
   coinSpawnPrefab: {fileID: 11472550, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   iceBlockPrefab: {fileID: 198636, guid: 856d1e0195ac9e44c9fdbdeb95837355, type: 2}
+  strengthDisplay: {fileID: 11450144}
 --- !u!114 &11487686
 MonoBehaviour:
   m_ObjectHideFlags: 1

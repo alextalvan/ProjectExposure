@@ -20,16 +20,17 @@ public class UnitStrengthDisplayer : MonoBehaviour {
 	[SerializeField]
 	int startCapacity = 4;
 
-	void Start()
+	void Awake()
 	{
 		for(int i=0; i < startCapacity; ++i)
 		{
 			GameObject hp = (GameObject)Instantiate(hitpointPrefab);
 			currentHitpointObjects.Add(hp);
 			hp.transform.SetParent(this.transform,false);
+			hp.GetComponent<SpriteFader>().Reset();
 		}
 
-		SetHealth(0);
+		//SetHealth(1);
 	}
 
 
@@ -45,6 +46,11 @@ public class UnitStrengthDisplayer : MonoBehaviour {
 				currentHitpointObjects.Add(hp);
 				hp.transform.SetParent(this.transform,false);
 			}
+		}
+
+		for(int i=0; i < currentHitpointObjects.Count; ++i)
+		{
+			currentHitpointObjects[i].GetComponent<SpriteFader>().Reset();
 		}
 
 		health = amount;
@@ -71,6 +77,19 @@ public class UnitStrengthDisplayer : MonoBehaviour {
 				currentUsedIndex++;
 			}
 
+		}
+	}
+
+	public void TakeDamage(int amount, float fadeDuration = 1.0f)
+	{
+		if(amount <= 0)
+			return;
+
+		if(amount > health) amount = health;
+
+		for(int i = health - 1; i > health - amount - 1; --i)
+		{
+			currentHitpointObjects[i].GetComponent<SpriteFader>().StartFade(fadeDuration);
 		}
 	}
 

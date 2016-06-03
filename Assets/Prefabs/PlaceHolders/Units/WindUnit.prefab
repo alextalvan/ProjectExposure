@@ -1799,6 +1799,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &184354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 419382}
+  - 114: {fileID: 11448580}
+  - 114: {fileID: 11482372}
+  m_Layer: 0
+  m_Name: HealthDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &184448
 GameObject:
   m_ObjectHideFlags: 1
@@ -2546,6 +2563,18 @@ Transform:
   - {fileID: 416410}
   m_Father: {fileID: 484414}
   m_RootOrder: 1
+--- !u!4 &419382
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 424946}
+  m_RootOrder: 2
 --- !u!4 &419662
 Transform:
   m_ObjectHideFlags: 1
@@ -2696,6 +2725,7 @@ Transform:
   m_Children:
   - {fileID: 492332}
   - {fileID: 460370}
+  - {fileID: 419382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &425032
@@ -4074,6 +4104,34 @@ MonoBehaviour:
     type: 2}
   coinSpawnPrefab: {fileID: 11472550, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   iceBlockPrefab: {fileID: 198636, guid: 856d1e0195ac9e44c9fdbdeb95837355, type: 2}
+  strengthDisplay: {fileID: 11448580}
+--- !u!114 &11448580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6d0b5047b350941864950e756deb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointPrefab: {fileID: 131970, guid: d47be8742e69ae9459db67e3e9ff7eaa, type: 2}
+  distance: 2.5
+  health: 0
+  currentHitpointObjects: []
+  startCapacity: 4
+--- !u!114 &11482372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba3a7f6350faf54a9308dabfe0cc433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13520290
 SphereCollider:
   m_ObjectHideFlags: 1
