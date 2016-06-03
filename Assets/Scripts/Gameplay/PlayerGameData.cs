@@ -18,6 +18,7 @@ public class PlayerGameData
 	public List<Transform> unitGroups = new List<Transform>();
 	public List<SwampSpot> swampSpots = new List<SwampSpot>();
     public bool AI = false;
+	public bool coinUp = false;
 
 	public void SetAllTilesHighlight(bool show)
 	{
