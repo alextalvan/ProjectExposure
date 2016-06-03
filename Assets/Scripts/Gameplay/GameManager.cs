@@ -228,11 +228,17 @@ public class GameManager : MonoBehaviour
 
     public void SetPlayer(int index)
     {
-        bool ai = index == 1 ? player1DD.value == 1 : player2DD.value == 1;
-        playerData.data[index - 1].AI = ai;
-        if (ai)
-            touchInputManager.BlockHalf(index-1);
+        bool aiEnabled = index == 0 ? player1DD.value == 1 : player2DD.value == 1;
+        playerData.data[index].AI = aiEnabled;
+
+        if (aiEnabled)
+            touchInputManager.BlockHalf(index);
         else
-            touchInputManager.EnableHalf(index-1);
+            touchInputManager.EnableHalf(index);
+
+        if (index == 0)
+            AI1.enabled = aiEnabled;
+        else
+            AI2.enabled = aiEnabled;
     }
 }
