@@ -2735,7 +2735,7 @@ Transform:
   - {fileID: 405690}
   - {fileID: 469876}
   m_Father: {fileID: 488558}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &431256
 Transform:
   m_ObjectHideFlags: 1
@@ -3687,7 +3687,7 @@ Transform:
   m_Children:
   - {fileID: 498078}
   m_Father: {fileID: 488558}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &482740
 Transform:
   m_ObjectHideFlags: 1
@@ -3826,11 +3826,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -25.66343, y: -48.89991, z: 31.340633}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 481654}
   - {fileID: 429638}
+  - {fileID: 481654}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &490384
@@ -4171,7 +4171,7 @@ MonoBehaviour:
   speedBuffMod: 2
   speedBuffDuration: 60
   model: {fileID: 134442}
-  attackPrefab: {fileID: 0}
+  attackPrefab: {fileID: 160934}
   conversionPrefab: {fileID: 124668, guid: 09aa07568625990408235ce0eafac3e2, type: 2}
   buffList:
     buffs: []

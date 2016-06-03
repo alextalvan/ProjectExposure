@@ -198,15 +198,15 @@ public class HexagonTile : GameManagerSearcher
 		this._hasBuildingOnTop = (otherB != null);
 		this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(otherB == null);
 	}
-	
 
-	/// <summary>
-	/// Callback for the finger being lifted on top of this collider
-	/// </summary>
-	#if TOUCH_INPUT
-	void PenetratingTouchEnd()
-	#else
-	void OnMouseUp()
+
+    /// <summary>
+    /// Callback for the finger being lifted on top of this collider
+    /// </summary>
+#if TOUCH_INPUT
+	public void PenetratingTouchEnd()
+#else
+    public void OnMouseUp()
 	#endif
 	{
 		

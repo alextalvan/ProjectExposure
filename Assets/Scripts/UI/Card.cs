@@ -85,7 +85,7 @@ public abstract class Card : GameManagerSearcher
 		return false;
 	}
 
-	protected virtual void DoCardEffect()
+    public virtual void DoCardEffect()
 	{
 		
 	}
