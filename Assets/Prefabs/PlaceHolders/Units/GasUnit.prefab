@@ -2701,7 +2701,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 125.28934, y: -10.597961, z: 72.90039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496408}
@@ -2859,7 +2859,7 @@ Transform:
   m_GameObject: {fileID: 102738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 471408}
   - {fileID: 450630}
@@ -2962,7 +2962,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152352}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
   m_Name: 
@@ -2992,7 +2992,7 @@ MonoBehaviour:
   moneyReward: 1
   speedBuffMod: 2
   speedBuffDuration: 60
-  model: {fileID: 102738}
+  model: {fileID: 113864}
   attackPrefab: {fileID: 160934}
   conversionPrefab: {fileID: 124668, guid: 09aa07568625990408235ce0eafac3e2, type: 2}
   buffList:
@@ -3017,7 +3017,6 @@ MonoBehaviour:
   distance: 2.5
   health: 0
   currentHitpointObjects: []
-  startCapacity: 4
 --- !u!135 &13583898
 SphereCollider:
   m_ObjectHideFlags: 1

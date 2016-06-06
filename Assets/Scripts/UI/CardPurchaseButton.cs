@@ -18,11 +18,9 @@ public class CardPurchaseButton : MonoBehaviour
 	#if TOUCH_INPUT
 	void TouchEnd()
 	#else
-	void OnMouseUp()
+	public void OnMouseUp()
 	#endif
 	{
-		
 		spawner.BuyCardAttempt(owner,holderGroup);
 	}
-
 }

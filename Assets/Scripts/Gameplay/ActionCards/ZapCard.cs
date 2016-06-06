@@ -21,7 +21,7 @@ public class ZapCard : ActionCard
 		return EnemyHasUnits();
 	}
 
-	protected override void DoCardEffect ()
+    public override void DoCardEffect ()
 	{
 		base.DoCardEffect();
 

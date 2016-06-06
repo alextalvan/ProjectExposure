@@ -19,7 +19,7 @@ public class FreezeCard : ActionCard
 		return EnemyHasUnits();
 	}
 
-	protected override void DoCardEffect ()
+    public override void DoCardEffect ()
 	{
 		base.DoCardEffect();
 

@@ -27,7 +27,7 @@ public class SwampSpot : MonoBehaviour
 	{
 		uptimer = duration;
 		this.gameObject.SetActive(true);
-		tempBlink.Begin(duration);
+		//tempBlink.Begin(duration);
 	}
 
 	public void ToggleOff()

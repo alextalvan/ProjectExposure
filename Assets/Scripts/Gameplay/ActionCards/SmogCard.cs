@@ -19,13 +19,21 @@ public class SmogCard : ActionCard
 		if(!enabled)
 			return false;
 
-//		if(!CheckMoneyCost())
-//			return false;
+        //		if(!CheckMoneyCost())
+        //			return false;
 
-		return EnemyHasBuildings();
-	}
+        //return EnemyHasBuildings();
+        enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
+        foreach (HexagonTile tile in enemyData.tiles)
+        {
+            if (tile.CurrentEnergyBuilding != null && !(tile.CurrentEnergyBuilding.buffList.HasBuff(BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)))
+                return true;
+        }
 
-	protected override void DoCardEffect ()
+        return false;
+    }
+
+    public override void DoCardEffect ()
 	{
 		base.DoCardEffect();
 
@@ -37,6 +45,8 @@ public class SmogCard : ActionCard
 			if(tile.CurrentEnergyBuilding!=null)
 				candidateBuildings.Add(tile.CurrentEnergyBuilding);
 		}
+
+
 
 		BuildingStunBuff b = new BuildingStunBuff(tapCountToUndo,effectDuration);
 		EnergyBuilding building = candidateBuildings[Random.Range(0,candidateBuildings.Count)];

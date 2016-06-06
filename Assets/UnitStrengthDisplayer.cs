@@ -17,23 +17,6 @@ public class UnitStrengthDisplayer : MonoBehaviour {
 	[SerializeField]
 	List<GameObject> currentHitpointObjects = new List<GameObject>();
 
-	[SerializeField]
-	int startCapacity = 4;
-
-	void Awake()
-	{
-		for(int i=0; i < startCapacity; ++i)
-		{
-			GameObject hp = (GameObject)Instantiate(hitpointPrefab);
-			currentHitpointObjects.Add(hp);
-			hp.transform.SetParent(this.transform,false);
-			hp.GetComponent<SpriteFader>().Reset();
-		}
-
-		//SetHealth(1);
-	}
-
-
 	public void SetHealth(int amount)
 	{
 		int difference = amount - currentHitpointObjects.Count;
@@ -55,6 +38,9 @@ public class UnitStrengthDisplayer : MonoBehaviour {
 
 		health = amount;
 		RepositionHitpointObjects();
+
+
+        Debug.Log(amount.ToString() + " " + currentHitpointObjects.Count.ToString() + " " + difference.ToString());
 	}
 
 

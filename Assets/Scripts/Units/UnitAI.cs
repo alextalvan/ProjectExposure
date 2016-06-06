@@ -85,8 +85,9 @@ public class UnitAI : GameManagerSearcher
 	UnitStrengthDisplayer strengthDisplay;
 	bool hpFadeStarted = false;
 
-	void Start()
+    protected override void Awake()
     {
+        base.Awake();
         speedUpBuff = new SpeedBuff(speedBuffMod, speedBuffDuration);
         wanderTimer = wanderAnimTime;
 		fightTimer = fightAnimTime;
