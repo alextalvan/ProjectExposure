@@ -15,7 +15,7 @@ public class QuakeCard : ActionCard
 		return EnemyHasBuildings();
 	}
 
-    public override void DoCardEffect ()
+    protected override void DoCardEffect ()
 	{
 		base.DoCardEffect();
 

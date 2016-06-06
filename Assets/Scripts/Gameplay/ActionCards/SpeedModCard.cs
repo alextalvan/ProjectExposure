@@ -21,7 +21,7 @@ public class SpeedModCard : ActionCard
 		return EnemyHasUnits();
 	}
 
-    public override void DoCardEffect ()
+    protected override void DoCardEffect ()
 	{
 		base.DoCardEffect();
 

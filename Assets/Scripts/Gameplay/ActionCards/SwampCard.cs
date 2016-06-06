@@ -26,7 +26,7 @@ public class SwampCard : ActionCard
 		return false;
 	}
 
-    public override void DoCardEffect ()
+    protected override void DoCardEffect ()
 	{
 		base.DoCardEffect();
 

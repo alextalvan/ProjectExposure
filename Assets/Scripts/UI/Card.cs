@@ -85,15 +85,15 @@ public abstract class Card : GameManagerSearcher
 		return false;
 	}
 
-    public virtual void DoCardEffect()
+    protected virtual void DoCardEffect()
 	{
 		
 	}
 
-	#if TOUCH_INPUT
-	protected virtual void TouchEnd()
-	#else
-	protected virtual void OnMouseUp()
+#if TOUCH_INPUT
+	public virtual void TouchEnd()
+#else
+    public virtual void OnMouseUp()
 	#endif
 	{
 		if(CalculatePlayCondition())

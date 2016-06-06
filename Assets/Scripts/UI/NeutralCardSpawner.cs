@@ -12,6 +12,9 @@ public class NeutralCardSpawner : GameManagerSearcher
 
 	[SerializeField]
 	GameObject currentCard = null;
+    
+    public GameObject GetCurrentCard { get { return currentCard; } }
+
 	GameObject lastPrefabUsed = null;
 
 	[SerializeField]

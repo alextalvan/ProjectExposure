@@ -344,11 +344,11 @@ public class UnitAI : GameManagerSearcher
 		anim.speed = 0.0f;
 	}
 
-	//unfreeze
-	#if TOUCH_INPUT
-	void PenetratingTouchEnd()
-	#else
-	void OnMouseUp()
+    //unfreeze
+#if TOUCH_INPUT
+	public void PenetratingTouchEnd()
+#else
+    public void OnMouseUp()
 	#endif
 	{
 		buffList.RemoveBuffs(BUFF_TYPES.UNIT_FREEZE);

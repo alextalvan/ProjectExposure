@@ -3,9 +3,16 @@ using System.Collections.Generic;
 
 public class AIPlayer : MonoBehaviour
 {
-
     [SerializeField]
     PLAYERS playingAs;
+
+    [SerializeField]
+    Sprite fingerSprite;
+
+    [SerializeField]
+    float fingerSpeed = 5f;
+    [SerializeField]
+    float distanceToTarget = 5f;
 
     [SerializeField]
     Transform actionCardsHolder;
@@ -25,6 +32,12 @@ public class AIPlayer : MonoBehaviour
     GameManager gm;
     PlayerGameData playerData;
 
+    private Vector2 fingerPos;
+    private Vector2 targetPos;
+    private object targetObj = null;
+    private delegate void Action();
+    private Action currentAction = null;
+
     // Use this for initialization
     void Start()
     {
@@ -33,12 +46,34 @@ public class AIPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         PurchaseCard();
         SelectActionCard();
         SelectGreenBuildingCard();
         SelectFossilBuildingCard();
+        PickUpCoin();
+        InteractWithUnit();
+        RemoveBuildingDebuff();
+        RemoveSwamp();
+    }
+
+    private void Tap()
+    {
+
+    }
+
+    private void PickUpCoin()
+    {
+        if (playerData.coin)
+        {
+#if TOUCH_INPUT
+	        playerData.coin.PenetratingTouchEnd();
+#else
+            playerData.coin.OnMouseUp();
+#endif
+            targetObj = playerData.coin;
+        }
     }
 
     private void SelectActionCard()
@@ -48,8 +83,11 @@ public class AIPlayer : MonoBehaviour
         Card selectedCard = actionCardsHolder.GetChild(rndCardIndex).GetComponent<Card>();
         if (selectedCard.isActiveAndEnabled)
         {
-
-            selectedCard.DoCardEffect();
+#if TOUCH_INPUT
+            selectedCard.TouchEnd();
+#else
+            selectedCard.OnMouseUp();
+#endif
         }
     }
 
@@ -60,7 +98,11 @@ public class AIPlayer : MonoBehaviour
         Card selectedCard = greenBuildingCardsHolder.GetChild(rndCardIndex).GetComponent<Card>();
         if (selectedCard.isActiveAndEnabled)
         {
-            selectedCard.DoCardEffect();
+#if TOUCH_INPUT
+            selectedCard.TouchEnd();
+#else
+            selectedCard.OnMouseUp();
+#endif
             SelectFreeTile();
         }
     }
@@ -72,7 +114,11 @@ public class AIPlayer : MonoBehaviour
         Card selectedCard = fossilBuildingCardsHolder.GetChild(rndCardIndex).GetComponent<Card>();
         if (selectedCard.isActiveAndEnabled)
         {
-            selectedCard.DoCardEffect();
+#if TOUCH_INPUT
+            selectedCard.TouchEnd();
+#else
+            selectedCard.OnMouseUp();
+#endif
             SelectFreeTile();
         }
     }
@@ -103,16 +149,57 @@ public class AIPlayer : MonoBehaviour
 #endif
     }
 
-    private void SelectTile()
+    private void InteractWithUnit()
     {
+        foreach (Transform unitGroup in playerData.unitGroups)
+        {
+            foreach (Transform unit in unitGroup)
+            {
+                UnitAI unitAI = unit.GetComponent<UnitAI>();
+                if (!unitAI.buffList.HasBuff(BUFF_TYPES.UNIT_SPEED_MODIFIER) || unitAI.buffList.HasBuff(BUFF_TYPES.UNIT_FREEZE))
+                {
+#if TOUCH_INPUT
+                    unitAI.PenetratingTouchEnd();
+#else
+                    unitAI.OnMouseUp();
+#endif
+                    return; //for now
+                }
+            }
+        }
+    }
 
+    private void RemoveBuildingDebuff()
+    {
+        foreach (HexagonTile tile in playerData.tiles)
+        {
+            if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.buffList.HasBuff(BUFF_TYPES.BUILDING_TEMPORARY_DISABLE))
+            {
+#if TOUCH_INPUT
+                tile.CurrentEnergyBuilding.TouchEnd();
+#else
+                tile.CurrentEnergyBuilding.OnMouseUp();
+#endif
+                return; //
+            }
+        }
+    }
+
+    private void RemoveSwamp()
+    {
+        foreach (SwampSpot swamp in playerData.swampSpots)
+        {
+            if (swamp.isActiveAndEnabled)
+                swamp.ToggleOff();
+        }
     }
 
     private void PurchaseCard()
     {
         if (cardPurchaseButton.isActiveAndEnabled)
         {
-            cardPurchaseButton.OnMouseUp();
+            //if (neutralCardSpawner.GetCurrentCard && !neutralCardSpawner.GetCurrentCard.GetComponent<ActionCard>())
+                cardPurchaseButton.OnMouseUp();
         }
     }
 }

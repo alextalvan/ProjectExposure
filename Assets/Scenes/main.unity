@@ -2539,6 +2539,10 @@ Prefab:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6481090, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_IsPrefabParent: 0
@@ -4684,6 +4688,10 @@ Prefab:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6481090, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_IsPrefabParent: 0
@@ -6269,6 +6277,10 @@ Prefab:
     - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6481090, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
@@ -9809,6 +9821,10 @@ Prefab:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6481090, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_IsPrefabParent: 0
@@ -10178,6 +10194,7 @@ MonoBehaviour:
       - {fileID: 316886635}
       - {fileID: 846038054}
       AI: 0
+      coin: {fileID: 0}
       coinUp: 0
     - player: 1
       currentSelectedCard: {fileID: 0}
@@ -10198,6 +10215,7 @@ MonoBehaviour:
       - {fileID: 1448200799}
       - {fileID: 1590247328}
       AI: 0
+      coin: {fileID: 0}
       coinUp: 0
   UI_root: {fileID: 1483353235}
   UI_moneyPrefab: {fileID: 189870, guid: 754343a333242fe40a3b245f79d28a8b, type: 2}
@@ -10228,6 +10246,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playingAs: 1
+  fingerSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  fingerSpeed: 0
+  distanceToTarget: 5
   actionCardsHolder: {fileID: 351929028}
   greenBuildingCardsHolder: {fileID: 82018076}
   fossilBuildingCardsHolder: {fileID: 402021771}
@@ -10246,6 +10267,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playingAs: 0
+  fingerSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  fingerSpeed: 0
+  distanceToTarget: 5
   actionCardsHolder: {fileID: 241226544}
   greenBuildingCardsHolder: {fileID: 736994559}
   fossilBuildingCardsHolder: {fileID: 1078372221}
@@ -12267,6 +12291,10 @@ Prefab:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6481090, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_IsPrefabParent: 0
@@ -13354,6 +13382,10 @@ Prefab:
     - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6481090, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}

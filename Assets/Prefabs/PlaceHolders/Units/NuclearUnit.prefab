@@ -1114,7 +1114,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 426072}
   - 33: {fileID: 3378470}
-  - 135: {fileID: 13574382}
   - 23: {fileID: 2377860}
   - 95: {fileID: 9590498}
   m_Layer: 0
@@ -2602,7 +2601,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80.82548, y: -13.12, z: 0.047431946}
+  m_LocalPosition: {x: -26.253197, y: -61.782265, z: 16.922348}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 414728}
@@ -3016,7 +3015,6 @@ MonoBehaviour:
   distance: 2.5
   health: 0
   currentHitpointObjects: []
-  startCapacity: 4
 --- !u!114 &11415638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3085,18 +3083,6 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 4
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13574382
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171440}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &13789376
 SkinnedMeshRenderer:

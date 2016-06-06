@@ -25,7 +25,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TouchInputManager touchInputManager;
 
-	[SerializeField]
+    TouchInputManager GetTouchInputManager {  get { return touchInputManager; } }
+
+    [SerializeField]
 	bool gameStarted = false;
 
     [SerializeField]

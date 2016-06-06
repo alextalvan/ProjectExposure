@@ -15,19 +15,24 @@ public class CoinPickup : GameManagerSearcher {
 	[SerializeField]
 	float deletionTime = 5.0f;
 
+
+    private bool used = false;
+
 	public delegate void OnDestructionDelegate();
 	public event OnDestructionDelegate OnDestruction = null;
 
-	#if TOUCH_INPUT
-	void PenetratingTouchEnd()
-	#else
-	void OnMouseUp()
+#if TOUCH_INPUT
+	public void PenetratingTouchEnd()
+#else
+    public void OnMouseUp()
 	#endif
 	{
+        if (used) return;
 		StartGlide();
-		//gameManager.SpawnUICoin(this.owner,transform.position,valueAwarded);
-		//Destroy(this.gameObject);
-	}
+        used = true;
+        //gameManager.SpawnUICoin(this.owner,transform.position,valueAwarded);
+        //Destroy(this.gameObject);
+    }
 
 	void Start()
 	{

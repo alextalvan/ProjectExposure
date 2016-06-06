@@ -35,7 +35,7 @@ public class ActionCard : Card
 		return false;
 	}
 
-    public override void DoCardEffect ()
+    protected override void DoCardEffect ()
 	{
 //		if(this.Owner == PLAYERS.PLAYER1)
 //			gameManager.Player1Money -= this.MoneyCost;

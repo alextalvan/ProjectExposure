@@ -11,7 +11,7 @@ public class BuildingCard : Card
 
 	public EnergyBuildingType BuildingType { get { return _buildingType; } }
 
-    public override void DoCardEffect ()
+    protected override void DoCardEffect ()
 	{
 		
 		PlayerGameData pdata = gameManager.playerData[this.Owner];

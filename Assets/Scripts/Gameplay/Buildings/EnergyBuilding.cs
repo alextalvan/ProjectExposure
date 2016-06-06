@@ -84,10 +84,10 @@ public class EnergyBuilding : GameManagerSearcher
 	}
 
 
-	#if TOUCH_INPUT
-	void TouchEnd()
-	#else
-	void OnMouseUp()
+#if TOUCH_INPUT
+	public void TouchEnd()
+#else
+    public void OnMouseUp()
 	#endif
 	{
 		if(gameManager.playerData[Owner].currentInputState != INPUT_STATES.FREE)

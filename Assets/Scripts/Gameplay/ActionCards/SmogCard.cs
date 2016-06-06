@@ -33,7 +33,7 @@ public class SmogCard : ActionCard
         return false;
     }
 
-    public override void DoCardEffect ()
+    protected override void DoCardEffect ()
 	{
 		base.DoCardEffect();
 
