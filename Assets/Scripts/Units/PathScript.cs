@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PathScript : MonoBehaviour
 {
     public Color gizmosColor = Color.blue;
+	public float sphereSize = 1f;
     //private Vector3 startPos;
 
     void OnDrawGizmos()
@@ -19,11 +20,11 @@ public class PathScript : MonoBehaviour
             {
                 Vector3 prev = transform.GetChild(i - 1).position;
                 Gizmos.DrawLine(prev, pos);
-                Gizmos.DrawSphere(pos, 0.5f);
+				Gizmos.DrawSphere(pos, sphereSize);
             }
             else if (i == 0)
             {
-                Gizmos.DrawSphere(pos, 0.5f);
+				Gizmos.DrawSphere(pos, sphereSize);
             }
         }
     }
