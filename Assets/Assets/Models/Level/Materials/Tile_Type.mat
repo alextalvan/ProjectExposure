@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: mrCOAL_BLUE
-  m_Shader: {fileID: 4800000, guid: e68f798c29a56af4e8a35346cfba79cc, type: 3}
+  m_Name: Tile_Type
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -78,48 +78,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Base_Color
-        second:
-          m_Texture: {fileID: 2800000, guid: e387cfe1d7be5412bb49bfe93f9bcf0e, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Normal_Map
-        second:
-          m_Texture: {fileID: 2800000, guid: 891958b7b9a24441c95a4013e5e09935, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Noise
-        second:
-          m_Texture: {fileID: 2800000, guid: f06e04d8c96484207b21c9ec693ce2d5, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Metallic_map
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Gloss_map
-        second:
-          m_Texture: {fileID: 2800000, guid: f06e04d8c96484207b21c9ec693ce2d5, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Emission_map
-        second:
-          m_Texture: {fileID: 2800000, guid: be933de2695ae4440a0958f28008c03f, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -144,7 +102,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.458
+        second: 0
       data:
         first:
           name: _BumpScale
@@ -169,46 +127,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _Visibility
-        second: 0.972
-      data:
-        first:
-          name: _Normal_Map_Intensity
-        second: 0
-      data:
-        first:
-          name: _Noise_Brightness
-        second: 0
-      data:
-        first:
-          name: _Edge_width
-        second: 52.45775
-      data:
-        first:
-          name: _Edge_Glow_Power
-        second: 3
-      data:
-        first:
-          name: _Visibility_multiplier
-        second: 2.880344
-      data:
-        first:
-          name: _Edge_Power
-        second: 5.461538
-      data:
-        first:
-          name: _Visibility_floor
-        second: 0
-      data:
-        first:
-          name: _Visibility_power
-        second: 0.8471476
-      data:
-        first:
-          name: _Emssion_power
-        second: 2
     m_Colors:
       data:
         first:
@@ -217,12 +135,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.1397059, g: 0.12429008, b: 0, a: 1}
-      data:
-        first:
-          name: _Tint
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _Glow_color
-        second: {r: 1, g: 0.39310342, b: 0, a: 1}
+        second: {r: 0.19469036, g: 0.41176468, b: 0.069636665, a: 1}
