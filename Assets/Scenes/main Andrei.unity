@@ -66,7 +66,8 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherRayCount: 512
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000010, guid: 210a4fc8973d6405d9b228bd7b604ec8,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -1696,6 +1697,18 @@ Prefab:
     - target: {fileID: 496818, guid: fab37eeb9522f4a9584c97655941135c, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 108448, guid: fab37eeb9522f4a9584c97655941135c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 150556, guid: fab37eeb9522f4a9584c97655941135c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 134136, guid: fab37eeb9522f4a9584c97655941135c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fab37eeb9522f4a9584c97655941135c, type: 2}
@@ -11068,6 +11081,9 @@ MonoBehaviour:
   actionCardsHolder: {fileID: 0}
   greenBuildingCardsHolder: {fileID: 0}
   fossilBuildingCardsHolder: {fileID: 0}
+  neutralCardSpawner: {fileID: 0}
+  cardPurchaseButton: {fileID: 0}
+  bgCol: {fileID: 0}
 --- !u!114 &1638074584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11083,6 +11099,9 @@ MonoBehaviour:
   actionCardsHolder: {fileID: 0}
   greenBuildingCardsHolder: {fileID: 0}
   fossilBuildingCardsHolder: {fileID: 0}
+  neutralCardSpawner: {fileID: 0}
+  cardPurchaseButton: {fileID: 0}
+  bgCol: {fileID: 0}
 --- !u!1 &1640691032
 GameObject:
   m_ObjectHideFlags: 0
