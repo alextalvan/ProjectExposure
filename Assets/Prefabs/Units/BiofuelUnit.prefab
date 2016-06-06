@@ -1706,8 +1706,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145982}
   m_LocalRotation: {x: 0.09229597, y: 0.7010575, z: -0.09229598, w: 0.7010574}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.33, y: 1.23, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 466936}
   m_RootOrder: 0
@@ -2381,7 +2381,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3.05}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 437822}
@@ -4410,7 +4410,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 15
+      scalar: 8
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4548,31 +4548,21 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - time: 1
-          value: 0
+          value: 0.8
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
-      minMaxState: 0
+        m_RotationOrder: 0
+      minMaxState: 3
     startRotationX:
       scalar: 0
       maxCurve:
@@ -4676,7 +4666,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 2
-    radius: 0.4
+    radius: 0.01
     angle: 6.1821027
     length: 5
     boxX: 1
@@ -4890,7 +4880,7 @@ ParticleSystem:
       minMaxState: 0
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       maxGradient:
         key0:
@@ -4926,15 +4916,15 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 50886
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 3
       minGradient:
         key0:
           serializedVersion: 2
@@ -4997,13 +4987,13 @@ ParticleSystem:
           inSlope: 0
           outSlope: 1
           tangentMode: 0
-        - time: 0.12061403
-          value: 0.50932014
+        - time: 0.23622096
+          value: 0.38810802
           inSlope: 1.8195808
           outSlope: 1.8195808
           tangentMode: 0
-        - time: 0.43787307
-          value: 0.6859689
+        - time: 0.51879793
+          value: 0.65133685
           inSlope: 0.32093185
           outSlope: 0.32093185
           tangentMode: 0
@@ -5076,14 +5066,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0
+          value: 0.22510822
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         - time: 1
-          value: -1
-          inSlope: 0
-          outSlope: 0
+          value: -0.5670996
+          inSlope: -1.0698825
+          outSlope: -1.0698825
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -5106,12 +5096,22 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 1
     z:
-      scalar: 1
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
           value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - time: 0.46352032
+          value: 0.46740818
+          inSlope: 0.4503131
+          outSlope: 0.4503131
+          tangentMode: 0
+        - time: 1
+          value: 0.6060606
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -5175,7 +5175,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
   ForceModule:
-    enabled: 1
+    enabled: 0
     x:
       scalar: 1
       maxCurve:
