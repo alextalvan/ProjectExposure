@@ -3838,9 +3838,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107830}
-  m_LocalRotation: {x: -0.33473107, y: -0.59972894, z: 0.31581718, w: 0.6546296}
-  m_LocalPosition: {x: 1.9889677, y: 1.6035869, z: -0.45145053}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 403538}
   - {fileID: 459264}
@@ -4248,9 +4248,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitStrength: 3
-  unitSpeed: 0.025
-  waypointSwitchThreshold: 2
-  rayCastDist: 5
+  unitSpeed: 0.0025
+  waypointSwitchThreshold: 0.2
+  rayCastDist: 0.5
   fightAnimTime: 2
   wanderAnimTime: 3
   cheerAnimTime: 1
