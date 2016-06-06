@@ -3840,7 +3840,7 @@ Transform:
   m_GameObject: {fileID: 107830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 403538}
   - {fileID: 459264}
@@ -4248,9 +4248,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitStrength: 3
-  unitSpeed: 0.025
-  waypointSwitchThreshold: 2
-  rayCastDist: 5
+  unitSpeed: 0.0025
+  waypointSwitchThreshold: 0.2
+  rayCastDist: 0.5
   fightAnimTime: 2
   wanderAnimTime: 3
   cheerAnimTime: 1
@@ -4284,7 +4284,6 @@ MonoBehaviour:
   distance: 2.5
   health: 0
   currentHitpointObjects: []
-  startCapacity: 4
 --- !u!135 &13569606
 SphereCollider:
   m_ObjectHideFlags: 1

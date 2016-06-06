@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SendInputUpwards : MonoBehaviour {
-
-
+public class SendInputUpwards : MonoBehaviour 
+{
 	#if TOUCH_INPUT
-	void TouchEnd()
+	void PenetratingTouchEnd()
+	{
+		if(transform.parent!=null)
+			transform.parent.SendMessage("PenetratingTouchEnd");
+	}
 	#else
 	void OnMouseUp()
-	#endif
 	{
-
-
 		if(transform.parent!=null)
 			transform.parent.SendMessage("OnMouseUp");
 	}
+	#endif
 }

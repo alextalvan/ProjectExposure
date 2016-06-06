@@ -40,7 +40,7 @@ public class UnitStrengthDisplayer : MonoBehaviour {
 		RepositionHitpointObjects();
 
 
-        Debug.Log(amount.ToString() + " " + currentHitpointObjects.Count.ToString() + " " + difference.ToString());
+        //Debug.Log(amount.ToString() + " " + currentHitpointObjects.Count.ToString() + " " + difference.ToString());
 	}
 
 
