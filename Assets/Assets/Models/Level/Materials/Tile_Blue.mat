@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Glow
-  m_Shader: {fileID: 4800000, guid: a1cb7a4eddffa4358ab38bb9e930acf1, type: 3}
+  m_Name: Tile_Blue
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
-  m_LightmapFlags: 1
-  m_CustomRenderQueue: 2000
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -21,7 +21,7 @@ Material:
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
+          m_Offset: {x: 2.1, y: 0}
       data:
         first:
           name: _BumpMap
@@ -56,7 +56,7 @@ Material:
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
+          m_Offset: {x: 2.1, y: 0}
       data:
         first:
           name: _DetailMask
@@ -102,7 +102,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.65
+        second: 0.876
       data:
         first:
           name: _BumpScale
@@ -127,26 +127,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _EXP
-        second: 18.1
-      data:
-        first:
-          name: _Edge_glow
-        second: 5.07
-      data:
-        first:
-          name: _Glow_intensity
-        second: 4.1
-      data:
-        first:
-          name: _OutlineWidth
-        second: 0.25
-      data:
-        first:
-          name: _node_1524
-        second: 0
     m_Colors:
       data:
         first:
@@ -155,20 +135,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 0.9862213, b: 0, a: 1}
-      data:
-        first:
-          name: _Base_Color
-        second: {r: 0.08627451, g: 0.6784314, b: 0.76470596, a: 1}
-      data:
-        first:
-          name: _Glow_Color
-        second: {r: 0.084342554, g: 0.680247, b: 0.7647059, a: 1}
-      data:
-        first:
-          name: _OutlineColor
-        second: {r: 0.2161138, g: 0.9264706, b: 0.19074395, a: 1}
-      data:
-        first:
-          name: _node_7846
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+        second: {r: 0.2815203, g: 0.5019539, b: 0.9338235, a: 1}
