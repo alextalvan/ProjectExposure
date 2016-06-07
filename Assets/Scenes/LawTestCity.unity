@@ -569,6 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gizmosColor: {r: 0, g: 0, b: 1, a: 1}
+  sphereSize: 1
 --- !u!1 &102169202
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,7 +805,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454994, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 454994, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_LocalScale.x
@@ -979,6 +980,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 0}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.24999
+  allowCoinSpawn: 0
 --- !u!64 &153915149
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1623,6 +1625,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 0}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.24999
+  allowCoinSpawn: 0
 --- !u!64 &252654712
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2415,6 +2418,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 0}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.24999
+  allowCoinSpawn: 0
 --- !u!64 &327329075
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2968,6 +2972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gizmosColor: {r: 0, g: 0, b: 1, a: 1}
+  sphereSize: 1
 --- !u!1001 &455528343
 Prefab:
   m_ObjectHideFlags: 0
@@ -3792,7 +3797,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454994, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 454994, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_LocalScale.x
@@ -4031,6 +4036,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 0}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.24999
+  allowCoinSpawn: 0
 --- !u!64 &658398794
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4173,6 +4179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gizmosColor: {r: 0, g: 0, b: 1, a: 1}
+  sphereSize: 1
 --- !u!1 &692686085
 GameObject:
   m_ObjectHideFlags: 0
@@ -4359,6 +4366,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 0}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.24999
+  allowCoinSpawn: 0
 --- !u!64 &733978407
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5652,6 +5660,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 0}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.24999
+  allowCoinSpawn: 0
 --- !u!64 &911564456
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5733,7 +5742,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454994, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 454994, guid: 67d54a077daa9dc4187f82ef0cd437c7, type: 2}
       propertyPath: m_LocalScale.x
@@ -6462,7 +6471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
 --- !u!1 &1106837555
 GameObject:
   m_ObjectHideFlags: 0
@@ -7080,6 +7089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gizmosColor: {r: 0, g: 0, b: 1, a: 1}
+  sphereSize: 1
 --- !u!1 &1227653748
 GameObject:
   m_ObjectHideFlags: 0
@@ -7357,6 +7367,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 0}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.24999
+  allowCoinSpawn: 0
 --- !u!64 &1263588879
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7573,7 +7584,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 478574, guid: f3dcd4f66ae321a48ac6ebacdb484f1e, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3dcd4f66ae321a48ac6ebacdb484f1e, type: 2}
@@ -7694,6 +7705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gizmosColor: {r: 0, g: 0, b: 1, a: 1}
+  sphereSize: 1
 --- !u!224 &1331006924 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22489720, guid: 11cfcbfe86589c54593669ccaa62bf40,
@@ -7918,6 +7930,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 0}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.24999
+  allowCoinSpawn: 0
 --- !u!64 &1368118114
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8127,6 +8140,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 0}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.24999
+  allowCoinSpawn: 0
 --- !u!64 &1386126881
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8402,6 +8416,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 0}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.24999
+  allowCoinSpawn: 0
 --- !u!64 &1436558387
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9387,6 +9402,7 @@ GameObject:
   - 135: {fileID: 1590247326}
   - 114: {fileID: 1590247328}
   - 114: {fileID: 1590247325}
+  - 114: {fileID: 1590247327}
   m_Layer: 13
   m_Name: Swamp (2)
   m_TagString: Untagged
@@ -9432,6 +9448,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1590247327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1590247323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cd63af8e6152a43b2d80893045602f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveTime: 2
+  _renderer: {fileID: 1826227344}
 --- !u!114 &1590247328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9701,6 +9730,10 @@ Prefab:
       propertyPath: m_Name
       value: SwampPTCL_PRFB (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3339628, guid: a298a284d4044c545828a4c49c21c670, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a298a284d4044c545828a4c49c21c670, type: 2}
   m_IsPrefabParent: 0
@@ -9883,6 +9916,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 0}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.24999
+  allowCoinSpawn: 0
 --- !u!64 &1632546433
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9924,11 +9958,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchInputManager: {fileID: 0}
+  gameStarted: 0
   AI1: {fileID: 0}
   AI2: {fileID: 0}
   gameTimer: 300
   gameTimerText: {fileID: 222098380}
   MONEY_UPDATE_RATE: 3
+  neutralCardSpawner: {fileID: 0}
   _player1money: 10
   _player2money: 10
   _player1score: 0
@@ -9960,6 +9996,7 @@ MonoBehaviour:
       - {fileID: 316886635}
       - {fileID: 846038054}
       AI: 0
+      coinUp: 0
     - player: 1
       currentSelectedCard: {fileID: 0}
       currentInputState: 0
@@ -9979,6 +10016,7 @@ MonoBehaviour:
       - {fileID: 1448200799}
       - {fileID: 1590247328}
       AI: 0
+      coinUp: 0
   UI_root: {fileID: 0}
   UI_moneyPrefab: {fileID: 0}
   player1DD: {fileID: 0}
@@ -10488,6 +10526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gizmosColor: {r: 0, g: 0, b: 1, a: 1}
+  sphereSize: 1
 --- !u!1 &1689420607
 GameObject:
   m_ObjectHideFlags: 0
@@ -11060,6 +11099,7 @@ MonoBehaviour:
   coinSpawnPrefab: {fileID: 0}
   coinSpawnInterval: 2
   coinSpawnProbability: 0.24999
+  allowCoinSpawn: 0
 --- !u!64 &1793725490
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11219,6 +11259,11 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1826227344 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 2389840, guid: a298a284d4044c545828a4c49c21c670,
+    type: 2}
+  m_PrefabInternal: {fileID: 1908478133}
 --- !u!1 &1843490549
 GameObject:
   m_ObjectHideFlags: 0
@@ -11720,18 +11765,6 @@ Prefab:
     - target: {fileID: 404404, guid: a298a284d4044c545828a4c49c21c670, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 404404, guid: a298a284d4044c545828a4c49c21c670, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 404404, guid: a298a284d4044c545828a4c49c21c670, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 404404, guid: a298a284d4044c545828a4c49c21c670, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 142486, guid: a298a284d4044c545828a4c49c21c670, type: 2}
       propertyPath: m_Name
