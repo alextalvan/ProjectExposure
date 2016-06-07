@@ -4275,17 +4275,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c70fe9bd71043b428fb76d991c15720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStrength: 3
-  unitSpeed: 0.0025
-  waypointSwitchThreshold: 0.2
+  unitStrength: 2
+  unitSpeed: 0.01
+  waypointSwitchThreshold: 0.35
   rayCastDist: 0.5
   fightAnimTime: 2
   wanderAnimTime: 3
-  cheerAnimTime: 1
-  deathAnimTime: 3
+  cheerAnimTime: 3.3
+  deathAnimTime: 2.8
   scoreReward: 25
   moneyReward: 1
-  speedBuffMod: 2
+  speedBuffMod: 1
   speedBuffDuration: 60
   model: {fileID: 178924}
   attackPrefab: {fileID: 181504}
