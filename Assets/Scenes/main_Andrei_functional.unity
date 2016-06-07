@@ -12117,6 +12117,7 @@ GameObject:
   - 114: {fileID: 1638074584}
   - 114: {fileID: 1638074583}
   - 114: {fileID: 1638074585}
+  - 114: {fileID: 1638074586}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -12263,6 +12264,20 @@ MonoBehaviour:
   thirdWaveCards:
   - {fileID: 1139972512}
   - {fileID: 1597873718}
+--- !u!114 &1638074586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638074580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495ab63f424a274448e583dd697ec69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  initiallyEnabled: 1
+  inputKey: 49
 --- !u!1 &1640691032
 GameObject:
   m_ObjectHideFlags: 0
