@@ -7,12 +7,12 @@ public class AIPlayer : MonoBehaviour
     PLAYERS playingAs;
 
     [SerializeField]
-    Sprite fingerSprite;
+    GameObject finger;
 
     [SerializeField]
     float fingerSpeed = 5f;
     [SerializeField]
-    float distanceToTarget = 5f;
+    float distanceToTarget = 1f;
 
     [SerializeField]
     Transform actionCardsHolder;
@@ -32,11 +32,9 @@ public class AIPlayer : MonoBehaviour
     GameManager gm;
     PlayerGameData playerData;
 
-    private Vector2 fingerPos;
-    private Vector2 targetPos;
-    private object targetObj = null;
     private delegate void Action();
-    private Action currentAction = null;
+    private Action OnAction = null;
+    private GameObject target = null;
 
     // Use this for initialization
     void Start()
@@ -45,34 +43,94 @@ public class AIPlayer : MonoBehaviour
         playerData = gm.playerData[playingAs];
     }
 
+    void OnEnable()
+    {
+        finger.SetActive(true);
+    }
+
+    void OnDisable()
+    {
+        finger.SetActive(false);
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        PurchaseCard();
-        SelectActionCard();
-        SelectGreenBuildingCard();
-        SelectFossilBuildingCard();
-        PickUpCoin();
-        InteractWithUnit();
-        RemoveBuildingDebuff();
-        RemoveSwamp();
+        Behave();
     }
 
-    private void Tap()
+    private void PickTarget()
     {
+        int rnd = Random.Range(0, 8);
+        switch (rnd) {
+            case 0:
+                PurchaseCard();
+                break;
+            case 1:
+                SelectActionCard();
+                break;
+            case 2:
+                SelectGreenBuildingCard();
+                break;
+            case 3:
+                SelectFossilBuildingCard();
+                break;
+            case 4:
+                PickUpCoin();
+                break;
+            case 5:
+                InteractWithUnit();
+                break;
+            case 6:
+                RemoveBuildingDebuff();
+                break;
+            case 7:
+                RemoveSwamp();
+                break;
+        }
+    }
 
+    private void Behave()
+    {
+        //Debug.Log(target);
+        if (target)
+        {
+            float dist = Vector3.Distance(finger.transform.position, target.transform.position);
+            if (dist > distanceToTarget)
+                MoveTowardsTarget();
+            else
+            {
+                if (target.GetComponent<BuildingCard>())
+                {
+                    OnAction();
+                    SelectFreeTile();
+                }
+                else
+                    OnAction();
+            }
+        }
+        else
+        {
+            PickTarget();
+        }
+    }
+
+    private void MoveTowardsTarget()
+    {
+        finger.GetComponent<RectTransform>().position = Vector3.Lerp(finger.GetComponent<RectTransform>().position, target.transform.position, fingerSpeed * Time.deltaTime);
     }
 
     private void PickUpCoin()
     {
-        if (playerData.coin)
+        if (playerData.coin && !playerData.coin.IsUsed)
         {
+            target = playerData.coin.gameObject;
 #if TOUCH_INPUT
-	        playerData.coin.PenetratingTouchEnd();
+            OnAction += playerData.coin.PenetratingTouchEnd;
 #else
-            playerData.coin.OnMouseUp();
+            OnAction += playerData.coin.OnMouseUp;
 #endif
-            targetObj = playerData.coin;
+            OnAction += Nullify;
         }
     }
 
@@ -83,11 +141,13 @@ public class AIPlayer : MonoBehaviour
         Card selectedCard = actionCardsHolder.GetChild(rndCardIndex).GetComponent<Card>();
         if (selectedCard.isActiveAndEnabled)
         {
+            target = selectedCard.gameObject;
 #if TOUCH_INPUT
-            selectedCard.TouchEnd();
+            OnAction += selectedCard.TouchEnd;
 #else
-            selectedCard.OnMouseUp();
+            OnAction += selectedCard.OnMouseUp;
 #endif
+            OnAction += Nullify;
         }
     }
 
@@ -98,12 +158,13 @@ public class AIPlayer : MonoBehaviour
         Card selectedCard = greenBuildingCardsHolder.GetChild(rndCardIndex).GetComponent<Card>();
         if (selectedCard.isActiveAndEnabled)
         {
+            target = selectedCard.gameObject;
 #if TOUCH_INPUT
-            selectedCard.TouchEnd();
+            OnAction += selectedCard.TouchEnd;
 #else
-            selectedCard.OnMouseUp();
+            OnAction += selectedCard.OnMouseUp;
 #endif
-            SelectFreeTile();
+            OnAction += Nullify;
         }
     }
 
@@ -114,12 +175,13 @@ public class AIPlayer : MonoBehaviour
         Card selectedCard = fossilBuildingCardsHolder.GetChild(rndCardIndex).GetComponent<Card>();
         if (selectedCard.isActiveAndEnabled)
         {
+            target = selectedCard.gameObject;
 #if TOUCH_INPUT
-            selectedCard.TouchEnd();
+            OnAction += selectedCard.TouchEnd;
 #else
-            selectedCard.OnMouseUp();
+            OnAction += selectedCard.OnMouseUp;
 #endif
-            SelectFreeTile();
+            OnAction += Nullify;
         }
     }
 
@@ -134,19 +196,23 @@ public class AIPlayer : MonoBehaviour
 
         if (availableTiles.Count <= 0)
         {
+            target = bgCol.gameObject;
 #if TOUCH_INPUT
-	        bgCol.TouchEnd();
+            OnAction += bgCol.TouchEnd;
 #else
-            bgCol.OnMouseUp();
+            OnAction += bgCol.OnMouseUp;
 #endif
+            OnAction += Nullify;
             return;
         }
         int rndTileIndex = Random.Range(0, availableTiles.Count);
+        target = availableTiles[rndTileIndex].gameObject;
 #if TOUCH_INPUT
-	    availableTiles[rndTileIndex].TouchEnd();
+        OnAction += availableTiles[rndTileIndex].PenetratingTouchEnd;
 #else
-        availableTiles[rndTileIndex].OnMouseUp();
+        OnAction += availableTiles[rndTileIndex].OnMouseUp;
 #endif
+        OnAction += Nullify;
     }
 
     private void InteractWithUnit()
@@ -158,11 +224,13 @@ public class AIPlayer : MonoBehaviour
                 UnitAI unitAI = unit.GetComponent<UnitAI>();
                 if (!unitAI.buffList.HasBuff(BUFF_TYPES.UNIT_SPEED_MODIFIER) || unitAI.buffList.HasBuff(BUFF_TYPES.UNIT_FREEZE))
                 {
+                    target = unit.gameObject;
 #if TOUCH_INPUT
-                    unitAI.PenetratingTouchEnd();
+                    OnAction += unitAI.PenetratingTouchEnd;
 #else
-                    unitAI.OnMouseUp();
+                    OnAction += unitAI.OnMouseUp;
 #endif
+                    OnAction += Nullify;
                     return; //for now
                 }
             }
@@ -175,12 +243,14 @@ public class AIPlayer : MonoBehaviour
         {
             if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.buffList.HasBuff(BUFF_TYPES.BUILDING_TEMPORARY_DISABLE))
             {
+                target = tile.CurrentEnergyBuilding.gameObject;
 #if TOUCH_INPUT
-                tile.CurrentEnergyBuilding.TouchEnd();
+                OnAction += tile.CurrentEnergyBuilding.TouchEnd;
 #else
-                tile.CurrentEnergyBuilding.OnMouseUp();
+                OnAction += tile.CurrentEnergyBuilding.OnMouseUp;
 #endif
-                return; //
+                OnAction += Nullify;
+                return;
             }
         }
     }
@@ -190,7 +260,12 @@ public class AIPlayer : MonoBehaviour
         foreach (SwampSpot swamp in playerData.swampSpots)
         {
             if (swamp.isActiveAndEnabled)
-                swamp.ToggleOff();
+            {
+                target = swamp.gameObject;
+                OnAction += swamp.ToggleOff;
+                OnAction += Nullify;
+                return;
+            }
         }
     }
 
@@ -198,8 +273,22 @@ public class AIPlayer : MonoBehaviour
     {
         if (cardPurchaseButton.isActiveAndEnabled)
         {
-            //if (neutralCardSpawner.GetCurrentCard && !neutralCardSpawner.GetCurrentCard.GetComponent<ActionCard>())
-                cardPurchaseButton.OnMouseUp();
+            if (neutralCardSpawner.GetCurrentCard && !neutralCardSpawner.GetCurrentCard.GetComponent<ActionCard>())
+            {
+                target = cardPurchaseButton.gameObject;
+#if TOUCH_INPUT
+                OnAction += cardPurchaseButton.TouchEnd;
+#else
+                OnAction += cardPurchaseButton.OnMouseUp;
+#endif
+                OnAction += Nullify;
+            }
         }
+    }
+
+    private void Nullify()
+    {
+        target = null;
+        OnAction = null;
     }
 }

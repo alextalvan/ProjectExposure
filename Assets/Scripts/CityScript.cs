@@ -110,7 +110,6 @@ public class CityScript : MonoBehaviour {
 		if (spawnTimer > 0)
 			spawnTimer -= Time.deltaTime;
 		SpawnNewBuilding ();
-		UpgradeBuildings ();
 	}
     
 	/// <summary>
@@ -134,7 +133,10 @@ public class CityScript : MonoBehaviour {
 				}
 			}
 			spawnTimer = buildingSpawnCoolDown; //Reset spwan timer
-		}
+            int rndUpd = Random.Range(0, rndUpgradeSkipRate); //Randomize if will be upgraded now or not
+            if (rndUpd == 0)
+                UpgradeBuildings();
+        }
 	}
 
 	/// <summary>
@@ -146,12 +148,10 @@ public class CityScript : MonoBehaviour {
 			foreach (Transform building in buildings) {
 				int buildingType = building.GetComponent<CityBuildingScript> ().Type; //Get current building type
 				if (buildingType != maxBuildingType) { //If can be upgraded (not max type (level))
-					int rnd = Random.Range (0, rndUpgradeSkipRate); //Randomize if will be upgraded now or not
-					//if (rnd != 0)
-					//	return;
 					if (Vector3.Distance (transform.localPosition + building.localPosition, transform.localPosition) < lastBuildingDist / ((buildingType + 2)) * upgradeRange) //If meets the condition (weird formula out of ass :))
 						upgradedBuildings.Add (ReplaceBuilding (building)); //Upgrade
 				}
+                return;
 			}
 		}
 	}

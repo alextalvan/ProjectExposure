@@ -18,6 +18,8 @@ public class CoinPickup : GameManagerSearcher {
 
     private bool used = false;
 
+    public bool IsUsed { get { return used; } }
+
 	public delegate void OnDestructionDelegate();
 	public event OnDestructionDelegate OnDestruction = null;
 

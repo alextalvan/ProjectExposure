@@ -14,12 +14,11 @@ public class CardPurchaseButton : MonoBehaviour
 	[SerializeField]
 	NeutralCardSpawner spawner;
 
-
-	#if TOUCH_INPUT
-	void TouchEnd()
-	#else
+#if TOUCH_INPUT
+    public void TouchEnd()
+#else
 	public void OnMouseUp()
-	#endif
+#endif
 	{
 		spawner.BuyCardAttempt(owner,holderGroup);
 	}

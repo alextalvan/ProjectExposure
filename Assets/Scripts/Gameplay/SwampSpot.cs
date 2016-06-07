@@ -14,7 +14,7 @@ public class SwampSpot : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.GetComponent<UnitAI>())
+		if(!used && other.GetComponent<UnitAI>())
         {
             other.GetComponent<Collider>().isTrigger = true;
             Destroy(other.gameObject, 3f);
