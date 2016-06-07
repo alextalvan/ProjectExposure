@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: AcceleratingPTCL_MTRL
-  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 202, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: a53a35bf396ae7141835332ff53d2f3d, type: 3}
+          m_Texture: {fileID: 2800000, guid: cb5ce7e101b324389a582920bc0b2142, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -130,7 +130,7 @@ Material:
       data:
         first:
           name: _InvFade
-        second: 1
+        second: 1.99
     m_Colors:
       data:
         first:
@@ -143,8 +143,8 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+        second: {r: 0.44557634, g: 0.9191176, b: 0.060823966, a: 0.641}
       data:
         first:
           name: _EmisColor
-        second: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 0}
+        second: {r: 1, g: 0, b: 0, a: 0}

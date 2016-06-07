@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 0
   cardType: 0
-  moneyCost: 2
+  moneyCost: 3
   deletionTime: 25
   highlight: {fileID: 190150}
   _buildingType:
@@ -159,6 +159,7 @@ MonoBehaviour:
   - {fileID: 6130822}
   - {fileID: 11466648}
   toggleRigidBody2D: 1
+  destroyOnArrival: 0
 --- !u!222 &22219684
 CanvasRenderer:
   m_ObjectHideFlags: 1
