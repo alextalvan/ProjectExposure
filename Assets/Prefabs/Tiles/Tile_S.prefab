@@ -96,7 +96,7 @@ Transform:
   m_LocalRotation: {x: 0.00000004470348, y: 0.000000014901159, z: 0.000000029802319,
     w: 1}
   m_LocalPosition: {x: 0.00007607633, y: -0.4150621, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.568928, y: 1.568928, z: 1.568928}
   m_Children: []
   m_Father: {fileID: 453826}
   m_RootOrder: 1
@@ -111,7 +111,7 @@ Transform:
   m_LocalScale: {x: 0.28484586, y: 0.284846, z: 0.284846}
   m_Children: []
   m_Father: {fileID: 453826}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &441204
 Transform:
   m_ObjectHideFlags: 1
@@ -121,7 +121,7 @@ Transform:
   m_LocalRotation: {x: 0.00000004470348, y: 0.000000014901159, z: 0.000000029802319,
     w: 1}
   m_LocalPosition: {x: 0.00007607633, y: -0.4150621, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.568928, y: 1.568928, z: 1.568928}
   m_Children: []
   m_Father: {fileID: 453826}
   m_RootOrder: 0
@@ -133,25 +133,25 @@ Transform:
   m_GameObject: {fileID: 120966}
   m_LocalRotation: {x: 0.00000004470348, y: 0.000000014901159, z: 0.000000029802319,
     w: 1}
-  m_LocalPosition: {x: 0.00007632327, y: -0.650062, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: -0.808, z: 0}
+  m_LocalScale: {x: 1.568928, y: 1.568928, z: 1.568928}
   m_Children: []
   m_Father: {fileID: 453826}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &453826
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122788}
-  m_LocalRotation: {x: 0.3155094, y: -0.63281435, z: 0.31550926, w: -0.63281417}
-  m_LocalPosition: {x: 3, y: 4.622, z: 2.48}
-  m_LocalScale: {x: 1.5689282, y: 1.5689288, z: 1.5689286}
+  m_LocalRotation: {x: 0.31550947, y: -0.63281435, z: 0.31550926, w: -0.63281417}
+  m_LocalPosition: {x: 5.669, y: 0.887, z: -0.013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 441204}
   - {fileID: 433590}
-  - {fileID: 437976}
   - {fileID: 451038}
+  - {fileID: 437976}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!23 &2321182
@@ -275,7 +275,7 @@ BoxCollider:
   m_GameObject: {fileID: 186464}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
