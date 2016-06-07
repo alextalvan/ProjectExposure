@@ -93,20 +93,16 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
-          name: _Glossiness
-        second: 0.65
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
         first:
           name: _ZWrite
         second: 1
+      data:
+        first:
+          name: _Glossiness
+        second: 0.65
       data:
         first:
           name: _BumpScale
@@ -129,16 +125,20 @@ Material:
         second: 0
       data:
         first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
           name: _EXP
-        second: 1
+        second: 18.1
       data:
         first:
           name: _Edge_glow
-        second: 4.5
+        second: 5.07
       data:
         first:
           name: _Glow_intensity
-        second: 5.9
+        second: 4.1
       data:
         first:
           name: _OutlineWidth
@@ -159,7 +159,7 @@ Material:
       data:
         first:
           name: _Base_Color
-        second: {r: 1, g: 0.97931033, b: 0.25, a: 1}
+        second: {r: 0.08627451, g: 0.6784314, b: 0.76470596, a: 1}
       data:
         first:
           name: _Glow_Color

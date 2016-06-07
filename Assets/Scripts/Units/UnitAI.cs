@@ -61,6 +61,8 @@ public class UnitAI : GameManagerSearcher
 	public PLAYERS Owner { get { return owner; } }
     SpeedBuff speedUpBuff = null;
     bool speedUp = false;
+	[SerializeField]
+	ParticleSystem speedUpParticleSystem;
 
     private List<Vector3> path;
 	private CityTileTrigger cityTile = null;
@@ -84,6 +86,7 @@ public class UnitAI : GameManagerSearcher
 	[SerializeField]
 	UnitStrengthDisplayer strengthDisplay;
 	bool hpFadeStarted = false;
+
 
     protected override void Awake()
     {
@@ -369,7 +372,7 @@ public class UnitAI : GameManagerSearcher
             buffList.AddBuff(speedUpBuff);
             speedUpBuff.currentDuration = 0.0f;
             speedUp = true;
-            transform.GetComponent<ParticleSystem>().Play();
+			speedUpParticleSystem.Play();
             speedUpBuff.OnExpiration += () => { speedUp = false; };
         }
 	}
