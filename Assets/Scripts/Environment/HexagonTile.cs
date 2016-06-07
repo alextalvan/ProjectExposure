@@ -162,7 +162,7 @@ public class HexagonTile : GameManagerSearcher
 			myB.transform.SetParent(other.transform);
 			myB.transform.localPosition = Vector3.zero;
 			myB.transform.localRotation = Quaternion.identity;
-			myB.transform.localScale = Vector3.one;
+			//myB.transform.localScale = Vector3.one;
 
 			myB.OnDestruction -= this.CleanupAfterBuildingIsDestroyed;
 			myB.OnDestruction += other.CleanupAfterBuildingIsDestroyed;
@@ -184,7 +184,7 @@ public class HexagonTile : GameManagerSearcher
 			otherB.transform.SetParent(this.transform);
 			otherB.transform.localPosition = Vector3.zero;
 			otherB.transform.localRotation = Quaternion.identity;
-			otherB.transform.localScale = Vector3.one;
+			//otherB.transform.localScale = Vector3.one;
 
 			otherB.OnDestruction -= other.CleanupAfterBuildingIsDestroyed;
 			otherB.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
