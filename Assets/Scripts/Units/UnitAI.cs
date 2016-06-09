@@ -219,13 +219,13 @@ public class UnitAI : GameManagerSearcher
                 SetAiState(AiState.Die);
             }
 
-			if(this.unitStrength >= fightingTargetStrength)
-			{
-				GameObject coin = (GameObject)Instantiate(coinSpawnPrefab.gameObject,this.transform.position,Quaternion.identity);
-				CoinPickup pickupComp = coin.GetComponent<CoinPickup>();
-				pickupComp.owner = this.owner;
-				pickupComp.StartGlide();
-			}
+//			if(this.unitStrength >= fightingTargetStrength)
+//			{
+//				GameObject coin = (GameObject)Instantiate(coinSpawnPrefab.gameObject,this.transform.position,Quaternion.identity);
+//				CoinPickup pickupComp = coin.GetComponent<CoinPickup>();
+//				pickupComp.owner = this.owner;
+//				pickupComp.StartGlide();
+//			}
 		}
 	}
 

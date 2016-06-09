@@ -264,9 +264,5 @@ public class GameManager : MonoBehaviour
 		gameStarted = true;
 		gameTimerText.gameObject.SetActive(true);
 		neutralCardSpawner.SetActive(true);
-
-		foreach(PlayerGameData pdata in _playerData.data)
-			foreach(HexagonTile tile in pdata.tiles)
-				tile.StartCoinSpawn();
 	}
 }

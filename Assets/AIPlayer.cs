@@ -61,7 +61,7 @@ public class AIPlayer : MonoBehaviour
 
     private void PickTarget()
     {
-        int rnd = Random.Range(0, 8);
+        int rnd = Random.Range(0, 7);
         switch (rnd) {
             case 0:
                 PurchaseCard();
@@ -76,15 +76,12 @@ public class AIPlayer : MonoBehaviour
                 SelectFossilBuildingCard();
                 break;
             case 4:
-                PickUpCoin();
-                break;
-            case 5:
                 InteractWithUnit();
                 break;
-            case 6:
+            case 5:
                 RemoveBuildingDebuff();
                 break;
-            case 7:
+            case 6:
                 RemoveSwamp();
                 break;
         }
@@ -120,19 +117,6 @@ public class AIPlayer : MonoBehaviour
         finger.GetComponent<RectTransform>().position = Vector3.Lerp(finger.GetComponent<RectTransform>().position, target.transform.position, fingerSpeed * Time.deltaTime);
     }
 
-    private void PickUpCoin()
-    {
-        if (playerData.coin && !playerData.coin.IsUsed)
-        {
-            target = playerData.coin.gameObject;
-#if TOUCH_INPUT
-            OnAction += playerData.coin.PenetratingTouchEnd;
-#else
-            OnAction += playerData.coin.OnMouseUp;
-#endif
-            OnAction += Nullify;
-        }
-    }
 
     private void SelectActionCard()
     {
