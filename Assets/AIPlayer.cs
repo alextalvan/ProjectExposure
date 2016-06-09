@@ -190,7 +190,7 @@ public class AIPlayer : MonoBehaviour
         List<HexagonTile> availableTiles = new List<HexagonTile>();
         foreach (HexagonTile tile in playerData.tiles)
         {
-            if (tile.AllowBuild)
+			if (tile.isActiveAndEnabled && tile.AllowBuild)
                 availableTiles.Add(tile);
         }
 
