@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Prop_lineDOWN
+  m_Name: Grass
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _DETAIL_MULX2 _NORMALMAP
+  m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -19,30 +19,28 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: -1300464484, guid: 39d46d329bcff446ea8615e4e7d9cd3b,
-            type: 3}
-          m_Scale: {x: 3, y: 2}
-          m_Offset: {x: 1, y: 0}
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 47681347, guid: 39d46d329bcff446ea8615e4e7d9cd3b, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _DetailNormalMap
         second:
-          m_Texture: {fileID: 2800000, guid: c6dfb00dbee6bc044a8a3bb22e56e064, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _ParallaxMap
         second:
-          m_Texture: {fileID: -601741285, guid: 39d46d329bcff446ea8615e4e7d9cd3b,
-            type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -57,8 +55,8 @@ Material:
           name: _EmissionMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 3, y: 2}
-          m_Offset: {x: 1, y: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _DetailMask
@@ -71,13 +69,13 @@ Material:
           name: _DetailAlbedoMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1.74}
-          m_Offset: {x: 0, y: 3.99}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _MetallicGlossMap
         second:
-          m_Texture: {fileID: 361611816, guid: 39d46d329bcff446ea8615e4e7d9cd3b, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -96,7 +94,7 @@ Material:
       data:
         first:
           name: _Parallax
-        second: 0.08
+        second: 0.02
       data:
         first:
           name: _ZWrite
@@ -104,7 +102,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.08
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -137,4 +135,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.44852942, g: 0.4419334, b: 0.4419334, a: 1}
+        second: {r: 0.49683544, g: 0.49683544, b: 0.49683544, a: 1}
