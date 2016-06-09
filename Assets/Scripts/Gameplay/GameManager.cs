@@ -60,9 +60,12 @@ public class GameManager : MonoBehaviour
 
 
 	[SerializeField]
-	int _player1money = 0;
+	float _player1money = 0;
 
-	public int Player1Money 
+	[SerializeField]
+	GameObject gameOverText;
+
+	public float Player1Money 
 	{
 		get { return _player1money; }
 		set 
@@ -75,9 +78,9 @@ public class GameManager : MonoBehaviour
 	}
 
 	[SerializeField]
-	int _player2money = 0;
+	float _player2money = 0;
 
-	public int Player2Money 
+	public float Player2Money 
 	{
 		get { return _player2money; }
 		set 
@@ -179,6 +182,9 @@ public class GameManager : MonoBehaviour
 		int minutes = ((int)gameTimer) / 60;
 		gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
 
+		if(gameTimer <= 0.0f)
+			gameOverText.SetActive(true);
+
 		/*
 		timeAccumulatorWaves += Time.deltaTime;
 
@@ -258,9 +264,5 @@ public class GameManager : MonoBehaviour
 		gameStarted = true;
 		gameTimerText.gameObject.SetActive(true);
 		neutralCardSpawner.SetActive(true);
-
-		foreach(PlayerGameData pdata in _playerData.data)
-			foreach(HexagonTile tile in pdata.tiles)
-				tile.StartCoinSpawn();
 	}
 }

@@ -78,12 +78,12 @@ public class UnitSpawner : MonoBehaviour
 
     bool SpawnIsFree()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(spawnPoint.position, spawnPoint.GetComponent<SphereCollider>().radius);
-        for (int i = 0; i < hitColliders.Length; i++)
-        {
-            if (hitColliders[i].transform.GetComponent<UnitAI>())
-                return false;
-        }
+//        Collider[] hitColliders = Physics.OverlapSphere(spawnPoint.position, spawnPoint.GetComponent<SphereCollider>().radius);
+//        for (int i = 0; i < hitColliders.Length; i++)
+//        {
+//            if (hitColliders[i].transform.GetComponent<UnitAI>())
+//                return false;
+//        }
         return true;
     }
 

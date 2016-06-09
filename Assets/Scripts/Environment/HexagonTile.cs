@@ -49,20 +49,6 @@ public class HexagonTile : GameManagerSearcher
 	[SerializeField]
 	GameObject buildingBlockedObject;
 
-	[SerializeField]
-	GameObject coinSpawnPrefab;
-
-	[SerializeField]
-	float coinSpawnInterval = 2.0f;
-	float coinSpawnAccumulator = 0.0f;
-
-	[SerializeField]
-	float coinSpawnProbability = 0.24999f;
-
-	[SerializeField]
-	bool allowCoinSpawn = false;
-
-	GameObject currentCoin = null;
 
 	void Start () 
 	{
@@ -76,8 +62,6 @@ public class HexagonTile : GameManagerSearcher
 
 
 		outline.SetActive(false);
-
-		coinSpawnAccumulator = Random.Range(0.0f,coinSpawnInterval);
 	}
 
 	/// <summary>
@@ -98,47 +82,9 @@ public class HexagonTile : GameManagerSearcher
 			buildingBlockedObject = null;
 			this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(true);
 		}
-
-		HandleCoinSpawn();
+			
 	}
-
-	void HandleCoinSpawn()
-	{
-		coinSpawnAccumulator += Time.deltaTime;
-		if(coinSpawnAccumulator >= coinSpawnInterval)
-		{
-			coinSpawnAccumulator = 0.0f;
-
-			if(currentCoin != null || CurrentEnergyBuilding != null || !allowCoinSpawn || gameManager.playerData[Owner].coinUp || buildingBlockedObject)
-				return;
-
-			//the roll
-			float random = Random.Range(0.0f,1.0f);
-			//Debug.Log(random);
-
-			if(random <= coinSpawnProbability)
-			{
-				GameObject coin = (GameObject)Instantiate(coinSpawnPrefab,this.transform.position + Physics.gravity.normalized * -3.0f,Quaternion.identity);
-
-				//Vector3 randomforce = new Vector3(Random.Range(-1.0f,1.0f),,Random.Range(-1.0f,1.0f));
-
-				Rigidbody rb = coin.GetComponent<Rigidbody>();
-
-				rb.AddForce(this.transform.up * Random.Range(0.0f,1.0f));
-				rb.AddForce(this.transform.right * Random.Range(-1.0f,1.0f));
-				rb.AddForce(this.transform.forward * Random.Range(-1.0f,1.0f));
-
-				currentCoin = coin;
-
-				CoinPickup coinComp = coin.GetComponent<CoinPickup>();
-                gameManager.playerData[owner].coin = coinComp;
-                coinComp.OnDestruction += () => { this.currentCoin = null; gameManager.playerData[Owner].coinUp = false; gameManager.playerData[owner].coin = null; };
-				coinComp.owner = this.Owner;
-
-				gameManager.playerData[Owner].coinUp = true;
-			}
-		}
-	}
+		
 
 
 	/// <summary>
@@ -279,9 +225,5 @@ public class HexagonTile : GameManagerSearcher
 		buildingBlockedObject = (GameObject)Instantiate(building.PollutionPrefab);
 		buildingBlockedObject.transform.SetParent(this.transform,false);
 	}
-
-	public void StartCoinSpawn()
-	{
-		allowCoinSpawn = true;
-	}
+		
 }
