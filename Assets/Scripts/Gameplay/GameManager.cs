@@ -158,8 +158,8 @@ public class GameManager : MonoBehaviour
     void Start()
 	{
 		//forcing refresh at start because of inspector filling of starting money
-		Player1Money = Player1Money;
-		Player2Money = Player2Money;
+		Player1Money = _player1money;
+		Player2Money = _player2money;
 	}
 
 	void Update () 

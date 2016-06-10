@@ -9,7 +9,7 @@ public class MoneyBar : MonoBehaviour {
 
 	Image _image;
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		_image = GetComponent<Image>();
 		SetCutout(0.0f);
