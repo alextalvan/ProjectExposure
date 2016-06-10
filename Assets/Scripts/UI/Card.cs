@@ -20,7 +20,7 @@ public enum CARD_TYPES
 }
 
 
-[RequireComponent(typeof(Collider2D))]
+//[RequireComponent(typeof(Collider2D))]
 public abstract class Card : GameManagerSearcher 
 {
 	public delegate void CardDestructionDelegate();
@@ -45,7 +45,7 @@ public abstract class Card : GameManagerSearcher
 	float deletionTime = 15.0f;
 
 	[SerializeField]
-	GameObject highlight = null;
+	protected GameObject highlight = null;
 
 	void OnDestroy()
 	{

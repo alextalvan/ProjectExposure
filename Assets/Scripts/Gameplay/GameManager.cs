@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
 
 	//money updaterate in seconds
 	public float MONEY_UPDATE_RATE = 2.0f;
+
+	[SerializeField]
+	float moneyRate = 0;
+
 	float timeAccumulatorMoney = 0.0f;
 
 	//[SerializeField]
@@ -55,9 +59,6 @@ public class GameManager : MonoBehaviour
 	//public delegate void WaveTriggerDelegate();
 	//public event WaveTriggerDelegate OnNewWave = null;
 
-	[SerializeField]
-	GameObject neutralCardSpawner;
-
 
 	[SerializeField]
 	float _player1money = 0;
@@ -65,17 +66,23 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	GameObject gameOverText;
 
+	[SerializeField]
+	MoneyBar _player1MoneyBar;
+
 	public float Player1Money 
 	{
 		get { return _player1money; }
 		set 
 		{ 
 			
-			if(value < 0) value = 0;
+			value = Mathf.Clamp(value,0.0f,forcedMaxMoney);
 			_player1money = value;
-			player1moneyText.text = _player1money.ToString();
+			_player1MoneyBar.SetCutout(Mathf.Clamp01(_player1money / forcedMaxMoney));
 		}
 	}
+
+	[SerializeField]
+	MoneyBar _player2MoneyBar;
 
 	[SerializeField]
 	float _player2money = 0;
@@ -85,11 +92,13 @@ public class GameManager : MonoBehaviour
 		get { return _player2money; }
 		set 
 		{ 
-			if(value < 0) value = 0;
+			value = Mathf.Clamp(value,0.0f,forcedMaxMoney);
 			_player2money = value;
-			player2moneyText.text = _player2money.ToString();
+			_player2MoneyBar.SetCutout(Mathf.Clamp01(_player2money / forcedMaxMoney));
 		}
 	}
+
+
 
 	[SerializeField]
 	int _player1score = 0;
@@ -118,18 +127,10 @@ public class GameManager : MonoBehaviour
 			player2scoreText.text = _player2score.ToString();
 		}
 	}
+		
 
 	[SerializeField]
-	int moneyRate = 0;
-
-	[SerializeField]
-	int forcedMaxMoney = 10;
-
-	[SerializeField]
-	Text player1moneyText;
-
-	[SerializeField]
-	Text player2moneyText;
+	float forcedMaxMoney = 10.0f;
 
 	[SerializeField]
 	Text player1scoreText;
@@ -199,8 +200,8 @@ public class GameManager : MonoBehaviour
 
 	void UpdateMoney()
 	{
-		Player1Money += moneyRate; if(Player1Money > forcedMaxMoney) Player1Money = forcedMaxMoney;
-		Player2Money += moneyRate; if(Player2Money > forcedMaxMoney) Player2Money = forcedMaxMoney;
+		Player1Money += moneyRate; 
+		Player2Money += moneyRate;
 	}
 
 	public void StartEnergyBuildingTileSelection(Card card)
@@ -225,23 +226,7 @@ public class GameManager : MonoBehaviour
 	{
 		raycastedOn2DObject = false;
 	}
-
-    public void StartCoinGlide(CoinPickup coin)
-    {
-        CardGlide glide = coin.GetComponent<CardGlide>();
-        glide.enabled = true;
-        if (coin.owner == PLAYERS.PLAYER1)
-        {
-
-            glide.SetTarget(player1moneyText.transform);
-            coin.OnDestruction += () => { Player1Money += coin.valueAwarded; };
-        }
-        else
-        {
-            glide.SetTarget(player2moneyText.transform);
-            coin.OnDestruction += () => { Player2Money += coin.valueAwarded; };
-        }
-    }
+		
 
     public void SetPlayer(int index)
     {
@@ -263,6 +248,5 @@ public class GameManager : MonoBehaviour
 	{
 		gameStarted = true;
 		gameTimerText.gameObject.SetActive(true);
-		neutralCardSpawner.SetActive(true);
 	}
 }

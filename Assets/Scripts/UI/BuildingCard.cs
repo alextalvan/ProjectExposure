@@ -4,12 +4,18 @@ using System.Collections;
 
 public class BuildingCard : Card 
 {
-	//for now use mouse input for testing
+	//keep track if card was playable last frame
+	bool wasPlayable = false;
 
 	[SerializeField]
 	EnergyBuildingType _buildingType;
 
 	public EnergyBuildingType BuildingType { get { return _buildingType; } }
+
+
+	Animator _anim;
+
+	bool resetAnimVars = false;
 
     protected override void DoCardEffect ()
 	{
@@ -23,30 +29,68 @@ public class BuildingCard : Card
 
 	protected override bool CalculatePlayCondition ()
 	{
-
-		if(!enabled)
-			return false;
-
-//		if(!CheckMoneyCost())
-//			return false;
-
 		PlayerGameData pdata = gameManager.playerData[this.Owner];
 
 		if(pdata.currentInputState != INPUT_STATES.FREE)
 			return false;
 
+		return CalculateNonInputPlayCondition();
+	}
+
+	bool CalculateNonInputPlayCondition()
+	{
+		if(!enabled)
+			return false;
+
+		if(!CheckMoneyCost())
+			return false;
+
 		bool oneFreeTile = false;
+		PlayerGameData pdata = gameManager.playerData[this.Owner];
 
 		foreach(HexagonTile t in pdata.tiles)
-		if(t.AllowBuild)
-		{
-			oneFreeTile = true;
-			break;
-		}
+			if(t.AllowBuild)
+			{
+				oneFreeTile = true;
+				break;
+			}
 
 		if(!oneFreeTile)
 			return false;
 
 		return true;
+	}
+
+
+	protected override void Update ()
+	{
+		bool isPlayable = CalculateNonInputPlayCondition();
+
+
+		//_anim.SetBool("slide_out",false);
+
+		//if(Input.GetKeyDown(KeyCode.Space))
+		if(isPlayable && !wasPlayable)
+		{
+			_anim.SetBool("slide_out",false);
+			_anim.SetBool("slide_in",true);//do slide in animation
+			highlight.SetActive(true);
+		}
+
+		if(!isPlayable && wasPlayable)
+		{
+			_anim.SetBool("slide_in",false);
+			_anim.SetBool("slide_out",true);//do slide out animation
+			highlight.SetActive(false);
+		}
+
+		wasPlayable = isPlayable;
+	}
+
+
+	protected override void Start ()
+	{
+		base.Start ();
+		_anim = GetComponent<Animator>();
 	}
 }
