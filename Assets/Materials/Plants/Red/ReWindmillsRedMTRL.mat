@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ReWindmillsBlueMTRL
+  m_Name: ReWindmillsRedMTRL
   m_Shader: {fileID: 4800000, guid: e68f798c29a56af4e8a35346cfba79cc, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 5
@@ -87,16 +87,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Normal_Map
+          name: _Noise
         second:
-          m_Texture: {fileID: 2800000, guid: d396de785e65a034d95d1f278ffa34f3, type: 3}
+          m_Texture: {fileID: 2800000, guid: fd007d02d6b063a419e56fe3939af343, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Noise
+          name: _Normal_Map
         second:
-          m_Texture: {fileID: 2800000, guid: fd007d02d6b063a419e56fe3939af343, type: 3}
+          m_Texture: {fileID: 2800000, guid: d396de785e65a034d95d1f278ffa34f3, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -135,20 +135,16 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
-          name: _Glossiness
-        second: 0
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
         first:
           name: _ZWrite
         second: 1
+      data:
+        first:
+          name: _Glossiness
+        second: 0
       data:
         first:
           name: _BumpScale
@@ -171,8 +167,16 @@ Material:
         second: 0
       data:
         first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
           name: _Visibility
         second: 0
+      data:
+        first:
+          name: _Edge_width
+        second: 50
       data:
         first:
           name: _Normal_Map_Intensity
@@ -183,12 +187,12 @@ Material:
         second: 0
       data:
         first:
-          name: _Edge_width
-        second: 50
-      data:
-        first:
           name: _Edge_Glow_Power
         second: 0.71
+      data:
+        first:
+          name: _Emssion_power
+        second: 0
       data:
         first:
           name: _Visibility_multiplier
@@ -205,10 +209,6 @@ Material:
         first:
           name: _Visibility_power
         second: 0.8471476
-      data:
-        first:
-          name: _Emssion_power
-        second: 0
     m_Colors:
       data:
         first:
