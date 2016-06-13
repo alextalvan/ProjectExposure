@@ -7,12 +7,11 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: River
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
+  m_Shader: {fileID: 4800000, guid: fa76642d1b19d4dd3aeacd308d0fcfcb, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -21,8 +20,8 @@ Material:
           name: _MainTex
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 2, y: 2}
-          m_Offset: {x: 1, y: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 1, y: 1}
       data:
         first:
           name: _BumpMap
@@ -36,6 +35,13 @@ Material:
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal_map
+        second:
+          m_Texture: {fileID: 2800000, guid: e0547e5867992694cb1c3f14f574a380, type: 3}
+          m_Scale: {x: 1, y: 3.96}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -56,8 +62,8 @@ Material:
           name: _EmissionMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 2, y: 2}
-          m_Offset: {x: 1, y: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 1, y: 1}
       data:
         first:
           name: _DetailMask
@@ -79,6 +85,20 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: 7aae165d391b84eddbed5fd0ec9e6460, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Overlay
+        second:
+          m_Texture: {fileID: 2800000, guid: 18224338f6081d349a2def98100174d9, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -87,11 +107,43 @@ Material:
       data:
         first:
           name: _DstBlend
-        second: 10
+        second: 0
       data:
         first:
           name: _Cutoff
         second: 0.5
+      data:
+        first:
+          name: _Transparency
+        second: 0.038
+      data:
+        first:
+          name: _Soec_power
+        second: 1.29
+      data:
+        first:
+          name: _Soec_Int
+        second: 0.1
+      data:
+        first:
+          name: _Refr_Scale
+        second: -0.007
+      data:
+        first:
+          name: _Refr
+        second: -0.57
+      data:
+        first:
+          name: _Normal_intensity
+        second: -1.04
+      data:
+        first:
+          name: _Falloff_amuont
+        second: -0.1
+      data:
+        first:
+          name: _Falloff_intensity
+        second: 14.1
       data:
         first:
           name: _Parallax
@@ -99,11 +151,11 @@ Material:
       data:
         first:
           name: _ZWrite
-        second: 0
+        second: 1
       data:
         first:
           name: _Glossiness
-        second: 0.171
+        second: 0.314
       data:
         first:
           name: _BumpScale
@@ -123,11 +175,11 @@ Material:
       data:
         first:
           name: _Mode
-        second: 3
+        second: 0
       data:
         first:
           name: _Metallic
-        second: 0
+        second: 0.023
     m_Colors:
       data:
         first:
@@ -136,4 +188,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.16933388, g: 0.6648517, b: 0.7941176, a: 1}
+        second: {r: 0.3814879, g: 0.62232405, b: 0.8235294, a: 1}
+      data:
+        first:
+          name: _Fresnel_Color
+        second: {r: 0.23313144, g: 0.518882, b: 0.7205882, a: 1}
