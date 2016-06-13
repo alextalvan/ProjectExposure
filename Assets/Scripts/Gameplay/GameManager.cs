@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     AIPlayer AI2;
 
-    [SerializeField]
-	float gameTimer = 300.0f;
+//    [SerializeField]
+//	float gameTimer = 300.0f;
 
 	[SerializeField]
 	Text gameTimerText;
@@ -93,33 +93,33 @@ public class GameManager : MonoBehaviour
 
 
 
-	[SerializeField]
-	int _player1score = 0;
-
-	public int Player1Score 
-	{
-		get { return _player1score; }
-		set 
-		{ 
-			if(value < 0) value = 0;
-			_player1score = value;
-			player1scoreText.text = _player1score.ToString();
-		}
-	}
-
-	[SerializeField]
-	int _player2score = 0;
-
-	public int Player2Score
-	{
-		get { return _player2score; }
-		set 
-		{ 
-			if(value < 0) value = 0;
-			_player2score = value;
-			player2scoreText.text = _player2score.ToString();
-		}
-	}
+//	[SerializeField]
+//	int _player1score = 0;
+//
+//	public int Player1Score 
+//	{
+//		get { return _player1score; }
+//		set 
+//		{ 
+//			if(value < 0) value = 0;
+//			_player1score = value;
+//			player1scoreText.text = _player1score.ToString();
+//		}
+//	}
+//
+//	[SerializeField]
+//	int _player2score = 0;
+//
+//	public int Player2Score
+//	{
+//		get { return _player2score; }
+//		set 
+//		{ 
+//			if(value < 0) value = 0;
+//			_player2score = value;
+//			player2scoreText.text = _player2score.ToString();
+//		}
+//	}
 		
 
 	[SerializeField]
@@ -127,11 +127,11 @@ public class GameManager : MonoBehaviour
 	int currentGameStageIndex = 0;
 	private GameStage currentStage { get { return gameStages[currentGameStageIndex]; } }
 
-	[SerializeField]
-	Text player1scoreText;
-
-	[SerializeField]
-	Text player2scoreText;
+//	[SerializeField]
+//	Text player1scoreText;
+//
+//	[SerializeField]
+//	Text player2scoreText;
 
 	[SerializeField]
 	PlayerGameDataList _playerData = new PlayerGameDataList();
@@ -176,13 +176,13 @@ public class GameManager : MonoBehaviour
 			UpdateMoney();
 		}
 
-		gameTimer -= Time.deltaTime;
-		int seconds = ((int)gameTimer) % 60;
-		int minutes = ((int)gameTimer) / 60;
-		gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
-
-		if(gameTimer <= 0.0f)
-			gameOverText.SetActive(true);
+//		gameTimer -= Time.deltaTime;
+//		int seconds = ((int)gameTimer) % 60;
+//		int minutes = ((int)gameTimer) / 60;
+//		gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
+//
+//		if(gameTimer <= 0.0f)
+//			gameOverText.SetActive(true);
 
 		UpdateGameStage();
 

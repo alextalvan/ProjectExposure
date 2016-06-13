@@ -3,10 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 
 //[RequireComponent(typeof(Collider))]
+public enum LANES
+{
+	TOP,
+	BOT
+}
+
 public class HexagonTile : GameManagerSearcher 
 {
 	[SerializeField]
 	PLAYERS owner;
+
+	[SerializeField]
+	LANES lane;
 
 	[SerializeField]
 	List<TileType> tileTypes = new List<TileType>();
@@ -140,7 +149,7 @@ public class HexagonTile : GameManagerSearcher
 			myB.OnDestruction -= this.CleanupAfterBuildingIsDestroyed;
 			myB.OnDestruction += other.CleanupAfterBuildingIsDestroyed;
 
-			myB.GetComponent<UnitSpawner>().SetSpawnInformation(other.aiPathRoot,other.spawnPoint,other.spawnedUnitsParent,other.owner);
+			myB.GetComponent<UnitSpawner>().SetSpawnInformation(other.aiPathRoot,other.spawnPoint,other.spawnedUnitsParent,other.owner,other.lane);
 
 			//other.visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 
@@ -162,7 +171,7 @@ public class HexagonTile : GameManagerSearcher
 			otherB.OnDestruction -= other.CleanupAfterBuildingIsDestroyed;
 			otherB.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
 
-			otherB.GetComponent<UnitSpawner>().SetSpawnInformation(this.aiPathRoot,this.spawnPoint,this.spawnedUnitsParent,this.owner);
+			otherB.GetComponent<UnitSpawner>().SetSpawnInformation(this.aiPathRoot,this.spawnPoint,this.spawnedUnitsParent,this.owner,this.lane);
 
 			//this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 				
@@ -203,7 +212,7 @@ public class HexagonTile : GameManagerSearcher
 					this._hasBuildingOnTop = true;
 					//currentEnergyBuilding = energyBuilding;
 
-					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(aiPathRoot,spawnPoint,spawnedUnitsParent,owner);
+					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(aiPathRoot,spawnPoint,spawnedUnitsParent,owner,lane);
 
 					_energyBuilding = energyBuilding.GetComponent<EnergyBuilding>();
 					_energyBuilding.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
