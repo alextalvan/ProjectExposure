@@ -13,6 +13,8 @@ public class MoneyBar : MonoBehaviour {
 	{
 		_image = GetComponent<Image>();
 		SetCutout(0.0f);
+
+
 	}
 
 
