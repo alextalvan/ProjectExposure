@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour
 		foreach(HexagonTile t in pdata.tiles)
 		{
 			if(t.AllowBuild)
-				t.SetOutline(true);
+				t.SetOutlineState(HexagonTile.OUTLINE_STATES.BUILD_NEW);
 		}
 			
 		pdata.currentInputState = INPUT_STATES.PICKING_BUILDING_CARD_TARGET;

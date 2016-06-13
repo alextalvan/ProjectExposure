@@ -19,10 +19,10 @@ public class PlayerGameData
 	public List<SwampSpot> swampSpots = new List<SwampSpot>();
     public bool AI = false;
 
-    public void SetAllTilesHighlight(bool show)
+    public void RefreshAllTilesHighlight()
 	{
 		foreach(HexagonTile t in tiles)
-			t.SetOutline(show);
+			t.CalculateBaseOrNextOutline();
 	}
 }
 

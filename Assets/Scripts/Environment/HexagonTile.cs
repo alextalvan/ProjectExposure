@@ -22,13 +22,40 @@ public class HexagonTile : GameManagerSearcher
 	[SerializeField]
 	Transform spawnPoint;
 
+	public enum OUTLINE_STATES
+	{
+		BASE,
+		BUILD_NEW,
+		BUILD_NEXT
+	}
+
+
+	//outline for when a building card has been selected and this tile is eligible
 	[SerializeField]
-	GameObject outline;
+	GameObject outline_build_new;
+
+	//base outline, nothing special
+	[SerializeField]
+	GameObject outline_base;
+
+
+	//outline that is activated when you can build on this building due to space being sufficient
+	[SerializeField]
+	GameObject outline_build_next;
+
+
+	//this tile will only allow building if the previous tile already has one (forcing succession)
+	//in case of null, it can always be built on
+	[SerializeField]
+	HexagonTile previousTile = null;
+
+	[SerializeField]
+	HexagonTile nextTile = null;
 
 	[SerializeField]
 	private bool _hasBuildingOnTop = false;
 
-	public bool AllowBuild { get { return !_hasBuildingOnTop && blockTime <= 0.0f; } }
+	public bool AllowBuild { get { return !_hasBuildingOnTop && blockTime <= 0.0f && (previousTile == null || (previousTile.blockTime > 0.0f || previousTile.CurrentEnergyBuilding != null)); } }
 
 	public PLAYERS Owner { get { return owner; } }
 
@@ -61,16 +88,15 @@ public class HexagonTile : GameManagerSearcher
 		visualObject = visualModel;
 
 
-		outline.SetActive(false);
+		if(previousTile == null)
+			SetOutlineState(OUTLINE_STATES.BUILD_NEXT);
+		else
+			SetOutlineState(OUTLINE_STATES.BASE);
 	}
-
-	/// <summary>
-	/// Toggle the outline object.
-	/// </summary>
-	/// <param name="active">If set to <c>true</c> active.</param>
+		
 	public void SetOutline(bool active)
 	{
-		outline.SetActive(active);
+		//outline_build_new.SetActive(active);
 	}
 
 	void Update()
@@ -81,6 +107,7 @@ public class HexagonTile : GameManagerSearcher
 			Destroy(buildingBlockedObject.gameObject);
 			buildingBlockedObject = null;
 			this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(true);
+			CalculateBaseOrNextOutline();
 		}
 			
 	}
@@ -156,7 +183,6 @@ public class HexagonTile : GameManagerSearcher
     public void OnMouseUp()
 	#endif
 	{
-		
 		//mosue fix for 2d object raycasts to supress 3d object raycasts
 		//if(gameManager.raycastedOn2DObject)
 		//	return;
@@ -190,11 +216,16 @@ public class HexagonTile : GameManagerSearcher
 
 					visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 					//Destroy(bc.gameObject);
+
+
+					SetOutlineState(OUTLINE_STATES.BASE);
+					if(nextTile!=null)
+						nextTile.SetOutlineState(OUTLINE_STATES.BUILD_NEXT);
 				}
 			}
 
 			pdata.currentInputState = INPUT_STATES.FREE;
-			pdata.SetAllTilesHighlight(false);
+			pdata.RefreshAllTilesHighlight();
 
 		}
 	}
@@ -209,6 +240,8 @@ public class HexagonTile : GameManagerSearcher
 		StartBuildBlock(this._energyBuilding);
 		this._hasBuildingOnTop = false; 
 		this._energyBuilding = null;
+		CalculateBaseOrNextOutline();
+		gameManager.playerData[this.Owner].RefreshAllTilesHighlight();
 
 		//if(this._energyBuilding.PollutionPrefab
 
@@ -224,6 +257,32 @@ public class HexagonTile : GameManagerSearcher
 
 		buildingBlockedObject = (GameObject)Instantiate(building.PollutionPrefab);
 		buildingBlockedObject.transform.SetParent(this.transform,false);
+	}
+
+
+
+	public void SetOutlineState(OUTLINE_STATES s)
+	{
+		outline_base.SetActive(s == OUTLINE_STATES.BASE);
+		outline_build_new.SetActive(s == OUTLINE_STATES.BUILD_NEW);
+		outline_build_next.SetActive( s == OUTLINE_STATES.BUILD_NEXT);
+	}
+
+	public void CalculateBaseOrNextOutline()
+	{
+		if(blockTime <= 0.0f && previousTile == null && CurrentEnergyBuilding == null)
+		{
+			SetOutlineState(OUTLINE_STATES.BUILD_NEXT);
+			return;
+		}
+
+		if(blockTime <= 0.0f && previousTile!=null && previousTile.CurrentEnergyBuilding !=null && CurrentEnergyBuilding == null)
+		{
+			SetOutlineState(OUTLINE_STATES.BUILD_NEXT);
+			return;
+		}
+
+		SetOutlineState(OUTLINE_STATES.BASE);
 	}
 		
 }

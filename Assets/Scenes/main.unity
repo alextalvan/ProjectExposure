@@ -146,6 +146,10 @@ Transform:
   - {fileID: 845450459}
   m_Father: {fileID: 2047695469}
   m_RootOrder: 1
+--- !u!1 &30201621 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 119634, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+  m_PrefabInternal: {fileID: 95656808}
 --- !u!4 &31513101
 Transform:
   m_ObjectHideFlags: 0
@@ -615,6 +619,10 @@ Light:
   m_ShadowRadius: 0.25
   m_ShadowAngle: 0
   m_AreaSize: {x: 9.859234, y: 2.3702304}
+--- !u!1 &81486202 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 136624, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+  m_PrefabInternal: {fileID: 95656808}
 --- !u!1 &84887280 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 180992, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
@@ -815,6 +823,26 @@ Prefab:
       propertyPath: owner
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_base
+      value: 
+      objectReference: {fileID: 81486202}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_build_next
+      value: 
+      objectReference: {fileID: 30201621}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_build_new
+      value: 
+      objectReference: {fileID: 855958918}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: previousTile
+      value: 
+      objectReference: {fileID: 305736146}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: nextTile
+      value: 
+      objectReference: {fileID: 480672444}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
   m_IsPrefabParent: 0
@@ -927,6 +955,18 @@ Transform:
   - {fileID: 1688369721}
   m_Father: {fileID: 215746739}
   m_RootOrder: 0
+--- !u!1 &109785934 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 119634, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+  m_PrefabInternal: {fileID: 1986578146}
+--- !u!1 &137475186 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 119634, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+  m_PrefabInternal: {fileID: 629368045}
+--- !u!1 &148690167 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 119634, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+  m_PrefabInternal: {fileID: 1303535763}
 --- !u!1 &153365711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1056,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 1319725937}
   spawnPoint: {fileID: 0}
-  outline: {fileID: 297077595}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   buildingBlockedObject: {fileID: 0}
@@ -1302,6 +1346,10 @@ Transform:
   - {fileID: 221654687}
   m_Father: {fileID: 2025985341}
   m_RootOrder: 0
+--- !u!1 &219050030 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 136624, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+  m_PrefabInternal: {fileID: 629368045}
 --- !u!1 &221654686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,7 +1589,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 0}
   spawnPoint: {fileID: 0}
-  outline: {fileID: 1918022776}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 0}
   buildingBlockedObject: {fileID: 0}
@@ -2183,7 +2235,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 450040157}
   spawnPoint: {fileID: 307158500}
-  outline: {fileID: 843189955}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 997643867}
   buildingBlockedObject: {fileID: 0}
@@ -3326,6 +3382,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
+--- !u!1 &489815797 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 119634, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+  m_PrefabInternal: {fileID: 1367591539}
 --- !u!1 &498122313 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 180992, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
@@ -3866,6 +3926,10 @@ Transform:
   - {fileID: 1667178396}
   m_Father: {fileID: 2025985341}
   m_RootOrder: 6
+--- !u!1 &571502158 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 136624, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+  m_PrefabInternal: {fileID: 1986578146}
 --- !u!1 &579183384
 GameObject:
   m_ObjectHideFlags: 0
@@ -4396,6 +4460,22 @@ Prefab:
       propertyPath: owner
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_base
+      value: 
+      objectReference: {fileID: 219050030}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_build_new
+      value: 
+      objectReference: {fileID: 1186902876}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_build_next
+      value: 
+      objectReference: {fileID: 137475186}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: nextTile
+      value: 
+      objectReference: {fileID: 1006683812}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
   m_IsPrefabParent: 0
@@ -4480,7 +4560,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 0}
   spawnPoint: {fileID: 0}
-  outline: {fileID: 1746147825}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 0}
   buildingBlockedObject: {fileID: 0}
@@ -4612,7 +4696,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 1319725937}
   spawnPoint: {fileID: 553157464}
-  outline: {fileID: 1348819173}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   buildingBlockedObject: {fileID: 0}
@@ -4630,7 +4718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &703425775
 Transform:
   m_ObjectHideFlags: 0
@@ -4783,7 +4871,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 101829101}
   spawnPoint: {fileID: 1221725772}
-  outline: {fileID: 420222765}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 938618811}
   buildingBlockedObject: {fileID: 0}
@@ -5862,7 +5954,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 1319725937}
   spawnPoint: {fileID: 1740646356}
-  outline: {fileID: 1891453965}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   buildingBlockedObject: {fileID: 0}
@@ -6398,7 +6494,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 1319725937}
   spawnPoint: {fileID: 553157464}
-  outline: {fileID: 1348819173}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   buildingBlockedObject: {fileID: 0}
@@ -7344,6 +7444,10 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1156221933}
+--- !u!1 &1161486461 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 136624, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+  m_PrefabInternal: {fileID: 1872324770}
 --- !u!1 &1184038688
 GameObject:
   m_ObjectHideFlags: 0
@@ -8163,7 +8267,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 450040157}
   spawnPoint: {fileID: 0}
-  outline: {fileID: 1424927611}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 997643867}
   buildingBlockedObject: {fileID: 0}
@@ -8331,6 +8439,22 @@ Prefab:
       propertyPath: owner
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_base
+      value: 
+      objectReference: {fileID: 1875889798}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_build_new
+      value: 
+      objectReference: {fileID: 1560413858}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_build_next
+      value: 
+      objectReference: {fileID: 148690167}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: previousTile
+      value: 
+      objectReference: {fileID: 1006683812}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
   m_IsPrefabParent: 0
@@ -9100,6 +9224,26 @@ Prefab:
       propertyPath: owner
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 119634, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_base
+      value: 
+      objectReference: {fileID: 1931799240}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_build_next
+      value: 
+      objectReference: {fileID: 489815797}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_build_new
+      value: 
+      objectReference: {fileID: 1367621192}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: nextTile
+      value: 
+      objectReference: {fileID: 1499106265}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
   m_IsPrefabParent: 0
@@ -9162,7 +9306,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 0}
   spawnPoint: {fileID: 0}
-  outline: {fileID: 352048135}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 0}
   buildingBlockedObject: {fileID: 0}
@@ -9234,7 +9382,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 0}
   spawnPoint: {fileID: 0}
-  outline: {fileID: 1689420607}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 0}
   buildingBlockedObject: {fileID: 0}
@@ -9753,7 +9905,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 1688369721}
   spawnPoint: {fileID: 530562465}
-  outline: {fileID: 258738725}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1432326733}
   buildingBlockedObject: {fileID: 0}
@@ -9981,6 +10137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 1448200796}
+--- !u!1 &1466858035 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 119634, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+  m_PrefabInternal: {fileID: 1872324770}
 --- !u!1001 &1473521680
 Prefab:
   m_ObjectHideFlags: 0
@@ -11306,7 +11466,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 101829101}
   spawnPoint: {fileID: 1221725772}
-  outline: {fileID: 1348819173}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 938618811}
   buildingBlockedObject: {fileID: 0}
@@ -12614,7 +12778,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 1688369721}
   spawnPoint: {fileID: 0}
-  outline: {fileID: 1335497728}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1432326733}
   buildingBlockedObject: {fileID: 0}
@@ -12968,9 +13136,33 @@ Prefab:
       propertyPath: owner
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_base
+      value: 
+      objectReference: {fileID: 1161486461}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_build_next
+      value: 
+      objectReference: {fileID: 1466858035}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_build_new
+      value: 
+      objectReference: {fileID: 736845720}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: previousTile
+      value: 
+      objectReference: {fileID: 795915695}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: nextTile
+      value: 
+      objectReference: {fileID: 1355664478}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1875889798 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 136624, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+  m_PrefabInternal: {fileID: 1303535763}
 --- !u!1 &1876490694
 GameObject:
   m_ObjectHideFlags: 0
@@ -13024,7 +13216,11 @@ MonoBehaviour:
     visualPrefab: {fileID: 135970, guid: b4e2ed9a84b6d8a4798b872669a50f87, type: 2}
   aiPathRoot: {fileID: 1319725937}
   spawnPoint: {fileID: 553157464}
-  outline: {fileID: 1348819173}
+  outline_build_new: {fileID: 0}
+  outline_base: {fileID: 0}
+  outline_build_next: {fileID: 0}
+  previousTile: {fileID: 0}
+  nextTile: {fileID: 0}
   _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   buildingBlockedObject: {fileID: 0}
@@ -13996,6 +14192,10 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -363.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1931799240 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 136624, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+  m_PrefabInternal: {fileID: 1367591539}
 --- !u!4 &1938302981 stripped
 Transform:
   m_PrefabParentObject: {fileID: 465484, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
@@ -14509,6 +14709,22 @@ Prefab:
       propertyPath: owner
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_base
+      value: 
+      objectReference: {fileID: 571502158}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_build_next
+      value: 
+      objectReference: {fileID: 109785934}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: outline_build_new
+      value: 
+      objectReference: {fileID: 1400128631}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: previousTile
+      value: 
+      objectReference: {fileID: 1499106265}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
   m_IsPrefabParent: 0
