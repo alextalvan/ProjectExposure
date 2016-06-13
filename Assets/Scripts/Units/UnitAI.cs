@@ -78,9 +78,6 @@ public class UnitAI : GameManagerSearcher
     GameObject iceBlockPrefab;
     GameObject currentIceBlock = null;
 
-    [SerializeField]
-    UnitStrengthDisplayer strengthDisplay;
-
     protected override void Awake()
     {
         base.Awake();
@@ -89,7 +86,6 @@ public class UnitAI : GameManagerSearcher
         deathTimer = deathAnimTime;
         anim = transform.GetChild(0).GetComponent<Animator>();
         mat = model.GetComponent<Renderer>().material;
-        strengthDisplay.SetHealth(unitStrength);
     }
 
     void Start()
@@ -315,7 +311,6 @@ public class UnitAI : GameManagerSearcher
     public void DecreaseStrength()
     {
         unitStrength--;
-        strengthDisplay.SetHealth(unitStrength);
     }
 
     public bool CheckDeath()
