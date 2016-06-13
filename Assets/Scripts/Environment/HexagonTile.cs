@@ -214,6 +214,8 @@ public class HexagonTile : GameManagerSearcher
 					else
 						gameManager.Player2Money -= pdata.currentSelectedCard.MoneyCost;
 
+					bc.StartCooldown();
+
 					visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 					//Destroy(bc.gameObject);
 

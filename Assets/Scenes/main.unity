@@ -2604,7 +2604,7 @@ Transform:
   - {fileID: 1721358695}
   - {fileID: 2047695469}
   - {fileID: 703425775}
-  - {fileID: 1101834590}
+  - {fileID: 1922483822}
   - {fileID: 1152786811}
   - {fileID: 1672292499}
   - {fileID: 887978177}
@@ -6936,10 +6936,6 @@ MeshFilter:
 Transform:
   m_PrefabParentObject: {fileID: 465484, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
   m_PrefabInternal: {fileID: 1928078316}
---- !u!4 &1101834590 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 426500, guid: 9d98dd688bce042bd9c86a398e10100a, type: 2}
-  m_PrefabInternal: {fileID: 65521427}
 --- !u!1 &1102612571
 GameObject:
   m_ObjectHideFlags: 0
@@ -11487,22 +11483,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: 54ea7e815f3d83f4ca20ddde003022cf, type: 3}
---- !u!1 &1637277254 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 112998, guid: 9d98dd688bce042bd9c86a398e10100a, type: 2}
-  m_PrefabInternal: {fileID: 65521427}
---- !u!64 &1637277257
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1637277254}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 951e402521e7b456981d98fcb9af2409, type: 3}
 --- !u!1 &1657806761 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 131672, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
@@ -13942,6 +13922,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempBlink: {fileID: 1921689817}
+--- !u!4 &1922483822 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 463588, guid: 9d98dd688bce042bd9c86a398e10100a, type: 2}
+  m_PrefabInternal: {fileID: 65521427}
 --- !u!1001 &1926218080
 Prefab:
   m_ObjectHideFlags: 0
@@ -14253,13 +14237,16 @@ MonoBehaviour:
   MONEY_UPDATE_RATE: 0.017
   moneyRate: 0.009
   _player1money: 0
-  gameOverText: {fileID: 1156221933}
+  _player2money: 0
   _player1MoneyBar: {fileID: 1404899488}
   _player2MoneyBar: {fileID: 714066063}
-  _player2money: 0
   _player1score: 0
   _player2score: 0
-  forcedMaxMoney: 6
+  gameStages:
+  - duration: 10
+    forcedMaxMoney: 2
+  - duration: 10
+    forcedMaxMoney: 4
   player1scoreText: {fileID: 36789348}
   player2scoreText: {fileID: 1682836146}
   _playerData:
@@ -14304,6 +14291,7 @@ MonoBehaviour:
   UI_moneyPrefab: {fileID: 189870, guid: 754343a333242fe40a3b245f79d28a8b, type: 2}
   player1DD: {fileID: 918484763}
   player2DD: {fileID: 2086532510}
+  gameOverText: {fileID: 1156221933}
   raycastedOn2DObject: 0
 --- !u!114 &1969614536
 MonoBehaviour:

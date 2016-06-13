@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
+
+
 public enum INPUT_STATES
 {
 	FREE,
@@ -50,21 +52,13 @@ public class GameManager : MonoBehaviour
 
 	float timeAccumulatorMoney = 0.0f;
 
-	//[SerializeField]
-	//float waveInterval = 5.0f;
-
-	//[SerializeField]
-	//float timeAccumulatorWaves = 0.0f;
-
-	//public delegate void WaveTriggerDelegate();
-	//public event WaveTriggerDelegate OnNewWave = null;
-
-
 	[SerializeField]
 	float _player1money = 0;
 
 	[SerializeField]
-	GameObject gameOverText;
+	float _player2money = 0;
+
+
 
 	[SerializeField]
 	MoneyBar _player1MoneyBar;
@@ -75,26 +69,25 @@ public class GameManager : MonoBehaviour
 		set 
 		{ 
 			
-			value = Mathf.Clamp(value,0.0f,forcedMaxMoney);
+			value = Mathf.Clamp(value,0.0f,currentStage.forcedMaxMoney);
 			_player1money = value;
-			_player1MoneyBar.SetCutout(Mathf.Clamp01(_player1money / forcedMaxMoney));
+			_player1MoneyBar.SetCutout(Mathf.Clamp01(_player1money / 6.0f));
 		}
 	}
 
 	[SerializeField]
 	MoneyBar _player2MoneyBar;
 
-	[SerializeField]
-	float _player2money = 0;
+
 
 	public float Player2Money 
 	{
 		get { return _player2money; }
 		set 
 		{ 
-			value = Mathf.Clamp(value,0.0f,forcedMaxMoney);
+			value = Mathf.Clamp(value,0.0f,currentStage.forcedMaxMoney);
 			_player2money = value;
-			_player2MoneyBar.SetCutout(Mathf.Clamp01(_player2money / forcedMaxMoney));
+			_player2MoneyBar.SetCutout(Mathf.Clamp01(_player2money / 6.0f));
 		}
 	}
 
@@ -130,7 +123,9 @@ public class GameManager : MonoBehaviour
 		
 
 	[SerializeField]
-	float forcedMaxMoney = 10.0f;
+	List<GameStage> gameStages = new List<GameStage>();
+	int currentGameStageIndex = 0;
+	private GameStage currentStage { get { return gameStages[currentGameStageIndex]; } }
 
 	[SerializeField]
 	Text player1scoreText;
@@ -154,6 +149,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     Dropdown player2DD;
+
+	[SerializeField]
+	GameObject gameOverText;
 
     void Start()
 	{
@@ -186,6 +184,8 @@ public class GameManager : MonoBehaviour
 		if(gameTimer <= 0.0f)
 			gameOverText.SetActive(true);
 
+		UpdateGameStage();
+
 		/*
 		timeAccumulatorWaves += Time.deltaTime;
 
@@ -202,6 +202,13 @@ public class GameManager : MonoBehaviour
 	{
 		Player1Money += moneyRate; 
 		Player2Money += moneyRate;
+	}
+
+	void UpdateGameStage()
+	{
+		currentStage.duration-= Time.deltaTime;
+		if(currentStage.duration <= 0.0f && currentGameStageIndex < gameStages.Count - 1)
+			currentGameStageIndex++;
 	}
 
 	public void StartEnergyBuildingTileSelection(Card card)
