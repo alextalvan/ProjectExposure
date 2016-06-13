@@ -8,13 +8,17 @@ public class MoneyBar : MonoBehaviour {
 
 
 	Image _image;
+
+	[SerializeField]
+	Material _cutoutMaterial;
+
 	// Use this for initialization
 	void Awake () 
 	{
 		_image = GetComponent<Image>();
 		SetCutout(0.0f);
 
-
+		_image.material = (Material)Instantiate(_cutoutMaterial);
 	}
 
 

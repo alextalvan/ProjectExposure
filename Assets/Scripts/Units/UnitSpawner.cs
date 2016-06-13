@@ -20,6 +20,7 @@ public class UnitSpawner : MonoBehaviour
 	Transform activeUnit;
 
 	PLAYERS owner;
+	LANES lane;
     private List<Vector3> unitPath = new List<Vector3>();
 
 	//to check if the energy building is debuffed
@@ -94,11 +95,12 @@ public class UnitSpawner : MonoBehaviour
 	/// <param name="pathRoot">Path root.</param>
 	/// <param name="spawnPoint">Spawn point.</param>
 	/// <param name="owner">Player owner.</param>
-	public void SetSpawnInformation(Transform pathRoot, Transform spawnPt, Transform unitGroupParent, PLAYERS powner)
+	public void SetSpawnInformation(Transform pathRoot, Transform spawnPt, Transform unitGroupParent, PLAYERS powner, LANES plane)
 	{
 		pathGroup = pathRoot;
 		spawnPoint = spawnPt;
 		owner = powner;
+		lane = plane;
 		this.unitGroupParent = unitGroupParent;
 		CreateUnitPath ();
 

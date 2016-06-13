@@ -12,10 +12,13 @@ public class BuildingCard : Card
 
 	public EnergyBuildingType BuildingType { get { return _buildingType; } }
 
-
 	Animator _anim;
 
 	bool resetAnimVars = false;
+
+	[SerializeField]
+	float useCooldown = 5.0f;
+	float currentCooldown;// = -1.0f;
 
     protected override void DoCardEffect ()
 	{
@@ -64,7 +67,7 @@ public class BuildingCard : Card
 
 	protected override void Update ()
 	{
-		bool isPlayable = CalculateNonInputPlayCondition();
+		bool isPlayable = CalculateNonInputPlayCondition() && (currentCooldown <= 0.0f);
 
 
 		//_anim.SetBool("slide_out",false);
@@ -85,6 +88,8 @@ public class BuildingCard : Card
 		}
 
 		wasPlayable = isPlayable;
+
+		currentCooldown -= Time.deltaTime;
 	}
 
 
@@ -92,5 +97,11 @@ public class BuildingCard : Card
 	{
 		base.Start ();
 		_anim = GetComponent<Animator>();
+		currentCooldown = -1.0f;
+	}
+
+	public void StartCooldown()
+	{
+		currentCooldown = useCooldown;
 	}
 }

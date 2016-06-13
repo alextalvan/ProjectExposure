@@ -329,10 +329,10 @@ public class UnitAI : GameManagerSearcher
 		switch(owner)
 		{
 			case PLAYERS.PLAYER1:
-				gameManager.Player1Score += scoreReward;
+				//gameManager.Player1Score += scoreReward;
 				break;
 			case PLAYERS.PLAYER2:
-				gameManager.Player2Score += scoreReward;
+				//gameManager.Player2Score += scoreReward;
 				break;
 		}
 	}

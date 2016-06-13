@@ -58,7 +58,7 @@ public abstract class Card : GameManagerSearcher
 			{
 				pdata.currentInputState = INPUT_STATES.FREE;
 				pdata.currentSelectedCard = null;
-				pdata.SetAllTilesHighlight(false);
+				pdata.RefreshAllTilesHighlight();
 				break;
 			}
 		}
