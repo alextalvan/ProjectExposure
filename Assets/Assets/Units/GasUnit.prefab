@@ -3009,23 +3009,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitStrength: 2
-  unitSpeed: 0.0085
-  waypointSwitchThreshold: 0.35
+  unitSpeed: 0.02
   rayCastDist: 0.5
-  fightAnimTime: 2
+  attackCoolDown: 1
   wanderAnimTime: 3
-  cheerAnimTime: 3.3
+  cheerAnimTime: 3
   deathAnimTime: 2
   scoreReward: 1
   moneyReward: 2
-  speedBuffMod: 1.4
-  speedBuffDuration: 60
   model: {fileID: 113864}
+  projectilePrefab: {fileID: 111560, guid: 9c22026150695fa4b9fb177d24151619, type: 2}
+  projectileFlightDuration: 1
   attackPrefab: {fileID: 160934}
   conversionPrefab: {fileID: 124668, guid: 09aa07568625990408235ce0eafac3e2, type: 2}
   buffList:
     buffs: []
-  speedUpParticleSystem: {fileID: 19867920}
   scoreGainFeedbackPrefab: {fileID: 10253516, guid: 6421baf5968a30048bb875aec8bab27a,
     type: 2}
   coinSpawnPrefab: {fileID: 11472550, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}

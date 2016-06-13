@@ -1,43 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
+using System;
+
 //using System;
-public class UnitAI : GameManagerSearcher 
+public class UnitAI : GameManagerSearcher
 {
-	enum AiState { Idle, Run, Fight, Wander, Cheer, Die };
-	private AiState currentState = AiState.Run;
+    enum AiState { Run, Fight, Wander, Cheer, Die };
+    private AiState currentState = AiState.Run;
 
-	[SerializeField]
-	int unitStrength = 1;
-	[SerializeField]
-	float unitSpeed = 1f;
+    public bool isActive { get { return currentState != AiState.Die && currentState != AiState.Cheer 
+                && currentState != AiState.Wander || (currentState == AiState.Wander && cityTile && cityTile.HasHostileUnits(owner)); } }
+
     [SerializeField]
-    float waypointSwitchThreshold = 1f;
-	[SerializeField]
-	float rayCastDist = 1f;
+    int unitStrength = 1;
+    public int GetStrength { get { return unitStrength; } }
+    [SerializeField]
+    float unitSpeed = 1f;
+    [SerializeField]
+    float rayCastDist = 1f;
 
-	[SerializeField]
-	float fightAnimTime = 1f;
-	[SerializeField]
-	float wanderAnimTime = 1f;
-	[SerializeField]
-	float cheerAnimTime = 1f;
+    [SerializeField]
+    float attackCoolDown = 1f;
+    [SerializeField]
+    float wanderAnimTime = 1f;
+    [SerializeField]
+    float cheerAnimTime = 1f;
     [SerializeField]
     float deathAnimTime = 1f;
 
     [SerializeField]
-	int scoreReward = 10;
-	[SerializeField]
-	int moneyReward = 1;
-
+    int scoreReward = 10;
     [SerializeField]
-    float speedBuffMod = 2f;
-    [SerializeField]
-    float speedBuffDuration = 2f;
+    int moneyReward = 1;
 
     [SerializeField]
     GameObject model;
     private Material mat;
+
+    [SerializeField]
+    GameObject projectilePrefab;
+
+    [SerializeField]
+    float projectileFlightDuration = 1f;
 
     [SerializeField]
     GameObject attackPrefab;
@@ -47,218 +51,212 @@ public class UnitAI : GameManagerSearcher
 
     private Animator anim;
 
-	public BuffList buffList = new BuffList();
+    public BuffList buffList = new BuffList();
 
-	private float fightTimer;
-	private float wanderTimer;
-	private float cheerTimer;
+    private float wanderTimer;
+    private float cheerTimer;
     private float deathTimer;
-    
-    private int currentWP = 0;
-    private int pathLength;
-	private bool allowCollision = true;
-	private PLAYERS owner;
-	public PLAYERS Owner { get { return owner; } }
-    SpeedBuff speedUpBuff = null;
-    bool speedUp = false;
-	[SerializeField]
-	ParticleSystem speedUpParticleSystem;
+    private float attackTimer;
 
-    private List<Vector3> path;
-	private CityTileTrigger cityTile = null;
-	public CityTileTrigger CityTile { get { return cityTile; } set { cityTile = value; } }
+    private PLAYERS owner;
+    public PLAYERS Owner { get { return owner; } }
+
+    private Vector3 movementDir;
+    private Transform target = null;
+    private CityTileTrigger cityTile = null;
+    public CityTileTrigger CityTile { get { return cityTile; } set { cityTile = value; } }
     public delegate void DestructionDelegate();
     public event DestructionDelegate OnDestruction = null;
 
+    [SerializeField]
+    TextMesh scoreGainFeedbackPrefab;
 
-    private int fightingTargetStrength;
+    [SerializeField]
+    CoinPickup coinSpawnPrefab;
 
-	[SerializeField]
-	TextMesh scoreGainFeedbackPrefab;
+    [SerializeField]
+    GameObject iceBlockPrefab;
+    GameObject currentIceBlock = null;
 
-	[SerializeField]
-	CoinPickup coinSpawnPrefab;
-
-	[SerializeField]
-	GameObject iceBlockPrefab;
-	GameObject currentIceBlock = null;
-
-	[SerializeField]
-	UnitStrengthDisplayer strengthDisplay;
-	bool hpFadeStarted = false;
-
+    [SerializeField]
+    UnitStrengthDisplayer strengthDisplay;
 
     protected override void Awake()
     {
         base.Awake();
-        speedUpBuff = new SpeedBuff(speedBuffMod, speedBuffDuration);
         wanderTimer = wanderAnimTime;
-		fightTimer = fightAnimTime;
-		cheerTimer = cheerAnimTime;
+        cheerTimer = cheerAnimTime;
         deathTimer = deathAnimTime;
         anim = transform.GetChild(0).GetComponent<Animator>();
         mat = model.GetComponent<Renderer>().material;
-		strengthDisplay.SetHealth(unitStrength);
+        strengthDisplay.SetHealth(unitStrength);
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    void Start()
     {
-		buffList.Update ();
-		Behave ();
+        //orientation
+        Vector3 worldUp = Physics.gravity.normalized * -1.0f;
+        float heightDiff = Vector3.Dot(worldUp, transform.position + movementDir) - Vector3.Dot(worldUp, transform.position);
+        Vector3 lookTargetPoint = transform.position + movementDir - heightDiff * worldUp;
+
+        Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position, worldUp);
+        transform.rotation = targetRot;
     }
 
-	void Behave() 
-	{
-		switch (currentState) {
-		case AiState.Idle:
-			Idle ();
-			break;
-		case AiState.Run:
-			Run ();
-			break;
-		case AiState.Fight:
-			Fight ();
-			break;
-		case AiState.Wander:
-			Wander ();
-			break;
-		case AiState.Cheer:
-			Cheer ();
-			break;
-        case AiState.Die:
-            Die();
-            break;
+    // Update is called once per frame
+    void Update()
+    {
+        buffList.Update();
+        Behave();
+    }
+
+    void Behave()
+    {
+        switch (currentState)
+        {
+            case AiState.Run:
+                Run();
+                break;
+            case AiState.Fight:
+                Fight();
+                break;
+            case AiState.Wander:
+                Wander();
+                break;
+            case AiState.Cheer:
+                Cheer();
+                break;
+            case AiState.Die:
+                Die();
+                break;
         }
-	}
+    }
 
-    void Idle() {
-		if (!HasUnitInFront ())
-            SetAiState(AiState.Run);
-	}
+    float CalculateSpeed()
+    {
+        float speed = unitSpeed;
 
-	float CalculateSpeed()
-	{
-		float speed = unitSpeed;
-
-		foreach(Buff buff in buffList.buffs)
-		{
-			switch(buff.type)
-			{
-				case BUFF_TYPES.UNIT_FREEZE:
-					return 0.0f;
-				
-				case BUFF_TYPES.UNIT_SPEED_MODIFIER:
-					speed *= ((SpeedBuff)buff).speedModifier;
-					break;
-					
-			}
-		}
-		return speed;
-	}
+        foreach (Buff buff in buffList.buffs)
+        {
+            switch (buff.type)
+            {
+                case BUFF_TYPES.UNIT_FREEZE:
+                    return 0.0f;
+            }
+        }
+        return speed;
+    }
 
     private void Run()
-	{
-		if (HasUnitInFront ())
+    {
+        if (cityTile)
         {
-            SetAiState(AiState.Idle);
-            return;
-		}
-		if (currentWP == pathLength && !cityTile.HasHostileUnits (owner))
-        {
-            SetAiState(AiState.Wander);
-            return;
-		}
-		if(currentWP == pathLength)
-			return;
-		
-		Vector3 dirVec = path[currentWP] - transform.position;
-		float distanceToNextWP = dirVec.magnitude;
-		float speed = CalculateSpeed();
-
-		transform.position += dirVec.normalized * speed;
-
-
-		//orientation
-		Vector3 worldUp = Physics.gravity.normalized * -1.0f;
-		float heightDiff = Vector3.Dot(worldUp,path[currentWP]) - Vector3.Dot(worldUp,transform.position);
-		Vector3 lookTargetPoint = path[currentWP] -  heightDiff * worldUp;
-
-		Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position,worldUp);
-		transform.rotation = Quaternion.Slerp(transform.rotation,targetRot,0.05f);
-
-		if (distanceToNextWP <= waypointSwitchThreshold) {
-			currentWP++;
-		}
-    }
-
-    private void Fight() {
-		fightTimer -= Time.deltaTime;
-
-		if(fightTimer <= fightAnimTime * 0.5f && !hpFadeStarted)
-		{
-			strengthDisplay.TakeDamage(fightingTargetStrength, fightAnimTime * 0.45f);
-			hpFadeStarted = true;
-		}
-
-		if (fightTimer <= 0f) {
-			if (this.unitStrength > fightingTargetStrength) {
-				transform.GetComponent<Rigidbody> ().isKinematic = true;
-                transform.GetComponent<Collider>().isTrigger = true;
-                if (attackPrefab)
-                    attackPrefab.SetActive(false);
-                Instantiate(conversionPrefab, transform.position, transform.rotation);
-                SetAiState(AiState.Cheer);
+            bool hostileUnits = cityTile.HasHostileUnits(owner);
+            if (hostileUnits)
+            {
+                SetAiState(AiState.Fight);
+                return;
             }
             else
             {
-                transform.GetComponent<Rigidbody>().isKinematic = true;
-                transform.GetComponent<Collider>().isTrigger = true;
-                if (attackPrefab)
-                    attackPrefab.SetActive(false);
-                SetAiState(AiState.Die);
+                SetAiState(AiState.Wander);
+                return;
             }
-		}
-	}
+        }
 
-    private void Wander() {
-		wanderTimer -= Time.deltaTime;
-		if (wanderTimer <= 0f) {
-			transform.GetComponent<Rigidbody> ().isKinematic = true;
+        float speed = CalculateSpeed();
+
+        transform.position += movementDir * speed;
+
+        //orientation
+        Vector3 worldUp = Physics.gravity.normalized * -1.0f;
+        float heightDiff = Vector3.Dot(worldUp, transform.position + movementDir) - Vector3.Dot(worldUp, transform.position);
+        Vector3 lookTargetPoint = transform.position + movementDir - heightDiff * worldUp;
+
+        Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position, worldUp);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 0.05f);
+    }
+
+    private void Fight()
+    {
+        attackTimer -= Time.deltaTime;
+        bool hasEnemyUnits = cityTile.HasHostileUnits(owner);
+        if (hasEnemyUnits)
+        {
+            if (!target)
+            {
+                target = cityTile.GetEnemyUnit(owner);
+            }
+            else
+            {
+                //orientation
+                Vector3 worldUp = Physics.gravity.normalized * -1.0f;
+                float heightDiff = Vector3.Dot(worldUp, target.position) - Vector3.Dot(worldUp, transform.position);
+                Vector3 lookTargetPoint = target.position - heightDiff * worldUp;
+
+                Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position, worldUp);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 0.1f);
+            }
+
+            if (target && attackTimer <= 0f)
+            {
+                LaunchProjectile();
+                attackTimer = attackCoolDown;
+            }
+        }
+        else
+        {
+            attackTimer = 0f;
+            SetAiState(AiState.Wander);
+        }
+    }
+
+    private void Wander()
+    {
+        wanderTimer -= Time.deltaTime;
+        if (wanderTimer <= 0f)
+        {
+            transform.GetComponent<Rigidbody>().isKinematic = true;
             transform.GetComponent<Collider>().isTrigger = true;
             Instantiate(conversionPrefab, transform.position, transform.rotation);
+            if (cityTile)
+                cityTile.RemoveUnit(transform, owner);
             SetAiState(AiState.Cheer);
-        } else if (cityTile.HasHostileUnits (owner)) {
-			wanderTimer = wanderAnimTime;
-            SetAiState(AiState.Run);
         }
-	}
+        else if (cityTile.HasHostileUnits(owner))
+        {
+            wanderTimer = wanderAnimTime;
+            SetAiState(AiState.Fight);
+        }
+    }
 
-    private void Cheer() {
-		cheerTimer -= Time.deltaTime;
+    private void Cheer()
+    {
+        cheerTimer -= Time.deltaTime;
         mat.SetFloat("_Visibility", Mathf.Clamp01(cheerTimer / cheerAnimTime));
-        if (cheerTimer <= 0f) {
-			GenerateScore ();
-			//gameManager.SpawnUICoin(this.owner,this.transform.position,moneyReward);
+        if (cheerTimer <= 0f)
+        {
+            GenerateScore();
+            //gameManager.SpawnUICoin(this.owner,this.transform.position,moneyReward);
 
-			GameObject scoreTextFeedback =(GameObject)Instantiate(scoreGainFeedbackPrefab.gameObject,this.transform.position + new Vector3(0,2,0),Quaternion.identity);
-			scoreTextFeedback.GetComponent<TextMesh>().text = "+" + this.scoreReward.ToString();
-			Destroy(scoreTextFeedback,3.0f);
+            GameObject scoreTextFeedback = (GameObject)Instantiate(scoreGainFeedbackPrefab.gameObject, this.transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+            scoreTextFeedback.GetComponent<TextMesh>().text = "+" + this.scoreReward.ToString();
+            Destroy(scoreTextFeedback, 3.0f);
 
-			GameObject coin = (GameObject)Instantiate(coinSpawnPrefab.gameObject,this.transform.position,Quaternion.identity);
-			CoinPickup pickupComp = coin.GetComponent<CoinPickup>();
-			pickupComp.owner = this.owner;
-			pickupComp.StartGlide();
+            GameObject coin = (GameObject)Instantiate(coinSpawnPrefab.gameObject, this.transform.position, Quaternion.identity);
+            CoinPickup pickupComp = coin.GetComponent<CoinPickup>();
+            pickupComp.owner = this.owner;
+            pickupComp.StartGlide();
 
 
-			Destroy(this.gameObject);
-		}
+            Destroy(this.gameObject);
+        }
     }
 
     private void Die()
     {
         deathTimer -= Time.deltaTime;
-        mat.SetFloat("_Visibility", Mathf.Clamp01(deathTimer/deathAnimTime));
+        mat.SetFloat("_Visibility", Mathf.Clamp01(deathTimer / deathAnimTime));
         if (deathTimer <= 0f)
         {
             Destroy(this.gameObject);
@@ -269,48 +267,73 @@ public class UnitAI : GameManagerSearcher
     {
         transform.GetComponent<Rigidbody>().isKinematic = true;
         transform.GetComponent<Collider>().isTrigger = true;
+        if (cityTile)
+            cityTile.RemoveUnit(transform, owner);
         SetAiState(AiState.Die);
     }
 
     void OnDestroy()
-	{
-		if(cityTile)
-			cityTile.RemoveUnit (transform, owner);
+    {
         if (OnDestruction != null)
             OnDestruction();
-	}
+    }
 
-	public void SetData(List<Vector3> unitPath, PLAYERS owner)
+    public void UpdateTarget()
     {
-		path = new List<Vector3>(unitPath);
-        pathLength = path.Count;
-		this.owner = owner;
-	}
+        target = cityTile.GetEnemyUnit(owner);
+    }
 
-	bool HasUnitInFront() 
-	{
-		if(currentWP == pathLength)
-			return false;
+    public void SetData(Vector3 targetPoint, PLAYERS owner)
+    {
+        movementDir = (new Vector3(targetPoint.x, transform.position.y, transform.position.z) - transform.position).normalized;
+        this.owner = owner;
+    }
 
-		LayerMask layer = owner == PLAYERS.PLAYER1 ? LayerMask.GetMask("UnitP1","Units_ignore_units") : LayerMask.GetMask("UnitP2","Units_ignore_units");
-		return Physics.Raycast(transform.position, (path[currentWP] - transform.position).normalized, rayCastDist, layer);
-	}
+    private void LaunchProjectile()
+    {
+        Vector3 launchPos = transform.position + (transform.up * transform.lossyScale.y);
+        GameObject projectile = Instantiate(projectilePrefab, transform.position + (transform.up * transform.lossyScale.y), Quaternion.identity) as GameObject;
+        Vector3 throwDir = CalculateProjectileDir(launchPos, target.position + (target.up * target.lossyScale.y), projectileFlightDuration);
+        projectile.GetComponent<Rigidbody>().AddForce(throwDir, ForceMode.VelocityChange);
+        projectile.gameObject.layer = gameObject.layer;
+        projectile.gameObject.layer = owner == PLAYERS.PLAYER1 ? 16 : 17;
+        projectile.GetComponent<ProjectileScript>().SetOwner = this;
+    }
 
-	void OnCollisionEnter(Collision col) 
-	{
-		if(!allowCollision)
-			return;
+    private Vector3 CalculateProjectileDir(Vector3 origin, Vector3 target, float flightTime)
+    {
+        Vector3 diffVec = target - origin;
+        Vector3 diffVecH = new Vector3(diffVec.x, 0, 0);
 
-		UnitAI otherAI = col.collider.gameObject.GetComponent<UnitAI> ();
-		if (otherAI)
+        // Calculate h and v
+        float x = diffVecH.magnitude / flightTime;
+        float y = diffVec.y / flightTime + 0.5f * -Physics.gravity.y * flightTime;
+        float z = diffVec.y / flightTime + 0.5f * -Physics.gravity.z * flightTime;
+
+        // create result vector for calculated starting speed
+        Vector3 result = diffVecH.normalized;
+        result *= x;
+        result.y = y;
+        result.z = z;
+
+        return result;
+    }
+
+    public void DecreaseStrength()
+    {
+        unitStrength--;
+        strengthDisplay.SetHealth(unitStrength);
+    }
+
+    public bool CheckDeath()
+    {
+        if (unitStrength <= 0)
         {
-            SetAiState(AiState.Fight);
-            if (attackPrefab)
-                attackPrefab.SetActive(true);
-            allowCollision = false;
-			fightingTargetStrength = otherAI.unitStrength;
-		}
-	}
+            CustomDestroy();
+            return true;
+        }
+        return false;
+    }
 
     void SetAiState(AiState state)
     {
@@ -319,61 +342,50 @@ public class UnitAI : GameManagerSearcher
         anim.SetBool(currentState.ToString(), true);
     }
 
-	void GenerateScore()
-	{
-		switch(owner)
-		{
-			case PLAYERS.PLAYER1:
-				gameManager.Player1Score += scoreReward;
-				break;
-			case PLAYERS.PLAYER2:
-				gameManager.Player2Score += scoreReward;
-				break;
-		}
-	}
+    void GenerateScore()
+    {
+        switch (owner)
+        {
+            case PLAYERS.PLAYER1:
+                gameManager.Player1Score += scoreReward;
+                break;
+            case PLAYERS.PLAYER2:
+                gameManager.Player2Score += scoreReward;
+                break;
+        }
+    }
 
-	public void AddFreezeBuff(Buff b)
-	{
-		if(currentIceBlock == null)
-		{
-			currentIceBlock = (GameObject)Instantiate(iceBlockPrefab);
-			currentIceBlock.transform.SetParent(this.transform,false);
+    public void AddFreezeBuff(Buff b)
+    {
+        if (currentIceBlock == null)
+        {
+            currentIceBlock = Instantiate(iceBlockPrefab);
+            currentIceBlock.transform.SetParent(this.transform, false);
 
-			float sphereSize = GetComponent<SphereCollider>().radius;
-			currentIceBlock.transform.localScale = new Vector3(sphereSize,sphereSize,sphereSize);
-		}
+            float sphereSize = GetComponent<SphereCollider>().radius;
+            currentIceBlock.transform.localScale = new Vector3(sphereSize, sphereSize, sphereSize);
+        }
 
-		buffList.AddBuff(b);
-		anim.speed = 0.0f;
-	}
+        buffList.AddBuff(b);
+        anim.speed = 0.0f;
+    }
 
     //unfreeze
 #if TOUCH_INPUT
 	public void PenetratingTouchEnd()
 #else
     public void OnMouseUp()
-	#endif
-	{
-		buffList.RemoveBuffs(BUFF_TYPES.UNIT_FREEZE);
-		//GetComponent<TemporaryBlink>().Stop();
+#endif
+    {
+        buffList.RemoveBuffs(BUFF_TYPES.UNIT_FREEZE);
 
-		anim.speed = 1.0f;
+        anim.speed = 1.0f;
 
-		if(currentIceBlock !=null)
-		{
-			currentIceBlock.GetComponent<IceBlock>().Shatter();
-			Destroy(currentIceBlock);
-			currentIceBlock = null;
-		}
-
-
-        if (!speedUp)
+        if (currentIceBlock != null)
         {
-            buffList.AddBuff(speedUpBuff);
-            speedUpBuff.currentDuration = 0.0f;
-            speedUp = true;
-			speedUpParticleSystem.Play();
-            speedUpBuff.OnExpiration += () => { speedUp = false; };
+            currentIceBlock.GetComponent<IceBlock>().Shatter();
+            Destroy(currentIceBlock);
+            currentIceBlock = null;
         }
-	}
+    }
 }

@@ -525,9 +525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936698b37e33c3c4fb572a365c9f25dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnCoolDown: 5
   unit: {fileID: 102548, guid: bc288322a36b9574da48b3eb042980d4, type: 2}
-  unitsPerSpawn: 1
+  activeUnit: {fileID: 0}
   _energyBuilding: {fileID: 11464352}
 --- !u!114 &11464352
 MonoBehaviour:
