@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
+
+
 public enum INPUT_STATES
 {
 	FREE,
@@ -39,106 +41,103 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     AIPlayer AI2;
 
-    [SerializeField]
-	float gameTimer = 300.0f;
+//    [SerializeField]
+//	float gameTimer = 300.0f;
 
 	[SerializeField]
 	Text gameTimerText;
 
 	//money updaterate in seconds
 	public float MONEY_UPDATE_RATE = 2.0f;
+
+	[SerializeField]
+	float moneyRate = 0;
+
 	float timeAccumulatorMoney = 0.0f;
 
-	//[SerializeField]
-	//float waveInterval = 5.0f;
-
-	//[SerializeField]
-	//float timeAccumulatorWaves = 0.0f;
-
-	//public delegate void WaveTriggerDelegate();
-	//public event WaveTriggerDelegate OnNewWave = null;
+	[SerializeField]
+	float _player1money = 0;
 
 	[SerializeField]
-	GameObject neutralCardSpawner;
+	float _player2money = 0;
+
 
 
 	[SerializeField]
-	int _player1money = 0;
+	MoneyBar _player1MoneyBar;
 
     [SerializeField]
     List<WaveStrengthScript> waveStrengthList = new List<WaveStrengthScript>();
 
-	public int Player1Money 
+	public float Player1Money 
 	{
 		get { return _player1money; }
 		set 
 		{ 
 			
-			if(value < 0) value = 0;
+			value = Mathf.Clamp(value,0.0f,currentStage.forcedMaxMoney);
 			_player1money = value;
-			player1moneyText.text = _player1money.ToString();
+			_player1MoneyBar.SetCutout(Mathf.Clamp01(_player1money / 6.0f));
 		}
 	}
 
 	[SerializeField]
-	int _player2money = 0;
+	MoneyBar _player2MoneyBar;
 
-	public int Player2Money 
+
+
+	public float Player2Money 
 	{
 		get { return _player2money; }
 		set 
 		{ 
-			if(value < 0) value = 0;
+			value = Mathf.Clamp(value,0.0f,currentStage.forcedMaxMoney);
 			_player2money = value;
-			player2moneyText.text = _player2money.ToString();
+			_player2MoneyBar.SetCutout(Mathf.Clamp01(_player2money / 6.0f));
 		}
 	}
 
-	[SerializeField]
-	int _player1score = 0;
 
-	public int Player1Score 
-	{
-		get { return _player1score; }
-		set 
-		{ 
-			if(value < 0) value = 0;
-			_player1score = value;
-			player1scoreText.text = _player1score.ToString();
-		}
-	}
 
-	[SerializeField]
-	int _player2score = 0;
-
-	public int Player2Score
-	{
-		get { return _player2score; }
-		set 
-		{ 
-			if(value < 0) value = 0;
-			_player2score = value;
-			player2scoreText.text = _player2score.ToString();
-		}
-	}
-
-	[SerializeField]
-	int moneyRate = 0;
-
-	[SerializeField]
-	int forcedMaxMoney = 10;
+//	[SerializeField]
+//	int _player1score = 0;
+//
+//	public int Player1Score 
+//	{
+//		get { return _player1score; }
+//		set 
+//		{ 
+//			if(value < 0) value = 0;
+//			_player1score = value;
+//			player1scoreText.text = _player1score.ToString();
+//		}
+//	}
+//
+//	[SerializeField]
+//	int _player2score = 0;
+//
+//	public int Player2Score
+//	{
+//		get { return _player2score; }
+//		set 
+//		{ 
+//			if(value < 0) value = 0;
+//			_player2score = value;
+//			player2scoreText.text = _player2score.ToString();
+//		}
+//	}
+		
 
 	[SerializeField]
-	Text player1moneyText;
+	List<GameStage> gameStages = new List<GameStage>();
+	int currentGameStageIndex = 0;
+	private GameStage currentStage { get { return gameStages[currentGameStageIndex]; } }
 
-	[SerializeField]
-	Text player2moneyText;
-
-	[SerializeField]
-	Text player1scoreText;
-
-	[SerializeField]
-	Text player2scoreText;
+//	[SerializeField]
+//	Text player1scoreText;
+//
+//	[SerializeField]
+//	Text player2scoreText;
 
 	[SerializeField]
 	PlayerGameDataList _playerData = new PlayerGameDataList();
@@ -157,11 +156,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Dropdown player2DD;
 
+	[SerializeField]
+	GameObject gameOverText;
+
     void Start()
 	{
 		//forcing refresh at start because of inspector filling of starting money
-		Player1Money = Player1Money;
-		Player2Money = Player2Money;
+		Player1Money = _player1money;
+		Player2Money = _player2money;
         StartCoroutine(SpawnWave());
 	}
 
@@ -204,10 +206,15 @@ public class GameManager : MonoBehaviour
 			UpdateMoney();
 		}
 
-		gameTimer -= Time.deltaTime;
-		int seconds = ((int)gameTimer) % 60;
-		int minutes = ((int)gameTimer) / 60;
-		gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
+//		gameTimer -= Time.deltaTime;
+//		int seconds = ((int)gameTimer) % 60;
+//		int minutes = ((int)gameTimer) / 60;
+//		gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
+//
+//		if(gameTimer <= 0.0f)
+//			gameOverText.SetActive(true);
+
+		UpdateGameStage();
 
 		/*
 		timeAccumulatorWaves += Time.deltaTime;
@@ -223,8 +230,15 @@ public class GameManager : MonoBehaviour
 
 	void UpdateMoney()
 	{
-		Player1Money += moneyRate; if(Player1Money > forcedMaxMoney) Player1Money = forcedMaxMoney;
-		Player2Money += moneyRate; if(Player2Money > forcedMaxMoney) Player2Money = forcedMaxMoney;
+		Player1Money += moneyRate; 
+		Player2Money += moneyRate;
+	}
+
+	void UpdateGameStage()
+	{
+		currentStage.duration-= Time.deltaTime;
+		if(currentStage.duration <= 0.0f && currentGameStageIndex < gameStages.Count - 1)
+			currentGameStageIndex++;
 	}
 
 	public void StartEnergyBuildingTileSelection(Card card)
@@ -234,7 +248,7 @@ public class GameManager : MonoBehaviour
 		foreach(HexagonTile t in pdata.tiles)
 		{
 			if(t.AllowBuild)
-				t.SetOutline(true);
+				t.SetOutlineState(HexagonTile.OUTLINE_STATES.BUILD_NEW);
 		}
 			
 		pdata.currentInputState = INPUT_STATES.PICKING_BUILDING_CARD_TARGET;
@@ -249,23 +263,7 @@ public class GameManager : MonoBehaviour
 	{
 		raycastedOn2DObject = false;
 	}
-
-    public void StartCoinGlide(CoinPickup coin)
-    {
-        CardGlide glide = coin.GetComponent<CardGlide>();
-        glide.enabled = true;
-        if (coin.owner == PLAYERS.PLAYER1)
-        {
-
-            glide.SetTarget(player1moneyText.transform);
-            coin.OnDestruction += () => { Player1Money += coin.valueAwarded; };
-        }
-        else
-        {
-            glide.SetTarget(player2moneyText.transform);
-            coin.OnDestruction += () => { Player2Money += coin.valueAwarded; };
-        }
-    }
+		
 
     public void SetPlayer(int index)
     {
@@ -287,10 +285,5 @@ public class GameManager : MonoBehaviour
 	{
 		gameStarted = true;
 		gameTimerText.gameObject.SetActive(true);
-		neutralCardSpawner.SetActive(true);
-
-		foreach(PlayerGameData pdata in _playerData.data)
-			foreach(HexagonTile tile in pdata.tiles)
-				tile.StartCoinSpawn();
 	}
 }

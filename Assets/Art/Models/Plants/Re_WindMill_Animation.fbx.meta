@@ -1,0 +1,251 @@
+fileFormatVersion: 2
+guid: 632c49cd108c7450eb77958c055e17c9
+timeCreated: 1465823504
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: joint1
+    100002: joint2
+    100004: joint3
+    100006: left
+    100008: nurbsCircle1
+    100010: polySurface1
+    100012: polySurface10
+    100014: polySurface11
+    100016: polySurface11 1
+    100018: polySurface12
+    100020: polySurface2
+    100022: polySurface3
+    100024: polySurface4
+    100026: polySurface5
+    100028: polySurface6
+    100030: polySurface7
+    100032: polySurface8
+    100034: polySurface9
+    100036: polySurface9 1
+    100038: Re_Windmill1:Windmill
+    100040: Re_Windmill:Windmill
+    100042: //RootNode
+    100044: transform1
+    100046: transform10
+    100048: transform11
+    100050: transform12
+    100052: transform13
+    100054: transform14
+    100056: transform15
+    100058: transform2
+    100060: transform3
+    100062: transform4
+    100064: transform5
+    100066: transform6
+    100068: transform7
+    100070: transform8
+    100072: transform9
+    400000: joint1
+    400002: joint2
+    400004: joint3
+    400006: left
+    400008: nurbsCircle1
+    400010: polySurface1
+    400012: polySurface10
+    400014: polySurface11
+    400016: polySurface11 1
+    400018: polySurface12
+    400020: polySurface2
+    400022: polySurface3
+    400024: polySurface4
+    400026: polySurface5
+    400028: polySurface6
+    400030: polySurface7
+    400032: polySurface8
+    400034: polySurface9
+    400036: polySurface9 1
+    400038: Re_Windmill1:Windmill
+    400040: Re_Windmill:Windmill
+    400042: //RootNode
+    400044: transform1
+    400046: transform10
+    400048: transform11
+    400050: transform12
+    400052: transform13
+    400054: transform14
+    400056: transform15
+    400058: transform2
+    400060: transform3
+    400062: transform4
+    400064: transform5
+    400066: transform6
+    400068: transform7
+    400070: transform8
+    400072: transform9
+    4300000: polySurface12
+    7400000: WindMill_Rotate
+    9500000: //RootNode
+    13700000: polySurface12
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: WindMill_Rotate
+      takeName: WindMill_Anim4
+      firstFrame: 0
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint1
+        weight: 1
+      - path: joint1/joint2
+        weight: 1
+      - path: joint1/joint2/joint3
+        weight: 1
+      - path: left
+        weight: 1
+      - path: nurbsCircle1
+        weight: 1
+      - path: polySurface9
+        weight: 1
+      - path: polySurface9/transform15
+        weight: 1
+      - path: polySurface11
+        weight: 1
+      - path: polySurface11/transform14
+        weight: 1
+      - path: polySurface12
+        weight: 1
+      - path: Re_Windmill1:Windmill
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface5
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface5/transform12
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface6
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface6/polySurface7
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface6/polySurface7/transform8
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface6/polySurface8
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface6/polySurface8/transform9
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface6/polySurface9 1
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface6/polySurface9 1/transform11
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface6/polySurface10
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface6/polySurface10/transform10
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface6/polySurface11 1
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface6/polySurface11 1/transform13
+        weight: 1
+      - path: Re_Windmill1:Windmill/polySurface6/transform7
+        weight: 1
+      - path: Re_Windmill1:Windmill/transform6
+        weight: 1
+      - path: Re_Windmill:Windmill
+        weight: 1
+      - path: Re_Windmill:Windmill/polySurface1
+        weight: 1
+      - path: Re_Windmill:Windmill/polySurface1/transform2
+        weight: 1
+      - path: Re_Windmill:Windmill/polySurface2
+        weight: 1
+      - path: Re_Windmill:Windmill/polySurface2/transform4
+        weight: 1
+      - path: Re_Windmill:Windmill/polySurface3
+        weight: 1
+      - path: Re_Windmill:Windmill/polySurface3/transform3
+        weight: 1
+      - path: Re_Windmill:Windmill/polySurface4
+        weight: 1
+      - path: Re_Windmill:Windmill/polySurface4/transform5
+        weight: 1
+      - path: Re_Windmill:Windmill/transform1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

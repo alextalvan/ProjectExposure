@@ -13,11 +13,13 @@ public class UnitSpawner : MonoBehaviour
     [SerializeField]
     Transform activeUnit;
 
-    PLAYERS owner;
+	PLAYERS owner;
+	LANES lane;
+    private List<Vector3> unitPath = new List<Vector3>();
 
-    //to check if the energy building is debuffed
-    [SerializeField]
-    private EnergyBuilding _energyBuilding;
+	//to check if the energy building is debuffed
+	[SerializeField]
+	private EnergyBuilding _energyBuilding;
 
     void Start()
     {
@@ -56,11 +58,12 @@ public class UnitSpawner : MonoBehaviour
     /// <param name="pathRoot">Path root.</param>
     /// <param name="spawnPoint">Spawn point.</param>
     /// <param name="owner">Player owner.</param>
-    public void SetSpawnInformation(Transform targetArena, Transform spawnPt, Transform unitGroupParent, PLAYERS powner)
+    public void SetSpawnInformation(Transform targetArena, Transform spawnPt, Transform unitGroupParent, PLAYERS powner, LANES plane)
     {
         this.targetArena = targetArena;
         spawnPoint = spawnPt;
         owner = powner;
+        lane = plane;
         this.unitGroupParent = unitGroupParent;
     }
 }

@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: FoCoalPlantBlueMTRL
   m_Shader: {fileID: 4800000, guid: e68f798c29a56af4e8a35346cfba79cc, type: 3}
-  m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
+  m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2450
   stringTagMap: {}
@@ -75,7 +75,7 @@ Material:
         first:
           name: _MetallicGlossMap
         second:
-          m_Texture: {fileID: 2800000, guid: ff9ac988321dbfb4f92a6d07dcea9055, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -87,13 +87,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Normal_Map
-        second:
-          m_Texture: {fileID: 2800000, guid: 100741223a2f70b49bba9afdf152bf16, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Noise
         second:
           m_Texture: {fileID: 2800000, guid: 674d8251d2d0432418f0729c212e32e5, type: 3}
@@ -101,16 +94,23 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Normal_Map
+        second:
+          m_Texture: {fileID: 2800000, guid: 100741223a2f70b49bba9afdf152bf16, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Metallic_map
         second:
-          m_Texture: {fileID: 2800000, guid: ff9ac988321dbfb4f92a6d07dcea9055, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Gloss_map
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: aa29625d6740919498c52673becc2dd8, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -118,6 +118,55 @@ Material:
           name: _Emission_map
         second:
           m_Texture: {fileID: 2800000, guid: 621adf50d423ce745b3d6c982b2aca39, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal_map
+        second:
+          m_Texture: {fileID: 2800000, guid: c1f0c62205e5a134498a348408d84a70, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse_texture
+        second:
+          m_Texture: {fileID: 2800000, guid: 54c267552c6884d4494f996377069629, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _AO
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Spec_ramp
+        second:
+          m_Texture: {fileID: 2800000, guid: a53a35bf396ae7141835332ff53d2f3d, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ao
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _matCap
+        second:
+          m_Texture: {fileID: 2800000, guid: 227f781c424a50643badb705d7877535, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -144,7 +193,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.5
+        second: 1
       data:
         first:
           name: _BumpScale
@@ -168,27 +217,31 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 1
+        second: 0
       data:
         first:
           name: _Visibility
         second: 1
       data:
         first:
+          name: _Edge_width
+        second: 50
+      data:
+        first:
           name: _Normal_Map_Intensity
-        second: 0
+        second: 1
       data:
         first:
           name: _Noise_Brightness
         second: 0
       data:
         first:
-          name: _Edge_width
-        second: 50
-      data:
-        first:
           name: _Edge_Glow_Power
         second: 0.71
+      data:
+        first:
+          name: _Emssion_power
+        second: 1
       data:
         first:
           name: _Visibility_multiplier
@@ -207,8 +260,44 @@ Material:
         second: 1
       data:
         first:
-          name: _Emssion_power
-        second: 0
+          name: _Spec_Intensity
+        second: 1.5
+      data:
+        first:
+          name: _Spec_power
+        second: 1
+      data:
+        first:
+          name: _Spec_intensity
+        second: 4.58
+      data:
+        first:
+          name: _Desaturate
+        second: 0.9832264
+      data:
+        first:
+          name: _Spec_brightness
+        second: 3.56
+      data:
+        first:
+          name: _Spec_levels
+        second: 2.142052
+      data:
+        first:
+          name: _Outline_Width
+        second: 0.153
+      data:
+        first:
+          name: _Spec_Gloss
+        second: 3
+      data:
+        first:
+          name: _SSS_intensity
+        second: 2
+      data:
+        first:
+          name: _SSS_width
+        second: 3.542796
     m_Colors:
       data:
         first:
@@ -221,8 +310,28 @@ Material:
       data:
         first:
           name: _Tint
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0.7882353, g: 0.7764706, b: 0.8745098, a: 1}
       data:
         first:
           name: _Glow_color
         second: {r: 1, g: 0.666, b: 0, a: 1}
+      data:
+        first:
+          name: _Select_color
+        second: {r: 0.72794116, g: 0.3800281, b: 0.7039472, a: 1}
+      data:
+        first:
+          name: _Color_a
+        second: {r: 0.7072187, g: 0.5467128, b: 0.9411765, a: 1}
+      data:
+        first:
+          name: _Color_b
+        second: {r: 0.25, g: 0.25, b: 0.25, a: 1}
+      data:
+        first:
+          name: _Outline_Color
+        second: {r: 0, g: 0.74705887, b: 0.85294116, a: 1}
+      data:
+        first:
+          name: _Color_SSS
+        second: {r: 0.6592292, g: 1, b: 0.11764706, a: 1}

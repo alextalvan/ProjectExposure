@@ -242,13 +242,6 @@ public class UnitAI : GameManagerSearcher
             GameObject scoreTextFeedback = (GameObject)Instantiate(scoreGainFeedbackPrefab.gameObject, this.transform.position + new Vector3(0, 2, 0), Quaternion.identity);
             scoreTextFeedback.GetComponent<TextMesh>().text = "+" + this.scoreReward.ToString();
             Destroy(scoreTextFeedback, 3.0f);
-
-            GameObject coin = (GameObject)Instantiate(coinSpawnPrefab.gameObject, this.transform.position, Quaternion.identity);
-            CoinPickup pickupComp = coin.GetComponent<CoinPickup>();
-            pickupComp.owner = this.owner;
-            pickupComp.StartGlide();
-
-
             Destroy(this.gameObject);
         }
     }
@@ -342,33 +335,33 @@ public class UnitAI : GameManagerSearcher
         anim.SetBool(currentState.ToString(), true);
     }
 
-    void GenerateScore()
-    {
-        switch (owner)
-        {
-            case PLAYERS.PLAYER1:
-                gameManager.Player1Score += scoreReward;
-                break;
-            case PLAYERS.PLAYER2:
-                gameManager.Player2Score += scoreReward;
-                break;
-        }
-    }
+	void GenerateScore()
+	{
+		switch(owner)
+		{
+			case PLAYERS.PLAYER1:
+				//gameManager.Player1Score += scoreReward;
+				break;
+			case PLAYERS.PLAYER2:
+				//gameManager.Player2Score += scoreReward;
+				break;
+		}
+	}
 
-    public void AddFreezeBuff(Buff b)
-    {
-        if (currentIceBlock == null)
-        {
-            currentIceBlock = Instantiate(iceBlockPrefab);
-            currentIceBlock.transform.SetParent(this.transform, false);
+	public void AddFreezeBuff(Buff b)
+	{
+		if(currentIceBlock == null)
+		{
+			currentIceBlock = (GameObject)Instantiate(iceBlockPrefab);
+			currentIceBlock.transform.SetParent(this.transform,false);
 
-            float sphereSize = GetComponent<SphereCollider>().radius;
-            currentIceBlock.transform.localScale = new Vector3(sphereSize, sphereSize, sphereSize);
-        }
+			float sphereSize = GetComponent<SphereCollider>().radius;
+			currentIceBlock.transform.localScale = new Vector3(sphereSize,sphereSize,sphereSize);
+		}
 
-        buffList.AddBuff(b);
-        anim.speed = 0.0f;
-    }
+		buffList.AddBuff(b);
+		anim.speed = 0.0f;
+	}
 
     //unfreeze
 #if TOUCH_INPUT

@@ -29,6 +29,6 @@ public class QuakeCard : ActionCard
 		Destroy(this.gameObject);
 		Camera.main.GetComponent<CameraShake>().Shake();
 		enemyData.currentInputState = INPUT_STATES.FREE;
-		enemyData.SetAllTilesHighlight(false);
+		enemyData.RefreshAllTilesHighlight();
 	}
 }

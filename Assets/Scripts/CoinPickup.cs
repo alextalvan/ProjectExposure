@@ -30,7 +30,7 @@ public class CoinPickup : GameManagerSearcher {
 	#endif
 	{
         if (used) return;
-		StartGlide();
+		//StartGlide();
         used = true;
         //gameManager.SpawnUICoin(this.owner,transform.position,valueAwarded);
         //Destroy(this.gameObject);
@@ -47,10 +47,10 @@ public class CoinPickup : GameManagerSearcher {
 			OnDestruction();
 	}
 
-	public void StartGlide()
-	{
-		gameManager.StartCoinGlide(this);
-		GetComponent<Collider>().enabled = false;
-		GetComponent<Rigidbody>().isKinematic = true;
-	}
+//	public void StartGlide()
+//	{
+//		gameManager.StartCoinGlide(this);
+//		GetComponent<Collider>().enabled = false;
+//		GetComponent<Rigidbody>().isKinematic = true;
+//	}
 }

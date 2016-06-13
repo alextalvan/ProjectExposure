@@ -18,13 +18,11 @@ public class PlayerGameData
 	public List<Transform> unitGroups = new List<Transform>();
 	public List<SwampSpot> swampSpots = new List<SwampSpot>();
     public bool AI = false;
-    public CoinPickup coin = null;
-    public bool coinUp = false;
 
-    public void SetAllTilesHighlight(bool show)
+    public void RefreshAllTilesHighlight()
 	{
 		foreach(HexagonTile t in tiles)
-			t.SetOutline(show);
+			t.CalculateBaseOrNextOutline();
 	}
 }
 

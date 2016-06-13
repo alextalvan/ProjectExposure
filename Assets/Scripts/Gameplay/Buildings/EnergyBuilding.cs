@@ -6,6 +6,9 @@ public class EnergyBuilding : GameManagerSearcher
 	PLAYERS owner;
 	public PLAYERS Owner { get { return owner; } set { owner = value; } }
 
+	LANES lane;
+	public LANES Lane { get { return lane; } set { lane = value; } }
+
 	[SerializeField]
 	float maxlifeTime = 30.0f;
 

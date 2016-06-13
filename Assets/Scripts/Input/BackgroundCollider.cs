@@ -18,7 +18,7 @@ public class BackgroundCollider : GameManagerSearcher
 
 		if(pdata.currentInputState == INPUT_STATES.PICKING_BUILDING_CARD_TARGET)
 		{
-			pdata.SetAllTilesHighlight(false);
+			pdata.RefreshAllTilesHighlight();
 			pdata.currentInputState = INPUT_STATES.FREE;
 		}
 
