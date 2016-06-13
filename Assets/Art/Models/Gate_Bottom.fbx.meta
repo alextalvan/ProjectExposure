@@ -1,0 +1,243 @@
+fileFormatVersion: 2
+guid: cb505718eb28348498273bd17e94e6e5
+timeCreated: 1465827530
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Door
+    100002: //RootNode
+    100004: Handle
+    100006: HingeDown
+    100008: HingeUp
+    100010: pCylinder11
+    100012: pCylinder12
+    100014: pCylinder13
+    100016: pCylinder14
+    100018: pCylinder15
+    100020: retainer
+    100022: stud
+    100024: stud1
+    100026: stud2
+    100028: stud3
+    100030: stud4
+    100032: stud5
+    100034: stud6
+    100036: stud7
+    100038: Vault
+    100040: Vault 1
+    100042: Vaultdoor
+    400000: Door
+    400002: //RootNode
+    400004: Handle
+    400006: HingeDown
+    400008: HingeUp
+    400010: pCylinder11
+    400012: pCylinder12
+    400014: pCylinder13
+    400016: pCylinder14
+    400018: pCylinder15
+    400020: retainer
+    400022: stud
+    400024: stud1
+    400026: stud2
+    400028: stud3
+    400030: stud4
+    400032: stud5
+    400034: stud6
+    400036: stud7
+    400038: Vault
+    400040: Vault 1
+    400042: Vaultdoor
+    2300000: Door
+    2300002: HingeDown
+    2300004: HingeUp
+    2300006: pCylinder11
+    2300008: pCylinder12
+    2300010: pCylinder13
+    2300012: pCylinder14
+    2300014: pCylinder15
+    2300016: retainer
+    2300018: stud
+    2300020: stud1
+    2300022: stud2
+    2300024: stud3
+    2300026: stud4
+    2300028: stud5
+    2300030: stud6
+    2300032: stud7
+    2300034: Vault 1
+    3300000: Door
+    3300002: HingeDown
+    3300004: HingeUp
+    3300006: pCylinder11
+    3300008: pCylinder12
+    3300010: pCylinder13
+    3300012: pCylinder14
+    3300014: pCylinder15
+    3300016: retainer
+    3300018: stud
+    3300020: stud1
+    3300022: stud2
+    3300024: stud3
+    3300026: stud4
+    3300028: stud5
+    3300030: stud6
+    3300032: stud7
+    3300034: Vault 1
+    4300000: retainer
+    4300002: stud
+    4300004: stud1
+    4300006: stud2
+    4300008: stud3
+    4300010: stud4
+    4300012: stud5
+    4300014: stud6
+    4300016: stud7
+    4300018: Door
+    4300020: pCylinder11
+    4300022: pCylinder12
+    4300024: pCylinder13
+    4300026: pCylinder14
+    4300028: pCylinder15
+    4300030: HingeUp
+    4300032: HingeDown
+    4300034: Vault
+    7400000: Gate_Bottom_OpenANIM
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Gate_Bottom_OpenANIM
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Vault
+        weight: 1
+      - path: Vault/HingeDown
+        weight: 1
+      - path: Vault/HingeUp
+        weight: 1
+      - path: Vault/Vault 1
+        weight: 1
+      - path: Vaultdoor
+        weight: 1
+      - path: Vaultdoor/Door
+        weight: 1
+      - path: Vaultdoor/Handle
+        weight: 1
+      - path: Vaultdoor/Handle/pCylinder11
+        weight: 1
+      - path: Vaultdoor/Handle/pCylinder12
+        weight: 1
+      - path: Vaultdoor/Handle/pCylinder13
+        weight: 1
+      - path: Vaultdoor/Handle/pCylinder14
+        weight: 1
+      - path: Vaultdoor/Handle/pCylinder15
+        weight: 1
+      - path: Vaultdoor/retainer
+        weight: 1
+      - path: Vaultdoor/stud
+        weight: 1
+      - path: Vaultdoor/stud1
+        weight: 1
+      - path: Vaultdoor/stud2
+        weight: 1
+      - path: Vaultdoor/stud3
+        weight: 1
+      - path: Vaultdoor/stud4
+        weight: 1
+      - path: Vaultdoor/stud5
+        weight: 1
+      - path: Vaultdoor/stud6
+        weight: 1
+      - path: Vaultdoor/stud7
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
