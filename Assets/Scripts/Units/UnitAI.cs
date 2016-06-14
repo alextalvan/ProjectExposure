@@ -61,6 +61,8 @@ public class UnitAI : GameManagerSearcher
     private PLAYERS owner;
     public PLAYERS Owner { get { return owner; } }
 
+	public LANES lane;
+
     private Vector3 movementDir;
     private Transform target = null;
     private CityTileTrigger cityTile = null;
@@ -239,6 +241,8 @@ public class UnitAI : GameManagerSearcher
             scoreTextFeedback.GetComponent<TextMesh>().text = "+" + this.scoreReward.ToString();
             Destroy(scoreTextFeedback, 3.0f);
             Destroy(this.gameObject);
+
+			gameManager.ChangeScore(this.scoreReward, this.Owner ,this.lane);
         }
     }
 
@@ -272,10 +276,11 @@ public class UnitAI : GameManagerSearcher
         target = cityTile.GetEnemyUnit(owner);
     }
 
-    public void SetData(Vector3 targetPoint, PLAYERS owner)
+	public void SetData(Vector3 targetPoint, PLAYERS owner, LANES lane)
     {
         movementDir = (new Vector3(targetPoint.x, transform.position.y, transform.position.z) - transform.position).normalized;
         this.owner = owner;
+		this.lane = lane;
     }
 
     private void LaunchProjectile()

@@ -44,7 +44,7 @@ public class UnitSpawner : MonoBehaviour
     public void SpawnUnits()
     {
         GameObject newUnit = Instantiate(unit, spawnPoint.position, Quaternion.identity) as GameObject;
-        newUnit.GetComponent<UnitAI>().SetData(targetArena.position, owner);
+        newUnit.GetComponent<UnitAI>().SetData(targetArena.position, owner, lane);
         newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
         newUnit.transform.parent = unitGroupParent;
         newUnit.transform.rotation = transform.rotation;

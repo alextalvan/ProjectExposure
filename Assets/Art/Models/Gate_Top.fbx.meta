@@ -1,106 +1,36 @@
 fileFormatVersion: 2
-guid: 4273e4ee6bffb4f4f91b829ac9bb1145
-timeCreated: 1465827530
+guid: b41d1e0d0ca85b048b9c2a756b898977
+timeCreated: 1465898871
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: Door1
     100002: //RootNode
-    100004: HingeDown1
-    100006: HingeUp1
-    100008: pCylinder16
-    100010: pCylinder17
-    100012: pCylinder18
-    100014: pCylinder19
-    100016: pCylinder20
-    100018: retainer1
-    100020: stud10
-    100022: stud11
-    100024: stud12
-    100026: stud13
-    100028: stud14
-    100030: stud15
-    100032: stud8
-    100034: stud9
-    100036: Vault1
-    100038: Vault2
-    100040: Vaultdoor2
+    100004: Handle1
+    100006: Studs1
+    100008: Vault2
+    100010: Vault_Vault1
+    100012: Vaultdoor2
     400000: Door1
     400002: //RootNode
-    400004: HingeDown1
-    400006: HingeUp1
-    400008: pCylinder16
-    400010: pCylinder17
-    400012: pCylinder18
-    400014: pCylinder19
-    400016: pCylinder20
-    400018: retainer1
-    400020: stud10
-    400022: stud11
-    400024: stud12
-    400026: stud13
-    400028: stud14
-    400030: stud15
-    400032: stud8
-    400034: stud9
-    400036: Vault1
-    400038: Vault2
-    400040: Vaultdoor2
+    400004: Handle1
+    400006: Studs1
+    400008: Vault2
+    400010: Vault_Vault1
+    400012: Vaultdoor2
     2300000: Door1
-    2300002: HingeDown1
-    2300004: HingeUp1
-    2300006: pCylinder16
-    2300008: pCylinder17
-    2300010: pCylinder18
-    2300012: pCylinder19
-    2300014: pCylinder20
-    2300016: retainer1
-    2300018: stud10
-    2300020: stud11
-    2300022: stud12
-    2300024: stud13
-    2300026: stud14
-    2300028: stud15
-    2300030: stud8
-    2300032: stud9
-    2300034: Vault1
+    2300002: Handle1
+    2300004: Studs1
+    2300006: Vault_Vault1
     3300000: Door1
-    3300002: HingeDown1
-    3300004: HingeUp1
-    3300006: pCylinder16
-    3300008: pCylinder17
-    3300010: pCylinder18
-    3300012: pCylinder19
-    3300014: pCylinder20
-    3300016: retainer1
-    3300018: stud10
-    3300020: stud11
-    3300022: stud12
-    3300024: stud13
-    3300026: stud14
-    3300028: stud15
-    3300030: stud8
-    3300032: stud9
-    3300034: Vault1
-    4300000: retainer1
-    4300002: stud8
-    4300004: stud9
-    4300006: stud10
-    4300008: stud11
-    4300010: stud12
-    4300012: stud13
-    4300014: stud14
-    4300016: stud15
-    4300018: Door1
-    4300020: pCylinder16
-    4300022: pCylinder17
-    4300024: pCylinder18
-    4300026: pCylinder19
-    4300028: pCylinder20
-    4300030: HingeUp1
-    4300032: HingeDown1
-    4300034: Vault1
+    3300002: Handle1
+    3300004: Studs1
+    3300006: Vault_Vault1
+    4300000: Door1
+    4300002: Handle1
+    4300004: Studs1
+    4300006: Vault_Vault1
     7400000: Gate_Top_OpenANIM
     9500000: //RootNode
   materials:
@@ -153,43 +83,15 @@ ModelImporter:
         weight: 1
       - path: Vault2
         weight: 1
-      - path: Vault2/HingeDown1
-        weight: 1
-      - path: Vault2/HingeUp1
-        weight: 1
-      - path: Vault2/Vault1
+      - path: Vault2/Vault_Vault1
         weight: 1
       - path: Vaultdoor2
         weight: 1
       - path: Vaultdoor2/Door1
         weight: 1
-      - path: Vaultdoor2/pCylinder16
+      - path: Vaultdoor2/Handle1
         weight: 1
-      - path: Vaultdoor2/pCylinder17
-        weight: 1
-      - path: Vaultdoor2/pCylinder18
-        weight: 1
-      - path: Vaultdoor2/pCylinder19
-        weight: 1
-      - path: Vaultdoor2/pCylinder20
-        weight: 1
-      - path: Vaultdoor2/retainer1
-        weight: 1
-      - path: Vaultdoor2/stud8
-        weight: 1
-      - path: Vaultdoor2/stud9
-        weight: 1
-      - path: Vaultdoor2/stud10
-        weight: 1
-      - path: Vaultdoor2/stud11
-        weight: 1
-      - path: Vaultdoor2/stud12
-        weight: 1
-      - path: Vaultdoor2/stud13
-        weight: 1
-      - path: Vaultdoor2/stud14
-        weight: 1
-      - path: Vaultdoor2/stud15
+      - path: Vaultdoor2/Studs1
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
