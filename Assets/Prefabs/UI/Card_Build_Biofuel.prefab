@@ -29,7 +29,7 @@ GameObject:
   - 114: {fileID: 11421070}
   - 61: {fileID: 6108036}
   - 114: {fileID: 11496926}
-  - 114: {fileID: 11435412}
+  - 95: {fileID: 9507288}
   m_Layer: 5
   m_Name: Card_Build_Biofuel
   m_TagString: Untagged
@@ -51,6 +51,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
+--- !u!95 &9507288
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136590}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 006e0579617fef84683fe716c46a9a24, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11421070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,32 +87,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6959c0cd078d5724eb2af3119f45949d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6aa4c830a08af48d2a89b06f8b0735a8, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11435412
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67d3da3b83e300b41bafd803621f31cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interpolationSpeed: 0.2
-  snapThreshold: 2
-  toggleList:
-  - {fileID: 6108036}
-  - {fileID: 11496926}
-  toggleRigidBody2D: 1
-  destroyOnArrival: 0
 --- !u!114 &11469672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,17 +106,17 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Material: {fileID: 2100000, guid: c10b1630d5621ec48a17223c3c102023, type: 2}
+  m_Color: {r: 0, g: 1, b: 0.12941177, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6b02b094aed7278498cbf6d5bbf83bfe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca767f3aa721c4e539ab17e80ebb3c87, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -140,8 +139,9 @@ MonoBehaviour:
   deletionTime: 25
   highlight: {fileID: 119970}
   _buildingType:
-    prefab: {fileID: 189662, guid: 7a6a105a86f9bab49b0e23747e1c61a5, type: 2}
+    prefab: {fileID: 189662, guid: 92e812ed23028804cafdf90adb9a116b, type: 2}
     type: 4
+  useCooldown: 15
 --- !u!222 &22235092
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -162,15 +162,15 @@ RectTransform:
   m_GameObject: {fileID: 136590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_Children:
   - {fileID: 22474042}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -196, y: 0.000061035156}
+  m_SizeDelta: {x: 224.02344, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22474042
 RectTransform:
@@ -187,7 +187,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 224.02344, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
 Prefab:
