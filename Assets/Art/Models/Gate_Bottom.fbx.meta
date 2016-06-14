@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cb505718eb28348498273bd17e94e6e5
-timeCreated: 1465827530
+guid: 2fb69d6cf2950c24c8d7f9e93064d149
+timeCreated: 1465898871
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -8,101 +8,29 @@ ModelImporter:
     100000: Door
     100002: //RootNode
     100004: Handle
-    100006: HingeDown
-    100008: HingeUp
-    100010: pCylinder11
-    100012: pCylinder12
-    100014: pCylinder13
-    100016: pCylinder14
-    100018: pCylinder15
-    100020: retainer
-    100022: stud
-    100024: stud1
-    100026: stud2
-    100028: stud3
-    100030: stud4
-    100032: stud5
-    100034: stud6
-    100036: stud7
-    100038: Vault
-    100040: Vault 1
-    100042: Vaultdoor
+    100006: Studs
+    100008: Vault
+    100010: Vault_Vault
+    100012: Vaultdoor
     400000: Door
     400002: //RootNode
     400004: Handle
-    400006: HingeDown
-    400008: HingeUp
-    400010: pCylinder11
-    400012: pCylinder12
-    400014: pCylinder13
-    400016: pCylinder14
-    400018: pCylinder15
-    400020: retainer
-    400022: stud
-    400024: stud1
-    400026: stud2
-    400028: stud3
-    400030: stud4
-    400032: stud5
-    400034: stud6
-    400036: stud7
-    400038: Vault
-    400040: Vault 1
-    400042: Vaultdoor
+    400006: Studs
+    400008: Vault
+    400010: Vault_Vault
+    400012: Vaultdoor
     2300000: Door
-    2300002: HingeDown
-    2300004: HingeUp
-    2300006: pCylinder11
-    2300008: pCylinder12
-    2300010: pCylinder13
-    2300012: pCylinder14
-    2300014: pCylinder15
-    2300016: retainer
-    2300018: stud
-    2300020: stud1
-    2300022: stud2
-    2300024: stud3
-    2300026: stud4
-    2300028: stud5
-    2300030: stud6
-    2300032: stud7
-    2300034: Vault 1
+    2300002: Handle
+    2300004: Studs
+    2300006: Vault_Vault
     3300000: Door
-    3300002: HingeDown
-    3300004: HingeUp
-    3300006: pCylinder11
-    3300008: pCylinder12
-    3300010: pCylinder13
-    3300012: pCylinder14
-    3300014: pCylinder15
-    3300016: retainer
-    3300018: stud
-    3300020: stud1
-    3300022: stud2
-    3300024: stud3
-    3300026: stud4
-    3300028: stud5
-    3300030: stud6
-    3300032: stud7
-    3300034: Vault 1
-    4300000: retainer
-    4300002: stud
-    4300004: stud1
-    4300006: stud2
-    4300008: stud3
-    4300010: stud4
-    4300012: stud5
-    4300014: stud6
-    4300016: stud7
-    4300018: Door
-    4300020: pCylinder11
-    4300022: pCylinder12
-    4300024: pCylinder13
-    4300026: pCylinder14
-    4300028: pCylinder15
-    4300030: HingeUp
-    4300032: HingeDown
-    4300034: Vault
+    3300002: Handle
+    3300004: Studs
+    3300006: Vault_Vault
+    4300000: Door
+    4300002: Handle
+    4300004: Studs
+    4300006: Vault_Vault
     7400000: Gate_Bottom_OpenANIM
     9500000: //RootNode
   materials:
@@ -155,11 +83,7 @@ ModelImporter:
         weight: 1
       - path: Vault
         weight: 1
-      - path: Vault/HingeDown
-        weight: 1
-      - path: Vault/HingeUp
-        weight: 1
-      - path: Vault/Vault 1
+      - path: Vault/Vault_Vault
         weight: 1
       - path: Vaultdoor
         weight: 1
@@ -167,37 +91,11 @@ ModelImporter:
         weight: 1
       - path: Vaultdoor/Handle
         weight: 1
-      - path: Vaultdoor/Handle/pCylinder11
-        weight: 1
-      - path: Vaultdoor/Handle/pCylinder12
-        weight: 1
-      - path: Vaultdoor/Handle/pCylinder13
-        weight: 1
-      - path: Vaultdoor/Handle/pCylinder14
-        weight: 1
-      - path: Vaultdoor/Handle/pCylinder15
-        weight: 1
-      - path: Vaultdoor/retainer
-        weight: 1
-      - path: Vaultdoor/stud
-        weight: 1
-      - path: Vaultdoor/stud1
-        weight: 1
-      - path: Vaultdoor/stud2
-        weight: 1
-      - path: Vaultdoor/stud3
-        weight: 1
-      - path: Vaultdoor/stud4
-        weight: 1
-      - path: Vaultdoor/stud5
-        weight: 1
-      - path: Vaultdoor/stud6
-        weight: 1
-      - path: Vaultdoor/stud7
+      - path: Vaultdoor/Studs
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
