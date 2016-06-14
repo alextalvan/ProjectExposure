@@ -2840,9 +2840,9 @@ Transform:
   m_LocalPosition: {x: -0, y: -2.95, z: -0}
   m_LocalScale: {x: 4.3, y: 4.3, z: 4.3}
   m_Children:
+  - {fileID: 466654}
   - {fileID: 454756}
   - {fileID: 472956}
-  - {fileID: 466654}
   - {fileID: 426072}
   m_Father: {fileID: 479420}
   m_RootOrder: 0
@@ -2948,7 +2948,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 437822}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!4 &408982
 Transform:
   m_ObjectHideFlags: 1
@@ -3227,7 +3227,7 @@ Transform:
   m_Children:
   - {fileID: 403786}
   m_Father: {fileID: 437822}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &423842
 Transform:
   m_ObjectHideFlags: 1
@@ -3431,7 +3431,7 @@ Transform:
   - {fileID: 428076}
   - {fileID: 481588}
   m_Father: {fileID: 437822}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &428688
 Transform:
   m_ObjectHideFlags: 1
@@ -3651,9 +3651,9 @@ Transform:
   m_LocalPosition: {x: 3, y: -2.95, z: -0.85}
   m_LocalScale: {x: 4.3000007, y: 4.3, z: 4.3}
   m_Children:
+  - {fileID: 407216}
   - {fileID: 428680}
   - {fileID: 423032}
-  - {fileID: 407216}
   - {fileID: 488010}
   m_Father: {fileID: 479420}
   m_RootOrder: 1
@@ -3986,7 +3986,7 @@ Transform:
   - {fileID: 426368}
   - {fileID: 404286}
   m_Father: {fileID: 404096}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &454790
 Transform:
   m_ObjectHideFlags: 1
@@ -4355,7 +4355,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 404096}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!4 &466686
 Transform:
   m_ObjectHideFlags: 1
@@ -4540,7 +4540,7 @@ Transform:
   m_Children:
   - {fileID: 440430}
   m_Father: {fileID: 404096}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &473584
 Transform:
   m_ObjectHideFlags: 1
@@ -4660,7 +4660,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6060941, y: -3.6113873, z: -2.085037}
+  m_LocalPosition: {x: -5.1412296, y: -3.4436793, z: -16.596884}
   m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_Children:
   - {fileID: 404096}
@@ -5185,13 +5185,15 @@ MonoBehaviour:
   deathAnimTime: 2
   scoreReward: 1
   moneyReward: 2
-  model: {fileID: 134100}
+  models:
+  - {fileID: 127968}
+  - {fileID: 176050}
   projectilePrefab: {fileID: 111560, guid: 9c22026150695fa4b9fb177d24151619, type: 2}
   projectileFlightDuration: 1
-  attackPrefab: {fileID: 100152}
   conversionPrefab: {fileID: 124668, guid: 09aa07568625990408235ce0eafac3e2, type: 2}
   buffList:
     buffs: []
+  lane: 0
   scoreGainFeedbackPrefab: {fileID: 10253516, guid: 6421baf5968a30048bb875aec8bab27a,
     type: 2}
   coinSpawnPrefab: {fileID: 11472550, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}

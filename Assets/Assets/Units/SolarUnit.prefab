@@ -3338,7 +3338,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169132}
   m_LocalRotation: {x: 0.003580478, y: 0.0012654554, z: 0.00005543775, w: 0.9999928}
-  m_LocalPosition: {x: -2.541738, y: -3.6298068, z: -2.0956717}
+  m_LocalPosition: {x: -4.955103, y: -8.588124, z: -10.000337}
   m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
   m_Children:
   - {fileID: 427644}
@@ -3710,9 +3710,9 @@ Transform:
   m_LocalPosition: {x: 0.29, y: -3.1, z: -2.33}
   m_LocalScale: {x: 3.7000003, y: 3.7000005, z: 3.7000005}
   m_Children:
+  - {fileID: 480358}
   - {fileID: 459338}
   - {fileID: 462866}
-  - {fileID: 480358}
   m_Father: {fileID: 409422}
   m_RootOrder: 0
 --- !u!4 &427810
@@ -4685,7 +4685,7 @@ Transform:
   - {fileID: 453664}
   - {fileID: 460124}
   m_Father: {fileID: 427644}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &460124
 Transform:
   m_ObjectHideFlags: 1
@@ -4708,9 +4708,9 @@ Transform:
   m_LocalPosition: {x: -1.91, y: -3.1, z: 0.27}
   m_LocalScale: {x: 3.7, y: 3.7, z: 3.7}
   m_Children:
+  - {fileID: 472836}
   - {fileID: 487622}
   - {fileID: 469304}
-  - {fileID: 472836}
   m_Father: {fileID: 409422}
   m_RootOrder: 1
 --- !u!4 &460990
@@ -4765,7 +4765,7 @@ Transform:
   m_Children:
   - {fileID: 409428}
   m_Father: {fileID: 427644}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &463500
 Transform:
   m_ObjectHideFlags: 1
@@ -4894,7 +4894,7 @@ Transform:
   m_Children:
   - {fileID: 429654}
   m_Father: {fileID: 460376}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &470008
 Transform:
   m_ObjectHideFlags: 1
@@ -5024,7 +5024,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 460376}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!4 &472888
 Transform:
   m_ObjectHideFlags: 1
@@ -5166,7 +5166,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 427644}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!4 &480542
 Transform:
   m_ObjectHideFlags: 1
@@ -5419,7 +5419,7 @@ Transform:
   - {fileID: 487024}
   - {fileID: 412462}
   m_Father: {fileID: 460376}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &487888
 Transform:
   m_ObjectHideFlags: 1
@@ -5851,13 +5851,15 @@ MonoBehaviour:
   deathAnimTime: 2
   scoreReward: 1
   moneyReward: 2
-  model: {fileID: 107100}
+  models:
+  - {fileID: 184684}
+  - {fileID: 181652}
   projectilePrefab: {fileID: 111560, guid: 9c22026150695fa4b9fb177d24151619, type: 2}
   projectileFlightDuration: 1
-  attackPrefab: {fileID: 121044}
   conversionPrefab: {fileID: 124668, guid: 09aa07568625990408235ce0eafac3e2, type: 2}
   buffList:
     buffs: []
+  lane: 0
   scoreGainFeedbackPrefab: {fileID: 10253516, guid: 6421baf5968a30048bb875aec8bab27a,
     type: 2}
   coinSpawnPrefab: {fileID: 11472550, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
