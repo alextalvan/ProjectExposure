@@ -61,6 +61,12 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	float _player2money = 0;
 
+	[SerializeField]
+	ScoreData topLaneScoreData = new ScoreData();
+
+	[SerializeField]
+	ScoreData botLaneScoreData = new ScoreData();
+
 
 
 	[SerializeField]
@@ -165,6 +171,8 @@ public class GameManager : MonoBehaviour
 		Player1Money = _player1money;
 		Player2Money = _player2money;
         StartCoroutine(SpawnWave());
+		ChangeScore(0,PLAYERS.PLAYER1,LANES.TOP);//force score refresh at start
+		ChangeScore(0,PLAYERS.PLAYER1,LANES.BOT);
 	}
 
     IEnumerator SpawnWave()
@@ -225,6 +233,8 @@ public class GameManager : MonoBehaviour
 			if(OnNewWave != null)
 				OnNewWave();
 		}	*/
+
+		CalculateWinCondition();
 
 	}
 
@@ -289,6 +299,22 @@ public class GameManager : MonoBehaviour
 
 	public void ChangeScore(float amount, PLAYERS owner, LANES lane)
 	{
+		float scoreDelta = amount * ((owner == PLAYERS.PLAYER1) ? -1.0f : 1.0f);
+
+		if(lane == LANES.TOP)
+			topLaneScoreData.ChangeScore(scoreDelta);
+
+		if(lane == LANES.BOT)
+			botLaneScoreData.ChangeScore(scoreDelta);
+	}
+
+	void CalculateWinCondition()
+	{
 		
+		float topRelativeScore = topLaneScoreData.Score / topLaneScoreData.MaxScore;
+		float botRelativeScore = botLaneScoreData.Score / botLaneScoreData.MaxScore;
+
+		if(Mathf.Abs(topRelativeScore) >= 0.9999f && Mathf.Abs(botRelativeScore) >= 0.9999f && Mathf.Sign(botRelativeScore) == Mathf.Sign(topRelativeScore))
+			gameOverText.SetActive(true);
 	}
 }
