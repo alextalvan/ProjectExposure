@@ -22,8 +22,11 @@ public enum ENERGY_BUILDING_TYPES
 	GAS
 }
 
-public class GameManager : MonoBehaviour 
+public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    float waveCoolDown = 5f;
+
     [SerializeField]
     TouchInputManager touchInputManager;
 
@@ -62,6 +65,9 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField]
 	MoneyBar _player1MoneyBar;
+
+    [SerializeField]
+    List<WaveStrengthScript> waveStrengthList = new List<WaveStrengthScript>();
 
 	public float Player1Money 
 	{
@@ -158,7 +164,31 @@ public class GameManager : MonoBehaviour
 		//forcing refresh at start because of inspector filling of starting money
 		Player1Money = _player1money;
 		Player2Money = _player2money;
+        StartCoroutine(SpawnWave());
 	}
+
+    IEnumerator SpawnWave()
+    {
+        yield return new WaitForSeconds(waveCoolDown);
+        foreach (HexagonTile tile in playerData[PLAYERS.PLAYER1].tiles)
+        {
+            if (tile.CurrentEnergyBuilding)
+                tile.CurrentEnergyBuilding.GetComponent<UnitSpawner>().SpawnUnits();
+        }
+        foreach (HexagonTile tile in playerData[PLAYERS.PLAYER2].tiles)
+        {
+            if (tile.CurrentEnergyBuilding)
+                tile.CurrentEnergyBuilding.GetComponent<UnitSpawner>().SpawnUnits();
+        }
+        UpdateStrDisplay();
+        StartCoroutine(SpawnWave());
+    }
+
+    public void UpdateStrDisplay()
+    {
+        foreach (WaveStrengthScript waveStr in waveStrengthList)
+            waveStr.UpdateStrength(false);
+    }
 
 	void Update () 
 	{

@@ -10,7 +10,6 @@ public class ActionCard : Card
 	protected override void Start ()
 	{
 		base.Start ();
-
 	}
 		
 	protected bool EnemyHasUnits()

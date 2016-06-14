@@ -3,21 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(EnergyBuilding))]
-public class UnitSpawner : MonoBehaviour 
+public class UnitSpawner : MonoBehaviour
 {
-	
-	private Transform pathGroup;
-	private Transform spawnPoint;
-	private SpawnPointTrigger spTrigger;
-	private Transform unitGroupParent;
-	[SerializeField]
-	float spawnCoolDown = 1f;
-	private float spawnTimer;
-	[SerializeField]
-	GameObject unit;
+    private Transform targetArena;
+    private Transform spawnPoint;
+    private Transform unitGroupParent;
     [SerializeField]
-	int unitsPerSpawn = 1;
-	Transform activeUnit;
+    GameObject unit;
+    [SerializeField]
+    Transform activeUnit;
 
 	PLAYERS owner;
 	LANES lane;
@@ -27,84 +21,49 @@ public class UnitSpawner : MonoBehaviour
 	[SerializeField]
 	private EnergyBuilding _energyBuilding;
 
-	void Start() {
-		
-		//gameManager.OnNewWave += this.SpawnUnits;
-	}
-
-	void OnDestroy()
-	{
-		//gameManager.OnNewWave -= this.SpawnUnits;
-	}
-
-    void CreateUnitPath()
+    void Start()
     {
-        bool start = false;
-		unitPath.Clear();
 
-        foreach(Transform child in pathGroup)
-        {
-            if (start == true)
-                unitPath.Add(child.position);
-            else if (child == spawnPoint)
-                start = true;
-        }
-    }
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		spawnTimer -= Time.deltaTime;
-        SpawnUnits();
+        //gameManager.OnNewWave += this.SpawnUnits;
     }
 
-	/// <summary>
-	/// Spawns the units.
-	/// </summary>
-	void SpawnUnits() 
-	{
-		if (!activeUnit && spawnTimer <= 0f && spTrigger.Available && SpawnIsFree())
-        {
-			//for (int i = 0; i < unitsPerSpawn; ++i) {
-				GameObject newUnit = Instantiate (unit, spawnPoint.position, Quaternion.identity) as GameObject;
-				newUnit.GetComponent<UnitAI> ().SetData (unitPath, owner);
-				newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
-				newUnit.transform.parent = unitGroupParent;
-				newUnit.transform.rotation = transform.rotation;
-				activeUnit = newUnit.transform;
-			//}
-			spawnTimer += spawnCoolDown;
-        }
-	}
-
-    bool SpawnIsFree()
+    void OnDestroy()
     {
-//        Collider[] hitColliders = Physics.OverlapSphere(spawnPoint.position, spawnPoint.GetComponent<SphereCollider>().radius);
-//        for (int i = 0; i < hitColliders.Length; i++)
-//        {
-//            if (hitColliders[i].transform.GetComponent<UnitAI>())
-//                return false;
-//        }
-        return true;
+        //gameManager.OnNewWave -= this.SpawnUnits;
     }
 
-	/// <summary>
-	/// Sets the spawn information depending on the hexagon tile this building was put on.
-	/// Will be called by the tile on instantiation.
-	/// </summary>
-	/// <param name="pathRoot">Path root.</param>
-	/// <param name="spawnPoint">Spawn point.</param>
-	/// <param name="owner">Player owner.</param>
-	public void SetSpawnInformation(Transform pathRoot, Transform spawnPt, Transform unitGroupParent, PLAYERS powner, LANES plane)
-	{
-		pathGroup = pathRoot;
-		spawnPoint = spawnPt;
-		owner = powner;
-		lane = plane;
-		this.unitGroupParent = unitGroupParent;
-		CreateUnitPath ();
+    // Update is called once per frame
+    void Update()
+    {
 
-		spawnTimer = spawnCoolDown;
-		spTrigger = spawnPoint.GetComponent<SpawnPointTrigger> ();
-	}
+    }
+
+    /// <summary>
+    /// Spawns the units.
+    /// </summary>
+    public void SpawnUnits()
+    {
+        GameObject newUnit = Instantiate(unit, spawnPoint.position, Quaternion.identity) as GameObject;
+        newUnit.GetComponent<UnitAI>().SetData(targetArena.position, owner);
+        newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
+        newUnit.transform.parent = unitGroupParent;
+        newUnit.transform.rotation = transform.rotation;
+        activeUnit = newUnit.transform;
+    }
+
+    /// <summary>
+    /// Sets the spawn information depending on the hexagon tile this building was put on.
+    /// Will be called by the tile on instantiation.
+    /// </summary>
+    /// <param name="pathRoot">Path root.</param>
+    /// <param name="spawnPoint">Spawn point.</param>
+    /// <param name="owner">Player owner.</param>
+    public void SetSpawnInformation(Transform targetArena, Transform spawnPt, Transform unitGroupParent, PLAYERS powner, LANES plane)
+    {
+        this.targetArena = targetArena;
+        spawnPoint = spawnPt;
+        owner = powner;
+        lane = plane;
+        this.unitGroupParent = unitGroupParent;
+    }
 }

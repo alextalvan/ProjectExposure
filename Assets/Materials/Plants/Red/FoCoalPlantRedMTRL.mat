@@ -82,7 +82,7 @@ Material:
         first:
           name: _Base_Color
         second:
-          m_Texture: {fileID: 2800000, guid: 621adf50d423ce745b3d6c982b2aca39, type: 3}
+          m_Texture: {fileID: 2800000, guid: 54c267552c6884d4494f996377069629, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -103,21 +103,21 @@ Material:
         first:
           name: _Metallic_map
         second:
-          m_Texture: {fileID: 2800000, guid: ff9ac988321dbfb4f92a6d07dcea9055, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Gloss_map
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: aa29625d6740919498c52673becc2dd8, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Emission_map
         second:
-          m_Texture: {fileID: 2800000, guid: 621adf50d423ce745b3d6c982b2aca39, type: 3}
+          m_Texture: {fileID: 2800000, guid: 54c267552c6884d4494f996377069629, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -144,7 +144,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0
+        second: 1
       data:
         first:
           name: _BumpScale
@@ -180,7 +180,7 @@ Material:
       data:
         first:
           name: _Normal_Map_Intensity
-        second: 0
+        second: 1
       data:
         first:
           name: _Noise_Brightness
@@ -192,7 +192,7 @@ Material:
       data:
         first:
           name: _Emssion_power
-        second: 0
+        second: 1
       data:
         first:
           name: _Visibility_multiplier
@@ -221,7 +221,7 @@ Material:
       data:
         first:
           name: _Tint
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0.8745098, g: 0.7764706, b: 0.7764706, a: 1}
       data:
         first:
           name: _Glow_color

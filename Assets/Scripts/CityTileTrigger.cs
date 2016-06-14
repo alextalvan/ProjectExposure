@@ -32,6 +32,24 @@ public class CityTileTrigger : MonoBehaviour {
 		else
 			return unitsP1.Count > 0;
 	}
+
+    public Transform GetEnemyUnit(PLAYERS player)
+    {
+        if (player == PLAYERS.PLAYER1)
+        {
+            if (unitsP2.Count > 0)
+                return unitsP2[Random.Range(0, unitsP2.Count)];
+            else
+                return null;
+        }
+        else
+        {
+            if (unitsP1.Count > 0)
+                return unitsP1[Random.Range(0, unitsP1.Count)];
+            else
+                return null;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {

@@ -19,7 +19,7 @@ Material:
         first:
           name: _Base_Color
         second:
-          m_Texture: {fileID: 2800000, guid: ceadc7533c806c64cbf38bcc62aafc58, type: 3}
+          m_Texture: {fileID: 2800000, guid: 7f8c5eeabfdb4364e8dd67cff6773eaf, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -40,21 +40,21 @@ Material:
         first:
           name: _Metallic_map
         second:
-          m_Texture: {fileID: 2800000, guid: 13f23772e0446424ea2b57a7c70c8de6, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Gloss_map
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 6cb4ba4e4ec4fb449b9eca849fa36808, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Emission_map
         second:
-          m_Texture: {fileID: 2800000, guid: ceadc7533c806c64cbf38bcc62aafc58, type: 3}
+          m_Texture: {fileID: 2800000, guid: 7f8c5eeabfdb4364e8dd67cff6773eaf, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -65,7 +65,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0
+        second: 0.5
       data:
         first:
           name: _Metallic
@@ -93,7 +93,7 @@ Material:
       data:
         first:
           name: _Emssion_power
-        second: 0
+        second: 0.5
       data:
         first:
           name: _Visibility_multiplier
