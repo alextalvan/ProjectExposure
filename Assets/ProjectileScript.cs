@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ProjectileScript : GameManagerSearcher
+public class ProjectileScript : MonoBehaviour
 {
-    UnitAI ownerAI;
-    public UnitAI SetOwner { set { ownerAI = value; } }
-
 	// Use this for initialization
 	void Start () {
 
@@ -20,13 +17,7 @@ public class ProjectileScript : GameManagerSearcher
     {
         UnitAI unit = col.transform.GetComponent<UnitAI>();
         if (unit)
-        {
-            unit.DecreaseStrength();
-            bool dead = unit.CheckDeath();
-            gameManager.UpdateStrDisplay();
-            if (dead)
-                ownerAI.UpdateTarget();
-        }
+            transform.parent.GetComponent<ProjParentScript>().DecreaseChildCount(unit);
         Destroy(gameObject);
     }
 }

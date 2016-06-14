@@ -39,6 +39,8 @@ public class UnitAI : GameManagerSearcher
     private List<ParticleSystem> attackParticles = new List<ParticleSystem>();
 
     [SerializeField]
+    GameObject projParentPrefab;
+    [SerializeField]
     GameObject projectilePrefab;
 
     [SerializeField]
@@ -291,13 +293,19 @@ public class UnitAI : GameManagerSearcher
 
     private void LaunchProjectile()
     {
-        Vector3 launchPos = transform.position + (transform.up * transform.lossyScale.y);
-        GameObject projectile = Instantiate(projectilePrefab, transform.position + (transform.up * transform.lossyScale.y), Quaternion.identity) as GameObject;
-        Vector3 throwDir = CalculateProjectileDir(launchPos, target.position + (target.up * target.lossyScale.y), projectileFlightDuration);
-        projectile.GetComponent<Rigidbody>().AddForce(throwDir, ForceMode.VelocityChange);
-        projectile.gameObject.layer = gameObject.layer;
-        projectile.gameObject.layer = owner == PLAYERS.PLAYER1 ? 16 : 17;
-        projectile.GetComponent<ProjectileScript>().SetOwner = this;
+        GameObject projParent = Instantiate(projParentPrefab, transform.position, Quaternion.identity) as GameObject;
+        projParent.GetComponent<ProjParentScript>().SetOwner = this;
+        projParent.GetComponent<ProjParentScript>().SetLifeTime = projectileFlightDuration;
+        foreach (GameObject model in models)
+        {
+            Vector3 launchPos = model.transform.position + (model.transform.up * model.transform.lossyScale.y);
+            GameObject projectile = Instantiate(projectilePrefab, model.transform.position + (model.transform.up * model.transform.lossyScale.y), Quaternion.identity) as GameObject;
+            Vector3 throwDir = CalculateProjectileDir(launchPos, target.position + (target.up * target.lossyScale.y), projectileFlightDuration);
+            projectile.GetComponent<Rigidbody>().AddForce(throwDir, ForceMode.VelocityChange);
+            projectile.gameObject.layer = gameObject.layer;
+            projectile.gameObject.layer = owner == PLAYERS.PLAYER1 ? 16 : 17;
+            projectile.transform.SetParent(projParent.transform);
+        }
         /*
         foreach (ParticleSystem attackParticle in attackParticles)
         {
