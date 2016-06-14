@@ -286,4 +286,9 @@ public class GameManager : MonoBehaviour
 		gameStarted = true;
 		gameTimerText.gameObject.SetActive(true);
 	}
+
+	public void ChangeScore(float amount, PLAYERS owner, LANES lane)
+	{
+		
+	}
 }
