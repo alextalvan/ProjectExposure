@@ -17381,14 +17381,26 @@ MonoBehaviour:
   _player1money: 0
   _player2money: 0
   topLaneScoreData:
-    winIndicatorsLeft: []
-    winIndicatorsRight: []
-    scoreToWin: 20
+    winIndicatorsLeft:
+    - {fileID: 824405476}
+    - {fileID: 1884937612}
+    - {fileID: 2095260832}
+    winIndicatorsRight:
+    - {fileID: 751744737}
+    - {fileID: 1135474737}
+    - {fileID: 218082322}
+    scoreToWin: 3
     score: 0
   botLaneScoreData:
-    winIndicatorsLeft: []
-    winIndicatorsRight: []
-    scoreToWin: 20
+    winIndicatorsLeft:
+    - {fileID: 1074804070}
+    - {fileID: 45203696}
+    - {fileID: 249797726}
+    winIndicatorsRight:
+    - {fileID: 1690204573}
+    - {fileID: 1317750104}
+    - {fileID: 555217920}
+    scoreToWin: 3
     score: 0
   _player1MoneyBar: {fileID: 1404899488}
   waveStrengthList: []
