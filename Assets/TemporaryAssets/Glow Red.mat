@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: mrOIL_RED
-  m_Shader: {fileID: 4800000, guid: e68f798c29a56af4e8a35346cfba79cc, type: 3}
+  m_Name: Glow Red
+  m_Shader: {fileID: 4800000, guid: a1cb7a4eddffa4358ab38bb9e930acf1, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2450
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -78,48 +78,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Base_Color
-        second:
-          m_Texture: {fileID: 2800000, guid: 21b6b679ca1b948449512a8ea20d7d38, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Normal_Map
-        second:
-          m_Texture: {fileID: 2800000, guid: dfc733e9896d34afe844cd6d7b7cf377, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Noise
-        second:
-          m_Texture: {fileID: 2800000, guid: fd007d02d6b063a419e56fe3939af343, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Metallic_map
-        second:
-          m_Texture: {fileID: 2800000, guid: eed36c93dd7cc45888690167f61abcf9, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Gloss_map
-        second:
-          m_Texture: {fileID: 2800000, guid: eed36c93dd7cc45888690167f61abcf9, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Emission_map
-        second:
-          m_Texture: {fileID: 2800000, guid: 1f9ab010375134ceb9faf6eac584085b, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -144,7 +102,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0
+        second: 0.65
       data:
         first:
           name: _BumpScale
@@ -171,44 +129,24 @@ Material:
         second: 0
       data:
         first:
-          name: _Visibility
-        second: 1
+          name: _EXP
+        second: 18.1
       data:
         first:
-          name: _Normal_Map_Intensity
-        second: 0.52
+          name: _Edge_glow
+        second: 3.6
       data:
         first:
-          name: _Noise_Brightness
+          name: _Glow_intensity
+        second: 2.31
+      data:
+        first:
+          name: _OutlineWidth
+        second: 0.25
+      data:
+        first:
+          name: _node_1524
         second: 0
-      data:
-        first:
-          name: _Edge_width
-        second: 52.45775
-      data:
-        first:
-          name: _Edge_Glow_Power
-        second: 3
-      data:
-        first:
-          name: _Visibility_multiplier
-        second: 2.880344
-      data:
-        first:
-          name: _Edge_Power
-        second: 5.461538
-      data:
-        first:
-          name: _Visibility_floor
-        second: 0.5
-      data:
-        first:
-          name: _Visibility_power
-        second: 0.8471476
-      data:
-        first:
-          name: _Emssion_power
-        second: 4.77
     m_Colors:
       data:
         first:
@@ -217,12 +155,20 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.2210446, g: 0.13235293, b: 0.375, a: 1}
+        second: {r: 1, g: 0.9862213, b: 0, a: 1}
       data:
         first:
-          name: _Tint
-        second: {r: 1, g: 1, b: 1, a: 1}
+          name: _Base_Color
+        second: {r: 1, g: 0.52205884, b: 0.52205884, a: 1}
       data:
         first:
-          name: _Glow_color
-        second: {r: 0, g: 1, b: 1, a: 1}
+          name: _Glow_Color
+        second: {r: 0.89705884, g: 0.40235728, b: 0.40235728, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0.2161138, g: 0.9264706, b: 0.19074395, a: 1}
+      data:
+        first:
+          name: _node_7846
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}

@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: mrGAS_BLUE
+  m_Name: mrOIL_BLUE
   m_Shader: {fileID: 4800000, guid: e68f798c29a56af4e8a35346cfba79cc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -82,7 +82,7 @@ Material:
         first:
           name: _Base_Color
         second:
-          m_Texture: {fileID: 2800000, guid: 520cfd8e0b76e4090aac3048a77a0f6a, type: 3}
+          m_Texture: {fileID: 2800000, guid: 37cefa3d930c44035a8df14c174edeb7, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -96,28 +96,28 @@ Material:
         first:
           name: _Normal_Map
         second:
-          m_Texture: {fileID: 2800000, guid: 89510e9818d494529a1171389071d7e3, type: 3}
+          m_Texture: {fileID: 2800000, guid: dfc733e9896d34afe844cd6d7b7cf377, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Metallic_map
         second:
-          m_Texture: {fileID: 2800000, guid: 84d6de2419d8b46f9918506a8417f1cc, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Gloss_map
         second:
-          m_Texture: {fileID: 2800000, guid: 84d6de2419d8b46f9918506a8417f1cc, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Emission_map
         second:
-          m_Texture: {fileID: 2800000, guid: 520cfd8e0b76e4090aac3048a77a0f6a, type: 3}
+          m_Texture: {fileID: 2800000, guid: 37cefa3d930c44035a8df14c174edeb7, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -144,7 +144,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 1
+        second: 0
       data:
         first:
           name: _BumpScale
@@ -168,7 +168,7 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 1
+        second: 0
       data:
         first:
           name: _Visibility
@@ -180,7 +180,7 @@ Material:
       data:
         first:
           name: _Normal_Map_Intensity
-        second: 0
+        second: 0.52
       data:
         first:
           name: _Noise_Brightness
@@ -192,7 +192,7 @@ Material:
       data:
         first:
           name: _Emssion_power
-        second: 0.5
+        second: 1
       data:
         first:
           name: _Visibility_multiplier
@@ -217,7 +217,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 0.68529415, b: 0.21323532, a: 1}
+        second: {r: 0.2210446, g: 0.13235293, b: 0.375, a: 1}
       data:
         first:
           name: _Tint
