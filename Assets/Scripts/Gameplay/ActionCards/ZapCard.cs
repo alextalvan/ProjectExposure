@@ -10,7 +10,7 @@ public class ZapCard : ActionCard
     [SerializeField]
     float unitDestructionDelay = 1f;
 
-	protected override bool CalculatePlayCondition ()
+	public override bool CalculatePlayCondition ()
 	{
 		if(!enabled)
 			return false;
@@ -21,7 +21,7 @@ public class ZapCard : ActionCard
 		return EnemyHasUnits();
 	}
 
-    protected override void DoCardEffect ()
+	public override void DoCardEffect ()
 	{
 		base.DoCardEffect();
 

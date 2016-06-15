@@ -10,7 +10,7 @@ public class SpeedModCard : ActionCard
 	[SerializeField]
 	float speedModifier = 0.5f;
 
-	protected override bool CalculatePlayCondition ()
+	public override bool CalculatePlayCondition ()
 	{
 		if(!enabled)
 			return false;
@@ -21,7 +21,7 @@ public class SpeedModCard : ActionCard
 		return EnemyHasUnits();
 	}
 
-    protected override void DoCardEffect ()
+	public override void DoCardEffect ()
 	{
 		base.DoCardEffect();
 

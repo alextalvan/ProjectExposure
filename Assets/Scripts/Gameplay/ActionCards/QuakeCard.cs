@@ -3,7 +3,7 @@ using System.Collections;
 
 public class QuakeCard : ActionCard 
 {
-	protected override bool CalculatePlayCondition ()
+	public override bool CalculatePlayCondition ()
 	{
 
 		if(!enabled)
@@ -15,7 +15,7 @@ public class QuakeCard : ActionCard
 		return EnemyHasBuildings();
 	}
 
-    protected override void DoCardEffect ()
+	public override void DoCardEffect ()
 	{
 		base.DoCardEffect();
 
