@@ -52,13 +52,7 @@ public class AIPlayer : GameManagerSearcher
 
     private void PickTarget()
     {
-        int rnd = Random.Range(0, 2);
-        switch (rnd)
-        {
-            case 0:
-                SelectBuildingCard();
-                break;
-        }
+        SelectBuildingCard();
     }
 
     private void Behave()
@@ -90,31 +84,14 @@ public class AIPlayer : GameManagerSearcher
         finger.GetComponent<RectTransform>().position = Vector3.Lerp(finger.GetComponent<RectTransform>().position, target.transform.position, fingerSpeed * Time.deltaTime);
     }
 
-    /*
-    private void SelectActionCard()
-    {
-        if (actionCardsHolder.childCount <= 0) return;
-        int rndCardIndex = Random.Range(0, actionCardsHolder.childCount);
-        Card selectedCard = actionCardsHolder.GetChild(rndCardIndex).GetComponent<Card>();
-        if (selectedCard.isActiveAndEnabled)
-        {
-            target = selectedCard.gameObject;
-#if TOUCH_INPUT
-            OnAction += selectedCard.TouchEnd;
-#else
-            OnAction += selectedCard.OnMouseUp;
-#endif
-            OnAction += Nullify;
-        }
-    }
-    */
-
     private void SelectBuildingCard()
     {
         List<BuildingCard> playableCards = new List<BuildingCard>();
         foreach (BuildingCard bCard in buildingCards)
             if (bCard.IsPlayable)
                 playableCards.Add(bCard);
+
+        if (playableCards.Count == 0) return;
 
         int rndCardIndex = Random.Range(0, playableCards.Count);
         BuildingCard selectedCard = playableCards[rndCardIndex];
@@ -135,6 +112,8 @@ public class AIPlayer : GameManagerSearcher
             if (tile.isActiveAndEnabled && tile.AllowBuild)
                 availableTiles.Add(tile);
         }
+
+        if (availableTiles.Count == 0) return;
 
         int rndTileIndex = Random.Range(0, availableTiles.Count);
         target = availableTiles[rndTileIndex].gameObject;
