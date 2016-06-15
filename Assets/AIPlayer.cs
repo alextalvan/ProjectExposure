@@ -13,6 +13,11 @@ public class AIPlayer : GameManagerSearcher
     float fingerSpeed = 5f;
     [SerializeField]
     float distanceToTarget = 1f;
+    [SerializeField]
+    float minDelay = 1f;
+    [SerializeField]
+    float maxDelay = 2f;
+    float delayTimer;
 
     [SerializeField]
     Transform cardPicker;
@@ -47,6 +52,7 @@ public class AIPlayer : GameManagerSearcher
     // Update is called once per frame
     void FixedUpdate()
     {
+        delayTimer -= Time.deltaTime;
         Behave();
     }
 
@@ -57,11 +63,13 @@ public class AIPlayer : GameManagerSearcher
 
     private void Behave()
     {
-        if (target)
+        if (target && delayTimer <= 0f)
         {
             float dist = Vector3.Distance(finger.transform.position, target.transform.position);
             if (dist > distanceToTarget)
+            {
                 MoveTowardsTarget();
+            }
             else
             {
                 if (target.GetComponent<BuildingCard>())
@@ -70,11 +78,15 @@ public class AIPlayer : GameManagerSearcher
                     SelectFreeTile();
                 }
                 else
+                {
                     OnAction();
+                }
             }
         }
         else
         {
+            if (!target)
+                delayTimer = Random.Range(minDelay, maxDelay);
             PickTarget();
         }
     }
