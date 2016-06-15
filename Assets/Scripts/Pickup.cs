@@ -9,13 +9,11 @@ public class Pickup : GameManagerSearcher {
 	PlayerGameData enemyData;
 
 	[SerializeField]
-	float smogDuration = 10.0f;
+	float freezeDuration = 10.0f;
 
 	[SerializeField]
-	int smogTapsForUndo = 10;
+	GameObject freezePrefab;
 
-	[SerializeField]
-	GameObject smogPrefab;
 
 	// Use this for initialization
 	void Start () 
@@ -56,7 +54,7 @@ public class Pickup : GameManagerSearcher {
 		return false;
 	}
 
-	bool SmogCondition()
+	bool FreezeCondition()
 	{
 		
 		foreach (HexagonTile tile in enemyData.tiles)
@@ -68,7 +66,7 @@ public class Pickup : GameManagerSearcher {
 		return false;
 	}
 
-	void SmogEffect()
+	void FreezeEffect()
 	{
 		List<EnergyBuilding> candidateBuildings = new List<EnergyBuilding>();
 		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
@@ -81,11 +79,30 @@ public class Pickup : GameManagerSearcher {
 
 
 
-		BuildingStunBuff b = new BuildingStunBuff(smogTapsForUndo,smogDuration);
+		BuildingStunBuff b = new BuildingStunBuff(999,freezeDuration);
 		EnergyBuilding building = candidateBuildings[Random.Range(0,candidateBuildings.Count)];
 		building.buffList.AddBuff(b);
 		building.GetComponent<UnitSpawner>().enabled = false;
-		building.smog = (GameObject)Instantiate(smogPrefab, building.transform.position + Vector3.up * 2f - Vector3.forward * 15f, Quaternion.identity);
+		building.smog = (GameObject)Instantiate(freezePrefab, building.transform.position + Vector3.up * 2f - Vector3.forward * 15f, Quaternion.identity);
 		building.smog.transform.parent = building.transform;
+	}
+
+
+	bool QuakeCondition()
+	{
+		return EnemyHasUnits();
+	}
+
+	void QuakeEffect()
+	{
+		for(int i=0; i < enemyData.tiles.Count - 1; ++i)
+		{
+			enemyData.tiles[i].SwapBuilding(enemyData.tiles[Random.Range(i+1,enemyData.tiles.Count)]);
+		}
+
+		Destroy(this.gameObject);
+		Camera.main.GetComponent<CameraShake>().Shake();
+		enemyData.currentInputState = INPUT_STATES.FREE;
+		enemyData.RefreshAllTilesHighlight();
 	}
 }

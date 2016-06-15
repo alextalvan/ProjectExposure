@@ -28,12 +28,6 @@ public class PickupSpawner : ObjectSpawner {
 
 	protected override void CalculateEligibleObjects ()
 	{
-		eligibleObjects.Clear();
 
-		foreach(ActionCard card in cardList)
-		{
-			if(card.CalculatePlayCondition())
-				eligibleObjects.Add(card.gameObject);
-		}
 	}
 }
