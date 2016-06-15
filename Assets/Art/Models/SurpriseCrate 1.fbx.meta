@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 77169b6535f5c5240996f62bee364481
-timeCreated: 1465990355
+guid: 286fff235ec6a814d8f9e4180acf9a53
+timeCreated: 1465993467
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -17,7 +17,8 @@ ModelImporter:
     3300002: crateLid
     4300000: Crate
     4300002: crateLid
-    7400000: Crate_OpenANIM
+    7400000: SurpriseCrateIdleANIM
+    7400002: SurpriseCrateOpenANIM
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -41,10 +42,44 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Crate_OpenANIM
+      name: SurpriseCrateIdleANIM
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 120
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Crate
+        weight: 1
+      - path: crateLid
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: SurpriseCrateOpenANIM
+      takeName: Take 001
+      firstFrame: 61
+      lastFrame: 114
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -73,7 +108,7 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []
