@@ -80,12 +80,12 @@ public abstract class Card : GameManagerSearcher
 	}
 
 
-	protected virtual bool CalculatePlayCondition()
+	public virtual bool CalculatePlayCondition()
 	{
 		return false;
 	}
 
-    protected virtual void DoCardEffect()
+	public virtual void DoCardEffect()
 	{
 		
 	}

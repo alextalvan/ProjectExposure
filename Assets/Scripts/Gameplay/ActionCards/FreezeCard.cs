@@ -7,7 +7,7 @@ public class FreezeCard : ActionCard
 	[SerializeField]
 	float freezeDuration = 5.0f;
 
-	protected override bool CalculatePlayCondition ()
+	public override bool CalculatePlayCondition ()
 	{
 
 		if(!enabled)
@@ -19,7 +19,7 @@ public class FreezeCard : ActionCard
 		return EnemyHasUnits();
 	}
 
-    protected override void DoCardEffect ()
+	public override void DoCardEffect ()
 	{
 		base.DoCardEffect();
 

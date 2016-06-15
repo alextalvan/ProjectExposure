@@ -14,7 +14,7 @@ public class SmogCard : ActionCard
 	int tapCountToUndo = 10;
 
 
-	protected override bool CalculatePlayCondition ()
+	public override bool CalculatePlayCondition ()
 	{
 		if(!enabled)
 			return false;
@@ -33,7 +33,7 @@ public class SmogCard : ActionCard
         return false;
     }
 
-    protected override void DoCardEffect ()
+	public override void DoCardEffect ()
 	{
 		base.DoCardEffect();
 

@@ -22,7 +22,7 @@ public class BuildingCard : Card
 	float useCooldown = 5.0f;
 	float currentCooldown;// = -1.0f;
 
-    protected override void DoCardEffect ()
+	public override void DoCardEffect ()
 	{
 		
 		PlayerGameData pdata = gameManager.playerData[this.Owner];
@@ -32,7 +32,7 @@ public class BuildingCard : Card
 		gameManager.raycastedOn2DObject = true;
 	}
 
-	protected override bool CalculatePlayCondition ()
+	public override bool CalculatePlayCondition ()
 	{
 		PlayerGameData pdata = gameManager.playerData[this.Owner];
 
