@@ -51,9 +51,15 @@ public class ObjectSpawner : MonoBehaviour {
 		Quaternion spawnRotation = (inheritRotation) ? this.transform.rotation : Quaternion.identity;
 
 		GameObject randomPickup = (GameObject)Instantiate(eligibleObjects[Random.Range(0,eligibleObjects.Count)],spawnPoint,spawnRotation);
+		OnSpawn(randomPickup);
 	}
 
 	protected virtual void CalculateEligibleObjects()
+	{
+		
+	}
+
+	protected virtual void OnSpawn(GameObject newObject)
 	{
 		
 	}

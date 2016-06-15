@@ -4547,7 +4547,7 @@ GameObject:
   - 65: {fileID: 458009371}
   - 23: {fileID: 458009370}
   - 114: {fileID: 458009369}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PickupSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4567,7 +4567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 151638, guid: c7a0264b8950ae7418c0e2e4a37dbb90, type: 2}
-  spawnInterval: 0.05
+  spawnInterval: 5
   inheritRotation: 1
 --- !u!23 &458009370
 MeshRenderer:

@@ -47,6 +47,9 @@ public abstract class Card : GameManagerSearcher
 	[SerializeField]
 	protected GameObject highlight = null;
 
+	[SerializeField]
+	bool allowInput = true;
+
 	void OnDestroy()
 	{
 
@@ -96,10 +99,16 @@ public abstract class Card : GameManagerSearcher
     public virtual void OnMouseUp()
 	#endif
 	{
+		if(!allowInput)
+			return;
+
 		if(CalculatePlayCondition())
 			DoCardEffect();
 
 		gameManager.raycastedOn2DObject = true;
+
+		if(this is ActionCard)
+			Destroy(this.gameObject);
 	}
 
 	protected virtual void Update()
