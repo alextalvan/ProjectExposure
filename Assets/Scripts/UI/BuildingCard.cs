@@ -4,8 +4,10 @@ using System.Collections;
 
 public class BuildingCard : Card 
 {
-	//keep track if card was playable last frame
-	bool wasPlayable = false;
+    bool isPlayable = false;
+    public bool IsPlayable { get { return isPlayable; } }
+    //keep track if card was playable last frame
+    bool wasPlayable = false;
 
 	[SerializeField]
 	EnergyBuildingType _buildingType;
@@ -67,7 +69,7 @@ public class BuildingCard : Card
 
 	protected override void Update ()
 	{
-		bool isPlayable = CalculateNonInputPlayCondition() && (currentCooldown <= 0.0f);
+        isPlayable = CalculateNonInputPlayCondition() && (currentCooldown <= 0.0f);
 
 
 		//_anim.SetBool("slide_out",false);

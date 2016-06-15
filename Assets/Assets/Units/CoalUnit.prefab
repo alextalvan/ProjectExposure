@@ -102,7 +102,6 @@ GameObject:
   - 23: {fileID: 2386606}
   - 114: {fileID: 11478562}
   - 54: {fileID: 5496286}
-  - 114: {fileID: 11405080}
   - 135: {fileID: 13569606}
   m_Layer: 0
   m_Name: CoalUnit
@@ -4150,19 +4149,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11405080
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 107830}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetObject: {fileID: 178924}
 --- !u!114 &11478562
 MonoBehaviour:
   m_ObjectHideFlags: 1

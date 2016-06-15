@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class AIPlayer : MonoBehaviour
+public class AIPlayer : GameManagerSearcher
 {
     [SerializeField]
     PLAYERS playingAs;
@@ -15,23 +15,11 @@ public class AIPlayer : MonoBehaviour
     float distanceToTarget = 1f;
 
     [SerializeField]
-    Transform actionCardsHolder;
-    [SerializeField]
-    Transform greenBuildingCardsHolder;
-    [SerializeField]
-    Transform fossilBuildingCardsHolder;
+    Transform cardPicker;
 
-    [SerializeField]
-    NeutralCardSpawner neutralCardSpawner;
-    [SerializeField]
-    CardPurchaseButton cardPurchaseButton;
-
-    [SerializeField]
-    BackgroundCollider bgCol;
-
-    GameManager gm;
     PlayerGameData playerData;
 
+    private List<BuildingCard> buildingCards = new List<BuildingCard>();
     private delegate void Action();
     private Action OnAction = null;
     private GameObject target = null;
@@ -39,8 +27,11 @@ public class AIPlayer : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        gm = GetComponent<GameManager>();
-        playerData = gm.playerData[playingAs];
+        playerData = gameManager.playerData[playingAs];
+        foreach (Transform cardParent in cardPicker)
+        {
+            buildingCards.Add(cardParent.GetChild(0).GetComponent<BuildingCard>());
+        }
     }
 
     void OnEnable()
@@ -61,35 +52,17 @@ public class AIPlayer : MonoBehaviour
 
     private void PickTarget()
     {
-        int rnd = Random.Range(0, 7);
-        switch (rnd) {
+        int rnd = Random.Range(0, 2);
+        switch (rnd)
+        {
             case 0:
-                PurchaseCard();
-                break;
-            case 1:
-                SelectActionCard();
-                break;
-            case 2:
-                SelectGreenBuildingCard();
-                break;
-            case 3:
-                SelectFossilBuildingCard();
-                break;
-            case 4:
-                InteractWithUnit();
-                break;
-            case 5:
-                RemoveBuildingDebuff();
-                break;
-            case 6:
-                RemoveSwamp();
+                SelectBuildingCard();
                 break;
         }
     }
 
     private void Behave()
     {
-        //Debug.Log(target);
         if (target)
         {
             float dist = Vector3.Distance(finger.transform.position, target.transform.position);
@@ -117,7 +90,7 @@ public class AIPlayer : MonoBehaviour
         finger.GetComponent<RectTransform>().position = Vector3.Lerp(finger.GetComponent<RectTransform>().position, target.transform.position, fingerSpeed * Time.deltaTime);
     }
 
-
+    /*
     private void SelectActionCard()
     {
         if (actionCardsHolder.childCount <= 0) return;
@@ -134,39 +107,24 @@ public class AIPlayer : MonoBehaviour
             OnAction += Nullify;
         }
     }
+    */
 
-    private void SelectGreenBuildingCard()
+    private void SelectBuildingCard()
     {
-        if (greenBuildingCardsHolder.childCount <= 0) return;
-        int rndCardIndex = Random.Range(0, greenBuildingCardsHolder.childCount);
-        Card selectedCard = greenBuildingCardsHolder.GetChild(rndCardIndex).GetComponent<Card>();
-        if (selectedCard.isActiveAndEnabled)
-        {
-            target = selectedCard.gameObject;
-#if TOUCH_INPUT
-            OnAction += selectedCard.TouchEnd;
-#else
-            OnAction += selectedCard.OnMouseUp;
-#endif
-            OnAction += Nullify;
-        }
-    }
+        List<BuildingCard> playableCards = new List<BuildingCard>();
+        foreach (BuildingCard bCard in buildingCards)
+            if (bCard.IsPlayable)
+                playableCards.Add(bCard);
 
-    private void SelectFossilBuildingCard()
-    {
-        if (fossilBuildingCardsHolder.childCount <= 0) return;
-        int rndCardIndex = Random.Range(0, fossilBuildingCardsHolder.childCount);
-        Card selectedCard = fossilBuildingCardsHolder.GetChild(rndCardIndex).GetComponent<Card>();
-        if (selectedCard.isActiveAndEnabled)
-        {
-            target = selectedCard.gameObject;
+        int rndCardIndex = Random.Range(0, playableCards.Count);
+        BuildingCard selectedCard = playableCards[rndCardIndex];
+        target = selectedCard.gameObject;
 #if TOUCH_INPUT
-            OnAction += selectedCard.TouchEnd;
+        OnAction += selectedCard.TouchEnd;
 #else
-            OnAction += selectedCard.OnMouseUp;
+        OnAction += selectedCard.OnMouseUp;
 #endif
-            OnAction += Nullify;
-        }
+        OnAction += Nullify;
     }
 
     private void SelectFreeTile()
@@ -174,21 +132,10 @@ public class AIPlayer : MonoBehaviour
         List<HexagonTile> availableTiles = new List<HexagonTile>();
         foreach (HexagonTile tile in playerData.tiles)
         {
-			if (tile.isActiveAndEnabled && tile.AllowBuild)
+            if (tile.isActiveAndEnabled && tile.AllowBuild)
                 availableTiles.Add(tile);
         }
 
-        if (availableTiles.Count <= 0)
-        {
-            target = bgCol.gameObject;
-#if TOUCH_INPUT
-            OnAction += bgCol.TouchEnd;
-#else
-            OnAction += bgCol.OnMouseUp;
-#endif
-            OnAction += Nullify;
-            return;
-        }
         int rndTileIndex = Random.Range(0, availableTiles.Count);
         target = availableTiles[rndTileIndex].gameObject;
 #if TOUCH_INPUT
@@ -199,6 +146,7 @@ public class AIPlayer : MonoBehaviour
         OnAction += Nullify;
     }
 
+    /*
     private void InteractWithUnit()
     {
         foreach (Transform unitGroup in playerData.unitGroups)
@@ -220,7 +168,9 @@ public class AIPlayer : MonoBehaviour
             }
         }
     }
+    */
 
+    /*
     private void RemoveBuildingDebuff()
     {
         foreach (HexagonTile tile in playerData.tiles)
@@ -269,6 +219,7 @@ public class AIPlayer : MonoBehaviour
             }
         }
     }
+    */
 
     private void Nullify()
     {

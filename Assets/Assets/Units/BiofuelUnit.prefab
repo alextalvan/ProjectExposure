@@ -912,7 +912,6 @@ GameObject:
   - 23: {fileID: 2319594}
   - 114: {fileID: 11485242}
   - 54: {fileID: 5494734}
-  - 114: {fileID: 11487686}
   - 135: {fileID: 13564874}
   m_Layer: 0
   m_Name: BiofuelUnit
@@ -5199,19 +5198,6 @@ MonoBehaviour:
     type: 2}
   coinSpawnPrefab: {fileID: 11472550, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   iceBlockPrefab: {fileID: 198636, guid: 856d1e0195ac9e44c9fdbdeb95837355, type: 2}
---- !u!114 &11487686
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127346}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetObject: {fileID: 134100}
 --- !u!135 &13564874
 SphereCollider:
   m_ObjectHideFlags: 1

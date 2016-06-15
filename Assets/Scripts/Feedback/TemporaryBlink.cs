@@ -36,7 +36,7 @@ public class TemporaryBlink : MonoBehaviour
 
 		if(totalTimer <= 0.0f)
 		{
-			_targetObject.SetActive(true);
+			//_targetObject.SetActive(true);
 			return;
 		}
 
