@@ -4080,8 +4080,8 @@ MeshRenderer:
   - {fileID: 2100000, guid: 636374a41dd7ce948899b9238fc4eaf9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
@@ -4160,7 +4160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c70fe9bd71043b428fb76d991c15720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStrength: 2
+  unitStrength: 8
   unitSpeed: 0.018
   rayCastDist: 0.5
   attackCoolDown: 1

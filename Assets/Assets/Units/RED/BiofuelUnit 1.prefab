@@ -914,7 +914,7 @@ GameObject:
   - 54: {fileID: 5494734}
   - 135: {fileID: 13564874}
   m_Layer: 0
-  m_Name: BiofuelUnit
+  m_Name: BiofuelUnit 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5175,7 +5175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c70fe9bd71043b428fb76d991c15720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStrength: 3
+  unitStrength: 8
   unitSpeed: 0.018
   rayCastDist: 0.5
   attackCoolDown: 1
@@ -5188,7 +5188,7 @@ MonoBehaviour:
   - {fileID: 127968}
   - {fileID: 176050}
   projParentPrefab: {fileID: 142734, guid: 783203369091ff84c90f5be0f65cacc5, type: 2}
-  projectilePrefab: {fileID: 111560, guid: 9c22026150695fa4b9fb177d24151619, type: 2}
+  projectilePrefab: {fileID: 111560, guid: 0e257185d98b3435482a2fb2c113e1aa, type: 2}
   projectileFlightDuration: 1
   conversionPrefab: {fileID: 124668, guid: 09aa07568625990408235ce0eafac3e2, type: 2}
   buffList:
@@ -5220,7 +5220,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: d6d0342635c1a471491eac4ddc925534, type: 2}
+  - {fileID: 2100000, guid: a0e29229ca28d4118b8321869d8c6eb2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -5279,7 +5279,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: d6d0342635c1a471491eac4ddc925534, type: 2}
+  - {fileID: 2100000, guid: a0e29229ca28d4118b8321869d8c6eb2, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
