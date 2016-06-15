@@ -164,7 +164,6 @@ GameObject:
   - 4: {fileID: 465952}
   - 114: {fileID: 11464352}
   - 114: {fileID: 11454152}
-  - 114: {fileID: 11445498}
   - 114: {fileID: 11473468}
   m_Layer: 0
   m_Name: Nuclear_Plant
@@ -564,19 +563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb1d9691fed82f4d848c5251cadc0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11445498
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetObject: {fileID: 174096}
 --- !u!114 &11454152
 MonoBehaviour:
   m_ObjectHideFlags: 1

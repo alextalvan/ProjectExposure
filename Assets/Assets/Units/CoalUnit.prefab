@@ -102,7 +102,6 @@ GameObject:
   - 23: {fileID: 2386606}
   - 114: {fileID: 11478562}
   - 54: {fileID: 5496286}
-  - 114: {fileID: 11405080}
   - 135: {fileID: 13569606}
   m_Layer: 0
   m_Name: CoalUnit
@@ -2299,7 +2298,7 @@ Transform:
   - {fileID: 426408}
   - {fileID: 462562}
   m_Father: {fileID: 403538}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &403204
 Transform:
   m_ObjectHideFlags: 1
@@ -2322,13 +2321,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: -3.35, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
+  - {fileID: 439954}
   - {fileID: 468758}
   - {fileID: 403114}
   - {fileID: 438434}
-  - {fileID: 439954}
   m_Father: {fileID: 478630}
   m_RootOrder: 0
 --- !u!4 &404272
@@ -3051,7 +3050,7 @@ Transform:
   m_Children:
   - {fileID: 449540}
   m_Father: {fileID: 403538}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &439382
 Transform:
   m_ObjectHideFlags: 1
@@ -3103,7 +3102,7 @@ Transform:
   m_LocalScale: {x: 2.1423342, y: 2.1423342, z: 2.1423342}
   m_Children: []
   m_Father: {fileID: 403538}
-  m_RootOrder: 3
+  m_RootOrder: 0
 --- !u!4 &440332
 Transform:
   m_ObjectHideFlags: 1
@@ -3653,7 +3652,7 @@ Transform:
   - {fileID: 411146}
   - {fileID: 432926}
   m_Father: {fileID: 403538}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &469204
 Transform:
   m_ObjectHideFlags: 1
@@ -3790,7 +3789,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.447852, y: -3.6458564, z: -2.1049376}
+  m_LocalPosition: {x: -1.3149166, y: -0.311, z: -7.140992}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children:
   - {fileID: 403538}
@@ -4141,7 +4140,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143902}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f66c66cbafd4c417ba4c7c2fb755a185, type: 3}
+  m_Avatar: {fileID: 9000000, guid: ff537a50c55684fcba15863a7038ce0f, type: 3}
   m_Controller: {fileID: 9100000, guid: 93044a4db538a4630bcdb5be029b2092, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -4150,19 +4149,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11405080
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 107830}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetObject: {fileID: 178924}
 --- !u!114 &11478562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4183,13 +4169,15 @@ MonoBehaviour:
   deathAnimTime: 2
   scoreReward: 1
   moneyReward: 1
-  model: {fileID: 178924}
+  models:
+  - {fileID: 143902}
+  projParentPrefab: {fileID: 142734, guid: 783203369091ff84c90f5be0f65cacc5, type: 2}
   projectilePrefab: {fileID: 111560, guid: 9c22026150695fa4b9fb177d24151619, type: 2}
   projectileFlightDuration: 1
-  attackPrefab: {fileID: 194666}
   conversionPrefab: {fileID: 124668, guid: 09aa07568625990408235ce0eafac3e2, type: 2}
   buffList:
     buffs: []
+  lane: 0
   scoreGainFeedbackPrefab: {fileID: 10253516, guid: 6421baf5968a30048bb875aec8bab27a,
     type: 2}
   coinSpawnPrefab: {fileID: 11472550, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
@@ -4235,7 +4223,7 @@ SkinnedMeshRenderer:
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
-  m_Mesh: {fileID: 4300000, guid: f66c66cbafd4c417ba4c7c2fb755a185, type: 3}
+  m_Mesh: {fileID: 4300000, guid: ff537a50c55684fcba15863a7038ce0f, type: 3}
   m_Bones:
   - {fileID: 449540}
   - {fileID: 464832}

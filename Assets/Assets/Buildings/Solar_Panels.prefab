@@ -58,7 +58,6 @@ GameObject:
   - 4: {fileID: 485540}
   - 114: {fileID: 11403598}
   - 114: {fileID: 11424624}
-  - 114: {fileID: 11481880}
   - 114: {fileID: 11459654}
   m_Layer: 0
   m_Name: Solar_Panels
@@ -527,19 +526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb1d9691fed82f4d848c5251cadc0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11481880
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetObject: {fileID: 162822}
 --- !u!135 &13507372
 SphereCollider:
   m_ObjectHideFlags: 1

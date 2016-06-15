@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using System;
 
 //using System;
@@ -34,9 +34,12 @@ public class UnitAI : GameManagerSearcher
     int moneyReward = 1;
 
     [SerializeField]
-    GameObject model;
-    private Material mat;
+    List<GameObject> models = new List<GameObject>();
+    private List<Material> materials = new List<Material>();
+    private List<ParticleSystem> attackParticles = new List<ParticleSystem>();
 
+    [SerializeField]
+    GameObject projParentPrefab;
     [SerializeField]
     GameObject projectilePrefab;
 
@@ -44,12 +47,7 @@ public class UnitAI : GameManagerSearcher
     float projectileFlightDuration = 1f;
 
     [SerializeField]
-    GameObject attackPrefab;
-
-    [SerializeField]
     GameObject conversionPrefab;
-
-    private Animator anim;
 
     public BuffList buffList = new BuffList();
 
@@ -86,12 +84,16 @@ public class UnitAI : GameManagerSearcher
         wanderTimer = wanderAnimTime;
         cheerTimer = cheerAnimTime;
         deathTimer = deathAnimTime;
-        anim = transform.GetChild(0).GetComponent<Animator>();
-        mat = model.GetComponent<Renderer>().material;
     }
 
     void Start()
     {
+        foreach(GameObject model in models)
+        {
+            materials.Add(model.transform.GetChild(0).GetComponent<Renderer>().material);
+            //attackParticles.Add(model.transform.GetChild(1).GetChild(0).GetComponent<ParticleSystem>());
+            //attackParticles.Add(model.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<ParticleSystem>());
+        }
         //orientation
         Vector3 worldUp = Physics.gravity.normalized * -1.0f;
         float heightDiff = Vector3.Dot(worldUp, transform.position + movementDir) - Vector3.Dot(worldUp, transform.position);
@@ -231,7 +233,10 @@ public class UnitAI : GameManagerSearcher
     private void Cheer()
     {
         cheerTimer -= Time.deltaTime;
-        mat.SetFloat("_Visibility", Mathf.Clamp01(cheerTimer / cheerAnimTime));
+        foreach (Material mat in materials)
+        {
+            mat.SetFloat("_Visibility", Mathf.Clamp01(cheerTimer / cheerAnimTime));
+        }
         if (cheerTimer <= 0f)
         {
             GenerateScore();
@@ -249,7 +254,10 @@ public class UnitAI : GameManagerSearcher
     private void Die()
     {
         deathTimer -= Time.deltaTime;
-        mat.SetFloat("_Visibility", Mathf.Clamp01(deathTimer / deathAnimTime));
+        foreach (Material mat in materials)
+        {
+            mat.SetFloat("_Visibility", Mathf.Clamp01(deathTimer / deathAnimTime));
+        }
         if (deathTimer <= 0f)
         {
             Destroy(this.gameObject);
@@ -285,13 +293,25 @@ public class UnitAI : GameManagerSearcher
 
     private void LaunchProjectile()
     {
-        Vector3 launchPos = transform.position + (transform.up * transform.lossyScale.y);
-        GameObject projectile = Instantiate(projectilePrefab, transform.position + (transform.up * transform.lossyScale.y), Quaternion.identity) as GameObject;
-        Vector3 throwDir = CalculateProjectileDir(launchPos, target.position + (target.up * target.lossyScale.y), projectileFlightDuration);
-        projectile.GetComponent<Rigidbody>().AddForce(throwDir, ForceMode.VelocityChange);
-        projectile.gameObject.layer = gameObject.layer;
-        projectile.gameObject.layer = owner == PLAYERS.PLAYER1 ? 16 : 17;
-        projectile.GetComponent<ProjectileScript>().SetOwner = this;
+        GameObject projParent = Instantiate(projParentPrefab, transform.position, Quaternion.identity) as GameObject;
+        projParent.GetComponent<ProjParentScript>().SetOwner = this;
+        projParent.GetComponent<ProjParentScript>().SetLifeTime = projectileFlightDuration;
+        foreach (GameObject model in models)
+        {
+            Vector3 launchPos = model.transform.position + (model.transform.up * model.transform.lossyScale.y);
+            GameObject projectile = Instantiate(projectilePrefab, model.transform.position + (model.transform.up * model.transform.lossyScale.y), Quaternion.identity) as GameObject;
+            Vector3 throwDir = CalculateProjectileDir(launchPos, target.position + (target.up * target.lossyScale.y), projectileFlightDuration);
+            projectile.GetComponent<Rigidbody>().AddForce(throwDir, ForceMode.VelocityChange);
+            projectile.gameObject.layer = gameObject.layer;
+            projectile.gameObject.layer = owner == PLAYERS.PLAYER1 ? 16 : 17;
+            projectile.transform.SetParent(projParent.transform);
+        }
+        /*
+        foreach (ParticleSystem attackParticle in attackParticles)
+        {
+            attackParticle.Play();
+        }
+        */
     }
 
     private Vector3 CalculateProjectileDir(Vector3 origin, Vector3 target, float flightTime)
@@ -330,9 +350,12 @@ public class UnitAI : GameManagerSearcher
 
     void SetAiState(AiState state)
     {
-        anim.SetBool(currentState.ToString(), false);
+        foreach (GameObject model in models)
+        {
+            model.GetComponent<Animator>().SetBool(currentState.ToString(), false);
+            model.GetComponent<Animator>().SetBool(state.ToString(), true);
+        }
         currentState = state;
-        anim.SetBool(currentState.ToString(), true);
     }
 
 	void GenerateScore()
@@ -360,7 +383,10 @@ public class UnitAI : GameManagerSearcher
 		}
 
 		buffList.AddBuff(b);
-		anim.speed = 0.0f;
+        foreach (GameObject model in models)
+        {
+            model.GetComponent<Animator>().speed = 0.0f;
+        }
 	}
 
     //unfreeze
@@ -372,7 +398,10 @@ public class UnitAI : GameManagerSearcher
     {
         buffList.RemoveBuffs(BUFF_TYPES.UNIT_FREEZE);
 
-        anim.speed = 1.0f;
+        foreach (GameObject model in models)
+        {
+            model.GetComponent<Animator>().speed = 1.0f;
+        }
 
         if (currentIceBlock != null)
         {

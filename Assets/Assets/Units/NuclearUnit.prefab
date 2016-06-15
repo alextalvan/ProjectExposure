@@ -12,7 +12,6 @@ GameObject:
   - 23: {fileID: 2338000}
   - 114: {fileID: 11480674}
   - 54: {fileID: 5413658}
-  - 114: {fileID: 11415638}
   - 135: {fileID: 13539680}
   m_Layer: 0
   m_Name: NuclearUnit
@@ -1593,7 +1592,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 475594}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!4 &405524
 Transform:
   m_ObjectHideFlags: 1
@@ -1759,7 +1758,7 @@ Transform:
   - {fileID: 498598}
   - {fileID: 451438}
   m_Father: {fileID: 475594}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &414134
 Transform:
   m_ObjectHideFlags: 1
@@ -1848,7 +1847,7 @@ Transform:
   m_Children:
   - {fileID: 403186}
   m_Father: {fileID: 475594}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &420476
 Transform:
   m_ObjectHideFlags: 1
@@ -2484,9 +2483,9 @@ Transform:
   m_LocalPosition: {x: -0.011432394, y: -3.88, z: -0.01}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
+  - {fileID: 405164}
   - {fileID: 413888}
   - {fileID: 417548}
-  - {fileID: 405164}
   m_Father: {fileID: 476306}
   m_RootOrder: 0
 --- !u!4 &475856
@@ -2509,7 +2508,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.365946, y: -3.635463, z: -2.0989368}
+  m_LocalPosition: {x: -5.6409903, y: -9.28813, z: -10.431362}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 475594}
@@ -2969,19 +2968,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11415638
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102548}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetObject: {fileID: 0}
 --- !u!114 &11480674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3002,13 +2988,15 @@ MonoBehaviour:
   deathAnimTime: 2
   scoreReward: 1
   moneyReward: 1
-  model: {fileID: 127032}
+  models:
+  - {fileID: 103106}
+  projParentPrefab: {fileID: 142734, guid: 783203369091ff84c90f5be0f65cacc5, type: 2}
   projectilePrefab: {fileID: 111560, guid: 9c22026150695fa4b9fb177d24151619, type: 2}
   projectileFlightDuration: 1
-  attackPrefab: {fileID: 115434}
   conversionPrefab: {fileID: 124668, guid: 09aa07568625990408235ce0eafac3e2, type: 2}
   buffList:
     buffs: []
+  lane: 0
   scoreGainFeedbackPrefab: {fileID: 10253516, guid: 6421baf5968a30048bb875aec8bab27a,
     type: 2}
   coinSpawnPrefab: {fileID: 11472550, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}

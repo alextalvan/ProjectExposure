@@ -2233,7 +2233,6 @@ GameObject:
   - 23: {fileID: 2306334}
   - 114: {fileID: 11434274}
   - 54: {fileID: 5471490}
-  - 114: {fileID: 11433614}
   - 135: {fileID: 13583898}
   m_Layer: 0
   m_Name: GasUnit
@@ -4425,7 +4424,7 @@ Transform:
   m_Children:
   - {fileID: 466210}
   m_Father: {fileID: 414364}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &400574
 Transform:
   m_ObjectHideFlags: 1
@@ -4677,7 +4676,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 414364}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!4 &405680
 Transform:
   m_ObjectHideFlags: 1
@@ -4842,7 +4841,7 @@ Transform:
   - {fileID: 401706}
   - {fileID: 407574}
   m_Father: {fileID: 414364}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &410346
 Transform:
   m_ObjectHideFlags: 1
@@ -5010,9 +5009,9 @@ Transform:
   m_LocalPosition: {x: -2.17, y: -2.73, z: -2.25}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
+  - {fileID: 405598}
   - {fileID: 410214}
   - {fileID: 400312}
-  - {fileID: 405598}
   m_Father: {fileID: 488558}
   m_RootOrder: 2
 --- !u!4 &414556
@@ -5291,7 +5290,7 @@ Transform:
   m_Children:
   - {fileID: 410346}
   m_Father: {fileID: 431478}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &422926
 Transform:
   m_ObjectHideFlags: 1
@@ -5509,7 +5508,7 @@ Transform:
   - {fileID: 486900}
   - {fileID: 478354}
   m_Father: {fileID: 436520}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &427242
 Transform:
   m_ObjectHideFlags: 1
@@ -5688,9 +5687,9 @@ Transform:
   m_LocalPosition: {x: 2.29, y: -2.75, z: -0.81}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
+  - {fileID: 462884}
   - {fileID: 499464}
   - {fileID: 422270}
-  - {fileID: 462884}
   m_Father: {fileID: 488558}
   m_RootOrder: 1
 --- !u!4 &431680
@@ -5905,9 +5904,9 @@ Transform:
   m_LocalPosition: {x: 0.05, y: -2.8, z: 2.23}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
+  - {fileID: 441206}
   - {fileID: 426762}
   - {fileID: 497066}
-  - {fileID: 441206}
   m_Father: {fileID: 488558}
   m_RootOrder: 0
 --- !u!4 &436530
@@ -6113,7 +6112,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 436520}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!4 &441430
 Transform:
   m_ObjectHideFlags: 1
@@ -6842,7 +6841,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 431478}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!4 &463084
 Transform:
   m_ObjectHideFlags: 1
@@ -7820,8 +7819,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152352}
-  m_LocalRotation: {x: 0.3535533, y: -0.6123726, z: 0.35355324, w: -0.61237246}
-  m_LocalPosition: {x: -2.4539583, y: -3.7735076, z: -2.178637}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -1.589, z: -3.66}
   m_LocalScale: {x: 0.075, y: 0.075, z: 0.075}
   m_Children:
   - {fileID: 436520}
@@ -8109,7 +8108,7 @@ Transform:
   m_Children:
   - {fileID: 446646}
   m_Father: {fileID: 436520}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &497350
 Transform:
   m_ObjectHideFlags: 1
@@ -8247,7 +8246,7 @@ Transform:
   - {fileID: 470192}
   - {fileID: 445528}
   m_Father: {fileID: 431478}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!23 &2306334
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -8347,19 +8346,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11433614
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152352}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d239c307d0516d848801d6c5a77854a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkInterval: 0.25
-  _targetObject: {fileID: 0}
 --- !u!114 &11434274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8380,13 +8366,17 @@ MonoBehaviour:
   deathAnimTime: 2
   scoreReward: 1
   moneyReward: 2
-  model: {fileID: 177160}
+  models:
+  - {fileID: 180616}
+  - {fileID: 187428}
+  - {fileID: 189868}
+  projParentPrefab: {fileID: 142734, guid: 783203369091ff84c90f5be0f65cacc5, type: 2}
   projectilePrefab: {fileID: 111560, guid: 9c22026150695fa4b9fb177d24151619, type: 2}
   projectileFlightDuration: 1
-  attackPrefab: {fileID: 198294}
   conversionPrefab: {fileID: 124668, guid: 09aa07568625990408235ce0eafac3e2, type: 2}
   buffList:
     buffs: []
+  lane: 0
   scoreGainFeedbackPrefab: {fileID: 10253516, guid: 6421baf5968a30048bb875aec8bab27a,
     type: 2}
   coinSpawnPrefab: {fileID: 11472550, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
