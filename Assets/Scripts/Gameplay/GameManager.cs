@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     float waveCoolDown = 5f;
+    [SerializeField]
+    int waveWinScore = 1;
+    public int GetWaveWinScore { get { return waveWinScore; } }
 
     [SerializeField]
     TouchInputManager touchInputManager;
@@ -297,9 +300,9 @@ public class GameManager : MonoBehaviour
 		gameTimerText.gameObject.SetActive(true);
 	}
 
-	public void ChangeScore(float amount, PLAYERS owner, LANES lane)
+	public void ChangeScore(int score, PLAYERS owner, LANES lane)
 	{
-		float scoreDelta = amount * ((owner == PLAYERS.PLAYER1) ? -1.0f : 1.0f);
+		float scoreDelta = score * ((owner == PLAYERS.PLAYER1) ? -1.0f : 1.0f);
 
 		if(lane == LANES.TOP)
 			topLaneScoreData.ChangeScore(scoreDelta);

@@ -2,10 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class CityTileTrigger : MonoBehaviour {
+public class CityTileTrigger : GameManagerSearcher {
 
 	List<Transform> unitsP1 = new List<Transform>();
 	List<Transform> unitsP2 = new List<Transform>();
+    bool rewarded = false;
 
 	// Use this for initialization
 	void Start () {
@@ -17,16 +18,28 @@ public class CityTileTrigger : MonoBehaviour {
 			unitsP1.Add (unit);
 		else
 			unitsP2.Add (unit);
-	}
+        if (rewarded)
+            rewarded = false;
+    }
 
 	public void RemoveUnit(Transform unit, PLAYERS player) {
-		if (player == PLAYERS.PLAYER1)
-			unitsP1.Remove (unit);
+        UnitAI unitAi = unit.GetComponent<UnitAI>();
+        if (player == PLAYERS.PLAYER1)
+        {
+            unitsP1.Remove(unit);
+        }
 		else
-			unitsP2.Remove (unit);
-	}
+        {
+            unitsP2.Remove(unit);
+        }
+        if (!rewarded && unitAi.Won && unitsP1.Count == 0 && unitsP2.Count == 0)
+        {
+            gameManager.ChangeScore(gameManager.GetWaveWinScore, unitAi.Owner, unitAi.lane);
+            rewarded = true;
+        }
+    }
 
-	public bool HasHostileUnits(PLAYERS player) {
+    public bool HasHostileUnits(PLAYERS player) {
 		if (player == PLAYERS.PLAYER1)
 			return unitsP2.Count > 0;
 		else
