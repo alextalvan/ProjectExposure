@@ -101,45 +101,47 @@ public class EnergyBuilding : GameManagerSearcher
 	#endif
 	{
 
-		//temp fix for mouse input, not needed for touch
-		transform.parent.GetComponent<HexagonTile>().OnMouseUp();
-//		if(gameManager.playerData[Owner].currentInputState != INPUT_STATES.FREE)
-//			return;
-//
-//		foreach(Buff b in buffList.buffs)
-//		{
-//			if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
-//			{
-//				BuildingStunBuff bstun = ((BuildingStunBuff)b);
-//				bstun.currentTapCount--;
-//				if(bstun.currentTapCount == 0) 
-//					bstun.currentDuration = bstun.maxDuration + 1.0f;
-//
-//			}
-//		}
-			
-	}
+        //temp fix for mouse input, not needed for touch
+#if !TOUCH_INPUT
+        transform.parent.GetComponent<HexagonTile>().OnMouseUp();
+#endif
+        //		if(gameManager.playerData[Owner].currentInputState != INPUT_STATES.FREE)
+        //			return;
+        //
+        //		foreach(Buff b in buffList.buffs)
+        //		{
+        //			if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
+        //			{
+        //				BuildingStunBuff bstun = ((BuildingStunBuff)b);
+        //				bstun.currentTapCount--;
+        //				if(bstun.currentTapCount == 0) 
+        //					bstun.currentDuration = bstun.maxDuration + 1.0f;
+        //
+        //			}
+        //		}
+
+    }
 
 
-//	[SerializeField]
-//	protected float currentPollution;
-//
-//	[SerializeField]
-//	protected float maxPollution;
-//
-//	[SerializeField]
-//	protected float currentEnergy;
-//
-//	[SerializeField]
-//	protected float maxEnergy;
-//
-//	protected abstract void UpdateEnergy();
-//
-//	protected abstract void UpdatePollution();
-//
-//	protected virtual void FixedUpdate()
-//	{
-//		UpdateEnergy();
-//		UpdatePollution();
-//	}
+    //	[SerializeField]
+    //	protected float currentPollution;
+    //
+    //	[SerializeField]
+    //	protected float maxPollution;
+    //
+    //	[SerializeField]
+    //	protected float currentEnergy;
+    //
+    //	[SerializeField]
+    //	protected float maxEnergy;
+    //
+    //	protected abstract void UpdateEnergy();
+    //
+    //	protected abstract void UpdatePollution();
+    //
+    //	protected virtual void FixedUpdate()
+    //	{
+    //		UpdateEnergy();
+    //		UpdatePollution();
+    //	}
 }
