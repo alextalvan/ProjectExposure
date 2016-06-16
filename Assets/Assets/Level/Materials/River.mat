@@ -38,13 +38,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Normal_map
-        second:
-          m_Texture: {fileID: 2800000, guid: e0547e5867992694cb1c3f14f574a380, type: 3}
-          m_Scale: {x: 1, y: 3.96}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -87,6 +80,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Normal_map
+        second:
+          m_Texture: {fileID: 2800000, guid: e0547e5867992694cb1c3f14f574a380, type: 3}
+          m_Scale: {x: 1, y: 3.96}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Texture
         second:
           m_Texture: {fileID: 2800000, guid: 7aae165d391b84eddbed5fd0ec9e6460, type: 3}
@@ -112,38 +112,6 @@ Material:
         first:
           name: _Cutoff
         second: 0.5
-      data:
-        first:
-          name: _Transparency
-        second: 0.038
-      data:
-        first:
-          name: _Soec_power
-        second: 1.29
-      data:
-        first:
-          name: _Soec_Int
-        second: 0.1
-      data:
-        first:
-          name: _Refr_Scale
-        second: -0.007
-      data:
-        first:
-          name: _Refr
-        second: -0.57
-      data:
-        first:
-          name: _Normal_intensity
-        second: -1.04
-      data:
-        first:
-          name: _Falloff_amuont
-        second: -0.1
-      data:
-        first:
-          name: _Falloff_intensity
-        second: 14.1
       data:
         first:
           name: _Parallax
@@ -180,6 +148,38 @@ Material:
         first:
           name: _Metallic
         second: 0.023
+      data:
+        first:
+          name: _Transparency
+        second: 0.038
+      data:
+        first:
+          name: _Soec_power
+        second: 1.29
+      data:
+        first:
+          name: _Soec_Int
+        second: 0.1
+      data:
+        first:
+          name: _Refr_Scale
+        second: -0.007
+      data:
+        first:
+          name: _Refr
+        second: -0.57
+      data:
+        first:
+          name: _Normal_intensity
+        second: -1.04
+      data:
+        first:
+          name: _Falloff_amuont
+        second: -0.1
+      data:
+        first:
+          name: _Falloff_intensity
+        second: 14.1
     m_Colors:
       data:
         first:
