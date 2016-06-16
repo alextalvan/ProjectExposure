@@ -1,19 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System;
 
-//using System;
 public class UnitAI : GameManagerSearcher
 {
+    public enum UnitType { Tank, Melee, Range };
+    [SerializeField]
+    private UnitType type = UnitType.Melee;
     enum AiState { Run, Fight, Wander, Cheer, Die };
     private AiState currentState = AiState.Run;
-    
-    public bool isActive { get { return currentState != AiState.Die && currentState != AiState.Cheer 
-                && currentState != AiState.Wander || (currentState == AiState.Wander && cityTile && cityTile.HasHostileUnits(owner)); } }
+
+    public bool isActive
+    {
+        get
+        {
+            return currentState != AiState.Die && currentState != AiState.Cheer
+&& currentState != AiState.Wander || (currentState == AiState.Wander && cityTile && cityTile.HasHostileUnits(owner));
+        }
+    }
     public bool Won { get { return currentState == AiState.Cheer; } }
 
     [SerializeField]
     int unitStrength = 1;
+    [SerializeField]
+    int attackPower = 1;
+    [SerializeField]
+    float attackRange = 1;
     public int GetStrength { get { return unitStrength; } }
     [SerializeField]
     float unitSpeed = 1f;
@@ -57,7 +68,7 @@ public class UnitAI : GameManagerSearcher
     private PLAYERS owner;
     public PLAYERS Owner { get { return owner; } }
 
-	public LANES lane;
+    public LANES lane;
 
     private Vector3 movementDir;
     private Transform target = null;
@@ -76,7 +87,7 @@ public class UnitAI : GameManagerSearcher
     protected override void Awake()
     {
         base.Awake();
-        attackTimer = attackCoolDown*0.5f;
+        attackTimer = attackCoolDown * 0.5f;
         wanderTimer = wanderAnimTime;
         cheerTimer = cheerAnimTime;
         deathTimer = deathAnimTime;
@@ -84,7 +95,7 @@ public class UnitAI : GameManagerSearcher
 
     void Start()
     {
-        foreach(GameObject model in models)
+        foreach (GameObject model in models)
         {
             materials.Add(model.transform.GetChild(0).GetComponent<Renderer>().material);
         }
@@ -169,6 +180,11 @@ public class UnitAI : GameManagerSearcher
 
         Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position, worldUp);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 0.05f);
+    }
+
+    private Transform GetEnemyInRange()
+    {
+        return null;
     }
 
     private void Fight()
@@ -272,11 +288,11 @@ public class UnitAI : GameManagerSearcher
         target = cityTile.GetEnemyUnit(owner);
     }
 
-	public void SetData(Vector3 targetPoint, PLAYERS owner, LANES lane)
+    public void SetData(Vector3 targetPoint, PLAYERS owner, LANES lane)
     {
         movementDir = (new Vector3(targetPoint.x, transform.position.y, transform.position.z) - transform.position).normalized;
         this.owner = owner;
-		this.lane = lane;
+        this.lane = lane;
     }
 
     private void LaunchProjectile()
@@ -340,23 +356,23 @@ public class UnitAI : GameManagerSearcher
         currentState = state;
     }
 
-	public void AddFreezeBuff(Buff b)
-	{
-		if(currentIceBlock == null)
-		{
-			currentIceBlock = (GameObject)Instantiate(iceBlockPrefab);
-			currentIceBlock.transform.SetParent(this.transform,false);
+    public void AddFreezeBuff(Buff b)
+    {
+        if (currentIceBlock == null)
+        {
+            currentIceBlock = (GameObject)Instantiate(iceBlockPrefab);
+            currentIceBlock.transform.SetParent(this.transform, false);
 
-			float sphereSize = GetComponent<SphereCollider>().radius;
-			currentIceBlock.transform.localScale = new Vector3(sphereSize,sphereSize,sphereSize);
-		}
+            float sphereSize = GetComponent<SphereCollider>().radius;
+            currentIceBlock.transform.localScale = new Vector3(sphereSize, sphereSize, sphereSize);
+        }
 
-		buffList.AddBuff(b);
+        buffList.AddBuff(b);
         foreach (GameObject model in models)
         {
             model.GetComponent<Animator>().speed = 0.0f;
         }
-	}
+    }
 
     //unfreeze
 #if TOUCH_INPUT
