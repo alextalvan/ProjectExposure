@@ -7,9 +7,10 @@ public class UnitAI : GameManagerSearcher
 {
     enum AiState { Run, Fight, Wander, Cheer, Die };
     private AiState currentState = AiState.Run;
-
+    
     public bool isActive { get { return currentState != AiState.Die && currentState != AiState.Cheer 
                 && currentState != AiState.Wander || (currentState == AiState.Wander && cityTile && cityTile.HasHostileUnits(owner)); } }
+    public bool Won { get { return currentState == AiState.Cheer; } }
 
     [SerializeField]
     int unitStrength = 1;
@@ -29,14 +30,11 @@ public class UnitAI : GameManagerSearcher
     float deathAnimTime = 1f;
 
     [SerializeField]
-    int scoreReward = 10;
-    [SerializeField]
     int moneyReward = 1;
 
     [SerializeField]
     List<GameObject> models = new List<GameObject>();
     private List<Material> materials = new List<Material>();
-    private List<ParticleSystem> attackParticles = new List<ParticleSystem>();
 
     [SerializeField]
     GameObject projParentPrefab;
@@ -69,9 +67,6 @@ public class UnitAI : GameManagerSearcher
     public event DestructionDelegate OnDestruction = null;
 
     [SerializeField]
-    TextMesh scoreGainFeedbackPrefab;
-
-    [SerializeField]
     CoinPickup coinSpawnPrefab;
 
     [SerializeField]
@@ -81,7 +76,7 @@ public class UnitAI : GameManagerSearcher
     protected override void Awake()
     {
         base.Awake();
-        attackTimer = attackCoolDown;
+        attackTimer = attackCoolDown*0.5f;
         wanderTimer = wanderAnimTime;
         cheerTimer = cheerAnimTime;
         deathTimer = deathAnimTime;
@@ -92,8 +87,6 @@ public class UnitAI : GameManagerSearcher
         foreach(GameObject model in models)
         {
             materials.Add(model.transform.GetChild(0).GetComponent<Renderer>().material);
-            //attackParticles.Add(model.transform.GetChild(1).GetChild(0).GetComponent<ParticleSystem>());
-            //attackParticles.Add(model.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<ParticleSystem>());
         }
         //orientation
         Vector3 worldUp = Physics.gravity.normalized * -1.0f;
@@ -240,15 +233,9 @@ public class UnitAI : GameManagerSearcher
         }
         if (cheerTimer <= 0f)
         {
-            GenerateScore();
-            //gameManager.SpawnUICoin(this.owner,this.transform.position,moneyReward);
-
-            GameObject scoreTextFeedback = (GameObject)Instantiate(scoreGainFeedbackPrefab.gameObject, this.transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-            scoreTextFeedback.GetComponent<TextMesh>().text = "+" + this.scoreReward.ToString();
-            Destroy(scoreTextFeedback, 3.0f);
+            if (cityTile)
+                cityTile.RemoveUnit(transform, owner);
             Destroy(this.gameObject);
-
-			gameManager.ChangeScore(this.scoreReward, this.Owner ,this.lane);
         }
     }
 
@@ -307,12 +294,6 @@ public class UnitAI : GameManagerSearcher
             projectile.gameObject.layer = owner == PLAYERS.PLAYER1 ? 16 : 17;
             projectile.transform.SetParent(projParent.transform);
         }
-        /*
-        foreach (ParticleSystem attackParticle in attackParticles)
-        {
-            attackParticle.Play();
-        }
-        */
     }
 
     private Vector3 CalculateProjectileDir(Vector3 origin, Vector3 target, float flightTime)
@@ -358,19 +339,6 @@ public class UnitAI : GameManagerSearcher
         }
         currentState = state;
     }
-
-	void GenerateScore()
-	{
-		switch(owner)
-		{
-			case PLAYERS.PLAYER1:
-				//gameManager.Player1Score += scoreReward;
-				break;
-			case PLAYERS.PLAYER2:
-				//gameManager.Player2Score += scoreReward;
-				break;
-		}
-	}
 
 	public void AddFreezeBuff(Buff b)
 	{

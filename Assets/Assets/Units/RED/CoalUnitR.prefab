@@ -4027,11 +4027,10 @@ MonoBehaviour:
   unitStrength: 8
   unitSpeed: 0.018
   rayCastDist: 0.5
-  attackCoolDown: 1
+  attackCoolDown: 2
   wanderAnimTime: 3
   cheerAnimTime: 3.3
   deathAnimTime: 2
-  scoreReward: 1
   moneyReward: 1
   models:
   - {fileID: 143902}
@@ -4042,8 +4041,6 @@ MonoBehaviour:
   buffList:
     buffs: []
   lane: 0
-  scoreGainFeedbackPrefab: {fileID: 10253516, guid: 6421baf5968a30048bb875aec8bab27a,
-    type: 2}
   coinSpawnPrefab: {fileID: 11472550, guid: 78199230bebe9c540b88f8ac4630b5bf, type: 2}
   iceBlockPrefab: {fileID: 198636, guid: 856d1e0195ac9e44c9fdbdeb95837355, type: 2}
 --- !u!135 &13569606
