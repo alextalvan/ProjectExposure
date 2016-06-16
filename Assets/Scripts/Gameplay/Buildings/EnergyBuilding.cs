@@ -9,23 +9,29 @@ public class EnergyBuilding : GameManagerSearcher
 	LANES lane;
 	public LANES Lane { get { return lane; } set { lane = value; } }
 
-	[SerializeField]
-	float maxlifeTime = 30.0f;
+	//[SerializeField]
+	//float maxlifeTime = 30.0f;
 
-	[SerializeField]
-	float lifeTimeLeft;
+	//[SerializeField]
+	//float lifeTimeLeft;
 
 	//each building can leave the tile blocked after it is destroyed
+	//[SerializeField]
+	//float blockTime = 0.0f;
+
 	[SerializeField]
-	float blockTime = 0.0f;
+	float constructionTime = 5.0f;
+	float constructionTimeLeft;
+
+	public float ConstructionTimeLeft { get { return constructionTimeLeft; } } 
 
 	[SerializeField]
 	GameObject pollutionPrefab = null;
     public GameObject smog = null;
 
-	public float MaxLifeTime { get { return maxlifeTime; } }
-	public float CurrentLifeTimeLeft { get { return lifeTimeLeft; } }
-	public float BlockTime { get { return blockTime; } }
+//	public float MaxLifeTime { get { return maxlifeTime; } }
+//	public float CurrentLifeTimeLeft { get { return lifeTimeLeft; } }
+//	public float BlockTime { get { return blockTime; } }
 	public GameObject PollutionPrefab { get { return pollutionPrefab; } }
 
 	public delegate void BuildingDestructionDelegate();
@@ -36,8 +42,9 @@ public class EnergyBuilding : GameManagerSearcher
 
 	void Start()
 	{
-		Destroy(this.gameObject,maxlifeTime);
-		lifeTimeLeft = maxlifeTime;
+		//Destroy(this.gameObject,maxlifeTime);
+		//lifeTimeLeft = maxlifeTime;
+		constructionTimeLeft = constructionTime;
 	}
 
 	void OnDestroy()
@@ -49,8 +56,8 @@ public class EnergyBuilding : GameManagerSearcher
 
 	void Update()
 	{
-		lifeTimeLeft -= Time.deltaTime;
-
+		//lifeTimeLeft -= Time.deltaTime;
+		constructionTimeLeft -= Time.deltaTime;
 
 
 		bool wasDisabled = false;
@@ -88,25 +95,28 @@ public class EnergyBuilding : GameManagerSearcher
 
 
 #if TOUCH_INPUT
-	public void TouchEnd()
+	public void PenetratingTouchEnd()
 #else
     public void OnMouseUp()
 	#endif
 	{
-		if(gameManager.playerData[Owner].currentInputState != INPUT_STATES.FREE)
-			return;
 
-		foreach(Buff b in buffList.buffs)
-		{
-			if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
-			{
-				BuildingStunBuff bstun = ((BuildingStunBuff)b);
-				bstun.currentTapCount--;
-				if(bstun.currentTapCount == 0) 
-					bstun.currentDuration = bstun.maxDuration + 1.0f;
-
-			}
-		}
+		//temp fix for mouse input, not needed for touch
+		transform.parent.GetComponent<HexagonTile>().OnMouseUp();
+//		if(gameManager.playerData[Owner].currentInputState != INPUT_STATES.FREE)
+//			return;
+//
+//		foreach(Buff b in buffList.buffs)
+//		{
+//			if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
+//			{
+//				BuildingStunBuff bstun = ((BuildingStunBuff)b);
+//				bstun.currentTapCount--;
+//				if(bstun.currentTapCount == 0) 
+//					bstun.currentDuration = bstun.maxDuration + 1.0f;
+//
+//			}
+//		}
 			
 	}
 
