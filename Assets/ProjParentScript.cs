@@ -24,7 +24,11 @@ public class ProjParentScript : GameManagerSearcher
 
     public void DoDamage(UnitAI unit)
     {
-        unit.DecreaseStrength();
+		//temp
+		unit.DecreaseHealth(UnitAI.damageMatrix[(int)this.ownerAI.Type,(int)unit.Type]);
+
+
+        //unit.DecreaseHealth();
         bool dead = unit.CheckDeath();
         gameManager.UpdateStrDisplay();
         if (dead)

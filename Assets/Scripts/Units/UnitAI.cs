@@ -6,6 +6,13 @@ public class UnitAI : GameManagerSearcher
     public enum UnitType { Tank, Melee, Range };
     [SerializeField]
     private UnitType type = UnitType.Melee;
+	public UnitType Type { get { return type; } }
+
+
+	//temp for heim
+	static public int[,] damageMatrix = { {2,1,3}, {3,2,1}, { 1,3,2} };
+	//temp for heim
+
     enum AiState { Run, Fight, Wander, Cheer, Die };
     private AiState currentState = AiState.Run;
 
@@ -20,12 +27,12 @@ public class UnitAI : GameManagerSearcher
     public bool Won { get { return currentState == AiState.Cheer; } }
 
     [SerializeField]
-    int unitStrength = 1;
+    int unitHealth = 1;
     [SerializeField]
     int attackPower = 1;
     [SerializeField]
     float attackRange = 1;
-    public int GetStrength { get { return unitStrength; } }
+    public int GetStrength { get { return unitHealth; } }
     [SerializeField]
     float unitSpeed = 1f;
     [SerializeField]
@@ -331,14 +338,14 @@ public class UnitAI : GameManagerSearcher
         return result;
     }
 
-    public void DecreaseStrength()
+	public void DecreaseHealth(int amount)
     {
-        unitStrength--;
+        unitHealth -= amount;
     }
 
     public bool CheckDeath()
     {
-        if (unitStrength <= 0)
+		if (unitHealth <= 0)
         {
             CustomDestroy();
             return true;
