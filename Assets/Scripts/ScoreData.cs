@@ -24,17 +24,14 @@ public class ScoreData
 
 	public void ChangeScore(float amount)
 	{
-		if(amount < 0.0f)
-			score = Mathf.Clamp(score + amount,-1.0f * MaxScore,0.0f);
-		else
-			score = Mathf.Clamp(score + amount,0.0f, MaxScore);
+        score = Mathf.Clamp(score + amount, -MaxScore, MaxScore);
 
 		float normalizedProgress = score / scoreToWin;
 		float threshold = 1.0f / winIndicatorsLeft.Count;
 
 		int indicatorsUp = (int) Mathf.Abs(normalizedProgress / threshold);
 
-		if(amount<0.0f)
+		if(score < 0.0f)
 		{
 			for(int i=0; i < winIndicatorsLeft.Count; ++i)
 			{
