@@ -76,7 +76,7 @@ public class UnitAI : GameManagerSearcher
     protected override void Awake()
     {
         base.Awake();
-        attackTimer = attackCoolDown;
+        attackTimer = attackCoolDown*0.5f;
         wanderTimer = wanderAnimTime;
         cheerTimer = cheerAnimTime;
         deathTimer = deathAnimTime;
