@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	List<GameStage> gameStages = new List<GameStage>();
 	int currentGameStageIndex = 0;
-	private GameStage currentStage { get { return gameStages[currentGameStageIndex]; } }
+	public GameStage currentStage { get { return gameStages[currentGameStageIndex]; } }
 
 //	[SerializeField]
 //	Text player1scoreText;

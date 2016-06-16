@@ -34,7 +34,6 @@ public class Pickup : GameManagerSearcher {
 
 	bool EnemyHasUnits()
 	{
-		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
 		foreach(Transform tr in enemyData.unitGroups)
 		{
 			if(tr.childCount > 0)
@@ -45,7 +44,6 @@ public class Pickup : GameManagerSearcher {
 
 	bool EnemyHasBuildings()
 	{
-		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
 		foreach(HexagonTile tile in enemyData.tiles)
 		{
 			if(tile.CurrentEnergyBuilding!=null)
@@ -68,8 +66,7 @@ public class Pickup : GameManagerSearcher {
 
 	void FreezeEffect()
 	{
-		List<EnergyBuilding> candidateBuildings = new List<EnergyBuilding>();
-		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
+		List<EnergyBuilding> candidateBuildings = new List<EnergyBuilding>(6);
 
 		foreach(HexagonTile tile in enemyData.tiles)
 		{
@@ -80,6 +77,7 @@ public class Pickup : GameManagerSearcher {
 
 
 		BuildingStunBuff b = new BuildingStunBuff(999,freezeDuration);
+		//Buff b = new Buff(BUFF_TYPES.BUILDING_TEMPORARY_WEAKER_UNITS
 		EnergyBuilding building = candidateBuildings[Random.Range(0,candidateBuildings.Count)];
 		building.buffList.AddBuff(b);
 		building.GetComponent<UnitSpawner>().enabled = false;
@@ -90,7 +88,7 @@ public class Pickup : GameManagerSearcher {
 
 	bool QuakeCondition()
 	{
-		return EnemyHasUnits();
+		return EnemyHasBuildings();
 	}
 
 	void QuakeEffect()
@@ -99,10 +97,24 @@ public class Pickup : GameManagerSearcher {
 		{
 			enemyData.tiles[i].SwapBuilding(enemyData.tiles[Random.Range(i+1,enemyData.tiles.Count)]);
 		}
-
-		Destroy(this.gameObject);
+			
 		Camera.main.GetComponent<CameraShake>().Shake();
 		enemyData.currentInputState = INPUT_STATES.FREE;
 		enemyData.RefreshAllTilesHighlight();
+	}
+
+	bool DiamondCondition()
+	{
+		return true;
+	}
+
+	void DiamondEffect()
+	{
+		float maxmoney = gameManager.currentStage.forcedMaxMoney;
+
+		if(this.Owner == PLAYERS.PLAYER1)
+			gameManager.Player1Money = maxmoney;
+		else
+			gameManager.Player2Money = maxmoney;
 	}
 }
