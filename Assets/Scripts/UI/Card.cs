@@ -107,8 +107,8 @@ public abstract class Card : GameManagerSearcher
 
 		gameManager.raycastedOn2DObject = true;
 
-		if(this is ActionCard)
-			Destroy(this.gameObject);
+//		if(this is ActionCard)
+//			Destroy(this.gameObject);
 	}
 
 	protected virtual void Update()

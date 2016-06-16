@@ -21,6 +21,7 @@ public class TouchInputManager : MonoBehaviour
 	public static TouchInputManager Singleton { get { return _instance; } }
 
 
+
 	//used to keep track of the object each touch is locked to
 	//null value means the touch is not locked to any object
 	private Dictionary<int,GameObject> lockedObjects = new Dictionary<int, GameObject>();

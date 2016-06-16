@@ -94,33 +94,33 @@ public class EnergyBuilding : GameManagerSearcher
 	}
 
 
-#if TOUCH_INPUT
-	public void PenetratingTouchEnd()
-#else
-    public void OnMouseUp()
-	#endif
-	{
-
-        //temp fix for mouse input, not needed for touch
-#if !TOUCH_INPUT
-        transform.parent.GetComponent<HexagonTile>().OnMouseUp();
-#endif
-        //		if(gameManager.playerData[Owner].currentInputState != INPUT_STATES.FREE)
-        //			return;
-        //
-        //		foreach(Buff b in buffList.buffs)
-        //		{
-        //			if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
-        //			{
-        //				BuildingStunBuff bstun = ((BuildingStunBuff)b);
-        //				bstun.currentTapCount--;
-        //				if(bstun.currentTapCount == 0) 
-        //					bstun.currentDuration = bstun.maxDuration + 1.0f;
-        //
-        //			}
-        //		}
-
-    }
+//#if TOUCH_INPUT
+//	public void PenetratingTouchEnd()
+//#else
+//    public void OnMouseUp()
+//	#endif
+//	{
+//
+//        //temp fix for mouse input, not needed for touch
+//#if !TOUCH_INPUT
+//        transform.parent.GetComponent<HexagonTile>().OnMouseUp();
+//#endif
+//        //		if(gameManager.playerData[Owner].currentInputState != INPUT_STATES.FREE)
+//        //			return;
+//        //
+//        //		foreach(Buff b in buffList.buffs)
+//        //		{
+//        //			if(b.type == BUFF_TYPES.BUILDING_TEMPORARY_DISABLE)
+//        //			{
+//        //				BuildingStunBuff bstun = ((BuildingStunBuff)b);
+//        //				bstun.currentTapCount--;
+//        //				if(bstun.currentTapCount == 0) 
+//        //					bstun.currentDuration = bstun.maxDuration + 1.0f;
+//        //
+//        //			}
+//        //		}
+//
+//    }
 
 
     //	[SerializeField]
