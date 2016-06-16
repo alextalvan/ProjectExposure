@@ -82,8 +82,7 @@ Shader "Custom/FresnelTech" {
                 float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
                 float3 lightColor = _LightColor0.rgb;
 ////// Lighting:
-                float3 node_8119 = (((pow(max(0,dot(lightDirection,viewReflectDirection)),exp2(_Spec_gloss))*_Spec_Intensity)+tex2D( _GrabTexture, (_Dep*(_Hei - _Ref)*mul(tangentTransform, viewDirection).xy + (i.screenPos.rg*0.5+0.5)).rg).rgb)*_LightColor0.rgb);
-                float3 finalColor = node_8119;
+                float3 finalColor = (((pow(max(0,dot(lightDirection,viewReflectDirection)),exp2(_Spec_gloss))*_Spec_Intensity)+tex2D( _GrabTexture, (_Dep*(_Hei - _Ref)*mul(tangentTransform, viewDirection).xy + (i.screenPos.rg*0.5+0.5)).rg).rgb)*_LightColor0.rgb);
                 return fixed4(finalColor,1);
             }
             ENDCG
@@ -156,8 +155,7 @@ Shader "Custom/FresnelTech" {
                 float3 lightDirection = normalize(lerp(_WorldSpaceLightPos0.xyz, _WorldSpaceLightPos0.xyz - i.posWorld.xyz,_WorldSpaceLightPos0.w));
                 float3 lightColor = _LightColor0.rgb;
 ////// Lighting:
-                float3 node_8119 = (((pow(max(0,dot(lightDirection,viewReflectDirection)),exp2(_Spec_gloss))*_Spec_Intensity)+tex2D( _GrabTexture, (_Dep*(_Hei - _Ref)*mul(tangentTransform, viewDirection).xy + (i.screenPos.rg*0.5+0.5)).rg).rgb)*_LightColor0.rgb);
-                float3 finalColor = node_8119;
+                float3 finalColor = (((pow(max(0,dot(lightDirection,viewReflectDirection)),exp2(_Spec_gloss))*_Spec_Intensity)+tex2D( _GrabTexture, (_Dep*(_Hei - _Ref)*mul(tangentTransform, viewDirection).xy + (i.screenPos.rg*0.5+0.5)).rg).rgb)*_LightColor0.rgb);
                 return fixed4(finalColor * 1,0);
             }
             ENDCG
