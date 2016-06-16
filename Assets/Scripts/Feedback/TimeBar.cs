@@ -22,22 +22,25 @@ public class TimeBar : MonoBehaviour
 
 	void Start()
 	{
-		startScale = transform.localScale;
-		_renderer = GetComponent<Renderer>();
+		Destroy(this.gameObject);//temp
 
-		_building.OnDestruction += () => { Destroy(this.gameObject); };
-		this.transform.SetParent(null);
-		this.transform.localScale = startScale;
-		storedOffset = this.transform.position - _building.transform.position;
+
+//		startScale = transform.localScale;
+//		_renderer = GetComponent<Renderer>();
+//
+//		_building.OnDestruction += () => { Destroy(this.gameObject); };
+//		this.transform.SetParent(null);
+//		this.transform.localScale = startScale;
+//		storedOffset = this.transform.position - _building.transform.position;
 	}
 
 	void Update () 
 	{
-		float coef = _building.CurrentLifeTimeLeft / _building.MaxLifeTime;
-		transform.localScale = new Vector3(startScale.x * coef, startScale.y, startScale.z);
-
-		_renderer.material.color = Color.Lerp(minLifeColor,maxLifeColor,coef);
-
-		transform.position =  _building.transform.position + storedOffset;
+//		float coef = _building.CurrentLifeTimeLeft / _building.MaxLifeTime;
+//		transform.localScale = new Vector3(startScale.x * coef, startScale.y, startScale.z);
+//
+//		_renderer.material.color = Color.Lerp(minLifeColor,maxLifeColor,coef);
+//
+//		transform.position =  _building.transform.position + storedOffset;
 	}
 }

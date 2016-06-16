@@ -21,6 +21,14 @@ public class UnitSpawner : MonoBehaviour
 	[SerializeField]
 	private EnergyBuilding _energyBuilding;
 
+	[SerializeField]
+	int initialWaveDelay = 0;
+
+	[SerializeField]
+	int waveSpawnRate = 1;
+	int currentWaveSpawnCounter = 0;
+
+
     void Start()
     {
 
@@ -43,12 +51,21 @@ public class UnitSpawner : MonoBehaviour
     /// </summary>
     public void SpawnUnits()
     {
-        GameObject newUnit = Instantiate(unit, spawnPoint.position, Quaternion.identity) as GameObject;
-        newUnit.GetComponent<UnitAI>().SetData(targetArena.position, owner, lane);
-        newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
-        newUnit.transform.parent = unitGroupParent;
-        newUnit.transform.rotation = transform.rotation;
-        activeUnit = newUnit.transform;
+		initialWaveDelay--;
+		if(initialWaveDelay>-1)
+			return;
+
+		currentWaveSpawnCounter++;
+		if(currentWaveSpawnCounter>=waveSpawnRate)
+		{
+			currentWaveSpawnCounter = 0;
+	        GameObject newUnit = Instantiate(unit, spawnPoint.position, Quaternion.identity) as GameObject;
+	        newUnit.GetComponent<UnitAI>().SetData(targetArena.position, owner, lane);
+	        newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
+	        newUnit.transform.parent = unitGroupParent;
+	        newUnit.transform.rotation = transform.rotation;
+	        activeUnit = newUnit.transform;
+		}
     }
 
     /// <summary>
