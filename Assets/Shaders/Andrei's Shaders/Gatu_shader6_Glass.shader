@@ -41,7 +41,7 @@ Shader "Shader Forge/Gatu_shader6_Glass" {
             #include "UnityCG.cginc"
             #include "Lighting.cginc"
             #pragma multi_compile_fwdbase
-            #pragma exclude_renderers d3d11 metal d3d11_9x xbox360 xboxone ps3 ps4 psp2 
+            #pragma exclude_renderers metal d3d11_9x xbox360 xboxone ps3 ps4 psp2 
             #pragma target 2.0
             uniform sampler2D _GrabTexture;
             uniform float4 _TimeEditor;
@@ -114,8 +114,7 @@ Shader "Shader Forge/Gatu_shader6_Glass" {
                 float node_2007 = 0.5;
                 float node_258 = ((max(0,dot(normalDirection,lightDirection))+node_2007)*node_2007);
                 float node_9341 = (node_258*node_258);
-                float3 node_9358 = (((_Color.rgb*node_9341)+(pow(max(0,dot(lightDirection,viewReflectDirection)),exp(_Soec_power))*_Soec_Int)+(_Falloff_intensity*(pow(1.0-max(0,dot(normalDirection, viewDirection)),_Falloff_amuont)*node_9341)*_Fresnel_Color.rgb))*attenuation*_LightColor0.rgb);
-                float3 finalColor = emissive + node_9358;
+                float3 finalColor = emissive + (((_Color.rgb*node_9341)+(pow(max(0,dot(lightDirection,viewReflectDirection)),exp(_Soec_power))*_Soec_Int)+(_Falloff_intensity*(pow(1.0-max(0,dot(normalDirection, viewDirection)),_Falloff_amuont)*node_9341)*_Fresnel_Color.rgb))*attenuation*_LightColor0.rgb);
                 return fixed4(lerp(sceneColor.rgb, finalColor,_Transparency),1);
             }
             ENDCG
@@ -136,7 +135,7 @@ Shader "Shader Forge/Gatu_shader6_Glass" {
             #include "AutoLight.cginc"
             #include "Lighting.cginc"
             #pragma multi_compile_fwdadd
-            #pragma exclude_renderers d3d11 metal d3d11_9x xbox360 xboxone ps3 ps4 psp2 
+            #pragma exclude_renderers metal d3d11_9x xbox360 xboxone ps3 ps4 psp2 
             #pragma target 2.0
             uniform sampler2D _GrabTexture;
             uniform float4 _TimeEditor;
@@ -208,8 +207,7 @@ Shader "Shader Forge/Gatu_shader6_Glass" {
                 float node_2007 = 0.5;
                 float node_258 = ((max(0,dot(normalDirection,lightDirection))+node_2007)*node_2007);
                 float node_9341 = (node_258*node_258);
-                float3 node_9358 = (((_Color.rgb*node_9341)+(pow(max(0,dot(lightDirection,viewReflectDirection)),exp(_Soec_power))*_Soec_Int)+(_Falloff_intensity*(pow(1.0-max(0,dot(normalDirection, viewDirection)),_Falloff_amuont)*node_9341)*_Fresnel_Color.rgb))*attenuation*_LightColor0.rgb);
-                float3 finalColor = node_9358;
+                float3 finalColor = (((_Color.rgb*node_9341)+(pow(max(0,dot(lightDirection,viewReflectDirection)),exp(_Soec_power))*_Soec_Int)+(_Falloff_intensity*(pow(1.0-max(0,dot(normalDirection, viewDirection)),_Falloff_amuont)*node_9341)*_Fresnel_Color.rgb))*attenuation*_LightColor0.rgb);
                 return fixed4(finalColor * _Transparency,0);
             }
             ENDCG
