@@ -80,6 +80,20 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Diffuse_Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: 1b724bd8e7159424baa983877c211726, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emssion_Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: 3e4fcee607020d049bbf4dde69bff6b1, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Diffuse
         second:
           m_Texture: {fileID: 2800000, guid: f44281b4e22c5ec468dd14715bd7ab7c, type: 3}
@@ -90,20 +104,6 @@ Material:
           name: _Emssion
         second:
           m_Texture: {fileID: 2800000, guid: dce45f7baba6d664a90efabf90f59fcd, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Diffuse_Texture
-        second:
-          m_Texture: {fileID: 2800000, guid: 1b724bd8e7159424baa983877c211726, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Emssion_Texture
-        second:
-          m_Texture: {fileID: 2800000, guid: 3291a4d776985934cbec787d9f4e34cf, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -161,12 +161,12 @@ Material:
         second: 0
       data:
         first:
-          name: _Emission_Intensity
-        second: 6.5
+          name: _Clip
+        second: 1
       data:
         first:
-          name: _Clip
-        second: 0
+          name: _Emission_Intensity
+        second: 3.57
       data:
         first:
           name: _Spec_Power
@@ -182,17 +182,17 @@ Material:
         second: {r: 0, g: 1, b: 0.08965516, a: 1}
       data:
         first:
-          name: _Emssion_Tint
-        second: {r: 0, g: 0.83448267, b: 1, a: 1}
+          name: _Diffuse_tint
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _Texture_tint
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          name: _Emssion_Tint
+        second: {r: 0, g: 0.83448267, b: 1, a: 1}
       data:
         first:
           name: _Light_color
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _Diffuse_tint
-        second: {r: 1, g: 1, b: 1, a: 1}
+          name: _Texture_tint
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
