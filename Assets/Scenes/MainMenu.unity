@@ -279,6 +279,7 @@ GameObject:
   - 222: {fileID: 268608017}
   - 114: {fileID: 268608016}
   - 114: {fileID: 268608015}
+  - 114: {fileID: 268608018}
   m_Layer: 5
   m_Name: Red_Clean
   m_TagString: Untagged
@@ -378,6 +379,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 268608013}
+--- !u!114 &268608018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 268608013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf31f7561fae4980a08ec070a4c1a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &360355944
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,6 +829,7 @@ GameObject:
   - 222: {fileID: 1259144770}
   - 114: {fileID: 1259144769}
   - 114: {fileID: 1259144768}
+  - 114: {fileID: 1259144771}
   m_Layer: 5
   m_Name: Red_Player
   m_TagString: Untagged
@@ -880,7 +893,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1259144769}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1259144771}
+        m_MethodName: ChangeSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1259144771}
+        m_MethodName: ChangeSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1259144769
@@ -916,6 +951,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1259144766}
+--- !u!114 &1259144771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1259144766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e58fa4a7dda40c8a36812c662e24c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 21300000, guid: d935a5181e2004945965538ffbd8b925, type: 3}
+  button: {fileID: 268608015}
 --- !u!1 &1497378637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,6 +1121,7 @@ GameObject:
   - 222: {fileID: 1549266086}
   - 114: {fileID: 1549266085}
   - 114: {fileID: 1549266084}
+  - 114: {fileID: 1549266087}
   m_Layer: 5
   m_Name: Blue_Player
   m_TagString: Untagged
@@ -1136,7 +1185,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1549266085}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1549266087}
+        m_MethodName: ChangeSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1549266085
@@ -1172,6 +1232,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1549266082}
+--- !u!114 &1549266087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1549266082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e58fa4a7dda40c8a36812c662e24c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 21300000, guid: d9f74b1692e864526a708065669268db, type: 3}
+  button: {fileID: 20969326}
 --- !u!1 &1596685758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1256,7 @@ GameObject:
   - 222: {fileID: 1596685762}
   - 114: {fileID: 1596685761}
   - 114: {fileID: 1596685760}
+  - 114: {fileID: 1596685763}
   m_Layer: 5
   m_Name: Blue_AI
   m_TagString: Untagged
@@ -1246,7 +1320,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1596685761}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1596685763}
+        m_MethodName: ChangeSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1596685761
@@ -1282,6 +1367,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1596685758}
+--- !u!114 &1596685763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1596685758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e58fa4a7dda40c8a36812c662e24c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 21300000, guid: 98420fe36aba241f9885e2125db19853, type: 3}
+  button: {fileID: 20969326}
 --- !u!1 &1654116424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,6 +1503,7 @@ GameObject:
   - 222: {fileID: 1724035045}
   - 114: {fileID: 1724035044}
   - 114: {fileID: 1724035043}
+  - 114: {fileID: 1724035046}
   m_Layer: 5
   m_Name: Red_AI
   m_TagString: Untagged
@@ -1468,7 +1567,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1724035044}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1724035046}
+        m_MethodName: ChangeSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1724035044
@@ -1504,6 +1614,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1724035041}
+--- !u!114 &1724035046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1724035041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e58fa4a7dda40c8a36812c662e24c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 21300000, guid: 4f7071a282f93478197eb5e8fd3de56c, type: 3}
+  button: {fileID: 268608015}
 --- !u!1 &1766046022
 GameObject:
   m_ObjectHideFlags: 0
