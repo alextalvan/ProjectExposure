@@ -5,13 +5,13 @@ using System.Collections.Generic;
 [RequireComponent(typeof(EnergyBuilding))]
 public class UnitSpawner : MonoBehaviour
 {
-    private Transform targetArena;
     private Transform spawnPoint;
     private Transform unitGroupParent;
     [SerializeField]
     GameObject unit;
     [SerializeField]
     Transform activeUnit;
+    private float dirX;
 
 	PLAYERS owner;
 	LANES lane;
@@ -60,7 +60,7 @@ public class UnitSpawner : MonoBehaviour
 		{
 			currentWaveSpawnCounter = 0;
 	        GameObject newUnit = Instantiate(unit, spawnPoint.position, Quaternion.identity) as GameObject;
-	        newUnit.GetComponent<UnitAI>().SetData(targetArena.position, owner, lane);
+	        newUnit.GetComponent<UnitAI>().SetData(dirX, owner, lane);
 	        newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
 	        newUnit.transform.parent = unitGroupParent;
 	        newUnit.transform.rotation = transform.rotation;
@@ -75,9 +75,9 @@ public class UnitSpawner : MonoBehaviour
     /// <param name="pathRoot">Path root.</param>
     /// <param name="spawnPoint">Spawn point.</param>
     /// <param name="owner">Player owner.</param>
-    public void SetSpawnInformation(Transform targetArena, Transform spawnPt, Transform unitGroupParent, PLAYERS powner, LANES plane)
+    public void SetSpawnInformation(float dirX, Transform spawnPt, Transform unitGroupParent, PLAYERS powner, LANES plane)
     {
-        this.targetArena = targetArena;
+        this.dirX = dirX;
         spawnPoint = spawnPt;
         owner = powner;
         lane = plane;
