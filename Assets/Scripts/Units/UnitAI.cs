@@ -84,6 +84,8 @@ public class UnitAI : GameManagerSearcher
     GameObject iceBlockPrefab;
     GameObject currentIceBlock = null;
 
+    private Transform hostileLane = null;
+
     protected override void Awake()
     {
         base.Awake();
@@ -99,6 +101,8 @@ public class UnitAI : GameManagerSearcher
         {
             materials.Add(model.transform.GetChild(0).GetComponent<Renderer>().material);
         }
+        PLAYERS enemy = owner == PLAYERS.PLAYER1 ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1;
+        hostileLane = gameManager.playerData[enemy].unitGroups[(int)lane];
         //orientation
         Vector3 worldUp = Physics.gravity.normalized * -1.0f;
         float heightDiff = Vector3.Dot(worldUp, transform.position + movementDir) - Vector3.Dot(worldUp, transform.position);
@@ -184,6 +188,13 @@ public class UnitAI : GameManagerSearcher
 
     private Transform GetEnemyInRange()
     {
+        foreach(Transform enemy in hostileLane)
+        {
+            if (Vector3.Distance(enemy.position, transform.position) < attackRange)
+            {
+                return enemy;
+            }
+        }
         return null;
     }
 
