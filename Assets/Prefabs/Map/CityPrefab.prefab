@@ -240,7 +240,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.852, y: 0, z: 0}
+  m_LocalPosition: {x: 0.317, y: -0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 477712}
@@ -252,7 +252,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -0.091}
+  m_LocalPosition: {x: -0, y: -0, z: -0.151}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 447174}
@@ -264,7 +264,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.354, y: 0, z: 0}
+  m_LocalPosition: {x: -0.244, y: 0, z: 0.077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 447174}
@@ -276,7 +276,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.148}
+  m_LocalPosition: {x: 0, y: 0, z: 0.218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 447174}
@@ -288,7 +288,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -0.33, z: -0.621}
+  m_LocalPosition: {x: 0.01, y: -0.33, z: -0.516}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 429698}
@@ -303,8 +303,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163858}
-  m_LocalRotation: {x: 0.43695146, y: 0.002925425, z: 0.006021956, w: -0.8994602}
-  m_LocalPosition: {x: -0.23, y: 3.72, z: 4.38}
+  m_LocalRotation: {x: 0.0144066, y: -0.70641524, z: 0.0050171376, w: 0.7076333}
+  m_LocalPosition: {x: -0.12, y: 0.629, z: 0.142}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 404882}
@@ -321,7 +321,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.998, y: 0, z: -0}
+  m_LocalPosition: {x: -0.256, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 477712}
@@ -357,7 +357,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.29, z: 1.009}
+  m_LocalPosition: {x: 0.05, y: -0.29, z: 0.615}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 486718}
@@ -373,7 +373,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.372, y: -0, z: 0}
+  m_LocalPosition: {x: 0.328, y: -0, z: 0.077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 447174}
@@ -397,7 +397,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0.086}
+  m_LocalPosition: {x: -0, y: -0, z: 0.091}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 477712}
@@ -505,19 +505,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445d86b48bf9c2647a02b5ab159f28ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingSpawnCoolDown: 3
-  distBetweenBuldings: 0.7
+  buildingSpawnCoolDown: 2.7
+  distBetweenBuldings: 0.5
   minRndOffset: -0.1
-  maxRndOffset: 0.4
+  maxRndOffset: 0.1
   minRndLineOffset: 0
   maxRndLineOffset: 0
-  rndUpgradeSkipRate: 2
-  upgradeRange: 3.22
+  rndUpgradeSkipRate: 6
+  upgradeRange: 6
   upgradeRndShuffleRate: 1
   buildingPrefabs:
-  - {fileID: 171028, guid: 3c81ba451b72cfc44a87f1cc20f62fde, type: 2}
-  - {fileID: 194018, guid: 0c394cf2a920c2d499eb2a1afdf1dd60, type: 2}
-  - {fileID: 195118, guid: 50b2a48eb476a554990d3736ef69f446, type: 2}
+  - {fileID: 171028, guid: 820367058dcd460449a1166efb96018c, type: 2}
+  - {fileID: 194018, guid: 84f735e6b986ae642970bc80ccbd05ec, type: 2}
+  - {fileID: 195118, guid: c23209b4c03e08e49897e5fa33d21cd7, type: 2}
   topDistrict: {fileID: 477712}
   bottomDistrict: {fileID: 447174}
   buildings: {fileID: 404882}
@@ -557,7 +557,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 1.9
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
