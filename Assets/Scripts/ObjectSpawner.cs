@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 
 [RequireComponent(typeof(BoxCollider))]
-public class ObjectSpawner : MonoBehaviour {
-
+public class ObjectSpawner : MonoBehaviour 
+{
 	[SerializeField]
 	protected List<GameObject> prefabs = new List<GameObject>();
 
@@ -17,6 +17,7 @@ public class ObjectSpawner : MonoBehaviour {
 	[SerializeField]
 	bool inheritRotation = true;
 
+	[SerializeField]
 	float timeAccumulator = 0.0f;
 
 	BoxCollider _box;
