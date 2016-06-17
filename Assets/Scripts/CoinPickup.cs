@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(CardGlide),typeof(Collider),typeof(Rigidbody))]
+[RequireComponent(typeof(Collider),typeof(Rigidbody))]
 public class CoinPickup : GameManagerSearcher {
 
 	public PLAYERS owner;
 
 	[SerializeField]
-	public int valueAwarded;
+	public float valueAwarded = 1.0f;
 
 	//[SerializeField]
 	//GameObject UI_feedback_prefab;
@@ -33,7 +33,12 @@ public class CoinPickup : GameManagerSearcher {
 		//StartGlide();
         used = true;
         //gameManager.SpawnUICoin(this.owner,transform.position,valueAwarded);
-        //Destroy(this.gameObject);
+        
+		if(owner == PLAYERS.PLAYER1)
+			gameManager.Player1Money += this.valueAwarded;
+		else
+			gameManager.Player2Money += this.valueAwarded;
+		Destroy(this.gameObject);
     }
 
 	void Start()
