@@ -49,9 +49,11 @@ public class ObjectSpawner : MonoBehaviour
 		Matrix4x4 model = this.transform.localToWorldMatrix;
 		Vector3 spawnPoint = new Vector3(Random.Range(-ext.x,ext.x),Random.Range(-ext.y,ext.y),Random.Range(-ext.z,ext.z)) + _box.center;
 		spawnPoint = model * new Vector4(spawnPoint.x,spawnPoint.y,spawnPoint.z,1.0f);
-		Quaternion spawnRotation = (inheritRotation) ? this.transform.rotation : Quaternion.identity;
 
-		GameObject randomPickup = (GameObject)Instantiate(eligibleObjects[Random.Range(0,eligibleObjects.Count)],spawnPoint,spawnRotation);
+		GameObject randomPrefab = eligibleObjects [Random.Range (0, eligibleObjects.Count)];
+		Quaternion spawnRotation = (inheritRotation) ? this.transform.rotation : randomPrefab.transform.rotation;
+
+		GameObject randomPickup = (GameObject)Instantiate(randomPrefab,spawnPoint,spawnRotation);
 		OnSpawn(randomPickup);
 	}
 

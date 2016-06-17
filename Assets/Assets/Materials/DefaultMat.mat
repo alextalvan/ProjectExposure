@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Diamond
-  m_Shader: {fileID: 4800000, guid: fa76642d1b19d4dd3aeacd308d0fcfcb, type: 3}
+  m_Name: DefaultMat
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -20,8 +20,8 @@ Material:
           name: _MainTex
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 2, y: 2}
-          m_Offset: {x: 1, y: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
@@ -55,8 +55,8 @@ Material:
           name: _EmissionMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 2, y: 2}
-          m_Offset: {x: 1, y: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _DetailMask
@@ -78,20 +78,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Normal_map
-        second:
-          m_Texture: {fileID: 2800000, guid: 955b28caa92574e71b45d70189f7d8f9, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Overlay
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -108,7 +94,7 @@ Material:
       data:
         first:
           name: _Parallax
-        second: 0.0493
+        second: 0.02
       data:
         first:
           name: _ZWrite
@@ -116,7 +102,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.375
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -140,39 +126,7 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0.25
-      data:
-        first:
-          name: _Transparency
-        second: 0.187
-      data:
-        first:
-          name: _Soec_power
-        second: 6.17
-      data:
-        first:
-          name: _Soec_Int
-        second: 10
-      data:
-        first:
-          name: _Refr_Scale
         second: 0
-      data:
-        first:
-          name: _Refr
-        second: 2
-      data:
-        first:
-          name: _Normal_intensity
-        second: -2
-      data:
-        first:
-          name: _Falloff_amuont
-        second: -0.8
-      data:
-        first:
-          name: _Falloff_intensity
-        second: 6.3
     m_Colors:
       data:
         first:
@@ -181,8 +135,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 0.46323532, b: 0.89634895, a: 1}
-      data:
-        first:
-          name: _Fresnel_Color
-        second: {r: 0.7955774, g: 0.7980566, b: 0.8014706, a: 1}
+        second: {r: 0.8, g: 0.8, b: 0.8, a: 1}
