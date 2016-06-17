@@ -44,8 +44,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     AIPlayer AI2;
 
-//    [SerializeField]
-//	float gameTimer = 300.0f;
+    [SerializeField]
+	float gameTimer = 300.0f;
 
 	[SerializeField]
 	Text gameTimerText;
@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
     Dropdown player2DD;
 
 	[SerializeField]
-	GameObject gameOverText;
+	Text gameOverText;
 
     void Start()
 	{
@@ -206,6 +206,9 @@ public class GameManager : MonoBehaviour
 		if(Input.GetKeyUp(KeyCode.Escape))
 			Application.Quit();
 
+		if(Input.GetKeyUp(KeyCode.Space))
+			Application.LoadLevel(0);
+
 		if(!gameStarted)
 			return;
 
@@ -217,10 +220,26 @@ public class GameManager : MonoBehaviour
 			UpdateMoney();
 		}
 
-//		gameTimer -= Time.deltaTime;
-//		int seconds = ((int)gameTimer) % 60;
-//		int minutes = ((int)gameTimer) / 60;
-//		gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
+		gameTimer -= Time.deltaTime;
+		int seconds = ((int)gameTimer) % 60;
+		int minutes = ((int)gameTimer) / 60;
+		gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
+
+
+		if(gameTimer<=0.0f)
+		{
+			gameOverText.gameObject.SetActive(true);
+			int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
+
+			if(finalScore == 0)
+				gameOverText.text = "Game over. Draw.";
+
+			if(finalScore > 0)
+				gameOverText.text = "Game over. Blue wins.";
+
+			if(finalScore < 0)
+				gameOverText.text = "Game over. Red wins.";
+		}	
 //
 //		if(gameTimer <= 0.0f)
 //			gameOverText.SetActive(true);
@@ -318,6 +337,6 @@ public class GameManager : MonoBehaviour
 		float botRelativeScore = botLaneScoreData.Score / botLaneScoreData.MaxScore;
 
 		if(Mathf.Abs(topRelativeScore) >= 0.9999f && Mathf.Abs(botRelativeScore) >= 0.9999f && Mathf.Sign(botRelativeScore) == Mathf.Sign(topRelativeScore))
-			gameOverText.SetActive(true);
+			gameTimer = -1.0f;//gameOverText.SetActive(true);
 	}
 }
