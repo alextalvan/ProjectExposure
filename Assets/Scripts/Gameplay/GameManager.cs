@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     float waveCoolDown = 5f;
+	public float WaveCooldown { get { return waveCoolDown; } }
+
     [SerializeField]
     int waveWinScore = 1;
     public int GetWaveWinScore { get { return waveWinScore; } }
