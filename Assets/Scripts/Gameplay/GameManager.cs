@@ -8,25 +8,25 @@ using UnityEngine.Networking;
 
 public enum INPUT_STATES
 {
-	FREE,
-	PICKING_BUILDING_CARD_TARGET
+    FREE,
+    PICKING_BUILDING_CARD_TARGET
 }
 
 public enum ENERGY_BUILDING_TYPES
 {
-	COAL,
-	NUCLEAR,
-	WINDMILL,
-	SOLAR,
-	BIO_OIL,
-	GAS
+    COAL,
+    NUCLEAR,
+    WINDMILL,
+    SOLAR,
+    BIO_OIL,
+    GAS
 }
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     float waveCoolDown = 5f;
-	public float WaveCooldown { get { return waveCoolDown; } }
+    public float WaveCooldown { get { return waveCoolDown; } }
 
     [SerializeField]
     int waveWinScore = 1;
@@ -35,10 +35,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TouchInputManager touchInputManager;
 
-    public TouchInputManager GetTouchInputManager {  get { return touchInputManager; } }
+    public TouchInputManager GetTouchInputManager { get { return touchInputManager; } }
 
     [SerializeField]
-	bool gameStarted = false;
+    bool gameStarted = false;
 
     [SerializeField]
     AIPlayer AI1;
@@ -47,119 +47,116 @@ public class GameManager : MonoBehaviour
     AIPlayer AI2;
 
     [SerializeField]
-	float gameTimer = 300.0f;
-
-	[SerializeField]
-	Text gameTimerText;
-
-	//money updaterate in seconds
-	public float MONEY_UPDATE_RATE = 2.0f;
-
-	[SerializeField]
-	float moneyRate = 0;
-
-	float timeAccumulatorMoney = 0.0f;
-
-	[SerializeField]
-	float _player1money = 0;
-
-	[SerializeField]
-	float _player2money = 0;
-
-	[SerializeField]
-	ScoreData topLaneScoreData = new ScoreData();
-
-	[SerializeField]
-	ScoreData botLaneScoreData = new ScoreData();
-
-
-
-	[SerializeField]
-	MoneyBar _player1MoneyBar;
+    float gameTimer = 300.0f;
 
     [SerializeField]
-    List<WaveStrengthScript> waveStrengthList = new List<WaveStrengthScript>();
+    Text gameTimerText;
 
-	public float Player1Money 
-	{
-		get { return _player1money; }
-		set 
-		{ 
-			
-			value = Mathf.Clamp(value,0.0f,currentStage.forcedMaxMoney);
-			_player1money = value;
-			_player1MoneyBar.SetCutout(Mathf.Clamp01(_player1money / 10f));
-		}
-	}
+    //money updaterate in seconds
+    public float MONEY_UPDATE_RATE = 2.0f;
 
-	[SerializeField]
-	MoneyBar _player2MoneyBar;
+    [SerializeField]
+    float moneyRate = 0;
 
+    float timeAccumulatorMoney = 0.0f;
 
+    [SerializeField]
+    float _player1money = 0;
 
-	public float Player2Money 
-	{
-		get { return _player2money; }
-		set 
-		{ 
-			value = Mathf.Clamp(value,0.0f,currentStage.forcedMaxMoney);
-			_player2money = value;
-			_player2MoneyBar.SetCutout(Mathf.Clamp01(_player2money / 10f));
-		}
-	}
+    [SerializeField]
+    float _player2money = 0;
+
+    [SerializeField]
+    ScoreData topLaneScoreData = new ScoreData();
+
+    [SerializeField]
+    ScoreData botLaneScoreData = new ScoreData();
 
 
 
-//	[SerializeField]
-//	int _player1score = 0;
-//
-//	public int Player1Score 
-//	{
-//		get { return _player1score; }
-//		set 
-//		{ 
-//			if(value < 0) value = 0;
-//			_player1score = value;
-//			player1scoreText.text = _player1score.ToString();
-//		}
-//	}
-//
-//	[SerializeField]
-//	int _player2score = 0;
-//
-//	public int Player2Score
-//	{
-//		get { return _player2score; }
-//		set 
-//		{ 
-//			if(value < 0) value = 0;
-//			_player2score = value;
-//			player2scoreText.text = _player2score.ToString();
-//		}
-//	}
-		
+    [SerializeField]
+    MoneyBar _player1MoneyBar;
 
-	[SerializeField]
-	List<GameStage> gameStages = new List<GameStage>();
-	int currentGameStageIndex = 0;
-	public GameStage currentStage { get { return gameStages[currentGameStageIndex]; } }
+    public float Player1Money
+    {
+        get { return _player1money; }
+        set
+        {
 
-//	[SerializeField]
-//	Text player1scoreText;
-//
-//	[SerializeField]
-//	Text player2scoreText;
+            value = Mathf.Clamp(value, 0.0f, currentStage.forcedMaxMoney);
+            _player1money = value;
+            _player1MoneyBar.SetCutout(Mathf.Clamp01(_player1money / 10f));
+        }
+    }
 
-	[SerializeField]
-	PlayerGameDataList _playerData = new PlayerGameDataList();
+    [SerializeField]
+    MoneyBar _player2MoneyBar;
 
-	public PlayerGameDataList playerData { get { return _playerData; } }
 
-	[SerializeField]
-	Transform UI_root;
 
-	[SerializeField]
-	GameObject UI_moneyPrefab;
+    public float Player2Money
+    {
+        get { return _player2money; }
+        set
+        {
+            value = Mathf.Clamp(value, 0.0f, currentStage.forcedMaxMoney);
+            _player2money = value;
+            _player2MoneyBar.SetCutout(Mathf.Clamp01(_player2money / 10f));
+        }
+    }
+
+
+
+    //	[SerializeField]
+    //	int _player1score = 0;
+    //
+    //	public int Player1Score 
+    //	{
+    //		get { return _player1score; }
+    //		set 
+    //		{ 
+    //			if(value < 0) value = 0;
+    //			_player1score = value;
+    //			player1scoreText.text = _player1score.ToString();
+    //		}
+    //	}
+    //
+    //	[SerializeField]
+    //	int _player2score = 0;
+    //
+    //	public int Player2Score
+    //	{
+    //		get { return _player2score; }
+    //		set 
+    //		{ 
+    //			if(value < 0) value = 0;
+    //			_player2score = value;
+    //			player2scoreText.text = _player2score.ToString();
+    //		}
+    //	}
+
+
+    [SerializeField]
+    List<GameStage> gameStages = new List<GameStage>();
+    int currentGameStageIndex = 0;
+    public GameStage currentStage { get { return gameStages[currentGameStageIndex]; } }
+
+    //	[SerializeField]
+    //	Text player1scoreText;
+    //
+    //	[SerializeField]
+    //	Text player2scoreText;
+
+    [SerializeField]
+    PlayerGameDataList _playerData = new PlayerGameDataList();
+
+    public PlayerGameDataList playerData { get { return _playerData; } }
+
+    [SerializeField]
+    Transform UI_root;
+
+    [SerializeField]
+    GameObject UI_moneyPrefab;
 
     [SerializeField]
     Dropdown player1DD;
@@ -167,22 +164,26 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Dropdown player2DD;
 
-	[SerializeField]
-	Text gameOverText;
+    [SerializeField]
+    Text gameOverText;
+
+    private int unitsAlive = 0;
+    public int UnitsAlive { get { return unitsAlive; } set { unitsAlive = value; } }
 
     void Start()
-	{
-		//forcing refresh at start because of inspector filling of starting money
-		Player1Money = _player1money;
-		Player2Money = _player2money;
+    {
+        //forcing refresh at start because of inspector filling of starting money
+        Player1Money = _player1money;
+        Player2Money = _player2money;
         StartCoroutine(SpawnWave());
-		ChangeScore(0,PLAYERS.PLAYER1,LANES.TOP);//force score refresh at start
-		ChangeScore(0,PLAYERS.PLAYER1,LANES.BOT);
-	}
+        ChangeScore(0, PLAYERS.PLAYER1, LANES.TOP);//force score refresh at start
+        ChangeScore(0, PLAYERS.PLAYER1, LANES.BOT);
+    }
 
     IEnumerator SpawnWave()
     {
         yield return new WaitForSeconds(waveCoolDown);
+
         foreach (HexagonTile tile in playerData[PLAYERS.PLAYER1].tiles)
         {
             if (tile.CurrentEnergyBuilding)
@@ -193,62 +194,62 @@ public class GameManager : MonoBehaviour
             if (tile.CurrentEnergyBuilding)
                 tile.CurrentEnergyBuilding.GetComponent<UnitSpawner>().SpawnUnits();
         }
-        UpdateStrDisplay();
-        StartCoroutine(SpawnWave());
+        unitsAlive--;
     }
 
-    public void UpdateStrDisplay()
+    void Update()
     {
-        foreach (WaveStrengthScript waveStr in waveStrengthList)
-            waveStr.UpdateStrength(false);
-    }
+        if (Input.GetKeyUp(KeyCode.Escape))
+            Application.Quit();
 
-	void Update () 
-	{
-		if(Input.GetKeyUp(KeyCode.Escape))
-			Application.Quit();
+        if (Input.GetKeyUp(KeyCode.Space))
+            Application.LoadLevel(0);
 
-		if(Input.GetKeyUp(KeyCode.Space))
-			Application.LoadLevel(0);
+        if (!gameStarted)
+            return;
 
-		if(!gameStarted)
-			return;
+        timeAccumulatorMoney += Time.deltaTime;
 
-		timeAccumulatorMoney += Time.deltaTime;
+        while (timeAccumulatorMoney >= MONEY_UPDATE_RATE)
+        {
+            timeAccumulatorMoney -= MONEY_UPDATE_RATE;
+            UpdateMoney();
+        }
 
-		while(timeAccumulatorMoney >= MONEY_UPDATE_RATE)
-		{
-			timeAccumulatorMoney -= MONEY_UPDATE_RATE;
-			UpdateMoney();
-		}
-
-		gameTimer -= Time.deltaTime;
-		int seconds = ((int)gameTimer) % 60;
-		int minutes = ((int)gameTimer) / 60;
-		gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
+        gameTimer -= Time.deltaTime;
+        int seconds = ((int)gameTimer) % 60;
+        int minutes = ((int)gameTimer) / 60;
+        gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
 
 
-		if(gameTimer<=0.0f)
-		{
-			gameOverText.gameObject.SetActive(true);
-			int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
+        if (gameTimer <= 0.0f)
+        {
+            gameOverText.gameObject.SetActive(true);
+            int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
 
-			if(finalScore == 0)
-				gameOverText.text = "Game over. Draw.";
+            if (finalScore == 0)
+                gameOverText.text = "Game over. Draw.";
 
-			if(finalScore > 0)
-				gameOverText.text = "Game over. Blue wins.";
+            if (finalScore > 0)
+                gameOverText.text = "Game over. Blue wins.";
 
-			if(finalScore < 0)
-				gameOverText.text = "Game over. Red wins.";
-		}	
-//
-//		if(gameTimer <= 0.0f)
-//			gameOverText.SetActive(true);
+            if (finalScore < 0)
+                gameOverText.text = "Game over. Red wins.";
+        }
 
-		UpdateGameStage();
+        if (unitsAlive <= 0)
+        { 
+            unitsAlive++;
+            StartCoroutine(SpawnWave());
+        }
 
-		/*
+        //
+        //		if(gameTimer <= 0.0f)
+        //			gameOverText.SetActive(true);
+
+        UpdateGameStage();
+
+        /*
 		timeAccumulatorWaves += Time.deltaTime;
 
 		while(timeAccumulatorWaves >= waveInterval)
@@ -258,49 +259,49 @@ public class GameManager : MonoBehaviour
 				OnNewWave();
 		}	*/
 
-		CalculateWinCondition();
+        CalculateWinCondition();
 
-		topLaneScoreData.Update();
-		botLaneScoreData.Update();
+        topLaneScoreData.Update();
+        botLaneScoreData.Update();
 
-	}
+    }
 
-	void UpdateMoney()
-	{
-		Player1Money += moneyRate; 
-		Player2Money += moneyRate;
-	}
+    void UpdateMoney()
+    {
+        Player1Money += moneyRate;
+        Player2Money += moneyRate;
+    }
 
-	void UpdateGameStage()
-	{
-		currentStage.duration-= Time.deltaTime;
-		if(currentStage.duration <= 0.0f && currentGameStageIndex < gameStages.Count - 1)
-			currentGameStageIndex++;
-	}
+    void UpdateGameStage()
+    {
+        currentStage.duration -= Time.deltaTime;
+        if (currentStage.duration <= 0.0f && currentGameStageIndex < gameStages.Count - 1)
+            currentGameStageIndex++;
+    }
 
-	public void StartEnergyBuildingTileSelection(Card card)
-	{
-		PlayerGameData pdata = playerData[card.Owner];
+    public void StartEnergyBuildingTileSelection(Card card)
+    {
+        PlayerGameData pdata = playerData[card.Owner];
 
-		foreach(HexagonTile t in pdata.tiles)
-		{
-			if(t.AllowBuild)
-				t.SetOutlineState(HexagonTile.OUTLINE_STATES.BUILD_NEW);
-		}
-			
-		pdata.currentInputState = INPUT_STATES.PICKING_BUILDING_CARD_TARGET;
-	}
+        foreach (HexagonTile t in pdata.tiles)
+        {
+            if (t.AllowBuild)
+                t.SetOutlineState(HexagonTile.OUTLINE_STATES.BUILD_NEW);
+        }
+
+        pdata.currentInputState = INPUT_STATES.PICKING_BUILDING_CARD_TARGET;
+    }
 
 
 
-	//temp fix for using mouse, this will be useless when touch input is used
-	public bool raycastedOn2DObject = false;
+    //temp fix for using mouse, this will be useless when touch input is used
+    public bool raycastedOn2DObject = false;
 
-	void LateUpdate()
-	{
-		raycastedOn2DObject = false;
-	}
-		
+    void LateUpdate()
+    {
+        raycastedOn2DObject = false;
+    }
+
 
     public void SetPlayer(int index)
     {
@@ -318,30 +319,30 @@ public class GameManager : MonoBehaviour
             AI2.enabled = aiEnabled;
     }
 
-	public void StartGame()
-	{
-		gameStarted = true;
-		gameTimerText.gameObject.SetActive(true);
-	}
+    public void StartGame()
+    {
+        gameStarted = true;
+        gameTimerText.gameObject.SetActive(true);
+    }
 
-	public void ChangeScore(int score, PLAYERS owner, LANES lane)
-	{
-		float scoreDelta = score * ((owner == PLAYERS.PLAYER1) ? -1.0f : 1.0f);
+    public void ChangeScore(int score, PLAYERS owner, LANES lane)
+    {
+        float scoreDelta = score * ((owner == PLAYERS.PLAYER1) ? -1.0f : 1.0f);
 
-		if(lane == LANES.TOP)
-			topLaneScoreData.ChangeScore(scoreDelta);
+        if (lane == LANES.TOP)
+            topLaneScoreData.ChangeScore(scoreDelta);
 
-		if(lane == LANES.BOT)
-			botLaneScoreData.ChangeScore(scoreDelta);
-	}
+        if (lane == LANES.BOT)
+            botLaneScoreData.ChangeScore(scoreDelta);
+    }
 
-	void CalculateWinCondition()
-	{
-		
-		float topRelativeScore = topLaneScoreData.Score / topLaneScoreData.MaxScore;
-		float botRelativeScore = botLaneScoreData.Score / botLaneScoreData.MaxScore;
+    void CalculateWinCondition()
+    {
 
-		if(Mathf.Abs(topRelativeScore) >= 0.9999f && Mathf.Abs(botRelativeScore) >= 0.9999f && Mathf.Sign(botRelativeScore) == Mathf.Sign(topRelativeScore))
-			gameTimer = -1.0f;//gameOverText.SetActive(true);
-	}
+        float topRelativeScore = topLaneScoreData.Score / topLaneScoreData.MaxScore;
+        float botRelativeScore = botLaneScoreData.Score / botLaneScoreData.MaxScore;
+
+        if (Mathf.Abs(topRelativeScore) >= 0.9999f && Mathf.Abs(botRelativeScore) >= 0.9999f && Mathf.Sign(botRelativeScore) == Mathf.Sign(topRelativeScore))
+            gameTimer = -1.0f;//gameOverText.SetActive(true);
+    }
 }
