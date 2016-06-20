@@ -223,6 +223,7 @@ public class UnitAI : GameManagerSearcher
         if (cheerTimer <= 0f)
         {
             Destroy(this.gameObject);
+			gameManager.ChangeScore(1,this.Owner,this.lane);
         }
     }
 
@@ -244,6 +245,7 @@ public class UnitAI : GameManagerSearcher
         transform.GetComponent<Rigidbody>().isKinematic = true;
         transform.GetComponent<Collider>().isTrigger = true;
         SetAiState(AiState.Die);
+		//healthBar.gameObject.SetActive(false);
     }
 
     public void StartCheer()
@@ -251,6 +253,7 @@ public class UnitAI : GameManagerSearcher
         transform.GetComponent<Rigidbody>().isKinematic = true;
         transform.GetComponent<Collider>().isTrigger = true;
         SetAiState(AiState.Cheer);
+		healthBar.gameObject.SetActive(false);
     }
 
     void OnDestroy()
