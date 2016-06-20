@@ -17,6 +17,9 @@ public class HealthBar : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		if(targetScale < 0.0f)
+			targetScale = 0.0f;
+
 		Vector3 scale = barObject.localScale;
 		scale.x = Mathf.Lerp(scale.x,targetScale,interpolationSpeed);
 		barObject.localScale = scale;
