@@ -830,6 +830,7 @@ GameObject:
   - 114: {fileID: 1259144769}
   - 114: {fileID: 1259144768}
   - 114: {fileID: 1259144771}
+  - 114: {fileID: 1259144772}
   m_Layer: 5
   m_Name: Red_Player
   m_TagString: Untagged
@@ -964,6 +965,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newSprite: {fileID: 21300000, guid: d935a5181e2004945965538ffbd8b925, type: 3}
   button: {fileID: 268608015}
+--- !u!114 &1259144772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1259144766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e58fa4a7dda40c8a36812c662e24c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 21300000, guid: a7148420a2e1f4ff38c45ca65d7ce8d0, type: 3}
+  button: {fileID: 1259144768}
 --- !u!1 &1497378637
 GameObject:
   m_ObjectHideFlags: 0
