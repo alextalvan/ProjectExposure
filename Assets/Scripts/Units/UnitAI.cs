@@ -3,45 +3,28 @@ using System.Collections.Generic;
 
 public class UnitAI : GameManagerSearcher
 {
-    public enum UnitType { Tank, Melee, Range };
+    public enum UnitType { Tank = 0, Melee = 1, Range = 2 };
     [SerializeField]
     private UnitType type = UnitType.Melee;
-	public UnitType Type { get { return type; } }
+    public UnitType Type { get { return type; } }
 
+    //temp for heim
+    static public int[,] damageMatrix = { { 2, 1, 3 }, { 3, 2, 1 }, { 1, 3, 2 } };
 
-	//temp for heim
-	static public int[,] damageMatrix = { {2,1,3}, {3,2,1}, { 1,3,2} };
-	//temp for heim
-
-    enum AiState { Run, Fight, Wander, Cheer, Die };
+    enum AiState { Run, Fight, Cheer, Die };
     private AiState currentState = AiState.Run;
-
-    public bool isActive
-    {
-        get
-        {
-            return currentState != AiState.Die && currentState != AiState.Cheer
-&& currentState != AiState.Wander || (currentState == AiState.Wander && cityTile && cityTile.HasHostileUnits(owner));
-        }
-    }
     public bool Won { get { return currentState == AiState.Cheer; } }
+    public int Health { get { return unitHealth; } }
 
     [SerializeField]
     int unitHealth = 1;
     [SerializeField]
-    int attackPower = 1;
-    [SerializeField]
     float attackRange = 1;
-    public int GetStrength { get { return unitHealth; } }
     [SerializeField]
     float unitSpeed = 1f;
-    [SerializeField]
-    float rayCastDist = 1f;
 
     [SerializeField]
     float attackCoolDown = 1f;
-    [SerializeField]
-    float wanderAnimTime = 1f;
     [SerializeField]
     float cheerAnimTime = 1f;
     [SerializeField]
@@ -67,7 +50,6 @@ public class UnitAI : GameManagerSearcher
 
     public BuffList buffList = new BuffList();
 
-    private float wanderTimer;
     private float cheerTimer;
     private float deathTimer;
     private float attackTimer;
@@ -79,8 +61,6 @@ public class UnitAI : GameManagerSearcher
 
     private Vector3 movementDir;
     private Transform target = null;
-    private CityTileTrigger cityTile = null;
-    public CityTileTrigger CityTile { get { return cityTile; } set { cityTile = value; } }
     public delegate void DestructionDelegate();
     public event DestructionDelegate OnDestruction = null;
 
@@ -91,11 +71,12 @@ public class UnitAI : GameManagerSearcher
     GameObject iceBlockPrefab;
     GameObject currentIceBlock = null;
 
+    private Transform oppositeLane = null;
+
     protected override void Awake()
     {
         base.Awake();
         attackTimer = attackCoolDown * 0.5f;
-        wanderTimer = wanderAnimTime;
         cheerTimer = cheerAnimTime;
         deathTimer = deathAnimTime;
     }
@@ -106,6 +87,8 @@ public class UnitAI : GameManagerSearcher
         {
             materials.Add(model.transform.GetChild(0).GetComponent<Renderer>().material);
         }
+        PLAYERS enemy = owner == PLAYERS.PLAYER1 ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1;
+        oppositeLane = gameManager.playerData[enemy].unitGroups[(int)lane];
         //orientation
         Vector3 worldUp = Physics.gravity.normalized * -1.0f;
         float heightDiff = Vector3.Dot(worldUp, transform.position + movementDir) - Vector3.Dot(worldUp, transform.position);
@@ -131,9 +114,6 @@ public class UnitAI : GameManagerSearcher
                 break;
             case AiState.Fight:
                 Fight();
-                break;
-            case AiState.Wander:
-                Wander();
                 break;
             case AiState.Cheer:
                 Cheer();
@@ -161,19 +141,10 @@ public class UnitAI : GameManagerSearcher
 
     private void Run()
     {
-        if (cityTile)
+        if (target = GetEnemyInRange())
         {
-            bool hostileUnits = cityTile.HasHostileUnits(owner);
-            if (hostileUnits)
-            {
-                SetAiState(AiState.Fight);
-                return;
-            }
-            else
-            {
-                SetAiState(AiState.Wander);
-                return;
-            }
+            SetAiState(AiState.Fight);
+            return;
         }
 
         float speed = CalculateSpeed();
@@ -191,59 +162,46 @@ public class UnitAI : GameManagerSearcher
 
     private Transform GetEnemyInRange()
     {
-        return null;
+        Transform targetEnemy = null;
+        float minDist = Mathf.Infinity;
+        foreach (Transform enemy in oppositeLane)
+        {
+            float dist = Vector3.Distance(new Vector3(transform.position.x, enemy.position.y, enemy.position.z), transform.position);
+            if (Vector3.Distance(enemy.position, transform.position) < attackRange && dist < minDist && !enemy.GetComponent<UnitAI>().Won)
+            {
+                minDist = dist;
+                targetEnemy = enemy;
+            }
+        }
+        return targetEnemy;
     }
 
     private void Fight()
     {
         attackTimer -= Time.deltaTime;
-        bool hasEnemyUnits = cityTile.HasHostileUnits(owner);
-        if (hasEnemyUnits)
+        if (!target)
         {
-            if (!target)
+            if (!(target = GetEnemyInRange()))
             {
-                target = cityTile.GetEnemyUnit(owner);
+                SetAiState(AiState.Run);
+                return;
             }
-            else
-            {
-                //orientation
-                Vector3 worldUp = Physics.gravity.normalized * -1.0f;
-                float heightDiff = Vector3.Dot(worldUp, target.position) - Vector3.Dot(worldUp, transform.position);
-                Vector3 lookTargetPoint = target.position - heightDiff * worldUp;
-
-                Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position, worldUp);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 0.1f);
-            }
-
+        }
+        else
+        {
             if (target && attackTimer <= 0f)
             {
                 LaunchProjectile();
                 attackTimer = attackCoolDown;
             }
-        }
-        else
-        {
-            attackTimer = 0f;
-            SetAiState(AiState.Wander);
-        }
-    }
 
-    private void Wander()
-    {
-        wanderTimer -= Time.deltaTime;
-        if (wanderTimer <= 0f)
-        {
-            transform.GetComponent<Rigidbody>().isKinematic = true;
-            transform.GetComponent<Collider>().isTrigger = true;
-            Instantiate(conversionPrefab, transform.position, transform.rotation);
-            if (cityTile)
-                cityTile.RemoveUnit(transform, owner);
-            SetAiState(AiState.Cheer);
-        }
-        else if (cityTile.HasHostileUnits(owner))
-        {
-            wanderTimer = wanderAnimTime;
-            SetAiState(AiState.Fight);
+            //orientation
+            Vector3 worldUp = Physics.gravity.normalized * -1.0f;
+            float heightDiff = Vector3.Dot(worldUp, target.position) - Vector3.Dot(worldUp, transform.position);
+            Vector3 lookTargetPoint = target.position - heightDiff * worldUp;
+
+            Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position, worldUp);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 0.1f);
         }
     }
 
@@ -256,8 +214,6 @@ public class UnitAI : GameManagerSearcher
         }
         if (cheerTimer <= 0f)
         {
-            if (cityTile)
-                cityTile.RemoveUnit(transform, owner);
             Destroy(this.gameObject);
         }
     }
@@ -279,9 +235,14 @@ public class UnitAI : GameManagerSearcher
     {
         transform.GetComponent<Rigidbody>().isKinematic = true;
         transform.GetComponent<Collider>().isTrigger = true;
-        if (cityTile)
-            cityTile.RemoveUnit(transform, owner);
         SetAiState(AiState.Die);
+    }
+
+    public void StartCheer()
+    {
+        transform.GetComponent<Rigidbody>().isKinematic = true;
+        transform.GetComponent<Collider>().isTrigger = true;
+        SetAiState(AiState.Cheer);
     }
 
     void OnDestroy()
@@ -290,14 +251,14 @@ public class UnitAI : GameManagerSearcher
             OnDestruction();
     }
 
-    public void UpdateTarget()
+    public void NullifyTarget()
     {
-        target = cityTile.GetEnemyUnit(owner);
+        target = null;
     }
 
-    public void SetData(Vector3 targetPoint, PLAYERS owner, LANES lane)
+    public void SetData(float xDir, PLAYERS owner, LANES lane)
     {
-        movementDir = (new Vector3(targetPoint.x, transform.position.y, transform.position.z) - transform.position).normalized;
+        movementDir = new Vector3(xDir, 0, 0).normalized;
         this.owner = owner;
         this.lane = lane;
     }
@@ -306,12 +267,11 @@ public class UnitAI : GameManagerSearcher
     {
         GameObject projParent = Instantiate(projParentPrefab, transform.position, Quaternion.identity) as GameObject;
         projParent.GetComponent<ProjParentScript>().SetOwner = this;
-        projParent.GetComponent<ProjParentScript>().SetLifeTime = projectileFlightDuration;
         foreach (GameObject model in models)
         {
             Vector3 launchPos = model.transform.position + (model.transform.up * model.transform.lossyScale.y);
             GameObject projectile = Instantiate(projectilePrefab, model.transform.position + (model.transform.up * model.transform.lossyScale.y), Quaternion.identity) as GameObject;
-            Vector3 throwDir = CalculateProjectileDir(launchPos, target.position + (target.up * target.lossyScale.y), projectileFlightDuration);
+            Vector3 throwDir = CalculateProjectileDir(launchPos, target.position, projectileFlightDuration);
             projectile.GetComponent<Rigidbody>().AddForce(throwDir, ForceMode.VelocityChange);
             projectile.gameObject.layer = gameObject.layer;
             projectile.gameObject.layer = owner == PLAYERS.PLAYER1 ? 16 : 17;
@@ -327,7 +287,7 @@ public class UnitAI : GameManagerSearcher
         // Calculate h and v
         float x = diffVecH.magnitude / flightTime;
         float y = diffVec.y / flightTime + 0.5f * -Physics.gravity.y * flightTime;
-        float z = diffVec.y / flightTime + 0.5f * -Physics.gravity.z * flightTime;
+        float z = diffVec.z / flightTime + 0.5f * -Physics.gravity.z * flightTime;
 
         // create result vector for calculated starting speed
         Vector3 result = diffVecH.normalized;
@@ -338,14 +298,14 @@ public class UnitAI : GameManagerSearcher
         return result;
     }
 
-	public void DecreaseHealth(int amount)
+    public void DecreaseHealth(int amount)
     {
         unitHealth -= amount;
     }
 
     public bool CheckDeath()
     {
-		if (unitHealth <= 0)
+        if (unitHealth <= 0)
         {
             CustomDestroy();
             return true;

@@ -19,7 +19,7 @@ public class WaveStrengthScript : MonoBehaviour
         text = GetComponent<Text>();
         rectt = GetComponent<RectTransform>();
         foreach (Transform unit in lane)
-            strength += unit.GetComponent<UnitAI>().GetStrength;
+            strength += unit.GetComponent<UnitAI>().Health;
         text.text = strength.ToString();
         text.enabled = false;
     }
@@ -37,7 +37,7 @@ public class WaveStrengthScript : MonoBehaviour
         int unitsAlive = 0;
         foreach (Transform unit in lane)
         {
-            if (unit.GetComponent<UnitAI>().isActive)
+            if (!unit.GetComponent<UnitAI>().Won)
             {
                 unitsAlive++;
                 avgPos += unit.position;
@@ -57,7 +57,7 @@ public class WaveStrengthScript : MonoBehaviour
     {
         strength = 0;
         foreach (Transform unit in lane)
-            strength += unit.GetComponent<UnitAI>().GetStrength;
+            strength += unit.GetComponent<UnitAI>().Health;
         text.text = strength.ToString();
         if (strength <= 0)
         {
