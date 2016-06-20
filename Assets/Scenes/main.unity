@@ -19399,7 +19399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4150eebb26c24418944be7c4d258ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveCoolDown: 10
+  waveCoolDown: 1
   waveWinScore: 1
   touchInputManager: {fileID: 1915953432}
   gameStarted: 1
@@ -19409,18 +19409,18 @@ MonoBehaviour:
   gameTimerText: {fileID: 415794524}
   MONEY_UPDATE_RATE: 0.03
   moneyRate: 0.009
-  _player1money: 4
-  _player2money: 4
+  _player1money: 0
+  _player2money: 0
   topLaneScoreData:
     redBar: {fileID: 1907218202}
     blueBar: {fileID: 1423320570}
-    scoreToWin: 9
+    scoreToWin: 3
     score: 0
     maxBarScale: 1.25
   botLaneScoreData:
     redBar: {fileID: 821228551}
     blueBar: {fileID: 1348136330}
-    scoreToWin: 9
+    scoreToWin: 3
     score: 0
     maxBarScale: 1.25
   _player1MoneyBar: {fileID: 1404899488}

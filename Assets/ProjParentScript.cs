@@ -30,7 +30,6 @@ public class ProjParentScript : GameManagerSearcher
 
         //unit.DecreaseHealth();
         bool dead = unit.CheckDeath();
-        gameManager.UpdateStrDisplay();
         if (dead && ownerAI)
             ownerAI.NullifyTarget();
         Destroy(gameObject);
