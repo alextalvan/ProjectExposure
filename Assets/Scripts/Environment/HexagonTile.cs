@@ -77,11 +77,14 @@ public class HexagonTile : GameManagerSearcher
 	public EnergyBuilding CurrentEnergyBuilding { get { return _energyBuilding; } private set { _energyBuilding = value; } }
 
 	//hexagon tiles can be temporarily blocked
-	float blockTime = -1.0f;
+	//float blockTime = -1.0f;
+
+	//[SerializeField]
+	//GameObject buildingBlockedObject;
+
 
 	[SerializeField]
-	GameObject buildingBlockedObject;
-
+	PollutionZone pollutionZone;
 
 	void Start () 
 	{
@@ -107,14 +110,14 @@ public class HexagonTile : GameManagerSearcher
 
 	void Update()
 	{
-		blockTime -= Time.deltaTime;
-		if(blockTime <= 0.0f && buildingBlockedObject !=null)
-		{
-			Destroy(buildingBlockedObject.gameObject);
-			buildingBlockedObject = null;
-			//this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(true);
-			CalculateBaseOrNextOutline();
-		}
+//		blockTime -= Time.deltaTime;
+//		if(blockTime <= 0.0f && buildingBlockedObject !=null)
+//		{
+//			Destroy(buildingBlockedObject.gameObject);
+//			buildingBlockedObject = null;
+//			//this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(true);
+//			CalculateBaseOrNextOutline();
+//		}
 			
 	}
 		
@@ -126,7 +129,7 @@ public class HexagonTile : GameManagerSearcher
 	/// <param name="other">Other.</param>
 	public void SwapBuilding(HexagonTile other)
 	{
-		if(this == other || this.blockTime > 0.0f || other.blockTime > 0.0f)
+		if(this == other)
 			return;
 
 		if(!this._hasBuildingOnTop && !other._hasBuildingOnTop)
@@ -228,6 +231,11 @@ public class HexagonTile : GameManagerSearcher
 					//visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 					//Destroy(bc.gameObject);
 
+					if(_energyBuilding.IsPolluting)
+						pollutionZone.SetGrowState(true);
+					else
+						pollutionZone.SetGrowState(false);
+
 
 					SetOutlineState(OUTLINE_STATES.BASE);
 					if(nextTile!=null)
@@ -281,13 +289,13 @@ public class HexagonTile : GameManagerSearcher
 
 	public void CalculateBaseOrNextOutline()
 	{
-		if(blockTime <= 0.0f && previousTile == null && CurrentEnergyBuilding == null)
+		if(previousTile == null && CurrentEnergyBuilding == null)
 		{
 			SetOutlineState(OUTLINE_STATES.BUILD_NEXT);
 			return;
 		}
 
-		if(blockTime <= 0.0f && previousTile!=null && previousTile.CurrentEnergyBuilding !=null && CurrentEnergyBuilding == null)
+		if(previousTile!=null && previousTile.CurrentEnergyBuilding !=null && CurrentEnergyBuilding == null)
 		{
 			SetOutlineState(OUTLINE_STATES.BUILD_NEXT);
 			return;

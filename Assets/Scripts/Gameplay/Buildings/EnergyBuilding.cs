@@ -40,6 +40,11 @@ public class EnergyBuilding : GameManagerSearcher
 	//buildings can also be buffed
 	public BuffList buffList = new BuffList();
 
+	[SerializeField]
+	bool isPolluting = false;
+
+	public bool IsPolluting { get { return isPolluting; } }
+
 	void Start()
 	{
 		//Destroy(this.gameObject,maxlifeTime);
