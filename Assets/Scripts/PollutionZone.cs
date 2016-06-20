@@ -14,7 +14,17 @@ public class PollutionZone : MonoBehaviour
 	[SerializeField]
 	int turnsBeforeDamageUpgrade = 1;
 
+	[SerializeField]
+	int damageGainPerUpgrade = 1;
+
 	int currentTurnCount = 0;
+
+	bool isGrowing = false;
+
+	public void SetGrowState(bool state)
+	{
+		isGrowing = state;
+	}
 
 	public void HandleNewWave()
 	{
@@ -24,7 +34,11 @@ public class PollutionZone : MonoBehaviour
 		if(currentTurnCount == turnsBeforeDamageUpgrade)
 		{
 			currentTurnCount = 0;
-			currentDamage++;
+
+			if(isGrowing)
+				currentDamage += damageGainPerUpgrade;
+			else
+				currentDamage -= damageGainPerUpgrade;
 		}
 	}
 
