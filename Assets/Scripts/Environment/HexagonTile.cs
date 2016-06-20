@@ -27,8 +27,6 @@ public class HexagonTile : GameManagerSearcher
 	Transform spawnPoint;
     [SerializeField]
     float unitDirX;
-    [SerializeField]
-    float winPtXDist;
 
     public enum OUTLINE_STATES
 	{
