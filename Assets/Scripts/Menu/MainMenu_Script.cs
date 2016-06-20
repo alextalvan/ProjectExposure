@@ -12,4 +12,10 @@ public class MainMenu_Script : MonoBehaviour {
 
 	}
 
+	public void StopGame() 
+	{
+		SceneManager.LoadScene (0);
+
+	}
+
 }
