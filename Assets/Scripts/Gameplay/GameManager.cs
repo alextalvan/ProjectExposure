@@ -170,6 +170,12 @@ public class GameManager : MonoBehaviour
     private int unitsAlive = 0;
     public int UnitsAlive { get { return unitsAlive; } set { unitsAlive = value; } }
 
+	[SerializeField]
+	List<PollutionZone> redPollutionSpots;
+
+	[SerializeField]
+	List<PollutionZone> bluePollutionSpots;
+
     void Start()
     {
         //forcing refresh at start because of inspector filling of starting money
@@ -182,6 +188,14 @@ public class GameManager : MonoBehaviour
     IEnumerator SpawnWave()
     {
         yield return new WaitForSeconds(waveCoolDown);
+
+		//Debug.Log("test");
+
+		foreach(PollutionZone pol in redPollutionSpots)
+			pol.HandleNewWave();
+
+		foreach(PollutionZone pol in bluePollutionSpots)
+			pol.HandleNewWave();
 
         foreach (HexagonTile tile in playerData[PLAYERS.PLAYER1].tiles)
         {
