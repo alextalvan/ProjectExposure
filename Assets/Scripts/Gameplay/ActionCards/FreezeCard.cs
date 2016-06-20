@@ -41,7 +41,7 @@ public class FreezeCard : ActionCard
 		{
 			UnitAI aiComp = unit.GetComponent<UnitAI>();
             
-			if(aiComp && !aiComp.CityTile && !aiComp.buffList.HasBuff(BUFF_TYPES.UNIT_FREEZE))
+			if(aiComp && !aiComp.buffList.HasBuff(BUFF_TYPES.UNIT_FREEZE))
 			{
 				Buff freezeBuff = new Buff(BUFF_TYPES.UNIT_FREEZE,freezeDuration);
 				//aiComp.buffList.AddBuff(freezeBuff);
@@ -59,7 +59,7 @@ public class FreezeCard : ActionCard
         foreach (Transform unit in tr)
         {
             UnitAI aiComp = unit.GetComponent<UnitAI>();
-            if (aiComp.CityTile || aiComp.buffList.HasBuff(BUFF_TYPES.UNIT_FREEZE))
+            if (aiComp.buffList.HasBuff(BUFF_TYPES.UNIT_FREEZE))
                 count++;
         }
         if (count >= tr.childCount)

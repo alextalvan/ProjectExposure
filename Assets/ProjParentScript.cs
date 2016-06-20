@@ -3,8 +3,8 @@ using System.Collections;
 
 public class ProjParentScript : GameManagerSearcher
 {
+    [SerializeField]
     private float lifeTime = 10f;
-    public float SetLifeTime { set { lifeTime = value; } }
     private UnitAI ownerAI;
     public UnitAI SetOwner { set { ownerAI = value; } }
     private int projLeft;
@@ -31,8 +31,8 @@ public class ProjParentScript : GameManagerSearcher
         //unit.DecreaseHealth();
         bool dead = unit.CheckDeath();
         gameManager.UpdateStrDisplay();
-        if (dead)
-            ownerAI.UpdateTarget();
+        if (dead && ownerAI)
+            ownerAI.NullifyTarget();
         Destroy(gameObject);
     }
 

@@ -22,16 +22,15 @@ public class HexagonTile : GameManagerSearcher
 
 	//[SerializeField]
 	//ENVIRONMENT_TYPES _environmentType;
-
-	//the root containing all the waypoints for the ai, in order
-	[SerializeField]
-	Transform targetArena;
-
 	//the waypoint (in the path) which this tile spawns its units at
 	[SerializeField]
 	Transform spawnPoint;
+    [SerializeField]
+    float unitDirX;
+    [SerializeField]
+    float winPtXDist;
 
-	public enum OUTLINE_STATES
+    public enum OUTLINE_STATES
 	{
 		BASE,
 		BUILD_NEW,
@@ -149,7 +148,7 @@ public class HexagonTile : GameManagerSearcher
 //			myB.OnDestruction -= this.CleanupAfterBuildingIsDestroyed;
 //			myB.OnDestruction += other.CleanupAfterBuildingIsDestroyed;
 
-			myB.GetComponent<UnitSpawner>().SetSpawnInformation(other.targetArena,other.spawnPoint,other.spawnedUnitsParent,other.owner, other.lane);
+			myB.GetComponent<UnitSpawner>().SetSpawnInformation(unitDirX, other.spawnPoint,other.spawnedUnitsParent,other.owner, other.lane);
 
 			//other.visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 
@@ -171,7 +170,7 @@ public class HexagonTile : GameManagerSearcher
 //			otherB.OnDestruction -= other.CleanupAfterBuildingIsDestroyed;
 //			otherB.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
 
-			otherB.GetComponent<UnitSpawner>().SetSpawnInformation(this.targetArena, this.spawnPoint,this.spawnedUnitsParent,this.owner, this.lane);
+			otherB.GetComponent<UnitSpawner>().SetSpawnInformation(this.unitDirX, this.spawnPoint,this.spawnedUnitsParent,this.owner, this.lane);
 
 			//this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 				
@@ -215,7 +214,7 @@ public class HexagonTile : GameManagerSearcher
 					this._hasBuildingOnTop = true;
 					//currentEnergyBuilding = energyBuilding;
 
-					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(targetArena, spawnPoint,spawnedUnitsParent,owner, lane);
+					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(unitDirX, spawnPoint, spawnedUnitsParent,owner, lane);
 
 					_energyBuilding = energyBuilding.GetComponent<EnergyBuilding>();
 					//_energyBuilding.OnDestruction += this.CleanupAfterBuildingIsDestroyed;

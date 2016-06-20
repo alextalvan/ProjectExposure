@@ -82,15 +82,15 @@ Material:
         first:
           name: _Normal_map
         second:
-          m_Texture: {fileID: 2800000, guid: 955b28caa92574e71b45d70189f7d8f9, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Overlay
         second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
+          m_Texture: {fileID: 2800000, guid: 2a217cf032a6d46e3aaf049614801273, type: 3}
+          m_Scale: {x: 0.5, y: 9}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
@@ -144,35 +144,35 @@ Material:
       data:
         first:
           name: _Transparency
-        second: 0.362
+        second: 0.81
       data:
         first:
           name: _Soec_power
-        second: 6.85
+        second: 8.13
       data:
         first:
           name: _Soec_Int
-        second: 9.74
+        second: 7.78
       data:
         first:
           name: _Refr_Scale
-        second: 0
+        second: 0.112
       data:
         first:
           name: _Refr
-        second: 2
+        second: -0.83
       data:
         first:
           name: _Normal_intensity
-        second: -2
+        second: 0.59
       data:
         first:
           name: _Falloff_amuont
-        second: -0.4
+        second: -0.75
       data:
         first:
           name: _Falloff_intensity
-        second: 6.2
+        second: 10.4
     m_Colors:
       data:
         first:
@@ -181,8 +181,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.25205448, g: 0.30882353, b: 0.30177632, a: 1}
+        second: {r: 0.1102941, g: 0.1102941, b: 0.1102941, a: 1}
       data:
         first:
           name: _Fresnel_Color
-        second: {r: 0.8953585, g: 0.9852941, b: 0.7244809, a: 1}
+        second: {r: 0.057850353, g: 0.059904836, b: 0.07352942, a: 1}
