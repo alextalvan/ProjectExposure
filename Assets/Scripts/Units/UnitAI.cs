@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class UnitAI : GameManagerSearcher
@@ -245,15 +246,14 @@ public class UnitAI : GameManagerSearcher
         transform.GetComponent<Rigidbody>().isKinematic = true;
         transform.GetComponent<Collider>().isTrigger = true;
         SetAiState(AiState.Die);
-		//healthBar.gameObject.SetActive(false);
     }
 
     public void StartCheer()
     {
+        healthBar.gameObject.SetActive(false);
         transform.GetComponent<Rigidbody>().isKinematic = true;
         transform.GetComponent<Collider>().isTrigger = true;
         SetAiState(AiState.Cheer);
-		healthBar.gameObject.SetActive(false);
     }
 
     void OnDestroy()
