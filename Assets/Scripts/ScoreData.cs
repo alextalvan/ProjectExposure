@@ -7,10 +7,10 @@ public class ScoreData
 {
 	//public LANES lane;
 	[SerializeField]
-	private List<GameObject> winIndicatorsLeft = new List<GameObject>();
+	private Transform redBar;
 
 	[SerializeField]
-	private List<GameObject> winIndicatorsRight = new List<GameObject>();
+	private Transform blueBar;
 
 	[SerializeField]
 	private float scoreToWin = 20.0f;
@@ -21,44 +21,51 @@ public class ScoreData
 	private float score = 0.0f;
 	public float Score { get { return score; } }
 
+	[SerializeField]
+	float maxBarScale = 1.25f;
+
+	//[SerializeField]
+	float interpolationSpeed = 0.1f;
+
+	float targetRelativeScaleRed = 1.0f;
+	float targetRelativeScaleBlue = 1.0f;
 
 	public void ChangeScore(float amount)
 	{
         score = Mathf.Clamp(score + amount, -MaxScore, MaxScore);
 
-		float normalizedProgress = score / scoreToWin;
-		float threshold = 1.0f / winIndicatorsLeft.Count;
-
-		int indicatorsUp = (int) Mathf.Abs(normalizedProgress / threshold);
+		float normalizedScore = Mathf.Abs(score / MaxScore);
 
 		if(score < 0.0f)
 		{
-			for(int i=0; i < winIndicatorsLeft.Count; ++i)
-			{
-				if(i < indicatorsUp)
-					winIndicatorsLeft[i].SetActive(true);
-				else
-					winIndicatorsLeft[i].SetActive(false);
-			}
-
-			foreach(GameObject obj in winIndicatorsRight)
-				obj.SetActive(false);
+			targetRelativeScaleRed = 1.0f + normalizedScore;
+			targetRelativeScaleBlue = 1.0f - normalizedScore;
 		}
 		else
 		{
-			for(int i=0; i < winIndicatorsRight.Count; ++i)
-			{
-				if(i < indicatorsUp)
-					winIndicatorsRight[i].SetActive(true);
-				else
-					winIndicatorsRight[i].SetActive(false);
-			}
-
-			foreach(GameObject obj in winIndicatorsLeft)
-				obj.SetActive(false);
+			targetRelativeScaleBlue = 1.0f + normalizedScore;
+			targetRelativeScaleRed = 1.0f - normalizedScore;
 		}
 
 
+	}
+
+
+	public void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.K))
+			ChangeScore(-2);
+
+		if(Input.GetKeyDown(KeyCode.L))
+			ChangeScore(2);
+
+		Vector3 redScale = redBar.transform.localScale;
+		redScale.x = Mathf.Lerp(redScale.x,targetRelativeScaleRed * maxBarScale, interpolationSpeed);
+		redBar.transform.localScale = redScale;
+
+		Vector3 blueScale = blueBar.transform.localScale;
+		blueScale.x = Mathf.Lerp(blueScale.x,targetRelativeScaleBlue * maxBarScale, interpolationSpeed);
+		blueBar.transform.localScale = blueScale;
 	}
 }
 

@@ -260,6 +260,9 @@ public class GameManager : MonoBehaviour
 
 		CalculateWinCondition();
 
+		topLaneScoreData.Update();
+		botLaneScoreData.Update();
+
 	}
 
 	void UpdateMoney()
