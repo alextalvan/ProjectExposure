@@ -71,7 +71,13 @@ public class UnitAI : GameManagerSearcher
     GameObject iceBlockPrefab;
     GameObject currentIceBlock = null;
 
+
+	[SerializeField]
+	HealthBar healthBar;
+	float maxUnitHealth;
+
     private Transform oppositeLane = null;
+
 
     protected override void Awake()
     {
@@ -79,6 +85,7 @@ public class UnitAI : GameManagerSearcher
         attackTimer = attackCoolDown * 0.5f;
         cheerTimer = cheerAnimTime;
         deathTimer = deathAnimTime;
+		maxUnitHealth = unitHealth;
     }
 
     void Start()
@@ -301,6 +308,8 @@ public class UnitAI : GameManagerSearcher
     public void DecreaseHealth(int amount)
     {
         unitHealth -= amount;
+		if(healthBar)
+			healthBar.SetLength(unitHealth / maxUnitHealth);
     }
 
     public bool CheckDeath()

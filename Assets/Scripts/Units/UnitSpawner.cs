@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(EnergyBuilding))]
-public class UnitSpawner : MonoBehaviour
+public class UnitSpawner : GameManagerSearcher
 {
     private Transform spawnPoint;
     private Transform unitGroupParent;
@@ -28,10 +28,17 @@ public class UnitSpawner : MonoBehaviour
 	int waveSpawnRate = 1;
 	int currentWaveSpawnCounter = 0;
 
+	//float nextEstimatedSpawnTime;
+	//float spawnFeedbackTimer;
+	//float spawnFeedbackTotal;
+
+	//[SerializeField]
+	//Renderer spawnFeedbackRenderer;
 
     void Start()
     {
-
+		//spawnFeedbackTimer = 0.0f;
+		//nextEstimatedSpawnTime = 
         //gameManager.OnNewWave += this.SpawnUnits;
     }
 
@@ -43,7 +50,7 @@ public class UnitSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+		//spawnFeedbackRenderer.material.SetFloat("_Clip",
     }
 
     /// <summary>
@@ -65,6 +72,8 @@ public class UnitSpawner : MonoBehaviour
 	        newUnit.transform.parent = unitGroupParent;
 	        newUnit.transform.rotation = transform.rotation;
 	        activeUnit = newUnit.transform;
+
+			//spawnFeedbackTimer = gameManager.WaveCooldown * waveSpawnRate;
 		}
     }
 
