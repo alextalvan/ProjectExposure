@@ -175,7 +175,6 @@ public class GameManager : MonoBehaviour
         //forcing refresh at start because of inspector filling of starting money
         Player1Money = _player1money;
         Player2Money = _player2money;
-        StartCoroutine(SpawnWave());
         ChangeScore(0, PLAYERS.PLAYER1, LANES.TOP);//force score refresh at start
         ChangeScore(0, PLAYERS.PLAYER1, LANES.BOT);
     }
