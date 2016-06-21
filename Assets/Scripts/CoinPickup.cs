@@ -7,7 +7,7 @@ public class CoinPickup : GameManagerSearcher {
 	public PLAYERS owner;
 
 	[SerializeField]
-	public float valueAwarded = 1.0f;
+	public float boostDuration = 4.0f;
 
 	//[SerializeField]
 	//GameObject UI_feedback_prefab;
@@ -35,9 +35,9 @@ public class CoinPickup : GameManagerSearcher {
         //gameManager.SpawnUICoin(this.owner,transform.position,valueAwarded);
         
 		if(owner == PLAYERS.PLAYER1)
-			gameManager.Player1Money += this.valueAwarded;
+			gameManager.player1MoneyBoostTime = boostDuration;
 		else
-			gameManager.Player2Money += this.valueAwarded;
+			gameManager.player2MoneyBoostTime = boostDuration;
 		Destroy(this.gameObject);
     }
 

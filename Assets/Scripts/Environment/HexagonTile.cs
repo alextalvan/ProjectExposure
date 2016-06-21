@@ -237,9 +237,13 @@ public class HexagonTile : GameManagerSearcher
 					//Destroy(bc.gameObject);
 
 					if(_energyBuilding.IsPolluting)
+					{
 						pollutionZone.SetGrowState(true);
+					}
 					else
+					{
 						pollutionZone.SetGrowState(false);
+					}
 
 
 					SetOutlineState(OUTLINE_STATES.BASE);

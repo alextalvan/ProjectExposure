@@ -105,7 +105,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+	public float player1MoneyBoostTime = -1.0f;
+	public float player2MoneyBoostTime = -1.0f;
 
+	[SerializeField]
+	float moneyBoostStrength = 4.0f;
 
     //	[SerializeField]
     //	int _player1score = 0;
@@ -244,6 +248,9 @@ public class GameManager : MonoBehaviour
             UpdateMoney();
         }
 
+		player1MoneyBoostTime -= Time.deltaTime;
+		player2MoneyBoostTime -= Time.deltaTime;
+
         gameTimer -= Time.deltaTime;
         int seconds = ((int)gameTimer) % 60;
         int minutes = ((int)gameTimer) / 60;
@@ -299,8 +306,10 @@ public class GameManager : MonoBehaviour
 
     void UpdateMoney()
     {
-        Player1Money += moneyRate;
-        Player2Money += moneyRate;
+		Player1Money += moneyRate * ((player1MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
+		Player2Money += moneyRate * ((player2MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
+
+
     }
 
     void UpdateGameStage()
