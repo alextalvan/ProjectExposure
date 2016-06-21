@@ -34,6 +34,7 @@ public class AIPlayer : GameManagerSearcher
     Transform cardPicker;
 
     PlayerGameData playerData;
+    BuildingCard selectedCard = null;
 
     private List<BuildingCard> buildingCards = new List<BuildingCard>();
     private delegate void Action();
@@ -80,8 +81,9 @@ public class AIPlayer : GameManagerSearcher
     private void PickTarget()
     {
         if (playerData.pickUp)
-            PickUp();
-        SelectBuildingCard();
+            SelectPickUp();
+        else
+            SelectBuildingCard();
     }
 
     private void Behave()
@@ -122,15 +124,31 @@ public class AIPlayer : GameManagerSearcher
 
     private void SelectBuildingCard()
     {
+        int fossilCount = 0;
+        int greenCount = 0;
+
+        foreach (EnergyBuilding building in playerData.buildings)
+        {
+            if (building.IsPolluting)
+                fossilCount++;
+            else
+                greenCount++;
+        }
+
+        bool goGreen = fossilCount > greenCount ? true : false;
+
         List<BuildingCard> playableCards = new List<BuildingCard>();
         foreach (BuildingCard bCard in buildingCards)
             if (bCard.IsPlayable)
-                playableCards.Add(bCard);
+            {
+                if (!bCard.BuildingType.prefab.GetComponent<EnergyBuilding>().IsPolluting == goGreen)
+                    playableCards.Add(bCard);
+            }
 
         if (playableCards.Count == 0) return;
 
         int rndCardIndex = Random.Range(0, playableCards.Count);
-        BuildingCard selectedCard = playableCards[rndCardIndex];
+        selectedCard = playableCards[rndCardIndex];
         target = selectedCard.gameObject;
 #if TOUCH_INPUT
         OnAction += selectedCard.TouchEnd;
@@ -152,7 +170,7 @@ public class AIPlayer : GameManagerSearcher
         {
             foreach (HexagonTile tile in playerData.tiles)
             {
-                if (tile.isActiveAndEnabled && tile.AllowBuild)
+                if (tile.isActiveAndEnabled && tile.AllowBuild && selectedCard.BuildingType.type != tile.CurrentEnergyBuilding.Type)
                     availableTiles.Add(tile);
             }
         }
@@ -169,7 +187,7 @@ public class AIPlayer : GameManagerSearcher
         OnAction += Click;
     }
 
-    private void PickUp()
+    private void SelectPickUp()
     {
         CoinPickup gem = playerData.pickUp.GetComponent<CoinPickup>();
         target = playerData.pickUp;

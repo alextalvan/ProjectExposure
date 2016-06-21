@@ -35,7 +35,6 @@ public class HexagonTile : GameManagerSearcher
 		BUILD_NEXT
 	}
 
-
 	//outline for when a building card has been selected and this tile is eligible
 	[SerializeField]
 	GameObject outline_build_new;
@@ -120,8 +119,6 @@ public class HexagonTile : GameManagerSearcher
 //		}
 			
 	}
-		
-
 
 	/// <summary>
 	/// Swaps the building (if any) with the target hexagon tile
@@ -216,13 +213,16 @@ public class HexagonTile : GameManagerSearcher
 					GameObject energyBuilding = (GameObject)Instantiate(bc.BuildingType.prefab);
 					energyBuilding.transform.SetParent(this.transform,false);
 					this._hasBuildingOnTop = true;
-					//currentEnergyBuilding = energyBuilding;
+                    //currentEnergyBuilding = energyBuilding;
 
 					energyBuilding.GetComponent<UnitSpawner>().SetSpawnInformation(unitDirX, spawnPoint, spawnedUnitsParent,owner, lane);
 
 					_energyBuilding = energyBuilding.GetComponent<EnergyBuilding>();
-					//_energyBuilding.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
-					_energyBuilding.Owner = this.Owner;
+
+                    pdata.buildings.Add(_energyBuilding);
+                    _energyBuilding.OnDestruction += ()=> { pdata.buildings.Remove(_energyBuilding); };
+                    //_energyBuilding.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
+                    _energyBuilding.Owner = this.Owner;
 
 					if(this.Owner == PLAYERS.PLAYER1)
 						gameManager.Player1Money -= pdata.currentSelectedCard.MoneyCost;

@@ -11381,7 +11381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1200469450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20913,6 +20913,7 @@ MonoBehaviour:
       unitGroups:
       - {fileID: 187558096}
       - {fileID: 1432326733}
+      buildings: []
       swampSpots:
       - {fileID: 0}
       - {fileID: 0}
@@ -20932,6 +20933,7 @@ MonoBehaviour:
       unitGroups:
       - {fileID: 938618811}
       - {fileID: 997643867}
+      buildings: []
       swampSpots:
       - {fileID: 0}
       - {fileID: 0}
@@ -20978,7 +20980,7 @@ MonoBehaviour:
   distanceToTarget: 0.1
   minDelay: 1
   maxDelay: 2
-  fingerReleaseDelay: 0.5
+  fingerReleaseDelay: 0.3
   cardPicker: {fileID: 1193590414}
 --- !u!114 &1969614537
 MonoBehaviour:
@@ -21000,7 +21002,7 @@ MonoBehaviour:
   distanceToTarget: 0.1
   minDelay: 1
   maxDelay: 2
-  fingerReleaseDelay: 0.5
+  fingerReleaseDelay: 0.3
   cardPicker: {fileID: 2037139950}
 --- !u!114 &1969614538
 MonoBehaviour:

@@ -15,6 +15,7 @@ public enum INPUT_STATES
 public enum ENERGY_BUILDING_TYPES
 {
     COAL,
+    OIL,
     NUCLEAR,
     WINDMILL,
     SOLAR,

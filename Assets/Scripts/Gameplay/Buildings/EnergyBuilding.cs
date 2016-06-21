@@ -3,6 +3,10 @@ using System.Collections;
 
 public class EnergyBuilding : GameManagerSearcher 
 {
+    [SerializeField]
+    ENERGY_BUILDING_TYPES type;
+    public ENERGY_BUILDING_TYPES Type { get { return type; } }
+
 	PLAYERS owner;
 	public PLAYERS Owner { get { return owner; } set { owner = value; } }
 
