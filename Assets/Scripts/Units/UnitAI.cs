@@ -310,17 +310,12 @@ public class UnitAI : GameManagerSearcher
         return result;
     }
 
-    public void DecreaseHealth(int amount)
+    public bool DecreaseHealth(int amount)
     {
         unitHealth -= amount;
 		if(healthBar)
 			healthBar.SetLength(unitHealth / maxUnitHealth);
 
-		CheckDeath();
-    }
-
-    public bool CheckDeath()
-    {
         if (unitHealth <= 0)
         {
             CustomDestroy();

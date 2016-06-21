@@ -12,7 +12,6 @@ GameObject:
   - 64: {fileID: 6475582}
   - 23: {fileID: 2377446}
   - 114: {fileID: 11497606}
-  - 95: {fileID: 9570908}
   m_Layer: 0
   m_Name: CorruptionDecalPRFB 1
   m_TagString: Untagged
@@ -77,23 +76,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &9570908
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151270}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 111fce0f1ff125a48a2a750035558171, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11497606
 MonoBehaviour:
   m_ObjectHideFlags: 1

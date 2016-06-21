@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 public class AIPlayer : GameManagerSearcher
@@ -8,6 +10,12 @@ public class AIPlayer : GameManagerSearcher
 
     [SerializeField]
     GameObject finger;
+    private Image fingerImg;
+
+    [SerializeField]
+    Sprite idleFinger;
+    [SerializeField]
+    Sprite pressedFinger;
 
     [SerializeField]
     float fingerSpeed = 5f;
@@ -20,6 +28,9 @@ public class AIPlayer : GameManagerSearcher
     float delayTimer;
 
     [SerializeField]
+    float fingerReleaseDelay = 0.5f;
+
+    [SerializeField]
     Transform cardPicker;
 
     PlayerGameData playerData;
@@ -28,15 +39,25 @@ public class AIPlayer : GameManagerSearcher
     private delegate void Action();
     private Action OnAction = null;
     private GameObject target = null;
+    private bool allowMovement = true;
 
     // Use this for initialization
     void Start()
     {
+        fingerImg = finger.GetComponent<Image>();
+        fingerImg.sprite = idleFinger;
         playerData = gameManager.playerData[playingAs];
         foreach (Transform cardParent in cardPicker)
         {
             buildingCards.Add(cardParent.GetChild(0).GetComponent<BuildingCard>());
         }
+    }
+
+    IEnumerator ReleaseFinger()
+    {
+        yield return new WaitForSeconds(fingerReleaseDelay);
+        fingerImg.sprite = idleFinger;
+        allowMovement = true;
     }
 
     void OnEnable()
@@ -58,6 +79,8 @@ public class AIPlayer : GameManagerSearcher
 
     private void PickTarget()
     {
+        if (playerData.pickUp)
+            PickUp();
         SelectBuildingCard();
     }
 
@@ -93,7 +116,8 @@ public class AIPlayer : GameManagerSearcher
 
     private void MoveTowardsTarget()
     {
-        finger.GetComponent<RectTransform>().position = Vector3.Lerp(finger.GetComponent<RectTransform>().position, target.transform.position, fingerSpeed * Time.deltaTime);
+        if (allowMovement)
+            finger.GetComponent<RectTransform>().position = Vector3.Lerp(finger.GetComponent<RectTransform>().position, target.transform.position, fingerSpeed * Time.deltaTime);
     }
 
     private void SelectBuildingCard()
@@ -113,7 +137,7 @@ public class AIPlayer : GameManagerSearcher
 #else
         OnAction += selectedCard.OnMouseUp;
 #endif
-        OnAction += Nullify;
+        OnAction += Click;
     }
 
     private void SelectFreeTile()
@@ -142,11 +166,28 @@ public class AIPlayer : GameManagerSearcher
 #else
         OnAction += availableTiles[rndTileIndex].OnMouseUp;
 #endif
-        OnAction += Nullify;
+        OnAction += Click;
     }
 
-    private void Nullify()
+    private void PickUp()
     {
+        CoinPickup gem = playerData.pickUp.GetComponent<CoinPickup>();
+        target = playerData.pickUp;
+
+        gem.OnDestruction += ()=> { target = null; OnAction = null; };
+#if TOUCH_INPUT
+        OnAction += gem.PenetratingTouchEnd;
+#else
+        OnAction += gem.OnMouseUp;
+#endif
+        OnAction += Click;
+    }
+
+    private void Click()
+    {
+        fingerImg.sprite = pressedFinger;
+        StartCoroutine(ReleaseFinger());
+        allowMovement = false;
         target = null;
         OnAction = null;
     }
