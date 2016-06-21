@@ -150,8 +150,12 @@ public class HexagonTile : GameManagerSearcher
 
 			//other.visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 
+			other.pollutionZone.SetGrowState(myB.IsPolluting);
 
+				
 		}
+		else
+		other.pollutionZone.SetGrowState(false);
 
 		other.CurrentEnergyBuilding = myB;
 		other._hasBuildingOnTop = (myB != null);
@@ -171,8 +175,10 @@ public class HexagonTile : GameManagerSearcher
 			otherB.GetComponent<UnitSpawner>().SetSpawnInformation(this.unitDirX, this.spawnPoint,this.spawnedUnitsParent,this.owner, this.lane);
 
 			//this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
-				
+			this.pollutionZone.SetGrowState(otherB.IsPolluting);
 		}
+		else
+			this.pollutionZone.SetGrowState(false);
 
 		this.CurrentEnergyBuilding = otherB;
 		this._hasBuildingOnTop = (otherB != null);

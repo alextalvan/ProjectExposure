@@ -57,6 +57,8 @@ public class PollutionZone : MonoBehaviour
 
 			Color c = pollutionDecalRenderer.material.color;
 			c.a = (float)currentDamage / (float)maxDamage + ((currentDamage > 0) ? startPollutionVisibility : 0.0f);
+			if(c.a > 1.0f)
+				c.a = 1.0f;
 			pollutionDecalRenderer.material.color = c;
 		}
 	}

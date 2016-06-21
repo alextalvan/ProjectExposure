@@ -23,6 +23,15 @@ public class CoinPickup : GameManagerSearcher {
 	public delegate void OnDestructionDelegate();
 	public event OnDestructionDelegate OnDestruction = null;
 
+	[SerializeField]
+	float coinProbability = 0.75f;
+
+	[SerializeField]
+	float quakeProbability = 0.25f;
+
+	[SerializeField]
+	float nukeProbability = 0f;//0.051f;
+
 #if TOUCH_INPUT
 	public void PenetratingTouchEnd()
 #else
@@ -32,13 +41,30 @@ public class CoinPickup : GameManagerSearcher {
         if (used) return;
 		//StartGlide();
         used = true;
-        //gameManager.SpawnUICoin(this.owner,transform.position,valueAwarded);
-        
-		if(owner == PLAYERS.PLAYER1)
-			gameManager.player1MoneyBoostTime = boostDuration;
-		else
-			gameManager.player2MoneyBoostTime = boostDuration;
-		Destroy(this.gameObject);
+       
+		float rng = Random.value;
+
+//		if(rng <= nukeProbability)
+//		{
+//			NukeAction();
+//			Destroy(this.gameObject);
+//			return;
+//		}
+
+		if(rng <= quakeProbability + nukeProbability)
+		{
+			QuakeAction();
+			Destroy(this.gameObject);
+			return;
+		}
+
+		if(rng <= coinProbability + nukeProbability + quakeProbability)
+		{
+			CoinAction();
+			Destroy(this.gameObject);
+			return;
+		}
+			
     }
 
 	void Start()
@@ -52,10 +78,39 @@ public class CoinPickup : GameManagerSearcher {
 			OnDestruction();
     }
 
-//	public void StartGlide()
-//	{
-//		gameManager.StartCoinGlide(this);
-//		GetComponent<Collider>().enabled = false;
-//		GetComponent<Rigidbody>().isKinematic = true;
-//	}
+	void CoinAction()
+	{
+		if(owner == PLAYERS.PLAYER1)
+			gameManager.player1MoneyBoostTime = boostDuration;
+		else
+			gameManager.player2MoneyBoostTime = boostDuration;
+	}
+
+	void QuakeAction()
+	{
+		PlayerGameData enemyData = gameManager.playerData[(this.owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
+		for(int i=0; i < enemyData.tiles.Count - 1; ++i)
+		{
+			enemyData.tiles[i].SwapBuilding(enemyData.tiles[Random.Range(i+1,enemyData.tiles.Count)]);
+		}
+
+		Camera.main.GetComponent<CameraShake>().Shake();
+		enemyData.currentInputState = INPUT_STATES.FREE;
+		enemyData.RefreshAllTilesHighlight();
+	}
+
+	void NukeAction()
+	{
+		
+	}
+
+	//debug
+	void Update()
+	{
+		if(Input.GetKeyUp(KeyCode.H))
+		{
+			QuakeAction();
+			Destroy(this.gameObject);
+		}
+	}
 }

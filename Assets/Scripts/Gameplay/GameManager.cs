@@ -258,9 +258,24 @@ public class GameManager : MonoBehaviour
         gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
 
 
+		if(gameScore >= maxScore)
+		{
+			gameOverText.gameObject.SetActive(true);
+			gameOverText.text = "Game over. Blue wins.";
+			gameStarted = false;
+		}
+
+		if(gameScore <= maxScore * -1)
+		{
+			gameOverText.gameObject.SetActive(true);
+			gameOverText.text = "Game over. Red wins.";
+			gameStarted = false;
+		}
+
         if (gameTimer <= 0.0f)
         {
             gameOverText.gameObject.SetActive(true);
+			gameStarted = false;
             //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
 
 			if (gameScore == 0)
