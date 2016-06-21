@@ -29,8 +29,17 @@ public class CoinPickup : GameManagerSearcher {
 	[SerializeField]
 	float quakeProbability = 0.25f;
 
-	[SerializeField]
+	//[SerializeField]
 	float nukeProbability = 0f;//0.051f;
+
+	[SerializeField]
+	Animator boxAnimator;
+
+	[SerializeField]
+	GameObject diamondObject;
+
+	[SerializeField]
+	float destructionTimeAfterOpen = 1.0f;
 
 #if TOUCH_INPUT
 	public void PenetratingTouchEnd()
@@ -41,6 +50,7 @@ public class CoinPickup : GameManagerSearcher {
         if (used) return;
 		//StartGlide();
         used = true;
+		boxAnimator.SetBool("Open",true);
        
 		float rng = Random.value;
 
@@ -54,22 +64,24 @@ public class CoinPickup : GameManagerSearcher {
 		if(rng <= quakeProbability + nukeProbability)
 		{
 			QuakeAction();
-			Destroy(this.gameObject);
+			Destroy(this.gameObject, destructionTimeAfterOpen);
 			return;
 		}
 
 		if(rng <= coinProbability + nukeProbability + quakeProbability)
 		{
 			CoinAction();
-			Destroy(this.gameObject);
+			Destroy(this.gameObject, destructionTimeAfterOpen);
 			return;
 		}
+
+
 			
     }
 
 	void Start()
 	{
-		Destroy(this.gameObject,deletionTime);
+		//Destroy(this.gameObject,deletionTime);
 	}
 
 	void OnDestroy()
@@ -80,6 +92,8 @@ public class CoinPickup : GameManagerSearcher {
 
 	void CoinAction()
 	{
+		diamondObject.SetActive(true);
+
 		if(owner == PLAYERS.PLAYER1)
 			gameManager.player1MoneyBoostTime = boostDuration;
 		else
@@ -112,5 +126,9 @@ public class CoinPickup : GameManagerSearcher {
 			QuakeAction();
 			Destroy(this.gameObject);
 		}
+
+		deletionTime -= Time.deltaTime;
+		if(deletionTime<= 0.0f && !used)
+			Destroy(this.gameObject);
 	}
 }
