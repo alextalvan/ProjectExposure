@@ -144,6 +144,12 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	Renderer scoreRenderer;
 
+	float currentScoreFloat = 0.5f;
+	float targetScoreFloat = 0.5f;
+
+	[SerializeField]
+	float scoreBarInterpolationSpeed = 0.1f;
+
 
     [SerializeField]
     List<GameStage> gameStages = new List<GameStage>();
@@ -286,6 +292,9 @@ public class GameManager : MonoBehaviour
         //topLaneScoreData.Update();
         //botLaneScoreData.Update();
 
+		currentScoreFloat = Mathf.Lerp(currentScoreFloat, targetScoreFloat, scoreBarInterpolationSpeed);
+		scoreRenderer.material.SetFloat("_CityClip", currentScoreFloat);
+
     }
 
     void UpdateMoney()
@@ -356,7 +365,9 @@ public class GameManager : MonoBehaviour
 
 		gameScore += score;
 
-		scoreRenderer.material.SetFloat("_CityClip", ((float)score / maxScore) * 0.5f + 0.5f);
+
+		targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f);
+		//scoreRenderer.material.SetFloat("_CityClip", ((float)score / maxScore) * 0.5f + 0.5f);
     }
 
 //    void CalculateWinCondition()
