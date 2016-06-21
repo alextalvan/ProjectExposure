@@ -9,8 +9,6 @@ public class UnitSpawner : GameManagerSearcher
     private Transform unitGroupParent;
     [SerializeField]
     GameObject unit;
-    [SerializeField]
-    Transform activeUnit;
     private float dirX;
 
 	PLAYERS owner;
@@ -71,7 +69,6 @@ public class UnitSpawner : GameManagerSearcher
 	        newUnit.gameObject.layer = owner == PLAYERS.PLAYER1 ? 10 : 11;
 	        newUnit.transform.parent = unitGroupParent;
 	        newUnit.transform.rotation = transform.rotation;
-	        activeUnit = newUnit.transform;
 
 			//spawnFeedbackTimer = gameManager.WaveCooldown * waveSpawnRate;
 		}
