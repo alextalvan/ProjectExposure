@@ -3771,7 +3771,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 11, y: -36.78}
+  m_AnchoredPosition: {x: 11, y: -36.75}
   m_SizeDelta: {x: 512, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &415794524
@@ -4801,6 +4801,38 @@ Prefab:
       propertyPath: pollutionZone
       value: 
       objectReference: {fileID: 825385200}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: lane
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 119634, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 136624, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 131672, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413370, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413370, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.021
+      objectReference: {fileID: 0}
+    - target: {fileID: 463996, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463996, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.011
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
   m_IsPrefabParent: 0
@@ -11976,6 +12008,10 @@ Prefab:
       propertyPath: pollutionZone
       value: 
       objectReference: {fileID: 286805821}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: owner
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -14495,6 +14531,38 @@ Prefab:
       propertyPath: pollutionZone
       value: 
       objectReference: {fileID: 1089376893}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: lane
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 131672, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 136624, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 119634, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463996, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463996, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.029
+      objectReference: {fileID: 0}
+    - target: {fileID: 413370, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413370, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.027
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
   m_IsPrefabParent: 0
@@ -17261,6 +17329,10 @@ Prefab:
       propertyPath: pollutionZone
       value: 
       objectReference: {fileID: 1584003343}
+    - target: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
+      propertyPath: owner
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -20273,6 +20345,7 @@ MonoBehaviour:
   gameScore: 0
   maxScore: 9
   scoreRenderer: {fileID: 1260687028}
+  scoreBarInterpolationSpeed: 0.1
   gameStages:
   - duration: 60
     forcedMaxMoney: 5
@@ -20298,7 +20371,6 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 0}
       AI: 0
-      buildingCount: 0
     - player: 1
       currentSelectedCard: {fileID: 0}
       currentInputState: 0
@@ -20317,7 +20389,6 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 0}
       AI: 0
-      buildingCount: 0
   UI_root: {fileID: 791725157}
   UI_moneyPrefab: {fileID: 189870, guid: 754343a333242fe40a3b245f79d28a8b, type: 2}
   player1DD: {fileID: 918484763}
