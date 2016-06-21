@@ -598,6 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba3a7f6350faf54a9308dabfe0cc433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyAtBeginning: 0
 --- !u!114 &11469912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -614,6 +615,7 @@ MonoBehaviour:
   smog: {fileID: 0}
   buffList:
     buffs: []
+  isPolluting: 0
 --- !u!114 &11499894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3630,7 +3632,7 @@ ParticleSystem:
     minMaxState: 0
   speed: 1
   randomSeed: 0
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
