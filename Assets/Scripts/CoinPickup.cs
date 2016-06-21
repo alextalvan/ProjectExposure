@@ -76,7 +76,7 @@ public class CoinPickup : GameManagerSearcher {
 	{
 		if(OnDestruction != null)
 			OnDestruction();
-	}
+    }
 
 	void CoinAction()
 	{
