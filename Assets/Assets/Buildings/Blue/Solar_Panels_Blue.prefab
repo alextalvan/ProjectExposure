@@ -537,11 +537,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec8f4fdb5e94eb499b5d446f8251688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 4
   constructionTime: 5
   pollutionPrefab: {fileID: 0}
   smog: {fileID: 0}
   buffList:
     buffs: []
+  isPolluting: 0
 --- !u!114 &11404562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -553,6 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba3a7f6350faf54a9308dabfe0cc433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyAtBeginning: 0
 --- !u!114 &11424624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -565,7 +568,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 169132, guid: 8bfbc03c4dc0c42428848fb8d8ab85ab, type: 2}
-  activeUnit: {fileID: 0}
   _energyBuilding: {fileID: 11403598}
   initialWaveDelay: 0
   waveSpawnRate: 1
@@ -6718,7 +6720,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1ec36c3abc9be4463905c4b26fe18928, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca585377cf5774037afa16c29edcbf42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

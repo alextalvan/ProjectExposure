@@ -194,8 +194,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 1
-  valueAwarded: 2
+  boostDuration: 4
   deletionTime: 10
+  coinProbability: 0.9
+  quakeProbability: 0.1
+  nukeProbability: 0
 --- !u!135 &13502848
 SphereCollider:
   m_ObjectHideFlags: 1

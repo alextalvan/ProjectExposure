@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: corruptionDecalMTRL 1
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 12453990d571540b999cbc5e6e8decff, type: 3}
   m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
   m_LightmapFlags: 1
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap:
     RenderType: Transparent
   m_SavedProperties:
@@ -18,122 +18,49 @@ Material:
     m_TexEnvs:
       data:
         first:
-          name: _MainTex
+          name: _Diffuse_Texture
         second:
-          m_Texture: {fileID: 2800000, guid: 74eb5f6e7ff85fc45859da45286cf08a, type: 3}
+          m_Texture: {fileID: 2800000, guid: 49cee9cdab95a2f49a2f5a816feb8682, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _BumpMap
+          name: _Emission_texture
         second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DetailNormalMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _OcclusionMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _EmissionMap
-        second:
-          m_Texture: {fileID: 2800000, guid: 1f738d443b1d13f4dac585a229b4c5cb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DetailMask
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DetailAlbedoMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MetallicGlossMap
-        second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: f122cf83f9813c342af1a0c99c5ea120, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
-      data:
-        first:
-          name: _SrcBlend
-        second: 5
-      data:
-        first:
-          name: _DstBlend
-        second: 10
       data:
         first:
           name: _Cutoff
         second: 0.5
       data:
         first:
-          name: _Parallax
-        second: 0.02
-      data:
-        first:
-          name: _ZWrite
-        second: 0
-      data:
-        first:
-          name: _Glossiness
+          name: _Smoothness
         second: 1
-      data:
-        first:
-          name: _BumpScale
-        second: 1
-      data:
-        first:
-          name: _OcclusionStrength
-        second: 1
-      data:
-        first:
-          name: _DetailNormalMapScale
-        second: 0
-      data:
-        first:
-          name: _UVSec
-        second: 0
-      data:
-        first:
-          name: _Mode
-        second: 2
       data:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _Emission_power
+        second: 10
+      data:
+        first:
+          name: _Filckering_rate
+        second: 0.5
+      data:
+        first:
+          name: _minimum_emission
+        second: 0.1
     m_Colors:
       data:
         first:
-          name: _EmissionColor
-        second: {r: 0.14705884, g: 0.07027802, b: 0.020544987, a: 1}
+          name: _Color
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 0}
       data:
         first:
-          name: _Color
-        second: {r: 1, g: 1, b: 1, a: 0}
+          name: _Emission_tint
+        second: {r: 1, g: 0.500244, b: 0.0441176, a: 1}
