@@ -208,7 +208,10 @@ public class HexagonTile : GameManagerSearcher
 				if(bc!=null)
 				{
 					if(_energyBuilding!=null)
+					{
 						Destroy(_energyBuilding.gameObject);
+						//gameManager.playerData[this.owner].buildingCount--;
+					}
 
 					GameObject energyBuilding = (GameObject)Instantiate(bc.BuildingType.prefab);
 					energyBuilding.transform.SetParent(this.transform,false);
@@ -227,6 +230,8 @@ public class HexagonTile : GameManagerSearcher
 						gameManager.Player2Money -= pdata.currentSelectedCard.MoneyCost;
 
 					bc.StartCooldown();
+
+					//gameManager.playerData[this.owner].buildingCount++;
 
 					//visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
 					//Destroy(bc.gameObject);

@@ -19,6 +19,8 @@ public class PlayerGameData
 	public List<SwampSpot> swampSpots = new List<SwampSpot>();
     public bool AI = false;
 
+	//public int buildingCount = 0;
+
     public void RefreshAllTilesHighlight()
 	{
 		foreach(HexagonTile t in tiles)

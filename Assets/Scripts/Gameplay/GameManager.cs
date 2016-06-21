@@ -66,11 +66,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float _player2money = 0;
 
-    [SerializeField]
-    ScoreData topLaneScoreData = new ScoreData();
+    //[SerializeField]
+    //ScoreData topLaneScoreData = new ScoreData();
 
-    [SerializeField]
-    ScoreData botLaneScoreData = new ScoreData();
+    //[SerializeField]
+    //ScoreData botLaneScoreData = new ScoreData();
 
 
 
@@ -134,6 +134,15 @@ public class GameManager : MonoBehaviour
     //			player2scoreText.text = _player2score.ToString();
     //		}
     //	}
+
+	[SerializeField]
+	int gameScore = 0;
+
+	[SerializeField]
+	int maxScore = 9;
+
+	[SerializeField]
+	Renderer scoreRenderer;
 
 
     [SerializeField]
@@ -238,15 +247,15 @@ public class GameManager : MonoBehaviour
         if (gameTimer <= 0.0f)
         {
             gameOverText.gameObject.SetActive(true);
-            int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
+            //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
 
-            if (finalScore == 0)
+			if (gameScore == 0)
                 gameOverText.text = "Game over. Draw.";
 
-            if (finalScore > 0)
+			if (gameScore > 0)
                 gameOverText.text = "Game over. Blue wins.";
 
-            if (finalScore < 0)
+			if (gameScore < 0)
                 gameOverText.text = "Game over. Red wins.";
         }
 
@@ -272,10 +281,10 @@ public class GameManager : MonoBehaviour
 				OnNewWave();
 		}	*/
 
-        CalculateWinCondition();
+        //CalculateWinCondition();
 
-        topLaneScoreData.Update();
-        botLaneScoreData.Update();
+        //topLaneScoreData.Update();
+        //botLaneScoreData.Update();
 
     }
 
@@ -340,22 +349,26 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScore(int score, PLAYERS owner, LANES lane)
     {
-        float scoreDelta = score * ((owner == PLAYERS.PLAYER1) ? -1.0f : 1.0f);
+        //float scoreDelta = score * ((owner == PLAYERS.PLAYER1) ? -1.0f : 1.0f);
 
-        if (lane == LANES.TOP)
-            topLaneScoreData.ChangeScore(scoreDelta);
+		if(owner == PLAYERS.PLAYER1)
+			score *= -1;
 
-        if (lane == LANES.BOT)
-            botLaneScoreData.ChangeScore(scoreDelta);
+		gameScore += score;
+
+		scoreRenderer.material.SetFloat("_CityClip", ((float)score / maxScore) * 0.5f + 0.5f);
     }
 
-    void CalculateWinCondition()
-    {
-
-        float topRelativeScore = topLaneScoreData.Score / topLaneScoreData.MaxScore;
-        float botRelativeScore = botLaneScoreData.Score / botLaneScoreData.MaxScore;
-
-        if (Mathf.Abs(topRelativeScore) >= 0.9999f && Mathf.Abs(botRelativeScore) >= 0.9999f && Mathf.Sign(botRelativeScore) == Mathf.Sign(topRelativeScore))
-            gameTimer = -1.0f;//gameOverText.SetActive(true);
-    }
+//    void CalculateWinCondition()
+//    {
+//
+//		//if(gameScore == -1 * maxScore)
+//
+//
+//        //float topRelativeScore = topLaneScoreData.Score / topLaneScoreData.MaxScore;
+//        //float botRelativeScore = botLaneScoreData.Score / botLaneScoreData.MaxScore;
+//
+//        //if (Mathf.Abs(topRelativeScore) >= 0.9999f && Mathf.Abs(botRelativeScore) >= 0.9999f && Mathf.Sign(botRelativeScore) == Mathf.Sign(topRelativeScore))
+//        //    gameTimer = -1.0f;//gameOverText.SetActive(true);
+//    }
 }
