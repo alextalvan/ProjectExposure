@@ -105,7 +105,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+	public float player1MoneyBoostTime = -1.0f;
+	public float player2MoneyBoostTime = -1.0f;
 
+	[SerializeField]
+	float moneyBoostStrength = 4.0f;
 
     //	[SerializeField]
     //	int _player1score = 0;
@@ -244,15 +248,33 @@ public class GameManager : MonoBehaviour
             UpdateMoney();
         }
 
+		player1MoneyBoostTime -= Time.deltaTime;
+		player2MoneyBoostTime -= Time.deltaTime;
+
         gameTimer -= Time.deltaTime;
         int seconds = ((int)gameTimer) % 60;
         int minutes = ((int)gameTimer) / 60;
         gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
 
 
+		if(gameScore >= maxScore)
+		{
+			gameOverText.gameObject.SetActive(true);
+			gameOverText.text = "Game over. Blue wins.";
+			gameStarted = false;
+		}
+
+		if(gameScore <= maxScore * -1)
+		{
+			gameOverText.gameObject.SetActive(true);
+			gameOverText.text = "Game over. Red wins.";
+			gameStarted = false;
+		}
+
         if (gameTimer <= 0.0f)
         {
             gameOverText.gameObject.SetActive(true);
+			gameStarted = false;
             //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
 
 			if (gameScore == 0)
@@ -299,8 +321,10 @@ public class GameManager : MonoBehaviour
 
     void UpdateMoney()
     {
-        Player1Money += moneyRate;
-        Player2Money += moneyRate;
+		Player1Money += moneyRate * ((player1MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
+		Player2Money += moneyRate * ((player2MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
+
+
     }
 
     void UpdateGameStage()
