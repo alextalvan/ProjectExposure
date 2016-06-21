@@ -10165,9 +10165,9 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.999878, y: 30.001953}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.3, y: 0.8}
+  m_AnchoredPosition: {x: -35.00006, y: 30.001953}
+  m_SizeDelta: {x: 150, y: 150}
+  m_Pivot: {x: 0.2, y: 0.8}
 --- !u!114 &1102612573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10180,14 +10180,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.07586192, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d88b16b1b369944e48f20888f658fd6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2dda0a3387f93eb4ca83f232cc0545af, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -11327,14 +11327,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d88b16b1b369944e48f20888f658fd6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5162286a7c61c14448ecfba938f4fd9c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11362,9 +11362,9 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.999817, y: 30}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.3, y: 0.8}
+  m_AnchoredPosition: {x: 55.00006, y: 30.000008}
+  m_SizeDelta: {x: 150, y: 150}
+  m_Pivot: {x: 0.8, y: 0.8}
 --- !u!1 &1200469449
 GameObject:
   m_ObjectHideFlags: 0
@@ -20984,10 +20984,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playingAs: 1
   finger: {fileID: 1102612571}
+  idleFinger: {fileID: 21300000, guid: 2dda0a3387f93eb4ca83f232cc0545af, type: 3}
+  pressedFinger: {fileID: 21300000, guid: fe846acad4816ed44b73a0b576b49447, type: 3}
   fingerSpeed: 2
-  distanceToTarget: 0.5
+  distanceToTarget: 0.1
   minDelay: 1
   maxDelay: 2
+  fingerReleaseDelay: 0.5
   cardPicker: {fileID: 1193590414}
 --- !u!114 &1969614537
 MonoBehaviour:
@@ -21003,10 +21006,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playingAs: 0
   finger: {fileID: 1194496987}
+  idleFinger: {fileID: 21300000, guid: 5162286a7c61c14448ecfba938f4fd9c, type: 3}
+  pressedFinger: {fileID: 21300000, guid: 2724d605b530d3647997e2a965234739, type: 3}
   fingerSpeed: 2
-  distanceToTarget: 0.5
+  distanceToTarget: 0.1
   minDelay: 1
   maxDelay: 2
+  fingerReleaseDelay: 0.5
   cardPicker: {fileID: 2037139950}
 --- !u!114 &1969614538
 MonoBehaviour:

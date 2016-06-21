@@ -50,7 +50,7 @@ public class CoinPickup : GameManagerSearcher {
 	{
 		if(OnDestruction != null)
 			OnDestruction();
-	}
+    }
 
 //	public void StartGlide()
 //	{
