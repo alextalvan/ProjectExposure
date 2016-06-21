@@ -11071,7 +11071,7 @@ MonoBehaviour:
   - {fileID: 195198, guid: 165c9af7656af4a9d968c3b2fa2021f9, type: 2}
   spawnInterval: 10
   inheritRotation: 0
-  timeAccumulator: -5
+  timeAccumulator: 0
 --- !u!1 &1184038688
 GameObject:
   m_ObjectHideFlags: 0
@@ -11381,7 +11381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1200469450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20073,7 +20073,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1915953431}
   - 114: {fileID: 1915953432}
-  - 114: {fileID: 1915953430}
   m_Layer: 0
   m_Name: Input
   m_TagString: Untagged
@@ -20081,17 +20080,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1915953430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1915953429}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea4d0cc336e7b2147a369eeac8ebc3b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1915953431
 Transform:
   m_ObjectHideFlags: 0
@@ -20902,7 +20890,7 @@ MonoBehaviour:
   player2MoneyBoostTime: -1
   moneyBoostStrength: 4
   gameScore: 0
-  maxScore: 9
+  maxScore: 18
   scoreRenderer: {fileID: 1260687028}
   scoreBarInterpolationSpeed: 0.1
   gameStages:
