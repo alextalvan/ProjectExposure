@@ -58,6 +58,8 @@ public class AIPlayer : GameManagerSearcher
 
     private void PickTarget()
     {
+        if (playerData.pickUp)
+            PickUp();
         SelectBuildingCard();
     }
 
@@ -141,6 +143,18 @@ public class AIPlayer : GameManagerSearcher
         OnAction += availableTiles[rndTileIndex].PenetratingTouchEnd;
 #else
         OnAction += availableTiles[rndTileIndex].OnMouseUp;
+#endif
+        OnAction += Nullify;
+    }
+
+    private void PickUp()
+    {
+        CoinPickup gem = playerData.pickUp.GetComponent<CoinPickup>();
+        target = playerData.pickUp;
+#if TOUCH_INPUT
+        OnAction += gem.PenetratingTouchEnd;
+#else
+        OnAction += gem.OnMouseUp;
 #endif
         OnAction += Nullify;
     }
