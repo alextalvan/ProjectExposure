@@ -92,6 +92,20 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emssion_Texture_player1
+        second:
+          m_Texture: {fileID: 2800000, guid: 5aef530c9291bd947969764e9732dab8, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emssion_Texture_player2
+        second:
+          m_Texture: {fileID: 2800000, guid: 5aef530c9291bd947969764e9732dab8, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -161,6 +175,22 @@ Material:
         first:
           name: _Glosssiness
         second: 0
+      data:
+        first:
+          name: _Emission_Intensity_player1
+        second: 4.91
+      data:
+        first:
+          name: _Emission_Intensity_player2
+        second: 6.77
+      data:
+        first:
+          name: _Player1Clip
+        second: 0.475
+      data:
+        first:
+          name: _CityClip
+        second: 0.495
     m_Colors:
       data:
         first:
@@ -170,6 +200,14 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Color1
+        second: {r: 0.9779412, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _Color2
+        second: {r: 0.19999975, g: 0, b: 1, a: 1}
       data:
         first:
           name: _Emssion_Tint
@@ -182,3 +220,19 @@ Material:
         first:
           name: _Diffuse_tint
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Emssion_Tint_player1
+        second: {r: 1, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _Emssion_Tint_player2
+        second: {r: 0, g: 0.25517228, b: 1, a: 1}
+      data:
+        first:
+          name: _node_3998
+        second: {r: 0.9779412, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _node_3998_copy
+        second: {r: 0, g: 0.21379304, b: 1, a: 1}
