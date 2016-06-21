@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 
 [RequireComponent(typeof(BoxCollider))]
-public class ObjectSpawner : MonoBehaviour 
+public class ObjectSpawner : GameManagerSearcher 
 {
+    [SerializeField]
+    PLAYERS owner;
 	[SerializeField]
 	protected List<GameObject> prefabs = new List<GameObject>();
 
@@ -54,6 +56,7 @@ public class ObjectSpawner : MonoBehaviour
 		Quaternion spawnRotation = (inheritRotation) ? this.transform.rotation : randomPrefab.transform.rotation;
 
 		GameObject randomPickup = (GameObject)Instantiate(randomPrefab,spawnPoint,spawnRotation);
+        gameManager.playerData[owner].pickUp = randomPickup;
 		OnSpawn(randomPickup);
 	}
 

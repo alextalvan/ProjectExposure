@@ -17,6 +17,7 @@ public class PlayerGameData
 	public List<HexagonTile> tiles = new List<HexagonTile>();
 	public List<Transform> unitGroups = new List<Transform>();
 	public List<SwampSpot> swampSpots = new List<SwampSpot>();
+    public GameObject pickUp = null;
     public bool AI = false;
 
 	//public int buildingCount = 0;
