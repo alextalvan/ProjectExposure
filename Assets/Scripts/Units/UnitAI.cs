@@ -10,7 +10,7 @@ public class UnitAI : GameManagerSearcher
     public UnitType Type { get { return type; } }
 
     //temp for heim
-    static public int[,] damageMatrix = { { 2, 1, 3 }, { 3, 2, 1 }, { 1, 3, 2 } };
+    static public int[,] damageMatrix = { { 20, 10, 30 }, { 30, 20, 10 }, { 10, 30, 20 } };
 
     enum AiState { Run, Fight, Cheer, Die };
     private AiState currentState = AiState.Run;
@@ -315,6 +315,8 @@ public class UnitAI : GameManagerSearcher
         unitHealth -= amount;
 		if(healthBar)
 			healthBar.SetLength(unitHealth / maxUnitHealth);
+
+		CheckDeath();
     }
 
     public bool CheckDeath()

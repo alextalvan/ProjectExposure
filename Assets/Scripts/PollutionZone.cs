@@ -39,6 +39,9 @@ public class PollutionZone : MonoBehaviour
 				currentDamage += damageGainPerUpgrade;
 			else
 				currentDamage -= damageGainPerUpgrade;
+
+			if(currentDamage < 0 )
+				currentDamage = 0;
 		}
 	}
 

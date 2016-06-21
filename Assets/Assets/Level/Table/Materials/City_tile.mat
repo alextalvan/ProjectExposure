@@ -92,6 +92,20 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emssion_Texture_player1
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emssion_Texture_player2
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -159,8 +173,20 @@ Material:
         second: 0
       data:
         first:
+          name: _CityClip
+        second: 0.491
+      data:
+        first:
           name: _Glosssiness
         second: 0
+      data:
+        first:
+          name: _Emission_Intensity_player1
+        second: 1.4
+      data:
+        first:
+          name: _Emission_Intensity_player2
+        second: 1.83
     m_Colors:
       data:
         first:
@@ -170,6 +196,14 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Color1
+        second: {r: 0.9779412, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _Color2
+        second: {r: 0.19999975, g: 0, b: 1, a: 1}
       data:
         first:
           name: _Emssion_Tint
