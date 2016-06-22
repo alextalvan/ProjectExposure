@@ -27,8 +27,13 @@ public class PollutionZone : MonoBehaviour
 	[SerializeField]
 	Renderer pollutionDecalRenderer;
 
-	//[SerializeField]
-	public float startPollutionVisibility = 0.25f;
+	[SerializeField]
+	float startPollutionVisibility = 0.25f;
+
+
+	float targetAlpha = 0f;
+	float currentAlpha = 0f;
+	float lerpSpeed = 0.05f;
 
 	public void SetGrowState(bool state)
 	{
@@ -55,11 +60,11 @@ public class PollutionZone : MonoBehaviour
 			if(currentDamage > maxDamage)
 				currentDamage = maxDamage;
 
-			Color c = pollutionDecalRenderer.material.color;
-			c.a = (float)currentDamage / (float)maxDamage + ((currentDamage > 0) ? startPollutionVisibility : 0.0f);
-			if(c.a > 0.75f)
-				c.a = 0.75f;
-			pollutionDecalRenderer.material.color = c;
+
+			targetAlpha = (float)currentDamage / (float)maxDamage + ((currentDamage > 0) ? startPollutionVisibility : 0.0f);
+			if(targetAlpha > 0.85f)
+				targetAlpha = 0.85f;
+			
 		}
 	}
 
@@ -73,5 +78,14 @@ public class PollutionZone : MonoBehaviour
 			units.Add(ai);
 			ai.DecreaseHealth(currentDamage);
 		}
+	}
+	void Update ()
+	{
+		currentAlpha = Mathf.Lerp (currentAlpha, targetAlpha, lerpSpeed);
+
+		Color c = pollutionDecalRenderer.material.color;
+		c.a = currentAlpha;
+		pollutionDecalRenderer.material.color = c;
+		pollutionDecalRenderer.material.SetFloat("_Curruption_Clip", currentAlpha*3);
 	}
 }

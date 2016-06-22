@@ -67,7 +67,7 @@ LightmapSettings:
     m_FinalGather: 1
     m_FinalGatherRayCount: 128
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 112000073, guid: 82c717fe67c5d4f00b3da93cc2a26424,
+  m_LightingDataAsset: {fileID: 112000085, guid: 82c717fe67c5d4f00b3da93cc2a26424,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -10702,7 +10702,7 @@ Transform:
   m_LocalScale: {x: 0.100000024, y: 0.10000003, z: 0.10000001}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!114 &1104664161 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11436270, guid: 3504fc9a3221b504bb096b544bc4d342,
@@ -21269,7 +21269,7 @@ Prefab:
       objectReference: {fileID: 37022985}
     - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
       propertyPath: startPollutionVisibility
-      value: 0.02
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
@@ -21847,7 +21847,7 @@ MonoBehaviour:
   player2MoneyBoostTime: -1
   moneyBoostStrength: 4
   gameScore: 0
-  maxScore: 9
+  maxScore: 7
   scoreRenderer: {fileID: 1260687028}
   scoreBarInterpolationSpeed: 0.1
   gameStages:

@@ -210,6 +210,7 @@ GameObject:
   - 54: {fileID: 5497074}
   - 114: {fileID: 11435884}
   - 114: {fileID: 11485648}
+  - 111: {fileID: 11176874}
   m_Layer: 0
   m_Name: SurpriseCratePlayer1
   m_TagString: Untagged
@@ -691,6 +692,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!111 &11176874
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169368}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b065e3cd051d04cefae94cd7e5218148, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b065e3cd051d04cefae94cd7e5218148, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!111 &11198488
 Animation:
   m_ObjectHideFlags: 1
