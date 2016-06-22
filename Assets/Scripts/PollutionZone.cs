@@ -28,7 +28,7 @@ public class PollutionZone : MonoBehaviour
 	Renderer pollutionDecalRenderer;
 
 	//[SerializeField]
-	public float startPollutionVisibility = 0.15f;
+	public float startPollutionVisibility = 0.25f;
 
 	public void SetGrowState(bool state)
 	{
@@ -57,8 +57,8 @@ public class PollutionZone : MonoBehaviour
 
 			Color c = pollutionDecalRenderer.material.color;
 			c.a = (float)currentDamage / (float)maxDamage + ((currentDamage > 0) ? startPollutionVisibility : 0.0f);
-			if(c.a > 0.5f)
-				c.a = 0.5f;
+			if(c.a > 0.75f)
+				c.a = 0.75f;
 			pollutionDecalRenderer.material.color = c;
 		}
 	}
