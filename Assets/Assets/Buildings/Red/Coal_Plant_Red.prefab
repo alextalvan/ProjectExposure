@@ -538,7 +538,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 107830, guid: 3c2254e18f7544e9ca073b279c701123, type: 2}
-  activeUnit: {fileID: 0}
   _energyBuilding: {fileID: 11425498}
   initialWaveDelay: 0
   waveSpawnRate: 1
@@ -565,7 +564,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec8f4fdb5e94eb499b5d446f8251688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constructionTime: 5
+  type: 0
+  constructionTime: 10
+  constructionTimeLeft: 0
   pollutionPrefab: {fileID: 162050, guid: 6743568e2e976440cbbedaca404993a2, type: 2}
   smog: {fileID: 0}
   buffList:
@@ -607,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2cd63af8e6152a43b2d80893045602f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dissolveTime: 4.5
+  dissolveTime: 9.5
   _renderer: {fileID: 2349980}
 --- !u!114 &11498150
 MonoBehaviour:

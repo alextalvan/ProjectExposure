@@ -334,12 +334,12 @@ public class GameManager : MonoBehaviour
 		Player2Money += moneyRate * ((player2MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
 
 		if (player1MoneyBoostTime > 0)
-			_player1barImage.color = new Color(0f,0.8f,0f,1f);
+			_player1barImage.color = new Color(0f,1.0f,0.2f,1f);
 		else
 			_player1barImage.color = Color.white;
 		
 		if (player2MoneyBoostTime > 0)
-			_player2barImage.color = new Color(0f,0.8f,0f,1f);
+			_player2barImage.color = new Color(0f,1.0f,0.2f,1f);
 		else
 			_player2barImage.color = Color.white;
     }

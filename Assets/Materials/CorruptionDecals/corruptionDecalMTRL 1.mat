@@ -18,16 +18,16 @@ Material:
     m_TexEnvs:
       data:
         first:
-          name: _Diffuse_Texture
+          name: _Emission_texture
         second:
-          m_Texture: {fileID: 2800000, guid: b3892fcede35255469509f8fc9926da0, type: 3}
+          m_Texture: {fileID: 2800000, guid: 4fe465bf7bcf50941bb2653ceba0c645, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Emission_texture
+          name: _Diffuse_Texture
         second:
-          m_Texture: {fileID: 2800000, guid: 4fe465bf7bcf50941bb2653ceba0c645, type: 3}
+          m_Texture: {fileID: 2800000, guid: b3892fcede35255469509f8fc9926da0, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -55,6 +55,18 @@ Material:
         first:
           name: _minimum_emission
         second: 0.1
+      data:
+        first:
+          name: _node_4114
+        second: 0
+      data:
+        first:
+          name: _Curruption_Clip
+        second: 1
+      data:
+        first:
+          name: _noise_value
+        second: 0.018
     m_Colors:
       data:
         first:
