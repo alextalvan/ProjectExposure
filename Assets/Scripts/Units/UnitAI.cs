@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -72,9 +73,12 @@ public class UnitAI : GameManagerSearcher
     GameObject iceBlockPrefab;
     GameObject currentIceBlock = null;
 
+    [SerializeField]
+    Sprite unitIcon;
 
 	[SerializeField]
-	HealthBar healthBar;
+	GameObject healthBarPrefab;
+    private HealthBar healthBar;
 	float maxUnitHealth;
 
     private Transform oppositeLane = null;
@@ -105,6 +109,10 @@ public class UnitAI : GameManagerSearcher
 
         Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position, worldUp);
         transform.rotation = targetRot;
+        GameObject healthBarObj = Instantiate(healthBarPrefab, transform.position + (Vector3.up * models[0].transform.lossyScale.y * 1.2f) - Vector3.right * 0.2f + (-Vector3.forward), Quaternion.identity) as GameObject;
+        healthBar = healthBarObj.GetComponent<HealthBar>();
+        healthBar.transform.parent = transform.GetChild(0);
+        healthBar.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = unitIcon;
     }
 
     // Update is called once per frame
