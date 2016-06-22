@@ -250,7 +250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &182324
 GameObject:
   m_ObjectHideFlags: 1
@@ -389,7 +389,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.178}
+  m_LocalPosition: {x: 0.05, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 424116}
@@ -488,7 +488,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.08, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0.2, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 445264}
@@ -803,7 +803,7 @@ MonoBehaviour:
   coinProbability: 0.7
   quakeProbability: 0.3
   boxAnimator: {fileID: 9514370}
-  diamondObject: {fileID: 151658}
+  diamondObject: {fileID: 100656}
   earthquakeObject: {fileID: 136082}
   nuclearObject: {fileID: 151658}
   destructionTimeAfterOpen: 2
@@ -5781,29 +5781,29 @@ ParticleSystem:
   SizeModule:
     enabled: 1
     curve:
-      scalar: 1
+      scalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.1904762
+          value: 0.121212125
           inSlope: 0.6892454
           outSlope: 0.6892454
           tangentMode: 0
-        - time: 0.3810526
-          value: 0.6857099
-          inSlope: 0
-          outSlope: 0
+        - time: 0.37736255
+          value: 0.3004285
+          inSlope: 0.010258108
+          outSlope: 0.010258108
           tangentMode: 0
-        - time: 0.6802708
-          value: 0.69040227
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
+        - time: 0.59170985
+          value: 0.30079186
+          inSlope: 0.01103229
+          outSlope: -0.010367436
+          tangentMode: 1
         - time: 1
           value: 1
-          inSlope: 1.5547788
-          outSlope: 1.5547788
+          inSlope: 4.4412475
+          outSlope: 4.4412475
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -5942,10 +5942,10 @@ ParticleSystem:
           rgba: 16777215
         key1:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 3372220415
         key2:
           serializedVersion: 2
-          rgba: 4278190080
+          rgba: 3355443200
         key3:
           serializedVersion: 2
           rgba: 0
@@ -5970,7 +5970,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 6746
+        atime1: 9059
         atime2: 42791
         atime3: 65535
         atime4: 0
