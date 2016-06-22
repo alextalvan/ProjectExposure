@@ -2648,7 +2648,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197432}
-  m_LocalRotation: {x: 0.31460872, y: -0.63567775, z: 0.31783906, w: 0.6292165}
+  m_LocalRotation: {x: 0.31460875, y: -0.6356778, z: 0.3178391, w: 0.62921655}
   m_LocalPosition: {x: 0.17, y: 7.28, z: -1.11}
   m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_Children:
@@ -4726,10 +4726,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  unitHealth: 60
-  attackRange: 4
-  unitSpeed: 0.018
-  attackCoolDown: 2
+  unitHealth: 45
+  attackRange: 8
+  unitSpeed: 0.022
+  attackCoolDown: 3
   cheerAnimTime: 3.3
   deathAnimTime: 2
   moneyReward: 2
@@ -4737,7 +4737,7 @@ MonoBehaviour:
   - {fileID: 114508}
   - {fileID: 188006}
   projParentPrefab: {fileID: 142734, guid: 783203369091ff84c90f5be0f65cacc5, type: 2}
-  projectilePrefab: {fileID: 111560, guid: 0e257185d98b3435482a2fb2c113e1aa, type: 2}
+  projectilePrefab: {fileID: 111560, guid: ae7768b7f738b4c8297355acee089c60, type: 2}
   projectileFlightDuration: 1
   conversionPrefab: {fileID: 124668, guid: 09aa07568625990408235ce0eafac3e2, type: 2}
   buffList:

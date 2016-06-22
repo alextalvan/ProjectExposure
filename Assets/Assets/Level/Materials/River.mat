@@ -82,8 +82,8 @@ Material:
         first:
           name: _Normal_map
         second:
-          m_Texture: {fileID: 2800000, guid: e0547e5867992694cb1c3f14f574a380, type: 3}
-          m_Scale: {x: 1, y: 3.96}
+          m_Texture: {fileID: 2800000, guid: c1678c05865734ddea7dbe7f466295b9, type: 3}
+          m_Scale: {x: 0.75, y: 0.75}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -112,6 +112,10 @@ Material:
         first:
           name: _Cutoff
         second: 0.5
+      data:
+        first:
+          name: _Metallic
+        second: 0.023
       data:
         first:
           name: _Parallax
@@ -146,10 +150,6 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
-        second: 0.023
-      data:
-        first:
           name: _Transparency
         second: 0.038
       data:
@@ -171,7 +171,7 @@ Material:
       data:
         first:
           name: _Normal_intensity
-        second: -1.04
+        second: -1.015
       data:
         first:
           name: _Falloff_amuont
@@ -192,4 +192,4 @@ Material:
       data:
         first:
           name: _Fresnel_Color
-        second: {r: 0.23313144, g: 0.518882, b: 0.7205882, a: 1}
+        second: {r: 0.3162846, g: 0.63518673, b: 0.8602941, a: 1}

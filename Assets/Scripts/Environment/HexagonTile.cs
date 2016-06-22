@@ -179,8 +179,8 @@ public class HexagonTile : GameManagerSearcher
             myB.transform.localRotation = Quaternion.identity;
             //myB.transform.localScale = Vector3.one;
 
-            //			myB.OnDestruction -= this.CleanupAfterBuildingIsDestroyed;
-            //			myB.OnDestruction += other.CleanupAfterBuildingIsDestroyed;
+            myB.OnDestruction -= this.CleanupAfterBuildingIsDestroyed;
+            myB.OnDestruction += other.CleanupAfterBuildingIsDestroyed;
 
             myB.GetComponent<UnitSpawner>().SetSpawnInformation(unitDirX, other.spawnPoint, other.spawnedUnitsParent, other.owner, other.lane);
 
@@ -197,30 +197,29 @@ public class HexagonTile : GameManagerSearcher
         other._hasBuildingOnTop = (myB != null);
         //other.visualObject.GetComponent<TileVisual>().ToggleTopVisual(myB == null);
 
-        if (otherB != null)
-        {
+		if(otherB!=null)
+		{
+			
+			otherB.transform.SetParent(this.transform);
+			//otherB.transform.localPosition = Vector3.zero;
+			otherB.transform.localRotation = Quaternion.identity;
+			//otherB.transform.localScale = Vector3.one;
 
-            otherB.transform.SetParent(this.transform);
-            //otherB.transform.localPosition = Vector3.zero;
-            otherB.transform.localRotation = Quaternion.identity;
-            //otherB.transform.localScale = Vector3.one;
+			otherB.OnDestruction -= other.CleanupAfterBuildingIsDestroyed;
+			otherB.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
 
-            //			otherB.OnDestruction -= other.CleanupAfterBuildingIsDestroyed;
-            //			otherB.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
+			otherB.GetComponent<UnitSpawner>().SetSpawnInformation(this.unitDirX, this.spawnPoint,this.spawnedUnitsParent,this.owner, this.lane);
 
-            otherB.GetComponent<UnitSpawner>().SetSpawnInformation(this.unitDirX, this.spawnPoint, this.spawnedUnitsParent, this.owner, this.lane);
+			//this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
+			this.pollutionZone.SetGrowState(otherB.IsPolluting);
+		}
+		else
+			this.pollutionZone.SetGrowState(false);
 
-            //this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(false);
-            this.pollutionZone.SetGrowState(otherB.IsPolluting);
-        }
-        else
-            this.pollutionZone.SetGrowState(false);
-
-        this.CurrentEnergyBuilding = otherB;
-        this._hasBuildingOnTop = (otherB != null);
-        //this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(otherB == null);
-
-    }
+		this.CurrentEnergyBuilding = otherB;
+		this._hasBuildingOnTop = (otherB != null);
+		//this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(otherB == null);
+	}
 
 
     /// <summary>
@@ -263,8 +262,9 @@ public class HexagonTile : GameManagerSearcher
                     _energyBuilding = energyBuilding.GetComponent<EnergyBuilding>();
 
                     pdata.buildings.Add(_energyBuilding);
-                    _energyBuilding.OnDestruction += () => { pdata.buildings.Remove(_energyBuilding); };
-                    //_energyBuilding.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
+
+                    _energyBuilding.OnDestruction += ()=> { pdata.buildings.Remove(_energyBuilding); };
+                    _energyBuilding.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
                     _energyBuilding.Owner = this.Owner;
 
                     if (this.Owner == PLAYERS.PLAYER1)
@@ -301,21 +301,18 @@ public class HexagonTile : GameManagerSearcher
         }
     }
 
-
-    /// <summary>
-    /// Cleanup the after building is destroyed. Used for event callbacks on the building destruction
-    /// </summary>
-    void CleanupAfterBuildingIsDestroyed()
-    {
-        //this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(this._energyBuilding.PollutionPrefab == null);
-        //StartBuildBlock(this._energyBuilding);
-        this._hasBuildingOnTop = false;
-        this._energyBuilding = null;
-        CalculateBaseOrNextOutline();
-        gameManager.playerData[this.Owner].RefreshAllTilesHighlight();
-
-        //if(this._energyBuilding.PollutionPrefab
-
+	/// <summary>
+	/// Cleanup the after building is destroyed. Used for event callbacks on the building destruction
+	/// </summary>
+	void CleanupAfterBuildingIsDestroyed()
+	{
+		//this.visualObject.GetComponent<TileVisual>().ToggleTopVisual(this._energyBuilding.PollutionPrefab == null);
+		//StartBuildBlock(this._energyBuilding);
+		this._hasBuildingOnTop = false; 
+		this._energyBuilding = null;
+		CalculateBaseOrNextOutline();
+		gameManager.playerData[this.Owner].RefreshAllTilesHighlight();
+		this.pollutionZone.SetGrowState(false);
     }
 
 

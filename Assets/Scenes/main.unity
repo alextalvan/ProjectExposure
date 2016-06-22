@@ -945,7 +945,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22443076, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -196
+      value: -208
       objectReference: {fileID: 0}
     - target: {fileID: 22443076, guid: aca7b7ef812b22a4ca85071345fbd450, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -2837,6 +2837,10 @@ Prefab:
       propertyPath: pollutionDecalRenderer
       value: 
       objectReference: {fileID: 602431870}
+    - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
+      propertyPath: startPollutionVisibility
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
   m_IsPrefabParent: 0
@@ -3111,6 +3115,10 @@ Prefab:
       propertyPath: pollutionDecalRenderer
       value: 
       objectReference: {fileID: 1263641930}
+    - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
+      propertyPath: startPollutionVisibility
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
   m_IsPrefabParent: 0
@@ -3818,6 +3826,10 @@ Prefab:
       propertyPath: pollutionDecalRenderer
       value: 
       objectReference: {fileID: 602431872}
+    - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
+      propertyPath: startPollutionVisibility
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
   m_IsPrefabParent: 0
@@ -4071,7 +4083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4350,7 +4362,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22462686, guid: 042fd8aca12727749bbb2bc48c0a308f, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -196
+      value: -208
       objectReference: {fileID: 0}
     - target: {fileID: 22462686, guid: 042fd8aca12727749bbb2bc48c0a308f, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -7739,6 +7751,10 @@ Prefab:
       propertyPath: pollutionDecalRenderer
       value: 
       objectReference: {fileID: 567565933}
+    - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
+      propertyPath: startPollutionVisibility
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
   m_IsPrefabParent: 0
@@ -10459,6 +10475,10 @@ Prefab:
       propertyPath: pollutionDecalRenderer
       value: 
       objectReference: {fileID: 567565934}
+    - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
+      propertyPath: startPollutionVisibility
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
   m_IsPrefabParent: 0
@@ -10752,6 +10772,10 @@ Prefab:
       propertyPath: pollutionDecalRenderer
       value: 
       objectReference: {fileID: 1045243667}
+    - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
+      propertyPath: startPollutionVisibility
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
   m_IsPrefabParent: 0
@@ -10953,8 +10977,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1110527146}
   m_LocalRotation: {x: 0.000000014901159, y: 0, z: -0.09335051, w: 0.99563336}
-  m_LocalPosition: {x: -31.6, y: 1, z: 0.8}
-  m_LocalScale: {x: 25, y: 5, z: 5}
+  m_LocalPosition: {x: -31.6, y: 1, z: 0.5}
+  m_LocalScale: {x: 25, y: 5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 2025985341}
   m_RootOrder: 4
@@ -11447,9 +11471,9 @@ MonoBehaviour:
   owner: 1
   prefabs:
   - {fileID: 191162, guid: 3687f0db12a0bd443bbfb54b4df6e45f, type: 2}
-  spawnInterval: 10
+  spawnInterval: 15
   inheritRotation: 0
-  timeAccumulator: 0
+  timeAccumulator: -7.5
 --- !u!1 &1184038688
 GameObject:
   m_ObjectHideFlags: 0
@@ -11586,6 +11610,10 @@ Prefab:
       propertyPath: pollutionDecalRenderer
       value: 
       objectReference: {fileID: 37022984}
+    - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
+      propertyPath: startPollutionVisibility
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
   m_IsPrefabParent: 0
@@ -13627,7 +13655,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 38a36cea5a3018845a77b8e7ff7cce01, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.26811203, g: 0.6397059, b: 0.6243296, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!1 &1347699348
@@ -15615,7 +15643,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 463996, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.029
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: 413370, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
       propertyPath: m_LocalPosition.x
@@ -15623,7 +15651,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 413370, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.027
+      value: 0.021
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
@@ -16373,8 +16401,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1534513812}
   m_LocalRotation: {x: 0.000000019283044, y: -0.00000006176275, z: -0.09335047, w: 0.9956333}
-  m_LocalPosition: {x: 25.3, y: -10, z: 0.8}
-  m_LocalScale: {x: 25, y: 5, z: 5}
+  m_LocalPosition: {x: 25.3, y: -10, z: 0.5}
+  m_LocalScale: {x: 25, y: 5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 2025985341}
   m_RootOrder: 3
@@ -17074,6 +17102,10 @@ Prefab:
       propertyPath: pollutionDecalRenderer
       value: 
       objectReference: {fileID: 1224431868}
+    - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
+      propertyPath: startPollutionVisibility
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
   m_IsPrefabParent: 0
@@ -17865,6 +17897,10 @@ Prefab:
       propertyPath: pollutionDecalRenderer
       value: 
       objectReference: {fileID: 37022983}
+    - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
+      propertyPath: startPollutionVisibility
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
   m_IsPrefabParent: 0
@@ -18794,7 +18830,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22462844, guid: 8e048e0cfdf1d344eb275d394f6ece52, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -196
+      value: -208
       objectReference: {fileID: 0}
     - target: {fileID: 22462844, guid: 8e048e0cfdf1d344eb275d394f6ece52, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -19361,6 +19397,10 @@ Prefab:
       propertyPath: pollutionDecalRenderer
       value: 
       objectReference: {fileID: 602431873}
+    - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
+      propertyPath: startPollutionVisibility
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
   m_IsPrefabParent: 0
@@ -19751,7 +19791,7 @@ MonoBehaviour:
   owner: 0
   prefabs:
   - {fileID: 169368, guid: d1069b41d82914f4faebc24a67c65699, type: 2}
-  spawnInterval: 10
+  spawnInterval: 15
   inheritRotation: 0
   timeAccumulator: 0
 --- !u!1001 &1872324770
@@ -21231,6 +21271,10 @@ Prefab:
       propertyPath: pollutionDecalRenderer
       value: 
       objectReference: {fileID: 37022985}
+    - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
+      propertyPath: startPollutionVisibility
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
   m_IsPrefabParent: 0
@@ -21802,14 +21846,16 @@ MonoBehaviour:
   MONEY_UPDATE_RATE: 0.03
   moneyRate: 0.009
   _player1money: 3
+  _player1barImage: {fileID: 1404899489}
   _player2money: 3
+  _player2barImage: {fileID: 714066064}
   _player1MoneyBar: {fileID: 1404899488}
   _player2MoneyBar: {fileID: 714066063}
   player1MoneyBoostTime: -1
   player2MoneyBoostTime: -1
   moneyBoostStrength: 4
   gameScore: 0
-  maxScore: 18
+  maxScore: 9
   scoreRenderer: {fileID: 1260687028}
   scoreBarInterpolationSpeed: 0.1
   gameStages:
@@ -22056,6 +22102,10 @@ Prefab:
       propertyPath: pollutionDecalRenderer
       value: 
       objectReference: {fileID: 567565935}
+    - target: {fileID: 11421014, guid: b4facff806ea0364fad903388c4e450e, type: 2}
+      propertyPath: startPollutionVisibility
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4facff806ea0364fad903388c4e450e, type: 2}
   m_IsPrefabParent: 0

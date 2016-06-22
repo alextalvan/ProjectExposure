@@ -25,6 +25,7 @@ public class EnergyBuilding : GameManagerSearcher
 
 	[SerializeField]
 	float constructionTime = 5.0f;
+	[SerializeField]
 	float constructionTimeLeft;
 
 	public float ConstructionTimeLeft { get { return constructionTimeLeft; } } 
