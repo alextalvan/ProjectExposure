@@ -39,6 +39,12 @@ public class CoinPickup : GameManagerSearcher {
 	GameObject diamondObject;
 
 	[SerializeField]
+	GameObject earthquakeObject;
+
+	[SerializeField]
+	GameObject nuclearObject;
+
+	[SerializeField]
 	float destructionTimeAfterOpen = 1.0f;
 
 #if TOUCH_INPUT
@@ -102,6 +108,8 @@ public class CoinPickup : GameManagerSearcher {
 
 	void QuakeAction()
 	{
+		earthquakeObject.SetActive(true);
+
 		PlayerGameData enemyData = gameManager.playerData[(this.owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
 		for(int i=0; i < enemyData.tiles.Count - 1; ++i)
 		{
@@ -115,6 +123,7 @@ public class CoinPickup : GameManagerSearcher {
 
 	void NukeAction()
 	{
+		nuclearObject.SetActive(true);
 		
 	}
 
