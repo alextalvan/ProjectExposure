@@ -143,8 +143,8 @@ public class HexagonTile : GameManagerSearcher
 			myB.transform.localRotation = Quaternion.identity;
 			//myB.transform.localScale = Vector3.one;
 
-//			myB.OnDestruction -= this.CleanupAfterBuildingIsDestroyed;
-//			myB.OnDestruction += other.CleanupAfterBuildingIsDestroyed;
+			myB.OnDestruction -= this.CleanupAfterBuildingIsDestroyed;
+			myB.OnDestruction += other.CleanupAfterBuildingIsDestroyed;
 
 			myB.GetComponent<UnitSpawner>().SetSpawnInformation(unitDirX, other.spawnPoint,other.spawnedUnitsParent,other.owner, other.lane);
 
@@ -169,8 +169,8 @@ public class HexagonTile : GameManagerSearcher
 			otherB.transform.localRotation = Quaternion.identity;
 			//otherB.transform.localScale = Vector3.one;
 
-//			otherB.OnDestruction -= other.CleanupAfterBuildingIsDestroyed;
-//			otherB.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
+			otherB.OnDestruction -= other.CleanupAfterBuildingIsDestroyed;
+			otherB.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
 
 			otherB.GetComponent<UnitSpawner>().SetSpawnInformation(this.unitDirX, this.spawnPoint,this.spawnedUnitsParent,this.owner, this.lane);
 
@@ -227,7 +227,7 @@ public class HexagonTile : GameManagerSearcher
 
                     pdata.buildings.Add(_energyBuilding);
                     _energyBuilding.OnDestruction += ()=> { pdata.buildings.Remove(_energyBuilding); };
-                    //_energyBuilding.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
+                    _energyBuilding.OnDestruction += this.CleanupAfterBuildingIsDestroyed;
                     _energyBuilding.Owner = this.Owner;
 
 					if(this.Owner == PLAYERS.PLAYER1)
@@ -276,6 +276,7 @@ public class HexagonTile : GameManagerSearcher
 		this._energyBuilding = null;
 		CalculateBaseOrNextOutline();
 		gameManager.playerData[this.Owner].RefreshAllTilesHighlight();
+		this.pollutionZone.SetGrowState(false);
 
 		//if(this._energyBuilding.PollutionPrefab
 
