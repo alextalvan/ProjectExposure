@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Collider),typeof(Rigidbody))]
 public class CoinPickup : GameManagerSearcher {
@@ -103,12 +104,37 @@ public class CoinPickup : GameManagerSearcher {
 	void QuakeAction()
 	{
 		PlayerGameData enemyData = gameManager.playerData[(this.owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
-		for(int i=0; i < enemyData.tiles.Count - 1; ++i)
-		{
-			enemyData.tiles[i].SwapBuilding(enemyData.tiles[Random.Range(i+1,enemyData.tiles.Count)]);
-		}
+        //List<HexagonTile> tiles = new List<HexagonTile>(enemyData.tiles);
+        //HexagonTile tile1;
+        //HexagonTile tile2;
+        //while(tiles.Count > 1)
+        //{
+        //    int rnd = Random.Range(0, tiles.Count);
+        //    tile1 = tiles[rnd];
+        //    tiles.RemoveAt(rnd);
+        //    rnd = Random.Range(0, tiles.Count);
+        //    tile2 = tiles[rnd];
+        //    tiles.RemoveAt(rnd);
 
-		Camera.main.GetComponent<CameraShake>().Shake();
+        //    tile1.SwapBuilding(tile2);
+        //    tile1.StartSwap();
+        //    tile2.StartSwap();
+        //}
+        
+        for (int i=0; i < enemyData.tiles.Count - 1; ++i)
+		{
+            HexagonTile tile = enemyData.tiles[Random.Range(i + 1, enemyData.tiles.Count)];
+            
+            enemyData.tiles[i].SwapBuilding(tile);
+           
+        }
+
+        foreach(HexagonTile t in enemyData.tiles)
+        {
+            t.StartSwap();
+        }
+
+        Camera.main.GetComponent<CameraShake>().Shake();
 		enemyData.currentInputState = INPUT_STATES.FREE;
 		enemyData.RefreshAllTilesHighlight();
 	}
@@ -124,7 +150,7 @@ public class CoinPickup : GameManagerSearcher {
 		if(Input.GetKeyUp(KeyCode.H))
 		{
 			QuakeAction();
-			Destroy(this.gameObject);
+			//Destroy(this.gameObject);
 		}
 
 		deletionTime -= Time.deltaTime;
