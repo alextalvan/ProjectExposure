@@ -219,12 +219,12 @@ public class GameManager : MonoBehaviour
 
         foreach (HexagonTile tile in playerData[PLAYERS.PLAYER1].tiles)
         {
-            if (tile.CurrentEnergyBuilding)
+			if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.ConstructionTimeLeft < 0.0f)
                 tile.CurrentEnergyBuilding.GetComponent<UnitSpawner>().SpawnUnits();
         }
         foreach (HexagonTile tile in playerData[PLAYERS.PLAYER2].tiles)
         {
-            if (tile.CurrentEnergyBuilding)
+			if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.ConstructionTimeLeft < 0.0f)
                 tile.CurrentEnergyBuilding.GetComponent<UnitSpawner>().SpawnUnits();
         }
         unitsAlive--;
@@ -256,6 +256,9 @@ public class GameManager : MonoBehaviour
         int seconds = ((int)gameTimer) % 60;
         int minutes = ((int)gameTimer) / 60;
         gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
+
+		currentScoreFloat = Mathf.Lerp(currentScoreFloat, targetScoreFloat, scoreBarInterpolationSpeed);
+		scoreRenderer.material.SetFloat("_CityClip", currentScoreFloat);
 
 
 		if(gameScore >= maxScore)
@@ -315,8 +318,7 @@ public class GameManager : MonoBehaviour
         //topLaneScoreData.Update();
         //botLaneScoreData.Update();
 
-		currentScoreFloat = Mathf.Lerp(currentScoreFloat, targetScoreFloat, scoreBarInterpolationSpeed);
-		scoreRenderer.material.SetFloat("_CityClip", currentScoreFloat);
+
 
     }
 
