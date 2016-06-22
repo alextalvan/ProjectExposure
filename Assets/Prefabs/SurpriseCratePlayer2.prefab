@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 403228}
+  m_Layer: 0
+  m_Name: 1_Diamond
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &116180
 GameObject:
   m_ObjectHideFlags: 1
@@ -35,9 +50,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &135032
+--- !u!1 &128772
 GameObject:
   m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 496094}
+  - 95: {fileID: 9574434}
+  - 114: {fileID: 11401408}
+  m_Layer: 0
+  m_Name: 2_EarthQuake
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &135032
+GameObject:
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -45,15 +77,15 @@ GameObject:
   - 4: {fileID: 482446}
   - 95: {fileID: 9542502}
   m_Layer: 0
-  m_Name: 1_Diamond
+  m_Name: 1_Diamond2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &139732
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -67,7 +99,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &151578
 GameObject:
   m_ObjectHideFlags: 1
@@ -96,7 +128,7 @@ GameObject:
   - 95: {fileID: 9501014}
   - 114: {fileID: 11441346}
   m_Layer: 0
-  m_Name: 2_EarthQuake
+  m_Name: 3_Nuclear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,7 +200,21 @@ Transform:
   - {fileID: 435892}
   - {fileID: 445318}
   m_Father: {fileID: 431188}
-  m_RootOrder: 2
+  m_RootOrder: 3
+--- !u!4 &403228
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100656}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 433960}
+  - {fileID: 482446}
+  m_Father: {fileID: 431188}
+  m_RootOrder: 0
 --- !u!4 &421280
 Transform:
   m_ObjectHideFlags: 1
@@ -176,11 +222,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04300001, y: 0.09799999, z: 0.0060000466}
+  m_LocalPosition: {x: -0.04299994, y: 0.09799999, z: 0.005999986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 431188}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &431188
 Transform:
   m_ObjectHideFlags: 1
@@ -191,10 +237,10 @@ Transform:
   m_LocalPosition: {x: -5.1910996, y: -1.22, z: -1.6963444}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
-  - {fileID: 482446}
+  - {fileID: 403228}
+  - {fileID: 496094}
   - {fileID: 421280}
   - {fileID: 401544}
-  - {fileID: 433960}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &433960
@@ -203,12 +249,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139732}
-  m_LocalRotation: {x: -0.7015414, y: -0.08854223, z: 0.08854223, w: 0.7015413}
-  m_LocalPosition: {x: -0.02, y: 0.078, z: -0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalRotation: {x: -0.7015414, y: -0.088542245, z: 0.08854223, w: 0.70154136}
+  m_LocalPosition: {x: -0.019999944, y: 0.07800001, z: -0}
+  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.20000002}
   m_Children: []
-  m_Father: {fileID: 431188}
-  m_RootOrder: 3
+  m_Father: {fileID: 403228}
+  m_RootOrder: 0
 --- !u!4 &435892
 Transform:
   m_ObjectHideFlags: 1
@@ -264,12 +310,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.043, y: 0.098, z: 0.006}
+  m_LocalPosition: {x: -0.042999983, y: 0.09799999, z: 0.0059999432}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 468912}
+  m_Father: {fileID: 403228}
+  m_RootOrder: 1
+--- !u!4 &496094
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.04300001, y: 0.09799999, z: 0.0060000466}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
   m_Father: {fileID: 431188}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!23 &2306416
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -468,6 +526,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &9574434
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128772}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!111 &11100628
 Animation:
   m_ObjectHideFlags: 1
@@ -483,6 +558,17 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &11401408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54a844e8d7874508a30518db090dd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11438564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -523,7 +609,7 @@ MonoBehaviour:
   coinProbability: 0.9
   quakeProbability: 0.1
   boxAnimator: {fileID: 9563920}
-  diamondObject: {fileID: 135032}
+  diamondObject: {fileID: 100656}
   destructionTimeAfterOpen: 2
 --- !u!135 &13547028
 SphereCollider:
@@ -546,7 +632,7 @@ ParticleSystem:
   serializedVersion: 2
   lengthInSec: 1
   startDelay:
-    scalar: 0
+    scalar: 1
     maxCurve:
       serializedVersion: 2
       m_Curve:
