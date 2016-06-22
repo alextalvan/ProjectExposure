@@ -28,7 +28,7 @@ public class PollutionZone : MonoBehaviour
 	Renderer pollutionDecalRenderer;
 
 	//[SerializeField]
-	public float startPollutionVisibility = 0.25f;
+	public float startPollutionVisibility = 0.15f;
 
 	public void SetGrowState(bool state)
 	{
