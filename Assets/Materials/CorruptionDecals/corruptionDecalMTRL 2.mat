@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: corruptionDecalMTRL 2
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 12453990d571540b999cbc5e6e8decff, type: 3}
   m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: 3000
@@ -79,6 +79,20 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse_Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: ccb45a9c783274e42a804a5d75ac538d, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emission_texture
+        second:
+          m_Texture: {fileID: 2800000, guid: bc5decf8e48dedc4c9bca8aec460426a, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -92,6 +106,10 @@ Material:
         first:
           name: _Cutoff
         second: 0.5
+      data:
+        first:
+          name: _Smoothness
+        second: 1
       data:
         first:
           name: _Parallax
@@ -128,6 +146,18 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _Emission_power
+        second: 4.5
+      data:
+        first:
+          name: _Filckering_rate
+        second: 0.25
+      data:
+        first:
+          name: _minimum_emission
+        second: 0.1
     m_Colors:
       data:
         first:
@@ -137,3 +167,7 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 0}
+      data:
+        first:
+          name: _Emission_tint
+        second: {r: 1, g: 0.500244, b: 0.0441176, a: 1}
