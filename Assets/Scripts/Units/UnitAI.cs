@@ -76,10 +76,10 @@ public class UnitAI : GameManagerSearcher
     [SerializeField]
     Sprite unitIcon;
 
-	[SerializeField]
-	GameObject healthBarPrefab;
+    [SerializeField]
+    GameObject healthBarPrefab;
     private HealthBar healthBar;
-	float maxUnitHealth;
+    float maxUnitHealth;
 
     private Transform oppositeLane = null;
 
@@ -90,7 +90,7 @@ public class UnitAI : GameManagerSearcher
         attackTimer = attackCoolDown * 0.5f;
         cheerTimer = cheerAnimTime;
         deathTimer = deathAnimTime;
-		maxUnitHealth = unitHealth;
+        maxUnitHealth = unitHealth;
         gameManager.UnitsAlive += 1;
     }
 
@@ -109,7 +109,7 @@ public class UnitAI : GameManagerSearcher
 
         Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position, worldUp);
         transform.rotation = targetRot;
-        GameObject healthBarObj = Instantiate(healthBarPrefab, transform.position + (Vector3.up * models[0].transform.lossyScale.y * 1.2f) - Vector3.right * 0.2f + (-Vector3.forward), Quaternion.identity) as GameObject;
+        GameObject healthBarObj = Instantiate(healthBarPrefab, transform.position + (Vector3.up * models[0].transform.lossyScale.y * (float)models.Count * 0.66f) - Vector3.right * 0.2f + (-Vector3.forward), Quaternion.identity) as GameObject;
         healthBar = healthBarObj.GetComponent<HealthBar>();
         healthBar.transform.parent = transform.GetChild(0);
         healthBar.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = unitIcon;
@@ -183,7 +183,7 @@ public class UnitAI : GameManagerSearcher
         float minDist = Mathf.Infinity;
         foreach (Transform enemy in oppositeLane)
         {
-            float dist = Vector3.Distance(new Vector3(transform.position.x, enemy.position.y, enemy.position.z), transform.position);
+            float dist = Vector3.Distance(enemy.position, transform.position);
             if (Vector3.Distance(enemy.position, transform.position) < attackRange && dist < minDist && !enemy.GetComponent<UnitAI>().Won)
             {
                 minDist = dist;
@@ -232,7 +232,7 @@ public class UnitAI : GameManagerSearcher
         if (cheerTimer <= 0f)
         {
             Destroy(this.gameObject);
-			gameManager.ChangeScore(1,this.Owner,this.lane);
+            gameManager.ChangeScore(1, this.Owner, this.lane);
         }
     }
 
@@ -321,8 +321,8 @@ public class UnitAI : GameManagerSearcher
     public bool DecreaseHealth(int amount)
     {
         unitHealth -= amount;
-		if(healthBar)
-			healthBar.SetLength(unitHealth / maxUnitHealth);
+        if (healthBar)
+            healthBar.SetLength(unitHealth / maxUnitHealth);
 
         if (unitHealth <= 0)
         {
