@@ -54,7 +54,7 @@ Material:
         first:
           name: _EmissionMap
         second:
-          m_Texture: {fileID: 2800000, guid: 468e0e9a5f75d48cda2c643c7ea54362, type: 3}
+          m_Texture: {fileID: 2800000, guid: ee110e307dbf6cb42b569a0a0b95aaa8, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 1, y: 0}
       data:
@@ -68,7 +68,7 @@ Material:
         first:
           name: _DetailAlbedoMap
         second:
-          m_Texture: {fileID: 2800000, guid: d3169991727a241b3aa03e89e1a8dd60, type: 3}
+          m_Texture: {fileID: 2800000, guid: 3f557cbb552cef04b914ac5c9cd3f1a3, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -91,10 +91,6 @@ Material:
         first:
           name: _Cutoff
         second: 0.5
-      data:
-        first:
-          name: _Metallic
-        second: 0.25
       data:
         first:
           name: _Parallax
@@ -127,6 +123,10 @@ Material:
         first:
           name: _Mode
         second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 0.25
     m_Colors:
       data:
         first:
