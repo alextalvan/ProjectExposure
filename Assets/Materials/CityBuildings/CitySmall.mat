@@ -38,6 +38,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -67,13 +74,6 @@ Material:
       data:
         first:
           name: _DetailAlbedoMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MetallicGlossMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -118,7 +118,7 @@ Material:
           name: _Emission_map
         second:
           m_Texture: {fileID: 2800000, guid: 787fffec1f07985479b87f3c927cb7d8, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 2, y: 2}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
@@ -135,14 +135,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
-          name: _Parallax
-        second: 0.02
-      data:
-        first:
           name: _ZWrite
         second: 1
       data:
@@ -151,8 +143,16 @@ Material:
         second: 0
       data:
         first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
           name: _BumpScale
         second: 1
+      data:
+        first:
+          name: _Parallax
+        second: 0.02
       data:
         first:
           name: _OcclusionStrength
@@ -180,7 +180,7 @@ Material:
       data:
         first:
           name: _Normal_Map_Intensity
-        second: 0
+        second: 1
       data:
         first:
           name: _Noise_Brightness
@@ -188,11 +188,11 @@ Material:
       data:
         first:
           name: _Edge_Glow_Power
-        second: 0.75
+        second: 2.54
       data:
         first:
           name: _Emssion_power
-        second: 0.79
+        second: 1.19
       data:
         first:
           name: _Visibility_multiplier
@@ -225,4 +225,4 @@ Material:
       data:
         first:
           name: _Glow_color
-        second: {r: 0.5514706, g: 0.49330327, b: 0.024329575, a: 1}
+        second: {r: 0.33823526, g: 1, b: 0.45233265, a: 1}
