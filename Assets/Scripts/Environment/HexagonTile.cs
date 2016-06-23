@@ -72,6 +72,7 @@ public class HexagonTile : GameManagerSearcher
     Transform spawnedUnitsParent;
 
     //each hexagon knows its energy building
+	[SerializeField]
     private EnergyBuilding _energyBuilding = null;
     public EnergyBuilding CurrentEnergyBuilding { get { return _energyBuilding; } private set { _energyBuilding = value; } }
 
@@ -130,7 +131,7 @@ public class HexagonTile : GameManagerSearcher
 
     public void StartSwap()
     {
-        if (!_energyBuilding || swap) return;
+		if (!_energyBuilding || swap) return;
         startTime = Time.time;
         swapCenterPos = (_energyBuilding.transform.position + transform.position) / 2f;
         centerToThisVec = transform.position - swapCenterPos;
@@ -248,7 +249,10 @@ public class HexagonTile : GameManagerSearcher
                 {
                     if (_energyBuilding != null)
                     {
+						_energyBuilding.OnDestruction -= this.CleanupAfterBuildingIsDestroyed;
                         Destroy(_energyBuilding.gameObject);
+
+						CleanupAfterBuildingIsDestroyed();
                         //gameManager.playerData[this.owner].buildingCount--;
                     }
 
@@ -352,5 +356,17 @@ public class HexagonTile : GameManagerSearcher
 
         SetOutlineState(OUTLINE_STATES.BASE);
     }
+
+
+	public void DestroyBuilding()
+	{
+		if (_energyBuilding != null)
+		{
+			_energyBuilding.OnDestruction -= this.CleanupAfterBuildingIsDestroyed;
+			Destroy(_energyBuilding.gameObject);
+			CleanupAfterBuildingIsDestroyed();
+			//gameManager.playerData[this.owner].buildingCount--;
+		}
+	}
 
 }

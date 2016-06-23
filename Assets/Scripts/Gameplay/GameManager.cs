@@ -269,21 +269,21 @@ public class GameManager : MonoBehaviour
 
 		if(gameScore >= maxScore)
 		{
-			gameOverText.gameObject.SetActive(true);
+			gameOverText.transform.parent.gameObject.SetActive(true);
 			gameOverText.text = "Game over. Blue wins.";
 			gameStarted = false;
 		}
 
 		if(gameScore <= maxScore * -1)
 		{
-			gameOverText.gameObject.SetActive(true);
+			gameOverText.transform.parent.gameObject.SetActive(true);
 			gameOverText.text = "Game over. Red wins.";
 			gameStarted = false;
 		}
 
         if (gameTimer <= 0.0f)
         {
-            gameOverText.gameObject.SetActive(true);
+			gameOverText.transform.parent.gameObject.SetActive(true);
 			gameStarted = false;
             //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
 
@@ -423,4 +423,9 @@ public class GameManager : MonoBehaviour
 //        //if (Mathf.Abs(topRelativeScore) >= 0.9999f && Mathf.Abs(botRelativeScore) >= 0.9999f && Mathf.Sign(botRelativeScore) == Mathf.Sign(topRelativeScore))
 //        //    gameTimer = -1.0f;//gameOverText.SetActive(true);
 //    }
+
+	public void LoadFirstLevel()
+	{
+		Application.LoadLevel(0);
+	}
 }

@@ -111,7 +111,7 @@ public class CoinPickup : GameManagerSearcher {
 	{
 		earthquakeObject.SetActive(true);
 
-		PlayerGameData enemyData = gameManager.playerData[(this.owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
+
         //List<HexagonTile> tiles = new List<HexagonTile>(enemyData.tiles);
         //HexagonTile tile1;
         //HexagonTile tile2;
@@ -128,23 +128,68 @@ public class CoinPickup : GameManagerSearcher {
         //    tile1.StartSwap();
         //    tile2.StartSwap();
         //}
-        
-        for (int i=0; i < enemyData.tiles.Count - 1; ++i)
+
+		PlayerGameData data = gameManager.playerData[PLAYERS.PLAYER1];
+
+		//destroy one building
+		foreach(HexagonTile t  in data.tiles)
 		{
-            HexagonTile tile = enemyData.tiles[Random.Range(i + 1, enemyData.tiles.Count)];
+			if(t.CurrentEnergyBuilding)
+			{
+				t.DestroyBuilding();
+				break;
+			}
+		}
+        
+		for (int i=0; i < data.tiles.Count - 1; ++i)
+		{
+			HexagonTile tile = data.tiles[Random.Range(i + 1, data.tiles.Count)];
             
-            enemyData.tiles[i].SwapBuilding(tile);
+			if(data.tiles[i] != tile)//testing
+			data.tiles[i].SwapBuilding(tile);
            
         }
 
-        foreach(HexagonTile t in enemyData.tiles)
-        {
+		foreach(HexagonTile t in data.tiles)
             t.StartSwap();
-        }
+
+		data.currentInputState = INPUT_STATES.FREE;
+		data.RefreshAllTilesHighlight();
+
+
+		data = gameManager.playerData[PLAYERS.PLAYER2];
+
+		//destroy one building
+		foreach(HexagonTile t  in data.tiles)
+		{
+			if(t.CurrentEnergyBuilding)
+			{
+				t.DestroyBuilding();
+				break;
+			}
+			
+		}
+
+		for (int i=0; i < data.tiles.Count - 1; ++i)
+		{
+			HexagonTile tile = data.tiles[Random.Range(i + 1, data.tiles.Count)];
+
+			if(data.tiles[i] != tile)//testing
+			data.tiles[i].SwapBuilding(tile);
+
+		}
+
+		foreach(HexagonTile t in data.tiles)
+			t.StartSwap();
+
+		data.currentInputState = INPUT_STATES.FREE;
+		data.RefreshAllTilesHighlight();
+
+		//shake own buildings too
+
+		//PlayerGameData enemyData = gameManager.playerData[(this.owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
 
         Camera.main.GetComponent<CameraShake>().Shake();
-		enemyData.currentInputState = INPUT_STATES.FREE;
-		enemyData.RefreshAllTilesHighlight();
 	}
 
 	void NukeAction()
