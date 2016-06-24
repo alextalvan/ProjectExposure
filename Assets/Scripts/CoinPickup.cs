@@ -129,9 +129,12 @@ public class CoinPickup : GameManagerSearcher {
         //    tile2.StartSwap();
         //}
 
+		bool bothPlayersHave3Buildings = (gameManager.playerData[PLAYERS.PLAYER1].buildingCount>2) && (gameManager.playerData[PLAYERS.PLAYER2].buildingCount>2);
+
 		PlayerGameData data = gameManager.playerData[PLAYERS.PLAYER1];
 
 		//destroy one building
+		if(bothPlayersHave3Buildings)
 		foreach(HexagonTile t  in data.tiles)
 		{
 			if(t.CurrentEnergyBuilding)
@@ -160,6 +163,7 @@ public class CoinPickup : GameManagerSearcher {
 		data = gameManager.playerData[PLAYERS.PLAYER2];
 
 		//destroy one building
+		if(bothPlayersHave3Buildings)
 		foreach(HexagonTile t  in data.tiles)
 		{
 			if(t.CurrentEnergyBuilding)
