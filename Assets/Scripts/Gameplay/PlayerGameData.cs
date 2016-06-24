@@ -20,6 +20,7 @@ public class PlayerGameData
 	public List<SwampSpot> swampSpots = new List<SwampSpot>();
     public GameObject pickUp = null;
     public bool AI = false;
+    public bool ready = false;
 
 	//public int buildingCount = 0;
 

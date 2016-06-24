@@ -250,6 +250,7 @@ public class HexagonTile : GameManagerSearcher
                     if (_energyBuilding != null)
                     {
 						_energyBuilding.OnDestruction -= this.CleanupAfterBuildingIsDestroyed;
+
                         Destroy(_energyBuilding.gameObject);
 
 						CleanupAfterBuildingIsDestroyed();

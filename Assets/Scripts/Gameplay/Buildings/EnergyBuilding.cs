@@ -61,6 +61,7 @@ public class EnergyBuilding : GameManagerSearcher
 	{
 		if(OnDestruction != null)
 			OnDestruction();
+        gameManager.playerData[Owner].buildings.Remove(this);
         Destroy(smog);
     }
 
@@ -69,6 +70,10 @@ public class EnergyBuilding : GameManagerSearcher
 		//lifeTimeLeft -= Time.deltaTime;
 		constructionTimeLeft -= Time.deltaTime;
 
+        if (constructionTimeLeft < 0.0f)
+        {
+            gameManager.playerData[owner].ready = true;
+        }
 
 		bool wasDisabled = false;
 
