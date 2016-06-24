@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pedestalsRedRenewPaperMTRL
+  m_Name: pedestalsBlueRenewScissorMTRL
   m_Shader: {fileID: 4800000, guid: 3ac85b2088a51411c864aa8410b9110b, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -82,7 +82,7 @@ Material:
         first:
           name: _Diffuse_Texture
         second:
-          m_Texture: {fileID: 2800000, guid: d55c0646a78ff714dae140b9c6d14bf1, type: 3}
+          m_Texture: {fileID: 2800000, guid: 364bab13d6f6ffe488607c67e816a6ae, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -185,4 +185,4 @@ Material:
       data:
         first:
           name: _Emssion_Tint
-        second: {r: 1, g: 0, b: 0, a: 1}
+        second: {r: 0, g: 0.13103437, b: 1, a: 1}

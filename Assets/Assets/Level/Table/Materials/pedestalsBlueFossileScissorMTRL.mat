@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pedestalsRedRenewPaperMTRL
+  m_Name: pedestalsBlueFossileScissorMTRL
   m_Shader: {fileID: 4800000, guid: 3ac85b2088a51411c864aa8410b9110b, type: 3}
-  m_ShaderKeywords: _EMISSION
+  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP
   m_LightmapFlags: 1
   m_CustomRenderQueue: 2000
   stringTagMap: {}
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: a836085113dad3848ac7d2105c8b4ab0, type: 3}
+          m_Texture: {fileID: 2800000, guid: aea4977271b0cf046a6d9f315b7d626c, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -54,7 +54,7 @@ Material:
         first:
           name: _EmissionMap
         second:
-          m_Texture: {fileID: 2800000, guid: 3291a4d776985934cbec787d9f4e34cf, type: 3}
+          m_Texture: {fileID: 2800000, guid: 8f1a39841eccbae46bb417c5fe3778e4, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -69,27 +69,27 @@ Material:
           name: _DetailAlbedoMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 3, y: 3}
+          m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _MetallicGlossMap
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: ab51eaf35ab8a7c46b1c7848d555e11f, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Diffuse_Texture
         second:
-          m_Texture: {fileID: 2800000, guid: d55c0646a78ff714dae140b9c6d14bf1, type: 3}
+          m_Texture: {fileID: 2800000, guid: 1c65658e08cef414faf8dd317561194d, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Emssion_Texture
         second:
-          m_Texture: {fileID: 2800000, guid: dd64452747e62d54895396c71169a3af, type: 3}
+          m_Texture: {fileID: 2800000, guid: c3303c2a74a367e4082327d77e402c9a, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -116,7 +116,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.08
+        second: 0
       data:
         first:
           name: _BumpScale
@@ -140,7 +140,7 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0.1
+        second: 0
       data:
         first:
           name: _Spec_Power
@@ -169,11 +169,11 @@ Material:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0.12132347, g: 1.5, b: 1.5, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _Color
-        second: {r: 0.8308824, g: 0.8308824, b: 0.8308824, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _Diffuse_tint
@@ -185,4 +185,4 @@ Material:
       data:
         first:
           name: _Emssion_Tint
-        second: {r: 1, g: 0, b: 0, a: 1}
+        second: {r: 0, g: 0.13103437, b: 1, a: 1}
