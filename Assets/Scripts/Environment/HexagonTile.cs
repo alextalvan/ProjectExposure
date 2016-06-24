@@ -147,7 +147,6 @@ public class HexagonTile : GameManagerSearcher
         {
             float fracComplete = (Time.time - startTime);
             _energyBuilding.transform.position = swapCenterPos + Vector3.Slerp(centerToSwapVec, centerToThisVec, fracComplete);
-            //_energyBuilding.transform.position = Vector3.Lerp(_energyBuilding.transform.position, transform.position, 0.1f);
         }
     }
 
@@ -245,8 +244,8 @@ public class HexagonTile : GameManagerSearcher
                     if (_energyBuilding != null)
                     {
 						//_energyBuilding.OnDestruction -= this.CleanupAfterBuildingIsDestroyed;
-                        Destroy(_energyBuilding.gameObject);
-
+                        //Destroy(_energyBuilding.gameObject);
+                        DestroyBuilding();
 						//CleanupAfterBuildingIsDestroyed();
                         //gameManager.playerData[this.owner].buildingCount--;
                     }
@@ -361,6 +360,7 @@ public class HexagonTile : GameManagerSearcher
 		{
 			//_energyBuilding.OnDestruction -= this.CleanupAfterBuildingIsDestroyed;
 			Destroy(_energyBuilding.gameObject);
+            _energyBuilding.OnDestruction();
 			//CleanupAfterBuildingIsDestroyed();
 			//gameManager.playerData[this.owner].buildingCount--;
 		}
