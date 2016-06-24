@@ -197,6 +197,7 @@ public class GameManager : MonoBehaviour
     Text gameOverText;
 
     private int unitsAlive = 0;
+    private int prevUnitsAlive = 0;
     public int UnitsAlive { get { return unitsAlive; } set { unitsAlive = value; } }
 
 	[SerializeField]
@@ -204,6 +205,8 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField]
 	List<PollutionZone> bluePollutionSpots;
+
+    bool battleStarted = false;
 
     void Start()
     {
@@ -236,7 +239,6 @@ public class GameManager : MonoBehaviour
 			if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.ConstructionTimeLeft < 0.0f)
                 tile.CurrentEnergyBuilding.GetComponent<UnitSpawner>().SpawnUnits();
         }
-        unitsAlive--;
     }
 
     void Update()
@@ -301,9 +303,17 @@ public class GameManager : MonoBehaviour
                 gameOverText.text = "Game over. Red wins.";
         }
 
-        if (unitsAlive <= 0)
-        { 
-            unitsAlive++;
+        if (!battleStarted)
+        {
+            if (playerData[PLAYERS.PLAYER1].ready && playerData[PLAYERS.PLAYER2].ready)
+            {
+                battleStarted = true;
+            }
+            prevUnitsAlive = 1;
+        }
+
+        if (battleStarted && unitsAlive <= 0 && prevUnitsAlive > 0)
+        {
             StartCoroutine(SpawnWave());
         }
 
@@ -327,8 +337,7 @@ public class GameManager : MonoBehaviour
 
         //topLaneScoreData.Update();
         //botLaneScoreData.Update();
-
-
+        prevUnitsAlive = unitsAlive;
 
     }
 
