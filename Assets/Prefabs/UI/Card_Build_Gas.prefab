@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11470882}
   - 61: {fileID: 6130822}
   - 114: {fileID: 11466648}
-  - 95: {fileID: 9537180}
+  - 95: {fileID: 9574262}
   m_Layer: 5
   m_Name: Card_Build_Gas
   m_TagString: Untagged
@@ -85,7 +85,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 150, y: 150}
---- !u!95 &9537180
+--- !u!95 &9574262
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -121,7 +121,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 64afcc01590b4457288fde9705398cef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4dca48c6aa1b94a39bdca133bdf2f339, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: c10b1630d5621ec48a17223c3c102023, type: 2}
-  m_Color: {r: 1, g: 0.6413793, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.9732251, b: 0.029411793, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -194,16 +194,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad717b7f3164df42bff495ea3acc4f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: 0
+  owner: 1
   cardType: 2
   moneyCost: 5
   deletionTime: 20
   highlight: {fileID: 138518}
   allowInput: 1
   _buildingType:
-    prefab: {fileID: 159058, guid: e56d094338c23104abbed701ac6398d9, type: 2}
+    prefab: {fileID: 159058, guid: bd94daa5eb7016040b4e32cefba3b2c3, type: 2}
     type: 6
-  useCooldown: 15
+  useCooldown: 20
 --- !u!114 &11470882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,13 +263,13 @@ RectTransform:
   m_GameObject: {fileID: 138518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9625, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22489720}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.1, y: 0}
+  m_AnchoredPosition: {x: -1.4, y: 0}
   m_SizeDelta: {x: 224, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22473698
@@ -297,14 +297,14 @@ RectTransform:
   m_GameObject: {fileID: 145380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.08791, y: 2.08791, z: 2.08791}
+  m_LocalScale: {x: -1.7665443, y: 1.7665441, z: 1.7665441}
   m_Children: []
   m_Father: {fileID: 22489720}
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71, y: 68}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 82, y: 65.5}
+  m_SizeDelta: {x: 54, y: 57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22489720
 RectTransform:
@@ -314,7 +314,7 @@ RectTransform:
   m_GameObject: {fileID: 121820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_Children:
   - {fileID: 22439898}
   - {fileID: 22476124}
@@ -323,8 +323,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -196, y: 2}
-  m_SizeDelta: {x: 224, y: 200}
+  m_AnchoredPosition: {x: -432, y: 0}
+  m_SizeDelta: {x: 224.02344, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
 Prefab:

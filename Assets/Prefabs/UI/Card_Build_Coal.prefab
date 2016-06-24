@@ -46,7 +46,7 @@ GameObject:
   - 114: {fileID: 11470882}
   - 61: {fileID: 6130822}
   - 114: {fileID: 11466648}
-  - 95: {fileID: 9556960}
+  - 95: {fileID: 9590528}
   m_Layer: 5
   m_Name: Card_Build_Coal
   m_TagString: Untagged
@@ -85,7 +85,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 150, y: 150}
---- !u!95 &9556960
+--- !u!95 &9590528
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -148,7 +148,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: eb4fb5140235f4f23b9d6c4372a9e19e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 082f3e7af08b24cf7b3605f2398dd293, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -167,16 +167,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad717b7f3164df42bff495ea3acc4f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: 0
+  owner: 1
   cardType: 0
   moneyCost: 5
   deletionTime: 75
   highlight: {fileID: 190150}
   allowInput: 1
   _buildingType:
-    prefab: {fileID: 179158, guid: 19e2c4f8f058af340bf3a4629583c5e0, type: 2}
+    prefab: {fileID: 179158, guid: e2b7318bde7dc0449af56a40e3bc2f39, type: 2}
     type: 0
-  useCooldown: 15
+  useCooldown: 20
 --- !u!114 &11468144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,7 +266,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22489720}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 81, y: 65.5}
@@ -280,14 +280,14 @@ RectTransform:
   m_GameObject: {fileID: 113060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.817428, y: 1.8174286, z: 1.8174286}
+  m_LocalScale: {x: -1.6090375, y: 1.4967797, z: 1.4967797}
   m_Children: []
   m_Father: {fileID: 22489720}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 83.5, y: 63.9}
-  m_SizeDelta: {x: 60, y: 60}
+  m_AnchoredPosition: {x: 80, y: 72}
+  m_SizeDelta: {x: 60, y: 67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22460134
 RectTransform:
@@ -303,7 +303,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: 0}
+  m_AnchoredPosition: {x: -1.2, y: 0}
   m_SizeDelta: {x: 224.02344, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22489720
@@ -314,16 +314,16 @@ RectTransform:
   m_GameObject: {fileID: 121820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_Children:
   - {fileID: 22460134}
-  - {fileID: 22423906}
   - {fileID: 22422706}
+  - {fileID: 22423906}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -196, y: 0.000030517578}
+  m_AnchoredPosition: {x: -410, y: 0.000030517578}
   m_SizeDelta: {x: 224.02344, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
