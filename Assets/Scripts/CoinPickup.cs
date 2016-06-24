@@ -107,26 +107,24 @@ public class CoinPickup : GameManagerSearcher {
 			gameManager.player2MoneyBoostTime = boostDuration;
 	}
 
-	void QuakeAction()
-	{
-		earthquakeObject.SetActive(true);
+    void QuakeAction()
+    {
+        earthquakeObject.SetActive(true);
 
-       
+        PlayerGameData enemyData = gameManager.playerData[(this.owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
 
-        bool bothPlayersHave3Buildings = (gameManager.playerData[PLAYERS.PLAYER1].buildingCount>2) && (gameManager.playerData[PLAYERS.PLAYER2].buildingCount>2);
+        bool destroyEnemyBuilding = enemyData.buildingCount > 3;
 
-		PlayerGameData data = gameManager.playerData[PLAYERS.PLAYER1];
-
-		//destroy one building
-		if(bothPlayersHave3Buildings)
-		foreach(HexagonTile t  in data.tiles)
-		{
-			if(t.CurrentEnergyBuilding)
-			{
-				t.DestroyBuilding();
-				break;
-			}
-		}
+        //destroy one building
+        if (destroyEnemyBuilding)
+            foreach (HexagonTile t in enemyData.tiles)
+            {
+                if (t.CurrentEnergyBuilding)
+                {
+                    t.DestroyBuilding();
+                    break;
+                }
+            }
         /*
 		for (int i=0; i < data.tiles.Count - 1; ++i)
 		{
@@ -140,24 +138,9 @@ public class CoinPickup : GameManagerSearcher {
 		//foreach(HexagonTile t in data.tiles)
        //     t.StartSwap();
        */
-		//data.currentInputState = INPUT_STATES.FREE;
-		//data.RefreshAllTilesHighlight();
-
-
-		data = gameManager.playerData[PLAYERS.PLAYER2];
-
-		//destroy one building
-		if(bothPlayersHave3Buildings)
-		foreach(HexagonTile t  in data.tiles)
-		{
-			if(t.CurrentEnergyBuilding)
-			{
-				t.DestroyBuilding();
-				break;
-			}
-
-            }
-        PlayerGameData enemyData = gameManager.playerData[(this.owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
+        //data.currentInputState = INPUT_STATES.FREE;
+        //data.RefreshAllTilesHighlight();
+    
         for (int i=0; i < enemyData.tiles.Count - 1; ++i)
 		{
 			HexagonTile tile = enemyData.tiles[Random.Range(i + 1, enemyData.tiles.Count)];
