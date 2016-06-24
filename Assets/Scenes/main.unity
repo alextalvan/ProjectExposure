@@ -1833,7 +1833,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -2552,7 +2551,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 0}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -3280,7 +3278,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 997643867}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -6726,7 +6723,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 0}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -6803,7 +6799,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -6917,6 +6912,11 @@ CanvasRenderer:
 GameObject:
   m_PrefabParentObject: {fileID: 136624, guid: 3504fc9a3221b504bb096b544bc4d342, type: 2}
   m_PrefabInternal: {fileID: 629368045}
+--- !u!23 &711255170 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 2309660, guid: b632d20ba07d84b89a52ea579f8e10ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 68739933}
 --- !u!1 &714066062
 GameObject:
   m_ObjectHideFlags: 0
@@ -7063,7 +7063,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 938618811}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -8787,7 +8786,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -10058,7 +10056,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 187558096}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -12838,7 +12835,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 997643867}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -14596,7 +14592,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 0}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -14682,7 +14677,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 0}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -15694,7 +15688,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1432326733}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -17805,7 +17798,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 938618811}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -19644,7 +19636,6 @@ MonoBehaviour:
   outline_build_next: {fileID: 0}
   previousTile: {fileID: 0}
   nextTile: {fileID: 0}
-  _hasBuildingOnTop: 0
   spawnedUnitsParent: {fileID: 1432326733}
   _energyBuilding: {fileID: 0}
   pollutionZone: {fileID: 0}
@@ -22304,7 +22295,7 @@ MonoBehaviour:
   gameScore: 0
   maxScore: 12
   scoreRenderer: {fileID: 1260687028}
-  scoreRenderer1: {fileID: 0}
+  scoreRenderer1: {fileID: 711255170}
   scoreBarInterpolationSpeed: 0.1
   gameStages:
   - duration: 999999
@@ -22331,6 +22322,7 @@ MonoBehaviour:
       - {fileID: 0}
       pickUp: {fileID: 0}
       AI: 0
+      buildingCount: 0
     - player: 1
       currentSelectedCard: {fileID: 0}
       currentInputState: 0
@@ -22351,6 +22343,7 @@ MonoBehaviour:
       - {fileID: 0}
       pickUp: {fileID: 0}
       AI: 0
+      buildingCount: 0
   UI_root: {fileID: 791725157}
   UI_moneyPrefab: {fileID: 189870, guid: 754343a333242fe40a3b245f79d28a8b, type: 2}
   player1DD: {fileID: 918484763}
