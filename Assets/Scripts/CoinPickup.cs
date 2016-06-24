@@ -111,25 +111,9 @@ public class CoinPickup : GameManagerSearcher {
 	{
 		earthquakeObject.SetActive(true);
 
+       
 
-        //List<HexagonTile> tiles = new List<HexagonTile>(enemyData.tiles);
-        //HexagonTile tile1;
-        //HexagonTile tile2;
-        //while(tiles.Count > 1)
-        //{
-        //    int rnd = Random.Range(0, tiles.Count);
-        //    tile1 = tiles[rnd];
-        //    tiles.RemoveAt(rnd);
-        //    rnd = Random.Range(0, tiles.Count);
-        //    tile2 = tiles[rnd];
-        //    tiles.RemoveAt(rnd);
-
-        //    tile1.SwapBuilding(tile2);
-        //    tile1.StartSwap();
-        //    tile2.StartSwap();
-        //}
-
-		bool bothPlayersHave3Buildings = (gameManager.playerData[PLAYERS.PLAYER1].buildingCount>2) && (gameManager.playerData[PLAYERS.PLAYER2].buildingCount>2);
+        bool bothPlayersHave3Buildings = (gameManager.playerData[PLAYERS.PLAYER1].buildingCount>2) && (gameManager.playerData[PLAYERS.PLAYER2].buildingCount>2);
 
 		PlayerGameData data = gameManager.playerData[PLAYERS.PLAYER1];
 
@@ -143,7 +127,7 @@ public class CoinPickup : GameManagerSearcher {
 				break;
 			}
 		}
-        
+        /*
 		for (int i=0; i < data.tiles.Count - 1; ++i)
 		{
 			HexagonTile tile = data.tiles[Random.Range(i + 1, data.tiles.Count)];
@@ -153,11 +137,11 @@ public class CoinPickup : GameManagerSearcher {
            
         }
 
-		foreach(HexagonTile t in data.tiles)
-            t.StartSwap();
-
-		data.currentInputState = INPUT_STATES.FREE;
-		data.RefreshAllTilesHighlight();
+		//foreach(HexagonTile t in data.tiles)
+       //     t.StartSwap();
+       */
+		//data.currentInputState = INPUT_STATES.FREE;
+		//data.RefreshAllTilesHighlight();
 
 
 		data = gameManager.playerData[PLAYERS.PLAYER2];
@@ -171,23 +155,42 @@ public class CoinPickup : GameManagerSearcher {
 				t.DestroyBuilding();
 				break;
 			}
-			
-		}
 
-		for (int i=0; i < data.tiles.Count - 1; ++i)
+            }
+        PlayerGameData enemyData = gameManager.playerData[(this.owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
+        for (int i=0; i < enemyData.tiles.Count - 1; ++i)
 		{
-			HexagonTile tile = data.tiles[Random.Range(i + 1, data.tiles.Count)];
+			HexagonTile tile = enemyData.tiles[Random.Range(i + 1, enemyData.tiles.Count)];
 
-			if(data.tiles[i] != tile)//testing
-			data.tiles[i].SwapBuilding(tile);
+			if(enemyData.tiles[i] != tile)//testing
+                enemyData.tiles[i].SwapBuilding(tile);
 
 		}
-
-		foreach(HexagonTile t in data.tiles)
+		foreach(HexagonTile t in enemyData.tiles)
 			t.StartSwap();
 
-		data.currentInputState = INPUT_STATES.FREE;
-		data.RefreshAllTilesHighlight();
+
+        /*
+        List<HexagonTile> tiles = new List<HexagonTile>(enemyData.tiles);
+        HexagonTile tile1;
+        HexagonTile tile2;
+        while (tiles.Count > 1)
+        {
+            int rnd = Random.Range(0, tiles.Count);
+            tile1 = tiles[rnd];
+            tiles.RemoveAt(rnd);
+            rnd = Random.Range(0, tiles.Count);
+            tile2 = tiles[rnd];
+            tiles.RemoveAt(rnd);
+
+            tile1.SwapBuilding(tile2);
+
+            tile1.StartSwap();
+            tile2.StartSwap();
+        }
+        */
+        enemyData.currentInputState = INPUT_STATES.FREE;
+		enemyData.RefreshAllTilesHighlight();
 
 		//shake own buildings too
 

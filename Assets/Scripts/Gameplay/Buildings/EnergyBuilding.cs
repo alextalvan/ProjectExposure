@@ -40,7 +40,7 @@ public class EnergyBuilding : GameManagerSearcher
 	public GameObject PollutionPrefab { get { return pollutionPrefab; } }
 
 	public delegate void BuildingDestructionDelegate();
-	public event BuildingDestructionDelegate OnDestruction = null;
+	public BuildingDestructionDelegate OnDestruction = null;
 
 	//buildings can also be buffed
 	public BuffList buffList = new BuffList();
@@ -55,13 +55,15 @@ public class EnergyBuilding : GameManagerSearcher
 		//Destroy(this.gameObject,maxlifeTime);
 		//lifeTimeLeft = maxlifeTime;
 		constructionTimeLeft = constructionTime;
-	}
+
+        OnDestruction += () => { gameManager.playerData[Owner].buildings.Remove(this); };
+    }
 
 	void OnDestroy()
 	{
-		if(OnDestruction != null)
-			OnDestruction();
-        gameManager.playerData[Owner].buildings.Remove(this);
+		//if(OnDestruction != null)
+		//	OnDestruction();
+        
         Destroy(smog);
     }
 

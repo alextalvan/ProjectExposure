@@ -208,6 +208,7 @@ public class UnitAI : GameManagerSearcher
         {
             if (target && attackTimer <= 0f)
             {
+                target = GetEnemyInRange();
                 LaunchProjectile();
                 attackTimer = attackCoolDown;
             }
