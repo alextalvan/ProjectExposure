@@ -208,13 +208,40 @@ public class GameManager : MonoBehaviour
 
     bool battleStarted = false;
 
+
+	//camera zoom variables
+	bool zoomInProgress = false;
+
+	[SerializeField]
+	Camera zoomCamera;
+
+	[SerializeField]
+	float zoomOrthoDistance = 1.5f;
+
+	[SerializeField]
+	float normalOrthoDistance = 4.0f;
+
+	[SerializeField]
+	float zoomDuration = 0.5f;
+
+	[SerializeField]
+	float centralFocusDuration = 1.0f;
+
+	//[SerializeField]
+	//int scoreThreshold = 6;
+
+
+
     void Start()
     {
         //forcing refresh at start because of inspector filling of starting money
         Player1Money = _player1money;
         Player2Money = _player2money;
+
+		zoomInProgress = true;
         ChangeScore(0, PLAYERS.PLAYER1, LANES.TOP);//force score refresh at start
         ChangeScore(0, PLAYERS.PLAYER1, LANES.BOT);
+		zoomInProgress = false;
     }
 
     IEnumerator SpawnWave()
@@ -273,19 +300,19 @@ public class GameManager : MonoBehaviour
 		scoreRenderer1.material.SetFloat("_CityClip", currentScoreFloat);
 
 
-		if(gameScore >= maxScore)
-		{
-			gameOverText.transform.parent.gameObject.SetActive(true);
-			gameOverText.text = "Game over. Blue wins.";
-			gameStarted = false;
-		}
-
-		if(gameScore <= maxScore * -1)
-		{
-			gameOverText.transform.parent.gameObject.SetActive(true);
-			gameOverText.text = "Game over. Red wins.";
-			gameStarted = false;
-		}
+//		if(gameScore >= maxScore)
+//		{
+//			gameOverText.transform.parent.gameObject.SetActive(true);
+//			gameOverText.text = "Game over. Blue wins.";
+//			gameStarted = false;
+//		}
+//
+//		if(gameScore <= maxScore * -1)
+//		{
+//			gameOverText.transform.parent.gameObject.SetActive(true);
+//			gameOverText.text = "Game over. Red wins.";
+//			gameStarted = false;
+//		}
 
         if (gameTimer <= 0.0f)
         {
@@ -339,6 +366,8 @@ public class GameManager : MonoBehaviour
         //botLaneScoreData.Update();
         prevUnitsAlive = unitsAlive;
 
+		//if(Input.GetKeyDown(KeyCode.J))
+		//	StartCoroutine(ZoomIn());
     }
 
     void UpdateMoney()
@@ -419,9 +448,13 @@ public class GameManager : MonoBehaviour
 
 		gameScore += score;
 
+		if(Mathf.Abs(gameScore) % 3 == 0 && !zoomInProgress)
+		{
+			StartCoroutine(ZoomIn());
+			zoomInProgress = true;
+		}
+		//targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f); //moved this in the zoom coroutine
 
-		targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f);
-		//scoreRenderer.material.SetFloat("_CityClip", ((float)score / maxScore) * 0.5f + 0.5f);
     }
 
 //    void CalculateWinCondition()
@@ -441,4 +474,75 @@ public class GameManager : MonoBehaviour
 	{
 		Application.LoadLevel(0);
 	}
+
+	IEnumerator ZoomIn()
+	{
+		bool zooming = true;
+		//float currentZoom = normalOrthoDistance;
+		float timeAccumulator = 0.0f;
+
+		while(zooming)
+		{
+			zoomCamera.orthographicSize = Mathf.Lerp(normalOrthoDistance,zoomOrthoDistance,timeAccumulator / zoomDuration);
+			timeAccumulator+= Time.deltaTime;
+			if(timeAccumulator >= zoomDuration)
+				zooming = false;
+			yield return null;//wait for next frame
+		}
+
+		targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f);
+		yield return new WaitForSeconds(centralFocusDuration);
+
+		StartCoroutine(ZoomOut());
+	}
+
+	IEnumerator ZoomOut()
+	{
+		bool zooming = true;
+		//float currentZoom = normalOrthoDistance;
+		float timeAccumulator = 0.0f;
+
+		while(zooming)
+		{
+			zoomCamera.orthographicSize = Mathf.Lerp(zoomOrthoDistance,normalOrthoDistance,timeAccumulator / zoomDuration);
+			timeAccumulator+= Time.deltaTime;
+			if(timeAccumulator >= zoomDuration)
+				zooming = false;
+			yield return null;//wait for next frame
+		}
+
+		zoomInProgress = false;
+
+
+		//moving this here
+		if(gameScore >= maxScore)
+		{
+			gameOverText.transform.parent.gameObject.SetActive(true);
+			gameOverText.text = "Game over. Blue wins.";
+			gameStarted = false;
+		}
+
+		if(gameScore <= maxScore * -1)
+		{
+			gameOverText.transform.parent.gameObject.SetActive(true);
+			gameOverText.text = "Game over. Red wins.";
+			gameStarted = false;
+		}
+	}
+
+//	void UpdateZoom()
+//	{
+//		zoomTimer -= Time.deltaTime;
+//
+//		float orthoAmount;
+//
+//		if(zoomingIn)
+//			orthoAmount = Mathf.Lerp(normalOrthoDistance,zoomOrthoDistance, zoomTimer > 
+//
+//		if(zoomTimer > 0.0f && zoomingIn)
+//		{
+//			
+//		}
+//	}
+
 }
