@@ -313,7 +313,7 @@ public class HexagonTile : GameManagerSearcher
 		gameManager.playerData[this.Owner].RefreshAllTilesHighlight();
 		this.pollutionZone.SetGrowState(false);
 		gameManager.playerData[this.owner].buildingCount--;
-		Debug.Log("cleanup");
+		//Debug.Log("cleanup");
     }
 
 
