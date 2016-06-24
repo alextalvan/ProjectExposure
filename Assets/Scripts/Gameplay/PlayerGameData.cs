@@ -21,7 +21,7 @@ public class PlayerGameData
     public GameObject pickUp = null;
     public bool AI = false;
 
-	//public int buildingCount = 0;
+	public int buildingCount = 0;
 
     public void RefreshAllTilesHighlight()
 	{
