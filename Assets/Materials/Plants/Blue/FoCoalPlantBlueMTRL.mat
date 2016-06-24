@@ -94,6 +94,20 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Diffuse_texture
+        second:
+          m_Texture: {fileID: 2800000, guid: 54c267552c6884d4494f996377069629, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _AO
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Noise
         second:
           m_Texture: {fileID: 2800000, guid: 674d8251d2d0432418f0729c212e32e5, type: 3}
@@ -125,20 +139,6 @@ Material:
           name: _Emission_map
         second:
           m_Texture: {fileID: 2800000, guid: 621adf50d423ce745b3d6c982b2aca39, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Diffuse_texture
-        second:
-          m_Texture: {fileID: 2800000, guid: 54c267552c6884d4494f996377069629, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _AO
-        second:
-          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -224,8 +224,28 @@ Material:
         second: 1.5
       data:
         first:
+          name: _Spec_power
+        second: 1
+      data:
+        first:
+          name: _Spec_intensity
+        second: 4.58
+      data:
+        first:
+          name: _Desaturate
+        second: 0.9832264
+      data:
+        first:
+          name: _Spec_brightness
+        second: 3.56
+      data:
+        first:
+          name: _Spec_levels
+        second: 2.142052
+      data:
+        first:
           name: _Visibility
-        second: 0
+        second: 1
       data:
         first:
           name: _Edge_width
@@ -264,26 +284,6 @@ Material:
         second: 1
       data:
         first:
-          name: _Spec_power
-        second: 1
-      data:
-        first:
-          name: _Spec_intensity
-        second: 4.58
-      data:
-        first:
-          name: _Desaturate
-        second: 0.9832264
-      data:
-        first:
-          name: _Spec_brightness
-        second: 3.56
-      data:
-        first:
-          name: _Spec_levels
-        second: 2.142052
-      data:
-        first:
           name: _Outline_Width
         second: 0.153
       data:
@@ -309,14 +309,6 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _Tint
-        second: {r: 0.7882353, g: 0.7764706, b: 0.8745098, a: 1}
-      data:
-        first:
-          name: _Glow_color
-        second: {r: 1, g: 0.93103445, b: 0, a: 1}
-      data:
-        first:
           name: _Select_color
         second: {r: 0.72794116, g: 0.3800281, b: 0.7039472, a: 1}
       data:
@@ -327,6 +319,14 @@ Material:
         first:
           name: _Color_b
         second: {r: 0.25, g: 0.25, b: 0.25, a: 1}
+      data:
+        first:
+          name: _Tint
+        second: {r: 0.7882353, g: 0.7764706, b: 0.8745098, a: 1}
+      data:
+        first:
+          name: _Glow_color
+        second: {r: 1, g: 0.93103445, b: 0, a: 1}
       data:
         first:
           name: _Outline_Color
