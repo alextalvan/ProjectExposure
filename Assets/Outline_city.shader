@@ -1,7 +1,7 @@
 // Shader created with Shader Forge v1.26 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.26;sub:START;pass:START;ps:flbk:Legacy Shaders/Diffuse,iptp:0,cusa:False,bamd:0,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:False,enco:False,rmgx:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False;n:type:ShaderForge.SFN_Final,id:9361,x:34050,y:32134,varname:node_9361,prsc:2|diff-4690-OUT,spec-1694-OUT,gloss-4637-OUT,emission-5794-OUT,amdfl-6744-OUT;n:type:ShaderForge.SFN_Tex2d,id:851,x:31936,y:31129,ptovrint:False,ptlb:Emssion_Texture_player1,ptin:_Emssion_Texture_player1,varname:_Emssion_Texture_player1,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Multiply,id:544,x:32339,y:31259,cmnt:Diffuse Color,varname:node_544,prsc:2|A-851-RGB,B-3998-RGB,C-8755-OUT;n:type:ShaderForge.SFN_Slider,id:8755,x:31931,y:31539,ptovrint:False,ptlb:Emission_Intensity_player1,ptin:_Emission_Intensity_player1,varname:_Emission_Intensity_player1,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:2.047401,max:9;n:type:ShaderForge.SFN_Tex2d,id:3021,x:33963,y:31304,ptovrint:False,ptlb:Diffuse_Texture,ptin:_Diffuse_Texture,varname:_Diffuse_Texture,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:8505858ab7573fc419f2f7deb55c70d0,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Multiply,id:6744,x:33298,y:32567,varname:node_6744,prsc:2|A-5963-RGB,B-8347-OUT,C-8596-OUT;n:type:ShaderForge.SFN_LightColor,id:5963,x:33064,y:32656,varname:node_5963,prsc:2;n:type:ShaderForge.SFN_LightAttenuation,id:8347,x:33064,y:32820,varname:node_8347,prsc:2;n:type:ShaderForge.SFN_NormalVector,id:1527,x:32037,y:32852,prsc:2,pt:True;n:type:ShaderForge.SFN_LightVector,id:7754,x:32037,y:33000,varname:node_7754,prsc:2;n:type:ShaderForge.SFN_ViewReflectionVector,id:5339,x:32037,y:33134,varname:node_5339,prsc:2;n:type:ShaderForge.SFN_Dot,id:3185,x:32385,y:33092,varname:node_3185,prsc:2,dt:1|A-7754-OUT,B-5339-OUT;n:type:ShaderForge.SFN_Dot,id:6443,x:32385,y:32917,varname:node_6443,prsc:2,dt:1|A-1527-OUT,B-7754-OUT;n:type:ShaderForge.SFN_Multiply,id:8036,x:32670,y:32958,varname:node_8036,prsc:2|A-2857-RGB,B-6443-OUT;n:type:ShaderForge.SFN_Color,id:2857,x:32385,y:32743,ptovrint:False,ptlb:Light_color,ptin:_Light_color,varname:_Light_color,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:1,c3:1,c4:1;n:type:ShaderForge.SFN_Power,id:8199,x:32670,y:33097,varname:node_8199,prsc:2|VAL-3185-OUT,EXP-4288-OUT;n:type:ShaderForge.SFN_Exp,id:4288,x:32385,y:33285,varname:node_4288,prsc:2,et:1|IN-6160-OUT;n:type:ShaderForge.SFN_Slider,id:6160,x:31958,y:33375,ptovrint:False,ptlb:Spec_Power,ptin:_Spec_Power,varname:_Spec_Power,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:9;n:type:ShaderForge.SFN_Multiply,id:8596,x:33127,y:33087,varname:node_8596,prsc:2|A-8036-OUT,B-4285-OUT;n:type:ShaderForge.SFN_Slider,id:4707,x:32643,y:33324,ptovrint:False,ptlb:Spec_Intensity,ptin:_Spec_Intensity,varname:_Spec_Intensity,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:9;n:type:ShaderForge.SFN_Multiply,id:4285,x:32913,y:33087,varname:node_4285,prsc:2|A-8199-OUT,B-4707-OUT;n:type:ShaderForge.SFN_Color,id:6879,x:33963,y:31484,ptovrint:False,ptlb:Diffuse_tint,ptin:_Diffuse_tint,varname:_Diffuse_tint,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:1,c3:1,c4:1;n:type:ShaderForge.SFN_Multiply,id:4690,x:34199,y:31464,varname:node_4690,prsc:2|A-3021-RGB,B-6879-RGB;n:type:ShaderForge.SFN_Slider,id:1694,x:34009,y:31884,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:_Metallic,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:4637,x:34009,y:31967,ptovrint:False,ptlb:Glosssiness,ptin:_Glosssiness,varname:_Glosssiness,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.0751807,max:1;n:type:ShaderForge.SFN_Tex2d,id:6323,x:31931,y:31915,ptovrint:False,ptlb:Emssion_Texture_player2,ptin:_Emssion_Texture_player2,varname:_Emssion_Texture_player2,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Slider,id:5853,x:31933,y:32319,ptovrint:False,ptlb:Emission_Intensity_player2,ptin:_Emission_Intensity_player2,varname:_Emission_Intensity_player2,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:2.047401,max:9;n:type:ShaderForge.SFN_Multiply,id:8948,x:32347,y:32184,cmnt:Diffuse Color,varname:node_8948,prsc:2|A-6323-RGB,B-944-RGB,C-5853-OUT;n:type:ShaderForge.SFN_TexCoord,id:532,x:30835,y:31432,varname:node_532,prsc:2,uv:0;n:type:ShaderForge.SFN_Slider,id:2804,x:32080,y:31915,ptovrint:False,ptlb:CityClip,ptin:_CityClip,varname:_CityClip,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.5675753,max:1;n:type:ShaderForge.SFN_If,id:7561,x:31786,y:31721,varname:node_7561,prsc:2|A-532-U,B-2804-OUT,GT-944-RGB,EQ-944-RGB,LT-3998-RGB;n:type:ShaderForge.SFN_ComponentMask,id:5528,x:31991,y:31721,varname:node_5528,prsc:2,cc1:0,cc2:-1,cc3:-1,cc4:-1|IN-7561-OUT;n:type:ShaderForge.SFN_Color,id:3998,x:31558,y:31947,ptovrint:False,ptlb:Color1,ptin:_Color1,varname:_Color1,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.9779412,c2:0,c3:0,c4:1;n:type:ShaderForge.SFN_Color,id:944,x:31158,y:32020,ptovrint:False,ptlb:Color2,ptin:_Color2,varname:_Color2,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.1999998,c2:0,c3:1,c4:1;n:type:ShaderForge.SFN_Add,id:5794,x:32784,y:31646,varname:node_5794,prsc:2|A-1647-OUT,B-6802-OUT;n:type:ShaderForge.SFN_Multiply,id:6802,x:32505,y:31915,varname:node_6802,prsc:2|A-3678-OUT,B-8948-OUT;n:type:ShaderForge.SFN_OneMinus,id:3678,x:32199,y:31721,varname:node_3678,prsc:2|IN-5528-OUT;n:type:ShaderForge.SFN_Multiply,id:1647,x:32529,y:31358,varname:node_1647,prsc:2|A-544-OUT,B-5528-OUT;proporder:2804-3998-944-3021-6879-1694-4637-851-8755-6323-5853-6160-4707-2857;pass:END;sub:END;*/
+/*SF_DATA;ver:1.26;sub:START;pass:START;ps:flbk:Legacy Shaders/Diffuse,iptp:0,cusa:False,bamd:0,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:False,enco:False,rmgx:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False;n:type:ShaderForge.SFN_Final,id:9361,x:34050,y:32134,varname:node_9361,prsc:2|diff-4690-OUT,spec-1694-OUT,gloss-4637-OUT,emission-3477-OUT,amdfl-6744-OUT;n:type:ShaderForge.SFN_Tex2d,id:851,x:31936,y:31129,ptovrint:False,ptlb:Emssion_Texture_player1,ptin:_Emssion_Texture_player1,varname:_Emssion_Texture_player1,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Multiply,id:544,x:32339,y:31259,cmnt:Diffuse Color,varname:node_544,prsc:2|A-851-RGB,B-3998-RGB,C-8755-OUT;n:type:ShaderForge.SFN_Slider,id:8755,x:31931,y:31539,ptovrint:False,ptlb:Emission_Intensity_player1,ptin:_Emission_Intensity_player1,varname:_Emission_Intensity_player1,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:2.047401,max:9;n:type:ShaderForge.SFN_Tex2d,id:3021,x:33963,y:31304,ptovrint:False,ptlb:Diffuse_Texture,ptin:_Diffuse_Texture,varname:_Diffuse_Texture,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:8505858ab7573fc419f2f7deb55c70d0,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Multiply,id:6744,x:33298,y:32567,varname:node_6744,prsc:2|A-5963-RGB,B-8347-OUT,C-8596-OUT;n:type:ShaderForge.SFN_LightColor,id:5963,x:33064,y:32656,varname:node_5963,prsc:2;n:type:ShaderForge.SFN_LightAttenuation,id:8347,x:33064,y:32820,varname:node_8347,prsc:2;n:type:ShaderForge.SFN_NormalVector,id:1527,x:32037,y:32852,prsc:2,pt:True;n:type:ShaderForge.SFN_LightVector,id:7754,x:32037,y:33000,varname:node_7754,prsc:2;n:type:ShaderForge.SFN_ViewReflectionVector,id:5339,x:32037,y:33134,varname:node_5339,prsc:2;n:type:ShaderForge.SFN_Dot,id:3185,x:32385,y:33092,varname:node_3185,prsc:2,dt:1|A-7754-OUT,B-5339-OUT;n:type:ShaderForge.SFN_Dot,id:6443,x:32385,y:32917,varname:node_6443,prsc:2,dt:1|A-1527-OUT,B-7754-OUT;n:type:ShaderForge.SFN_Multiply,id:8036,x:32670,y:32958,varname:node_8036,prsc:2|A-2857-RGB,B-6443-OUT;n:type:ShaderForge.SFN_Color,id:2857,x:32385,y:32743,ptovrint:False,ptlb:Light_color,ptin:_Light_color,varname:_Light_color,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:1,c3:1,c4:1;n:type:ShaderForge.SFN_Power,id:8199,x:32670,y:33097,varname:node_8199,prsc:2|VAL-3185-OUT,EXP-4288-OUT;n:type:ShaderForge.SFN_Exp,id:4288,x:32385,y:33285,varname:node_4288,prsc:2,et:1|IN-6160-OUT;n:type:ShaderForge.SFN_Slider,id:6160,x:31958,y:33375,ptovrint:False,ptlb:Spec_Power,ptin:_Spec_Power,varname:_Spec_Power,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:9;n:type:ShaderForge.SFN_Multiply,id:8596,x:33127,y:33087,varname:node_8596,prsc:2|A-8036-OUT,B-4285-OUT;n:type:ShaderForge.SFN_Slider,id:4707,x:32643,y:33324,ptovrint:False,ptlb:Spec_Intensity,ptin:_Spec_Intensity,varname:_Spec_Intensity,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:9;n:type:ShaderForge.SFN_Multiply,id:4285,x:32913,y:33087,varname:node_4285,prsc:2|A-8199-OUT,B-4707-OUT;n:type:ShaderForge.SFN_Color,id:6879,x:33963,y:31484,ptovrint:False,ptlb:Diffuse_tint,ptin:_Diffuse_tint,varname:_Diffuse_tint,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:1,c3:1,c4:1;n:type:ShaderForge.SFN_Multiply,id:4690,x:34199,y:31464,varname:node_4690,prsc:2|A-3021-RGB,B-6879-RGB;n:type:ShaderForge.SFN_Slider,id:1694,x:34009,y:31884,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:_Metallic,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:4637,x:34009,y:31967,ptovrint:False,ptlb:Glosssiness,ptin:_Glosssiness,varname:_Glosssiness,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.0751807,max:1;n:type:ShaderForge.SFN_Tex2d,id:6323,x:31931,y:31915,ptovrint:False,ptlb:Emssion_Texture_player2,ptin:_Emssion_Texture_player2,varname:_Emssion_Texture_player2,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Slider,id:5853,x:31933,y:32319,ptovrint:False,ptlb:Emission_Intensity_player2,ptin:_Emission_Intensity_player2,varname:_Emission_Intensity_player2,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:2.047401,max:9;n:type:ShaderForge.SFN_Multiply,id:8948,x:32347,y:32184,cmnt:Diffuse Color,varname:node_8948,prsc:2|A-6323-RGB,B-944-RGB,C-5853-OUT;n:type:ShaderForge.SFN_TexCoord,id:532,x:30835,y:31432,varname:node_532,prsc:2,uv:0;n:type:ShaderForge.SFN_Slider,id:2804,x:32080,y:31915,ptovrint:False,ptlb:CityClip,ptin:_CityClip,varname:_CityClip,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.5675753,max:1;n:type:ShaderForge.SFN_If,id:7561,x:31786,y:31721,varname:node_7561,prsc:2|A-532-U,B-2804-OUT,GT-944-RGB,EQ-944-RGB,LT-3998-RGB;n:type:ShaderForge.SFN_ComponentMask,id:5528,x:31991,y:31721,varname:node_5528,prsc:2,cc1:0,cc2:-1,cc3:-1,cc4:-1|IN-7561-OUT;n:type:ShaderForge.SFN_Color,id:3998,x:31558,y:31947,ptovrint:False,ptlb:Color1,ptin:_Color1,varname:_Color1,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.9779412,c2:0,c3:0,c4:1;n:type:ShaderForge.SFN_Color,id:944,x:31158,y:32020,ptovrint:False,ptlb:Color2,ptin:_Color2,varname:_Color2,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.1999998,c2:0,c3:1,c4:1;n:type:ShaderForge.SFN_Add,id:5794,x:32784,y:31646,varname:node_5794,prsc:2|A-1647-OUT,B-6802-OUT;n:type:ShaderForge.SFN_Multiply,id:6802,x:32505,y:31915,varname:node_6802,prsc:2|A-3678-OUT,B-8948-OUT;n:type:ShaderForge.SFN_OneMinus,id:3678,x:32199,y:31721,varname:node_3678,prsc:2|IN-5528-OUT;n:type:ShaderForge.SFN_Multiply,id:1647,x:32529,y:31358,varname:node_1647,prsc:2|A-544-OUT,B-5528-OUT;n:type:ShaderForge.SFN_Multiply,id:3477,x:33737,y:32062,varname:node_3477,prsc:2|A-5794-OUT,B-9555-OUT;n:type:ShaderForge.SFN_Sin,id:3058,x:33023,y:32012,varname:node_3058,prsc:2|IN-6644-OUT;n:type:ShaderForge.SFN_Time,id:1162,x:32617,y:32033,varname:node_1162,prsc:2;n:type:ShaderForge.SFN_Multiply,id:9555,x:33578,y:32151,varname:node_9555,prsc:2|A-605-OUT,B-4304-OUT;n:type:ShaderForge.SFN_ValueProperty,id:4304,x:33476,y:32297,ptovrint:False,ptlb:Emission_power,ptin:_Emission_power,varname:_Emission_power_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:1;n:type:ShaderForge.SFN_Abs,id:4387,x:33207,y:32029,varname:node_4387,prsc:2|IN-3058-OUT;n:type:ShaderForge.SFN_Multiply,id:6644,x:32830,y:32097,varname:node_6644,prsc:2|A-1162-TTR,B-4182-OUT;n:type:ShaderForge.SFN_ValueProperty,id:4182,x:32636,y:32284,ptovrint:False,ptlb:emission_rate,ptin:_emission_rate,varname:node_4182,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0.5;n:type:ShaderForge.SFN_Add,id:605,x:33303,y:32164,varname:node_605,prsc:2|A-4387-OUT,B-9106-OUT;n:type:ShaderForge.SFN_ValueProperty,id:9106,x:33063,y:32364,ptovrint:False,ptlb:Emission_bot,ptin:_Emission_bot,varname:node_9106,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0.5;proporder:2804-3998-944-3021-6879-1694-4637-851-8755-6323-5853-6160-4707-2857-4304-4182-9106;pass:END;sub:END;*/
 
 Shader "Custom/Outline_City" {
     Properties {
@@ -19,6 +19,9 @@ Shader "Custom/Outline_City" {
         _Spec_Power ("Spec_Power", Range(0, 9)) = 0
         _Spec_Intensity ("Spec_Intensity", Range(0, 9)) = 0
         _Light_color ("Light_color", Color) = (1,1,1,1)
+        _Emission_power ("Emission_power", Float ) = 1
+        _emission_rate ("emission_rate", Float ) = 0.5
+        _Emission_bot ("Emission_bot", Float ) = 0.5
     }
     SubShader {
         Tags {
@@ -48,6 +51,7 @@ Shader "Custom/Outline_City" {
             #pragma multi_compile_fog
             #pragma exclude_renderers gles3 metal d3d11_9x xbox360 xboxone ps3 ps4 psp2 
             #pragma target 3.0
+            uniform float4 _TimeEditor;
             uniform sampler2D _Emssion_Texture_player1; uniform float4 _Emssion_Texture_player1_ST;
             uniform float _Emission_Intensity_player1;
             uniform sampler2D _Diffuse_Texture; uniform float4 _Diffuse_Texture_ST;
@@ -62,6 +66,9 @@ Shader "Custom/Outline_City" {
             uniform float _CityClip;
             uniform float4 _Color1;
             uniform float4 _Color2;
+            uniform float _Emission_power;
+            uniform float _emission_rate;
+            uniform float _Emission_bot;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -157,8 +164,7 @@ Shader "Custom/Outline_City" {
                 float NdotL = max(0, dot( normalDirection, lightDirection ));
                 float LdotH = max(0.0,dot(lightDirection, halfDirection));
                 float4 _Diffuse_Texture_var = tex2D(_Diffuse_Texture,TRANSFORM_TEX(i.uv0, _Diffuse_Texture));
-                float3 node_4690 = (_Diffuse_Texture_var.rgb*_Diffuse_tint.rgb);
-                float3 diffuseColor = node_4690; // Need this for specular when using metallic
+                float3 diffuseColor = (_Diffuse_Texture_var.rgb*_Diffuse_tint.rgb); // Need this for specular when using metallic
                 float specularMonochrome;
                 float3 specularColor;
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, _Metallic, specularColor, specularMonochrome );
@@ -185,7 +191,9 @@ Shader "Custom/Outline_City" {
                 float node_7561_if_leB = step(_CityClip,i.uv0.r);
                 float node_5528 = lerp((node_7561_if_leA*_Color1.rgb)+(node_7561_if_leB*_Color2.rgb),_Color2.rgb,node_7561_if_leA*node_7561_if_leB).r;
                 float4 _Emssion_Texture_player2_var = tex2D(_Emssion_Texture_player2,TRANSFORM_TEX(i.uv0, _Emssion_Texture_player2));
-                float3 emissive = (((_Emssion_Texture_player1_var.rgb*_Color1.rgb*_Emission_Intensity_player1)*node_5528)+((1.0 - node_5528)*(_Emssion_Texture_player2_var.rgb*_Color2.rgb*_Emission_Intensity_player2)));
+                float4 node_1162 = _Time + _TimeEditor;
+                float node_9555 = ((abs(sin((node_1162.a*_emission_rate)))+_Emission_bot)*_Emission_power);
+                float3 emissive = ((((_Emssion_Texture_player1_var.rgb*_Color1.rgb*_Emission_Intensity_player1)*node_5528)+((1.0 - node_5528)*(_Emssion_Texture_player2_var.rgb*_Color2.rgb*_Emission_Intensity_player2)))*node_9555);
 /// Final Color:
                 float3 finalColor = diffuse + specular + emissive;
                 fixed4 finalRGBA = fixed4(finalColor,1);
@@ -219,6 +227,7 @@ Shader "Custom/Outline_City" {
             #pragma multi_compile_fog
             #pragma exclude_renderers gles3 metal d3d11_9x xbox360 xboxone ps3 ps4 psp2 
             #pragma target 3.0
+            uniform float4 _TimeEditor;
             uniform sampler2D _Emssion_Texture_player1; uniform float4 _Emssion_Texture_player1_ST;
             uniform float _Emission_Intensity_player1;
             uniform sampler2D _Diffuse_Texture; uniform float4 _Diffuse_Texture_ST;
@@ -230,6 +239,9 @@ Shader "Custom/Outline_City" {
             uniform float _CityClip;
             uniform float4 _Color1;
             uniform float4 _Color2;
+            uniform float _Emission_power;
+            uniform float _emission_rate;
+            uniform float _Emission_bot;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -285,8 +297,7 @@ Shader "Custom/Outline_City" {
                 float NdotL = max(0, dot( normalDirection, lightDirection ));
                 float LdotH = max(0.0,dot(lightDirection, halfDirection));
                 float4 _Diffuse_Texture_var = tex2D(_Diffuse_Texture,TRANSFORM_TEX(i.uv0, _Diffuse_Texture));
-                float3 node_4690 = (_Diffuse_Texture_var.rgb*_Diffuse_tint.rgb);
-                float3 diffuseColor = node_4690; // Need this for specular when using metallic
+                float3 diffuseColor = (_Diffuse_Texture_var.rgb*_Diffuse_tint.rgb); // Need this for specular when using metallic
                 float specularMonochrome;
                 float3 specularColor;
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, _Metallic, specularColor, specularMonochrome );
@@ -337,6 +348,7 @@ Shader "Custom/Outline_City" {
             #pragma multi_compile_fog
             #pragma exclude_renderers gles3 metal d3d11_9x xbox360 xboxone ps3 ps4 psp2 
             #pragma target 3.0
+            uniform float4 _TimeEditor;
             uniform sampler2D _Emssion_Texture_player1; uniform float4 _Emssion_Texture_player1_ST;
             uniform float _Emission_Intensity_player1;
             uniform sampler2D _Diffuse_Texture; uniform float4 _Diffuse_Texture_ST;
@@ -348,6 +360,9 @@ Shader "Custom/Outline_City" {
             uniform float _CityClip;
             uniform float4 _Color1;
             uniform float4 _Color2;
+            uniform float _Emission_power;
+            uniform float _emission_rate;
+            uniform float _Emission_bot;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float2 texcoord0 : TEXCOORD0;
@@ -380,11 +395,12 @@ Shader "Custom/Outline_City" {
                 float node_7561_if_leB = step(_CityClip,i.uv0.r);
                 float node_5528 = lerp((node_7561_if_leA*_Color1.rgb)+(node_7561_if_leB*_Color2.rgb),_Color2.rgb,node_7561_if_leA*node_7561_if_leB).r;
                 float4 _Emssion_Texture_player2_var = tex2D(_Emssion_Texture_player2,TRANSFORM_TEX(i.uv0, _Emssion_Texture_player2));
-                o.Emission = (((_Emssion_Texture_player1_var.rgb*_Color1.rgb*_Emission_Intensity_player1)*node_5528)+((1.0 - node_5528)*(_Emssion_Texture_player2_var.rgb*_Color2.rgb*_Emission_Intensity_player2)));
+                float4 node_1162 = _Time + _TimeEditor;
+                float node_9555 = ((abs(sin((node_1162.a*_emission_rate)))+_Emission_bot)*_Emission_power);
+                o.Emission = ((((_Emssion_Texture_player1_var.rgb*_Color1.rgb*_Emission_Intensity_player1)*node_5528)+((1.0 - node_5528)*(_Emssion_Texture_player2_var.rgb*_Color2.rgb*_Emission_Intensity_player2)))*node_9555);
                 
                 float4 _Diffuse_Texture_var = tex2D(_Diffuse_Texture,TRANSFORM_TEX(i.uv0, _Diffuse_Texture));
-                float3 node_4690 = (_Diffuse_Texture_var.rgb*_Diffuse_tint.rgb);
-                float3 diffColor = node_4690;
+                float3 diffColor = (_Diffuse_Texture_var.rgb*_Diffuse_tint.rgb);
                 float specularMonochrome;
                 float3 specColor;
                 diffColor = DiffuseAndSpecularFromMetallic( diffColor, _Metallic, specColor, specularMonochrome );
