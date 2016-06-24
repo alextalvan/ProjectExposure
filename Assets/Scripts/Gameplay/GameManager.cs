@@ -155,6 +155,9 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	Renderer scoreRenderer;
 
+	[SerializeField]
+	Renderer scoreRenderer1;
+
 	float currentScoreFloat = 0.5f;
 	float targetScoreFloat = 0.5f;
 
@@ -267,6 +270,7 @@ public class GameManager : MonoBehaviour
 
 		currentScoreFloat = Mathf.Lerp(currentScoreFloat, targetScoreFloat, scoreBarInterpolationSpeed);
 		scoreRenderer.material.SetFloat("_CityClip", currentScoreFloat);
+		scoreRenderer1.material.SetFloat("_CityClip", currentScoreFloat);
 
 
 		if(gameScore >= maxScore)
