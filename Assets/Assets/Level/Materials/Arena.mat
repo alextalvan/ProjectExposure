@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Arena
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: c012fc1e739334a838a86066fbe4dbe0, type: 3}
   m_ShaderKeywords: _DETAIL_MULX2 _EMISSION _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 1
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -34,13 +34,6 @@ Material:
           name: _DetailNormalMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MetallicGlossMap
-        second:
-          m_Texture: {fileID: 2800000, guid: a414dac9919c6477ebf3c2985822373e, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -78,6 +71,41 @@ Material:
           m_Texture: {fileID: 2800000, guid: 3f557cbb552cef04b914ac5c9cd3f1a3, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 2800000, guid: a414dac9919c6477ebf3c2985822373e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse_Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: 83bfa45b5cdfb481ba9d57bbf4eb4e8f, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emssion_Texture_player1
+        second:
+          m_Texture: {fileID: 2800000, guid: 59d8049e3d60f0545b24bcc27cfc01de, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emssion_Texture_player2
+        second:
+          m_Texture: {fileID: 2800000, guid: 3f557cbb552cef04b914ac5c9cd3f1a3, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _AdditionalMaintexture
+        second:
+          m_Texture: {fileID: 2800000, guid: 59d8049e3d60f0545b24bcc27cfc01de, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -93,6 +121,10 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Parallax
+        second: 0.0493
+      data:
+        first:
           name: _ZWrite
         second: 1
       data:
@@ -101,16 +133,8 @@ Material:
         second: 0.375
       data:
         first:
-          name: _Metallic
-        second: 0.25
-      data:
-        first:
           name: _BumpScale
         second: 4.5
-      data:
-        first:
-          name: _Parallax
-        second: 0.0493
       data:
         first:
           name: _OcclusionStrength
@@ -127,6 +151,34 @@ Material:
         first:
           name: _Mode
         second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 0.25
+      data:
+        first:
+          name: _CityClip
+        second: 1
+      data:
+        first:
+          name: _Glosssiness
+        second: 0.0751807
+      data:
+        first:
+          name: _Emission_Intensity_player1
+        second: 1.16
+      data:
+        first:
+          name: _Emission_Intensity_player2
+        second: 0.09
+      data:
+        first:
+          name: _Spec_Power
+        second: 0
+      data:
+        first:
+          name: _Spec_Intensity
+        second: 0
     m_Colors:
       data:
         first:
@@ -135,4 +187,20 @@ Material:
       data:
         first:
           name: _Color
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Color1
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Color2
+        second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _Diffuse_tint
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Light_color
         second: {r: 1, g: 1, b: 1, a: 1}
