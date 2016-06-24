@@ -196,30 +196,32 @@ public class UnitAI : GameManagerSearcher
     private void Fight()
     {
         attackTimer -= Time.deltaTime;
-        if (!target)
+        if (attackTimer <= 0f)
         {
-            if (!(target = GetEnemyInRange()))
+            if (target = GetEnemyInRange())
+            {
+                LaunchProjectile();
+                attackTimer = attackCoolDown;
+            }
+            else
             {
                 SetAiState(AiState.Run);
                 return;
             }
         }
-        else
+        else if (!(target = GetEnemyInRange()))
         {
-            if (target && attackTimer <= 0f)
-            {
-                LaunchProjectile();
-                attackTimer = attackCoolDown;
-            }
-
-            //orientation
-            Vector3 worldUp = Physics.gravity.normalized * -1.0f;
-            float heightDiff = Vector3.Dot(worldUp, target.position) - Vector3.Dot(worldUp, transform.position);
-            Vector3 lookTargetPoint = target.position - heightDiff * worldUp;
-
-            Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position, worldUp);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 0.1f);
+            SetAiState(AiState.Run);
+            return;
         }
+
+        //orientation
+        Vector3 worldUp = Physics.gravity.normalized * -1.0f;
+        float heightDiff = Vector3.Dot(worldUp, target.position) - Vector3.Dot(worldUp, transform.position);
+        Vector3 lookTargetPoint = target.position - heightDiff * worldUp;
+
+        Quaternion targetRot = Quaternion.LookRotation(lookTargetPoint - transform.position, worldUp);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 0.1f);
     }
 
     private void Cheer()
