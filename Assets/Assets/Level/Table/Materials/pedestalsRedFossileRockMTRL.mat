@@ -82,7 +82,7 @@ Material:
         first:
           name: _Diffuse_Texture
         second:
-          m_Texture: {fileID: 2800000, guid: 1e25af67a9d166a4caebe393b8d962d6, type: 3}
+          m_Texture: {fileID: 2800000, guid: 82ffbfc645cb5bb4daaf16c2c92b1a97, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -105,6 +105,10 @@ Material:
         first:
           name: _Cutoff
         second: 0.5
+      data:
+        first:
+          name: _Metallic
+        second: 0
       data:
         first:
           name: _Parallax
@@ -136,10 +140,6 @@ Material:
       data:
         first:
           name: _Mode
-        second: 0
-      data:
-        first:
-          name: _Metallic
         second: 0
       data:
         first:
@@ -185,4 +185,4 @@ Material:
       data:
         first:
           name: _Emssion_Tint
-        second: {r: 1, g: 0, b: 0, a: 1}
+        second: {r: 1, g: 0.491, b: 0, a: 1}
