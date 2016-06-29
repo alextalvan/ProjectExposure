@@ -352,14 +352,14 @@ public class GameManager : MonoBehaviour
 
 			if (gameScore > 0)
 			{
-				crownPlayer2.gameObject.SetActive(true);
+				crownPlayer2.SetActive(true);
 				targetEndScreenScorePlayer2 = 600 * Mathf.Abs(gameScore) / maxScore;
 				targetEndScreenScorePlayer1 = 600 - targetEndScreenScorePlayer2;
 			}
 
 			if (gameScore < 0)
 			{
-				crownPlayer1.gameObject.SetActive(true);
+				crownPlayer1.SetActive(true);
 				targetEndScreenScorePlayer2 = 600 * Mathf.Abs(gameScore) / maxScore;
 				targetEndScreenScorePlayer1 = 600 - targetEndScreenScorePlayer2;
 			}
@@ -369,6 +369,8 @@ public class GameManager : MonoBehaviour
 				targetEndScreenScorePlayer1 = 300;
 				targetEndScreenScorePlayer2 = 300;
 			}
+
+			StartCoroutine(DelayedExit());
         }
 
         if (!battleStarted)
@@ -507,16 +509,22 @@ public class GameManager : MonoBehaviour
 				targetEndScreenScorePlayer2 = 600;// * Mathf.Abs(gameScore) / maxScore;
 				targetEndScreenScorePlayer1 = 0;// - targetEndScreenScorePlayer2;
 				gameStarted = false;
-			}
+				StartCoroutine(DelayedExit());
 
+			}
+			else
 			if(gameScore <= maxScore * -1)
 			{
 				gameOverRoot.SetActive(true);
-				crownPlayer2.SetActive(true);
+				crownPlayer1.SetActive(true);
 				targetEndScreenScorePlayer1 = 600;// * Mathf.Abs(gameScore) / maxScore;
 				targetEndScreenScorePlayer2 = 0;// - targetEndScreenScorePlayer1;
 				gameStarted = false;
+				StartCoroutine(DelayedExit());
 			}
+
+
+
 		}
 		//targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f); //moved this in the zoom coroutine
 
@@ -595,6 +603,17 @@ public class GameManager : MonoBehaviour
 			currentEndScreenScorePlayer2 = targetEndScreenScorePlayer2;
 
 		player2ScoreText.text = currentEndScreenScorePlayer2.ToString();
+	}
+
+	IEnumerator DelayedExit()
+	{
+		yield return new WaitForSeconds(30.0f);
+		Application.Quit();
+	}
+
+	public void InterruptExit()
+	{
+		StopCoroutine(DelayedExit());
 	}
 
 
