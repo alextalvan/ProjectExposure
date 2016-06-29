@@ -227,13 +227,14 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	float centralFocusDuration = 1.0f;
 
-	//[SerializeField]
-	//int scoreThreshold = 6;
+    //[SerializeField]
+    //int scoreThreshold = 6;
 
-
+    GameSettings gameSettings;
 
     void Start()
     {
+        gameSettings = GameObject.Find("GameSettings").GetComponent<GameSettings>();
         //forcing refresh at start because of inspector filling of starting money
         Player1Money = _player1money;
         Player2Money = _player2money;
@@ -242,6 +243,8 @@ public class GameManager : MonoBehaviour
         ChangeScore(0, PLAYERS.PLAYER1, LANES.TOP);//force score refresh at start
         ChangeScore(0, PLAYERS.PLAYER1, LANES.BOT);
 		zoomInProgress = false;
+        SetPlayer(1, gameSettings.SetPlayer1AI);
+        SetPlayer(2, gameSettings.SetPlayer2AI);
     }
 
     IEnumerator SpawnWave()
@@ -417,17 +420,16 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void SetPlayer(int index)
+    public void SetPlayer(int index, bool aiEnabled)
     {
-        bool aiEnabled = index == 0 ? player1DD.value == 1 : player2DD.value == 1;
-        playerData.data[index].AI = aiEnabled;
+        playerData.data[index-1].AI = aiEnabled;
 
         if (aiEnabled)
             touchInputManager.BlockHalf(index);
         else
             touchInputManager.EnableHalf(index);
 
-        if (index == 0)
+        if (index == 1)
             AI1.enabled = aiEnabled;
         else
             AI2.enabled = aiEnabled;

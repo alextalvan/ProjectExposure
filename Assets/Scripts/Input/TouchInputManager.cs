@@ -349,7 +349,7 @@ public class TouchInputManager : MonoBehaviour
 
     public void BlockHalf(int index)
     {
-        if (index == 0)
+        if (index == 1)
             half1Blocked = true;
         else
             half2Blocked = true;
@@ -357,7 +357,7 @@ public class TouchInputManager : MonoBehaviour
 
     public void EnableHalf(int index)
     {
-        if (index == 0)
+        if (index == 1)
             half1Blocked = false;
         else
             half2Blocked = false;
