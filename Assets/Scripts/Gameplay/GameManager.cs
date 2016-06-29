@@ -363,6 +363,12 @@ public class GameManager : MonoBehaviour
 				targetEndScreenScorePlayer2 = 600 * Mathf.Abs(gameScore) / maxScore;
 				targetEndScreenScorePlayer1 = 600 - targetEndScreenScorePlayer2;
 			}
+
+			if(gameScore == 0)
+			{
+				targetEndScreenScorePlayer1 = 300;
+				targetEndScreenScorePlayer2 = 300;
+			}
         }
 
         if (!battleStarted)
