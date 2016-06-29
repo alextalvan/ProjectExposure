@@ -5,6 +5,10 @@ using System.Collections.Generic;
 
 public class AIPlayer : GameManagerSearcher
 {
+    public enum AIMod { AI, Helper, None };
+    private AIMod currentMod = AIMod.Helper;
+    public AIMod Mod { set { currentMod = value; } }
+
     [SerializeField]
     PLAYERS playingAs;
 
@@ -42,6 +46,9 @@ public class AIPlayer : GameManagerSearcher
     private GameObject target = null;
     private bool allowMovement = true;
 
+    private float fingerReleaseTimer;
+    private int helperStage = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -52,6 +59,13 @@ public class AIPlayer : GameManagerSearcher
         {
             buildingCards.Add(cardParent.GetChild(0).GetComponent<BuildingCard>());
         }
+    }
+
+    private void PressFinger()
+    {
+        fingerImg.sprite = pressedFinger;
+        allowMovement = false;
+        StartCoroutine(ReleaseFinger());
     }
 
     IEnumerator ReleaseFinger()
@@ -71,11 +85,21 @@ public class AIPlayer : GameManagerSearcher
         finger.SetActive(false);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         delayTimer -= Time.deltaTime;
-        Behave();
+        switch (currentMod)
+        {
+            case AIMod.AI:
+                AIBehavior();
+                break;
+            case AIMod.Helper:
+                HelperBehavior();
+                break;
+            case AIMod.None:
+                this.enabled = true;
+                break;
+        }
     }
 
     private void PickTarget()
@@ -83,10 +107,10 @@ public class AIPlayer : GameManagerSearcher
         if (playerData.pickUp)
             SelectPickUp();
         else
-            SelectBuildingCard();
+            SelectBuildingCard(false);
     }
 
-    private void Behave()
+    private void AIBehavior()
     {
         if (target && delayTimer <= 0f)
         {
@@ -100,7 +124,7 @@ public class AIPlayer : GameManagerSearcher
                 if (target.GetComponent<BuildingCard>())
                 {
                     OnAction();
-                    SelectFreeTile();
+                    SelectFreeTile(false);
                 }
                 else
                 {
@@ -116,13 +140,58 @@ public class AIPlayer : GameManagerSearcher
         }
     }
 
+    private void HelperBehavior()
+    {
+        fingerReleaseTimer -= Time.deltaTime;
+
+        if (helperStage == 0)
+        {
+            if (!target)
+                SelectBuildingCard(true);
+            else if (playerData.currentSelectedCard)
+            {
+                target = null;
+                helperStage++;
+            }
+        }
+        else if (helperStage == 1)
+        {
+            if (!target)
+                SelectFreeTile(true);
+            else if (playerData.buildingCount > 0)
+            {
+                target = null;
+                currentMod = AIMod.None;
+                this.enabled = false;
+                return;
+            }
+        }
+
+        float dist = Mathf.Infinity;
+        if (target)
+            dist = Vector3.Distance(finger.transform.position, target.transform.position);
+
+        if (dist < distanceToTarget)
+        {
+            if (fingerReleaseTimer <= 0f)
+            {
+                PressFinger();
+                fingerReleaseTimer = fingerReleaseDelay * 2f;
+            }
+        }
+        else
+        {
+            MoveTowardsTarget();
+        }
+    }
+
     private void MoveTowardsTarget()
     {
-        if (allowMovement)
+        if (target && allowMovement)
             finger.GetComponent<RectTransform>().position = Vector3.Lerp(finger.GetComponent<RectTransform>().position, target.transform.position, fingerSpeed * Time.deltaTime);
     }
 
-    private void SelectBuildingCard()
+    private void SelectBuildingCard(bool helper)
     {
         int fossilCount = 0;
         int greenCount = 0;
@@ -150,6 +219,8 @@ public class AIPlayer : GameManagerSearcher
         int rndCardIndex = Random.Range(0, playableCards.Count);
         selectedCard = playableCards[rndCardIndex];
         target = selectedCard.gameObject;
+        if (helper) return;
+
 #if TOUCH_INPUT
         OnAction += selectedCard.TouchEnd;
 #else
@@ -158,7 +229,7 @@ public class AIPlayer : GameManagerSearcher
         OnAction += Click;
     }
 
-    private void SelectFreeTile()
+    private void SelectFreeTile(bool helper)
     {
         List<HexagonTile> availableTiles = new List<HexagonTile>();
         foreach (HexagonTile tile in playerData.tiles)
@@ -179,6 +250,8 @@ public class AIPlayer : GameManagerSearcher
 
         int rndTileIndex = Random.Range(0, availableTiles.Count);
         target = availableTiles[rndTileIndex].gameObject;
+
+        if (helper) return;
 #if TOUCH_INPUT
         OnAction += availableTiles[rndTileIndex].PenetratingTouchEnd;
 #else
@@ -192,7 +265,7 @@ public class AIPlayer : GameManagerSearcher
         CoinPickup gem = playerData.pickUp.GetComponent<CoinPickup>();
         target = playerData.pickUp;
 
-        gem.OnDestruction += ()=> { target = null; OnAction = null; };
+        gem.OnDestruction += () => { target = null; OnAction = null; };
 #if TOUCH_INPUT
         OnAction += gem.PenetratingTouchEnd;
 #else
@@ -203,9 +276,7 @@ public class AIPlayer : GameManagerSearcher
 
     private void Click()
     {
-        fingerImg.sprite = pressedFinger;
-        StartCoroutine(ReleaseFinger());
-        allowMovement = false;
+        PressFinger();
         target = null;
         OnAction = null;
     }

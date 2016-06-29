@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(ApplicationTimeOut))]
 public class TouchInputManager : MonoBehaviour 
 {
 	public delegate void TouchBeginDelegate(Touch t);
@@ -33,6 +34,8 @@ public class TouchInputManager : MonoBehaviour
     bool half1Blocked = false;
     bool half2Blocked = false;
 
+	ApplicationTimeOut appTimeOut;
+
 	void Update () 
 	{
 		HandleTouchInput();
@@ -41,12 +44,16 @@ public class TouchInputManager : MonoBehaviour
 	void Awake()
 	{
 		_instance = this;
+		appTimeOut = GetComponent<ApplicationTimeOut>();
 	}
 
 
 	void HandleTouchInput()
 	{
 		int nbTouches = Input.touchCount;
+
+		if(nbTouches > 0)
+			appTimeOut.Reset();
 
 		for (int i = 0; i < nbTouches; i++)
 		{

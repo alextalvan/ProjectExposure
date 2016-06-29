@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+[RequireComponent(typeof(GameManager))]
 public class Arguments : MonoBehaviour {
 	
 	private int userID;

@@ -235,8 +235,24 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	GameObject gameOverRoot;
 
+	[SerializeField]
+	GameObject crownPlayer1;
+
+	[SerializeField]
+	GameObject crownPlayer2;
+
+	[SerializeField]
+	Text player1ScoreText;
+
+	[SerializeField]
+	Text player2ScoreText;
+
+	int targetEndScreenScorePlayer1 = 0, targetEndScreenScorePlayer2 = 0, currentEndScreenScorePlayer1 = 0, currentEndScreenScorePlayer2 = 0;
+
+
     [SerializeField]
     GameSettings gameSettings;
+
 
     void Start()
     {
@@ -285,6 +301,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
             Application.LoadLevel(0);
 
+		UpdateEndGameScores();
+
         if (!gameStarted)
             return;
 
@@ -323,21 +341,37 @@ public class GameManager : MonoBehaviour
 //			gameStarted = false;
 //		}
 
-//        if (gameTimer <= 0.0f)
-//        {
-//			gameOverText.transform.parent.gameObject.SetActive(true);
-//			gameStarted = false;
-//            //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
-//
-//			if (gameScore == 0)
-//                gameOverText.text = "Game over. Draw.";
-//
-//			if (gameScore > 0)
-//                gameOverText.text = "Game over. Blue wins.";
-//
-//			if (gameScore < 0)
-//                gameOverText.text = "Game over. Red wins.";
-//        }
+        if (gameTimer <= 0.0f)
+        {
+			gameOverRoot.SetActive(true);
+			gameStarted = false;
+            //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
+
+			//if (gameScore == 0)
+            //    gameOverText.text = "Game over. Draw.";
+
+			if (gameScore > 0)
+			{
+				crownPlayer2.SetActive(true);
+				targetEndScreenScorePlayer2 = 600 * Mathf.Abs(gameScore) / maxScore;
+				targetEndScreenScorePlayer1 = 600 - targetEndScreenScorePlayer2;
+			}
+
+			if (gameScore < 0)
+			{
+				crownPlayer1.SetActive(true);
+				targetEndScreenScorePlayer2 = 600 * Mathf.Abs(gameScore) / maxScore;
+				targetEndScreenScorePlayer1 = 600 - targetEndScreenScorePlayer2;
+			}
+
+			if(gameScore == 0)
+			{
+				targetEndScreenScorePlayer1 = 300;
+				targetEndScreenScorePlayer2 = 300;
+			}
+
+			StartCoroutine(DelayedExit());
+        }
 
         if (!battleStarted)
         {
@@ -436,9 +470,15 @@ public class GameManager : MonoBehaviour
             touchInputManager.EnableHalf(index);
 
         if (index == 0)
-            AI1.enabled = aiEnabled;
+        {
+            if (aiEnabled)
+                AI1.Mod = AIPlayer.AIMod.AI;
+        }
         else
-            AI2.enabled = aiEnabled;
+        {
+            if (aiEnabled)
+                AI2.Mod = AIPlayer.AIMod.AI;
+        }
     }
 
     public void StartGame()
@@ -456,11 +496,41 @@ public class GameManager : MonoBehaviour
 
 		gameScore += score;
 
-		if(gameScore!= 0 && Mathf.Abs(gameScore) % 3 == 0 && !zoomInProgress && !zoomedOnce)
+		if(!zoomedOnce)
 		{
-			StartCoroutine(ZoomIn());
-			zoomInProgress = true;
-			zoomedOnce = true;
+			if(gameScore!= 0 && Mathf.Abs(gameScore) % 3 == 0 && !zoomInProgress)
+			{
+				StartCoroutine(ZoomIn());
+				zoomInProgress = true;
+				zoomedOnce = true;
+			}
+		}
+		else
+		{
+			targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f);
+			if(gameScore >= maxScore)
+			{
+				gameOverRoot.SetActive(true);
+				crownPlayer2.SetActive(true);
+				targetEndScreenScorePlayer2 = 600;// * Mathf.Abs(gameScore) / maxScore;
+				targetEndScreenScorePlayer1 = 0;// - targetEndScreenScorePlayer2;
+				gameStarted = false;
+				StartCoroutine(DelayedExit());
+
+			}
+			else
+			if(gameScore <= maxScore * -1)
+			{
+				gameOverRoot.SetActive(true);
+				crownPlayer1.SetActive(true);
+				targetEndScreenScorePlayer1 = 600;// * Mathf.Abs(gameScore) / maxScore;
+				targetEndScreenScorePlayer2 = 0;// - targetEndScreenScorePlayer1;
+				gameStarted = false;
+				StartCoroutine(DelayedExit());
+			}
+
+
+
 		}
 		//targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f); //moved this in the zoom coroutine
 
@@ -522,36 +592,35 @@ public class GameManager : MonoBehaviour
 
 		zoomInProgress = false;
 
-
-		//moving this here
-//		if(gameScore >= maxScore)
-//		{
-//			gameOverText.transform.parent.gameObject.SetActive(true);
-//			gameOverText.text = "Game over. Blue wins.";
-//			gameStarted = false;
-//		}
-//
-//		if(gameScore <= maxScore * -1)
-//		{
-//			gameOverText.transform.parent.gameObject.SetActive(true);
-//			gameOverText.text = "Game over. Red wins.";
-//			gameStarted = false;
-//		}
 	}
 
-//	void UpdateZoom()
-//	{
-//		zoomTimer -= Time.deltaTime;
-//
-//		float orthoAmount;
-//
-//		if(zoomingIn)
-//			orthoAmount = Mathf.Lerp(normalOrthoDistance,zoomOrthoDistance, zoomTimer > 
-//
-//		if(zoomTimer > 0.0f && zoomingIn)
-//		{
-//			
-//		}
-//	}
+	void UpdateEndGameScores()
+	{
+		int speed = 2;
+
+		currentEndScreenScorePlayer1 += speed;
+		if(currentEndScreenScorePlayer1 > targetEndScreenScorePlayer1)
+			currentEndScreenScorePlayer1 = targetEndScreenScorePlayer1;
+
+		player1ScoreText.text = currentEndScreenScorePlayer1.ToString();
+
+		currentEndScreenScorePlayer2 += speed;
+		if(currentEndScreenScorePlayer2 > targetEndScreenScorePlayer2)
+			currentEndScreenScorePlayer2 = targetEndScreenScorePlayer2;
+
+		player2ScoreText.text = currentEndScreenScorePlayer2.ToString();
+	}
+
+	IEnumerator DelayedExit()
+	{
+		yield return new WaitForSeconds(30.0f);
+		Application.Quit();
+	}
+
+	public void InterruptExit()
+	{
+		StopCoroutine(DelayedExit());
+	}
+
 
 }
