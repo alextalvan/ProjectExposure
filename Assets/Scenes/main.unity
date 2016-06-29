@@ -10706,7 +10706,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -35.00006, y: 30.001953}
+  m_AnchoredPosition: {x: 75, y: 30.001953}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.2, y: 0.8}
 --- !u!114 &1102612573
@@ -11896,7 +11896,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 55.00006, y: 30.000008}
+  m_AnchoredPosition: {x: -69, y: 30.000008}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.8, y: 0.8}
 --- !u!1 &1200469449
@@ -20988,8 +20988,6 @@ MonoBehaviour:
       buildingCount: 0
   UI_root: {fileID: 791725157}
   UI_moneyPrefab: {fileID: 189870, guid: 754343a333242fe40a3b245f79d28a8b, type: 2}
-  player1DD: {fileID: 0}
-  player2DD: {fileID: 0}
   redPollutionSpots:
   - {fileID: 1927184014}
   - {fileID: 1184321905}
@@ -21010,6 +21008,7 @@ MonoBehaviour:
   zoomDuration: 0.5
   centralFocusDuration: 1
   gameOverRoot: {fileID: 0}
+  gameSettings: {fileID: 0}
   raycastedOn2DObject: 0
 --- !u!114 &1969614536
 MonoBehaviour:
@@ -21018,7 +21017,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1969614534}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dd648814e8ca05489a5dddfdb500e2a, type: 3}
   m_Name: 
@@ -21040,7 +21039,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1969614534}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dd648814e8ca05489a5dddfdb500e2a, type: 3}
   m_Name: 

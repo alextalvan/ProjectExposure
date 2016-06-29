@@ -64,14 +64,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float _player1money = 0;
 
-	[SerializeField]
-	Image _player1barImage;
+    [SerializeField]
+    Image _player1barImage;
 
     [SerializeField]
     float _player2money = 0;
 
-	[SerializeField]
-	Image _player2barImage;
+    [SerializeField]
+    Image _player2barImage;
 
     //[SerializeField]
     //ScoreData topLaneScoreData = new ScoreData();
@@ -112,11 +112,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-	public float player1MoneyBoostTime = -1.0f;
-	public float player2MoneyBoostTime = -1.0f;
+    public float player1MoneyBoostTime = -1.0f;
+    public float player2MoneyBoostTime = -1.0f;
 
-	[SerializeField]
-	float moneyBoostStrength = 4.0f;
+    [SerializeField]
+    float moneyBoostStrength = 4.0f;
 
     //	[SerializeField]
     //	int _player1score = 0;
@@ -146,23 +146,23 @@ public class GameManager : MonoBehaviour
     //		}
     //	}
 
-	[SerializeField]
-	int gameScore = 0;
+    [SerializeField]
+    int gameScore = 0;
 
-	[SerializeField]
-	int maxScore = 9;
+    [SerializeField]
+    int maxScore = 9;
 
-	[SerializeField]
-	Renderer scoreRenderer;
+    [SerializeField]
+    Renderer scoreRenderer;
 
-	[SerializeField]
-	Renderer scoreRenderer1;
+    [SerializeField]
+    Renderer scoreRenderer1;
 
-	float currentScoreFloat = 0.5f;
-	float targetScoreFloat = 0.5f;
+    float currentScoreFloat = 0.5f;
+    float targetScoreFloat = 0.5f;
 
-	[SerializeField]
-	float scoreBarInterpolationSpeed = 0.1f;
+    [SerializeField]
+    float scoreBarInterpolationSpeed = 0.1f;
 
 
     [SerializeField]
@@ -187,12 +187,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject UI_moneyPrefab;
 
-    [SerializeField]
-    Dropdown player1DD;
-
-    [SerializeField]
-    Dropdown player2DD;
-
     //[SerializeField]
     //Text gameOverText;
 
@@ -200,40 +194,40 @@ public class GameManager : MonoBehaviour
     private int prevUnitsAlive = 0;
     public int UnitsAlive { get { return unitsAlive; } set { unitsAlive = value; } }
 
-	[SerializeField]
-	List<PollutionZone> redPollutionSpots;
+    [SerializeField]
+    List<PollutionZone> redPollutionSpots;
 
-	[SerializeField]
-	List<PollutionZone> bluePollutionSpots;
+    [SerializeField]
+    List<PollutionZone> bluePollutionSpots;
 
     bool battleStarted = false;
 
 
-	//camera zoom variables
-	bool zoomInProgress = false;
+    //camera zoom variables
+    bool zoomInProgress = false;
 
-	[SerializeField]
-	Camera zoomCamera;
+    [SerializeField]
+    Camera zoomCamera;
 
-	[SerializeField]
-	float zoomOrthoDistance = 1.5f;
+    [SerializeField]
+    float zoomOrthoDistance = 1.5f;
 
-	[SerializeField]
-	float normalOrthoDistance = 4.0f;
+    [SerializeField]
+    float normalOrthoDistance = 4.0f;
 
-	[SerializeField]
-	float zoomDuration = 0.5f;
+    [SerializeField]
+    float zoomDuration = 0.5f;
 
-	[SerializeField]
-	float centralFocusDuration = 1.0f;
+    [SerializeField]
+    float centralFocusDuration = 1.0f;
 
-	bool zoomedOnce = false;
+    bool zoomedOnce = false;
 
-	//[SerializeField]
-	//int scoreThreshold = 6;
+    //[SerializeField]
+    //int scoreThreshold = 6;
 
-	[SerializeField]
-	GameObject gameOverRoot;
+    [SerializeField]
+    GameObject gameOverRoot;
 
     [SerializeField]
     GameSettings gameSettings;
@@ -245,10 +239,10 @@ public class GameManager : MonoBehaviour
         Player1Money = _player1money;
         Player2Money = _player2money;
 
-		zoomInProgress = true;
+        zoomInProgress = true;
         ChangeScore(0, PLAYERS.PLAYER1, LANES.TOP);//force score refresh at start
         ChangeScore(0, PLAYERS.PLAYER1, LANES.BOT);
-		zoomInProgress = false;
+        zoomInProgress = false;
         SetPlayer(0, gameSettings.SetPlayer1AI);
         SetPlayer(1, gameSettings.SetPlayer2AI);
     }
@@ -257,22 +251,22 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waveCoolDown);
 
-		//Debug.Log("test");
+        //Debug.Log("test");
 
-		foreach(PollutionZone pol in redPollutionSpots)
-			pol.HandleNewWave();
+        foreach (PollutionZone pol in redPollutionSpots)
+            pol.HandleNewWave();
 
-		foreach(PollutionZone pol in bluePollutionSpots)
-			pol.HandleNewWave();
+        foreach (PollutionZone pol in bluePollutionSpots)
+            pol.HandleNewWave();
 
         foreach (HexagonTile tile in playerData[PLAYERS.PLAYER1].tiles)
         {
-			if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.ConstructionTimeLeft < 0.0f)
+            if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.ConstructionTimeLeft < 0.0f)
                 tile.CurrentEnergyBuilding.GetComponent<UnitSpawner>().SpawnUnits();
         }
         foreach (HexagonTile tile in playerData[PLAYERS.PLAYER2].tiles)
         {
-			if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.ConstructionTimeLeft < 0.0f)
+            if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.ConstructionTimeLeft < 0.0f)
                 tile.CurrentEnergyBuilding.GetComponent<UnitSpawner>().SpawnUnits();
         }
     }
@@ -296,48 +290,48 @@ public class GameManager : MonoBehaviour
             UpdateMoney();
         }
 
-		player1MoneyBoostTime -= Time.deltaTime;
-		player2MoneyBoostTime -= Time.deltaTime;
+        player1MoneyBoostTime -= Time.deltaTime;
+        player2MoneyBoostTime -= Time.deltaTime;
 
         gameTimer -= Time.deltaTime;
         int seconds = ((int)gameTimer) % 60;
         int minutes = ((int)gameTimer) / 60;
         gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
 
-		currentScoreFloat = Mathf.Lerp(currentScoreFloat, targetScoreFloat, scoreBarInterpolationSpeed);
-		scoreRenderer.material.SetFloat("_CityClip", currentScoreFloat);
-		scoreRenderer1.material.SetFloat("_CityClip", currentScoreFloat);
+        currentScoreFloat = Mathf.Lerp(currentScoreFloat, targetScoreFloat, scoreBarInterpolationSpeed);
+        scoreRenderer.material.SetFloat("_CityClip", currentScoreFloat);
+        scoreRenderer1.material.SetFloat("_CityClip", currentScoreFloat);
 
 
-//		if(gameScore >= maxScore)
-//		{
-//			gameOverText.transform.parent.gameObject.SetActive(true);
-//			gameOverText.text = "Game over. Blue wins.";
-//			gameStarted = false;
-//		}
-//
-//		if(gameScore <= maxScore * -1)
-//		{
-//			gameOverText.transform.parent.gameObject.SetActive(true);
-//			gameOverText.text = "Game over. Red wins.";
-//			gameStarted = false;
-//		}
+        //		if(gameScore >= maxScore)
+        //		{
+        //			gameOverText.transform.parent.gameObject.SetActive(true);
+        //			gameOverText.text = "Game over. Blue wins.";
+        //			gameStarted = false;
+        //		}
+        //
+        //		if(gameScore <= maxScore * -1)
+        //		{
+        //			gameOverText.transform.parent.gameObject.SetActive(true);
+        //			gameOverText.text = "Game over. Red wins.";
+        //			gameStarted = false;
+        //		}
 
-//        if (gameTimer <= 0.0f)
-//        {
-//			gameOverText.transform.parent.gameObject.SetActive(true);
-//			gameStarted = false;
-//            //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
-//
-//			if (gameScore == 0)
-//                gameOverText.text = "Game over. Draw.";
-//
-//			if (gameScore > 0)
-//                gameOverText.text = "Game over. Blue wins.";
-//
-//			if (gameScore < 0)
-//                gameOverText.text = "Game over. Red wins.";
-//        }
+        //        if (gameTimer <= 0.0f)
+        //        {
+        //			gameOverText.transform.parent.gameObject.SetActive(true);
+        //			gameStarted = false;
+        //            //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
+        //
+        //			if (gameScore == 0)
+        //                gameOverText.text = "Game over. Draw.";
+        //
+        //			if (gameScore > 0)
+        //                gameOverText.text = "Game over. Blue wins.";
+        //
+        //			if (gameScore < 0)
+        //                gameOverText.text = "Game over. Red wins.";
+        //        }
 
         if (!battleStarted)
         {
@@ -375,24 +369,24 @@ public class GameManager : MonoBehaviour
         //botLaneScoreData.Update();
         prevUnitsAlive = unitsAlive;
 
-		//if(Input.GetKeyDown(KeyCode.J))
-		//	StartCoroutine(ZoomIn());
+        //if(Input.GetKeyDown(KeyCode.J))
+        //	StartCoroutine(ZoomIn());
     }
 
     void UpdateMoney()
     {
-		Player1Money += moneyRate * ((player1MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
-		Player2Money += moneyRate * ((player2MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
+        Player1Money += moneyRate * ((player1MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
+        Player2Money += moneyRate * ((player2MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
 
-		if (player1MoneyBoostTime > 0)
-			_player1barImage.color = new Color(0f,1.0f,0.2f,1f);
-		else
-			_player1barImage.color = Color.white;
-		
-		if (player2MoneyBoostTime > 0)
-			_player2barImage.color = new Color(0f,1.0f,0.2f,1f);
-		else
-			_player2barImage.color = Color.white;
+        if (player1MoneyBoostTime > 0)
+            _player1barImage.color = new Color(0f, 1.0f, 0.2f, 1f);
+        else
+            _player1barImage.color = Color.white;
+
+        if (player2MoneyBoostTime > 0)
+            _player2barImage.color = new Color(0f, 1.0f, 0.2f, 1f);
+        else
+            _player2barImage.color = Color.white;
     }
 
     void UpdateGameStage()
@@ -436,9 +430,19 @@ public class GameManager : MonoBehaviour
             touchInputManager.EnableHalf(index);
 
         if (index == 0)
-            AI1.enabled = aiEnabled;
+        {
+            if (aiEnabled)
+            {
+                AI1.Mod = AIPlayer.AIMod.AI;
+            }
+        }
         else
-            AI2.enabled = aiEnabled;
+        {
+            if (aiEnabled)
+            {
+                AI2.Mod = AIPlayer.AIMod.AI;
+            }
+        }
     }
 
     public void StartGame()
@@ -451,107 +455,107 @@ public class GameManager : MonoBehaviour
     {
         //float scoreDelta = score * ((owner == PLAYERS.PLAYER1) ? -1.0f : 1.0f);
 
-		if(owner == PLAYERS.PLAYER1)
-			score *= -1;
+        if (owner == PLAYERS.PLAYER1)
+            score *= -1;
 
-		gameScore += score;
+        gameScore += score;
 
-		if(gameScore!= 0 && Mathf.Abs(gameScore) % 3 == 0 && !zoomInProgress && !zoomedOnce)
-		{
-			StartCoroutine(ZoomIn());
-			zoomInProgress = true;
-			zoomedOnce = true;
-		}
-		//targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f); //moved this in the zoom coroutine
+        if (gameScore != 0 && Mathf.Abs(gameScore) % 3 == 0 && !zoomInProgress && !zoomedOnce)
+        {
+            StartCoroutine(ZoomIn());
+            zoomInProgress = true;
+            zoomedOnce = true;
+        }
+        //targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f); //moved this in the zoom coroutine
 
     }
 
-//    void CalculateWinCondition()
-//    {
-//
-//		//if(gameScore == -1 * maxScore)
-//
-//
-//        //float topRelativeScore = topLaneScoreData.Score / topLaneScoreData.MaxScore;
-//        //float botRelativeScore = botLaneScoreData.Score / botLaneScoreData.MaxScore;
-//
-//        //if (Mathf.Abs(topRelativeScore) >= 0.9999f && Mathf.Abs(botRelativeScore) >= 0.9999f && Mathf.Sign(botRelativeScore) == Mathf.Sign(topRelativeScore))
-//        //    gameTimer = -1.0f;//gameOverText.SetActive(true);
-//    }
+    //    void CalculateWinCondition()
+    //    {
+    //
+    //		//if(gameScore == -1 * maxScore)
+    //
+    //
+    //        //float topRelativeScore = topLaneScoreData.Score / topLaneScoreData.MaxScore;
+    //        //float botRelativeScore = botLaneScoreData.Score / botLaneScoreData.MaxScore;
+    //
+    //        //if (Mathf.Abs(topRelativeScore) >= 0.9999f && Mathf.Abs(botRelativeScore) >= 0.9999f && Mathf.Sign(botRelativeScore) == Mathf.Sign(topRelativeScore))
+    //        //    gameTimer = -1.0f;//gameOverText.SetActive(true);
+    //    }
 
-	public void LoadFirstLevel()
-	{
-		Application.LoadLevel(0);
-	}
+    public void LoadFirstLevel()
+    {
+        Application.LoadLevel(0);
+    }
 
-	IEnumerator ZoomIn()
-	{
-		bool zooming = true;
-		//float currentZoom = normalOrthoDistance;
-		float timeAccumulator = 0.0f;
+    IEnumerator ZoomIn()
+    {
+        bool zooming = true;
+        //float currentZoom = normalOrthoDistance;
+        float timeAccumulator = 0.0f;
 
-		while(zooming)
-		{
-			zoomCamera.orthographicSize = Mathf.Lerp(normalOrthoDistance,zoomOrthoDistance,timeAccumulator / zoomDuration);
-			timeAccumulator+= Time.deltaTime;
-			if(timeAccumulator >= zoomDuration)
-				zooming = false;
-			yield return null;//wait for next frame
-		}
+        while (zooming)
+        {
+            zoomCamera.orthographicSize = Mathf.Lerp(normalOrthoDistance, zoomOrthoDistance, timeAccumulator / zoomDuration);
+            timeAccumulator += Time.deltaTime;
+            if (timeAccumulator >= zoomDuration)
+                zooming = false;
+            yield return null;//wait for next frame
+        }
 
-		targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f);
-		yield return new WaitForSeconds(centralFocusDuration);
+        targetScoreFloat = 1.0f - (((float)gameScore / (float)maxScore) * 0.5f + 0.5f);
+        yield return new WaitForSeconds(centralFocusDuration);
 
-		StartCoroutine(ZoomOut());
-	}
+        StartCoroutine(ZoomOut());
+    }
 
-	IEnumerator ZoomOut()
-	{
-		bool zooming = true;
-		//float currentZoom = normalOrthoDistance;
-		float timeAccumulator = 0.0f;
+    IEnumerator ZoomOut()
+    {
+        bool zooming = true;
+        //float currentZoom = normalOrthoDistance;
+        float timeAccumulator = 0.0f;
 
-		while(zooming)
-		{
-			zoomCamera.orthographicSize = Mathf.Lerp(zoomOrthoDistance,normalOrthoDistance,timeAccumulator / zoomDuration);
-			timeAccumulator+= Time.deltaTime;
-			if(timeAccumulator >= zoomDuration)
-				zooming = false;
-			yield return null;//wait for next frame
-		}
+        while (zooming)
+        {
+            zoomCamera.orthographicSize = Mathf.Lerp(zoomOrthoDistance, normalOrthoDistance, timeAccumulator / zoomDuration);
+            timeAccumulator += Time.deltaTime;
+            if (timeAccumulator >= zoomDuration)
+                zooming = false;
+            yield return null;//wait for next frame
+        }
 
-		zoomInProgress = false;
+        zoomInProgress = false;
 
 
-		//moving this here
-//		if(gameScore >= maxScore)
-//		{
-//			gameOverText.transform.parent.gameObject.SetActive(true);
-//			gameOverText.text = "Game over. Blue wins.";
-//			gameStarted = false;
-//		}
-//
-//		if(gameScore <= maxScore * -1)
-//		{
-//			gameOverText.transform.parent.gameObject.SetActive(true);
-//			gameOverText.text = "Game over. Red wins.";
-//			gameStarted = false;
-//		}
-	}
+        //moving this here
+        //		if(gameScore >= maxScore)
+        //		{
+        //			gameOverText.transform.parent.gameObject.SetActive(true);
+        //			gameOverText.text = "Game over. Blue wins.";
+        //			gameStarted = false;
+        //		}
+        //
+        //		if(gameScore <= maxScore * -1)
+        //		{
+        //			gameOverText.transform.parent.gameObject.SetActive(true);
+        //			gameOverText.text = "Game over. Red wins.";
+        //			gameStarted = false;
+        //		}
+    }
 
-//	void UpdateZoom()
-//	{
-//		zoomTimer -= Time.deltaTime;
-//
-//		float orthoAmount;
-//
-//		if(zoomingIn)
-//			orthoAmount = Mathf.Lerp(normalOrthoDistance,zoomOrthoDistance, zoomTimer > 
-//
-//		if(zoomTimer > 0.0f && zoomingIn)
-//		{
-//			
-//		}
-//	}
+    //	void UpdateZoom()
+    //	{
+    //		zoomTimer -= Time.deltaTime;
+    //
+    //		float orthoAmount;
+    //
+    //		if(zoomingIn)
+    //			orthoAmount = Mathf.Lerp(normalOrthoDistance,zoomOrthoDistance, zoomTimer > 
+    //
+    //		if(zoomTimer > 0.0f && zoomingIn)
+    //		{
+    //			
+    //		}
+    //	}
 
 }
