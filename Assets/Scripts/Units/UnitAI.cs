@@ -21,7 +21,7 @@ public class UnitAI : GameManagerSearcher
     [SerializeField]
     int unitHealth = 1;
     [SerializeField]
-    float attackRange = 1;
+    float attackRange = 1f;
     [SerializeField]
     float unitSpeed = 1f;
 
@@ -105,8 +105,9 @@ public class UnitAI : GameManagerSearcher
         }
         PLAYERS enemy = owner == PLAYERS.PLAYER1 ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1;
         oppositeLane = gameManager.playerData[enemy].unitGroups[(int)lane];
+
         //orientation
-        Vector3 worldUp = Physics.gravity.normalized * -1.0f;
+        Vector3 worldUp = -Physics.gravity.normalized;
         float heightDiff = Vector3.Dot(worldUp, transform.position + movementDir) - Vector3.Dot(worldUp, transform.position);
         Vector3 lookTargetPoint = transform.position + movementDir - heightDiff * worldUp;
 
