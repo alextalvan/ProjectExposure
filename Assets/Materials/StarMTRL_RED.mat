@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: StarMTRL_RED
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: a1cb7a4eddffa4358ab38bb9e930acf1, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -127,6 +127,18 @@ Material:
         first:
           name: _Metallic
         second: 0.019
+      data:
+        first:
+          name: _EXP
+        second: 1.44
+      data:
+        first:
+          name: _Edge_glow
+        second: 1.76
+      data:
+        first:
+          name: _Glow_intensity
+        second: 3.09
     m_Colors:
       data:
         first:
@@ -136,3 +148,11 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Base_Color
+        second: {r: 1, g: 0.89736307, b: 0.8308824, a: 1}
+      data:
+        first:
+          name: _Glow_Color
+        second: {r: 0.9117647, g: 0.2078287, b: 0.2078287, a: 1}
