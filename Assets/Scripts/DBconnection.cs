@@ -1,13 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Arguments))]
 public class DBconnection : MonoBehaviour {
 	private Arguments argumentsScript;
 	private string connectionURL;
 	private string scoreURL = "insertScore.php?";
 
 	void Awake() {
-		argumentsScript = GameObject.Find("SceneManager").GetComponent<Arguments>();
+		argumentsScript = GetComponent<Arguments>();
 	}
 	void Start() {
 		connectionURL = argumentsScript.getConURL();

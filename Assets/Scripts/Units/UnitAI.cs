@@ -83,6 +83,9 @@ public class UnitAI : GameManagerSearcher
 
     private Transform oppositeLane = null;
 
+	[SerializeField]
+	GameObject starPrefab;
+
 
     protected override void Awake()
     {
@@ -235,6 +238,7 @@ public class UnitAI : GameManagerSearcher
         {
             Destroy(this.gameObject);
             gameManager.ChangeScore(1, this.Owner, this.lane);
+			Instantiate(starPrefab,this.transform.position,starPrefab.transform.rotation);
         }
     }
 
