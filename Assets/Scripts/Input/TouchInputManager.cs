@@ -55,8 +55,11 @@ public class TouchInputManager : MonoBehaviour
 		if(nbTouches > 0)
 			appTimeOut.Reset();
 
+		//UIConsole.Log(" ");
+
 		for (int i = 0; i < nbTouches; i++)
 		{
+			//UIConsole.Log("touch");
 			Touch touch = Input.GetTouch(i);
 
             if (half1Blocked && touch.position.x < Screen.width / 2) continue;

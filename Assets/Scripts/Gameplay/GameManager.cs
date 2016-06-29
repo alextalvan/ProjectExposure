@@ -267,6 +267,7 @@ public class GameManager : MonoBehaviour
 		zoomInProgress = false;
         SetPlayer(0, gameSettings.SetPlayer1AI);
         SetPlayer(1, gameSettings.SetPlayer2AI);
+		Destroy(gameSettings.gameObject);
     }
 
     IEnumerator SpawnWave()
@@ -299,7 +300,10 @@ public class GameManager : MonoBehaviour
             Application.Quit();
 
         if (Input.GetKeyUp(KeyCode.Space))
+		{
+			
             Application.LoadLevel(0);
+		}
 
 		UpdateEndGameScores();
 
@@ -361,8 +365,8 @@ public class GameManager : MonoBehaviour
 			if (gameScore < 0)
 			{
 				crownPlayer1.SetActive(true);
-				targetEndScreenScorePlayer2 = 600 * Mathf.Abs(gameScore) / maxScore;
-				targetEndScreenScorePlayer1 = 600 - targetEndScreenScorePlayer2;
+				targetEndScreenScorePlayer1 = 600 * Mathf.Abs(gameScore) / maxScore;
+				targetEndScreenScorePlayer2 = 600 - targetEndScreenScorePlayer2;
 				GetComponent<DBconnection>().SendScore(targetEndScreenScorePlayer1);
 			}
 
@@ -467,20 +471,19 @@ public class GameManager : MonoBehaviour
     {
         playerData.data[index].AI = aiEnabled;
 
-        if (aiEnabled)
-            touchInputManager.BlockHalf(index);
-        else
-            touchInputManager.EnableHalf(index);
-
         if (index == 0)
         {
-            if (aiEnabled)
-                AI1.Mod = AIPlayer.AIMod.AI;
+			if (aiEnabled) {
+				AI1.Mod = AIPlayer.AIMod.AI;
+				touchInputManager.BlockHalf(index);
+			}
         }
         else
         {
-            if (aiEnabled)
-                AI2.Mod = AIPlayer.AIMod.AI;
+			if (aiEnabled) {
+				AI2.Mod = AIPlayer.AIMod.AI;
+				touchInputManager.BlockHalf(index);
+			}
         }
     }
 
@@ -493,6 +496,8 @@ public class GameManager : MonoBehaviour
     public void ChangeScore(int score, PLAYERS owner, LANES lane)
     {
         //float scoreDelta = score * ((owner == PLAYERS.PLAYER1) ? -1.0f : 1.0f);
+
+		if(!gameStarted) return;
 
 		if(owner == PLAYERS.PLAYER1)
 			score *= -1;
