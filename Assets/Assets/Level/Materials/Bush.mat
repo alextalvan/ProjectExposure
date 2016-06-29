@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Star_Color
-  m_Shader: {fileID: 4800000, guid: a1cb7a4eddffa4358ab38bb9e930acf1, type: 3}
+  m_Name: Bush
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -19,8 +19,8 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 7aab3e1f21fa2da4d8a874d381d25c4c, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Texture: {fileID: 2800000, guid: 806e4167976d64cc387ba4cc410d12ef, type: 3}
+          m_Scale: {x: 3, y: 3}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -55,7 +55,7 @@ Material:
           name: _EmissionMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 3, y: 3}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -69,7 +69,7 @@ Material:
           name: _DetailAlbedoMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 5, y: 5}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -93,10 +93,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _InvFade
-        second: 1
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
@@ -106,7 +102,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0
+        second: 0.08
       data:
         first:
           name: _BumpScale
@@ -131,18 +127,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _EXP
-        second: 1.9
-      data:
-        first:
-          name: _Edge_glow
-        second: 2.89
-      data:
-        first:
-          name: _Glow_intensity
-        second: 2.16
     m_Colors:
       data:
         first:
@@ -151,20 +135,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _TintColor
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-      data:
-        first:
-          name: _Base_Color
-        second: {r: 0.9098378, g: 1, b: 0.066176474, a: 1}
-      data:
-        first:
-          name: _Glow_Color
-        second: {r: 0.875, g: 0.85192704, b: 0.038602926, a: 1}
-      data:
-        first:
-          name: _EmisColor
-        second: {r: 0.71323526, g: 0.71323526, b: 0.71323526, a: 0}
+        second: {r: 0.92073965, g: 0.9558824, b: 0.92389035, a: 1}

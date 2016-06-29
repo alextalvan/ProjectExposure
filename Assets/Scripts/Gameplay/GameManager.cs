@@ -193,8 +193,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Dropdown player2DD;
 
-    [SerializeField]
-    Text gameOverText;
+    //[SerializeField]
+    //Text gameOverText;
 
     private int unitsAlive = 0;
     private int prevUnitsAlive = 0;
@@ -227,9 +227,15 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	float centralFocusDuration = 1.0f;
 
-    //[SerializeField]
-    //int scoreThreshold = 6;
+	bool zoomedOnce = false;
 
+	//[SerializeField]
+	//int scoreThreshold = 6;
+
+	[SerializeField]
+	GameObject gameOverRoot;
+
+    [SerializeField]
     GameSettings gameSettings;
 
     void Start()
@@ -243,8 +249,8 @@ public class GameManager : MonoBehaviour
         ChangeScore(0, PLAYERS.PLAYER1, LANES.TOP);//force score refresh at start
         ChangeScore(0, PLAYERS.PLAYER1, LANES.BOT);
 		zoomInProgress = false;
-        SetPlayer(1, gameSettings.SetPlayer1AI);
-        SetPlayer(2, gameSettings.SetPlayer2AI);
+        SetPlayer(0, gameSettings.SetPlayer1AI);
+        SetPlayer(1, gameSettings.SetPlayer2AI);
     }
 
     IEnumerator SpawnWave()
@@ -317,21 +323,21 @@ public class GameManager : MonoBehaviour
 //			gameStarted = false;
 //		}
 
-        if (gameTimer <= 0.0f)
-        {
-			gameOverText.transform.parent.gameObject.SetActive(true);
-			gameStarted = false;
-            //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
-
-			if (gameScore == 0)
-                gameOverText.text = "Game over. Draw.";
-
-			if (gameScore > 0)
-                gameOverText.text = "Game over. Blue wins.";
-
-			if (gameScore < 0)
-                gameOverText.text = "Game over. Red wins.";
-        }
+//        if (gameTimer <= 0.0f)
+//        {
+//			gameOverText.transform.parent.gameObject.SetActive(true);
+//			gameStarted = false;
+//            //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
+//
+//			if (gameScore == 0)
+//                gameOverText.text = "Game over. Draw.";
+//
+//			if (gameScore > 0)
+//                gameOverText.text = "Game over. Blue wins.";
+//
+//			if (gameScore < 0)
+//                gameOverText.text = "Game over. Red wins.";
+//        }
 
         if (!battleStarted)
         {
@@ -422,14 +428,14 @@ public class GameManager : MonoBehaviour
 
     public void SetPlayer(int index, bool aiEnabled)
     {
-        playerData.data[index-1].AI = aiEnabled;
+        playerData.data[index].AI = aiEnabled;
 
         if (aiEnabled)
             touchInputManager.BlockHalf(index);
         else
             touchInputManager.EnableHalf(index);
 
-        if (index == 1)
+        if (index == 0)
             AI1.enabled = aiEnabled;
         else
             AI2.enabled = aiEnabled;
@@ -450,10 +456,11 @@ public class GameManager : MonoBehaviour
 
 		gameScore += score;
 
-		if(Mathf.Abs(gameScore) % 3 == 0 && !zoomInProgress)
+		if(gameScore!= 0 && Mathf.Abs(gameScore) % 3 == 0 && !zoomInProgress && !zoomedOnce)
 		{
 			StartCoroutine(ZoomIn());
 			zoomInProgress = true;
+			zoomedOnce = true;
 		}
 		//targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f); //moved this in the zoom coroutine
 
@@ -517,19 +524,19 @@ public class GameManager : MonoBehaviour
 
 
 		//moving this here
-		if(gameScore >= maxScore)
-		{
-			gameOverText.transform.parent.gameObject.SetActive(true);
-			gameOverText.text = "Game over. Blue wins.";
-			gameStarted = false;
-		}
-
-		if(gameScore <= maxScore * -1)
-		{
-			gameOverText.transform.parent.gameObject.SetActive(true);
-			gameOverText.text = "Game over. Red wins.";
-			gameStarted = false;
-		}
+//		if(gameScore >= maxScore)
+//		{
+//			gameOverText.transform.parent.gameObject.SetActive(true);
+//			gameOverText.text = "Game over. Blue wins.";
+//			gameStarted = false;
+//		}
+//
+//		if(gameScore <= maxScore * -1)
+//		{
+//			gameOverText.transform.parent.gameObject.SetActive(true);
+//			gameOverText.text = "Game over. Red wins.";
+//			gameStarted = false;
+//		}
 	}
 
 //	void UpdateZoom()
