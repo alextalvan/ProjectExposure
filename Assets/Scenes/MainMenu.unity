@@ -183,17 +183,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 20969324}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &20969327
@@ -240,10 +229,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e58fa4a7dda40c8a36812c662e24c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 2
   playerSprite: {fileID: 21300000, guid: d588b957bec5242fc932766fd2cebe5f, type: 3}
   aiSprite: {fileID: 21300000, guid: 84c70844c775a465c966d7ca37effacf, type: 3}
   button: {fileID: 20969326}
   isSet: 0
+  gameSettings: {fileID: 1596478342}
   currentState: 2
 --- !u!1 &92122352
 GameObject:
@@ -462,10 +453,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e58fa4a7dda40c8a36812c662e24c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 1
   playerSprite: {fileID: 21300000, guid: 97f5c29fb7e38431ebc0491808078198, type: 3}
   aiSprite: {fileID: 21300000, guid: c16507db9f41047ca9595af083729cb6, type: 3}
   button: {fileID: 268608015}
   isSet: 0
+  gameSettings: {fileID: 1596478342}
   currentState: 2
 --- !u!1 &360355944
 GameObject:
@@ -1281,10 +1274,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e58fa4a7dda40c8a36812c662e24c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
   playerSprite: {fileID: 0}
   aiSprite: {fileID: 0}
   button: {fileID: 268608015}
   isSet: 0
+  gameSettings: {fileID: 0}
   currentState: 2
 --- !u!1 &1497378637
 GameObject:
@@ -1576,11 +1571,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e58fa4a7dda40c8a36812c662e24c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
   playerSprite: {fileID: 0}
   aiSprite: {fileID: 0}
   button: {fileID: 20969326}
   isSet: 0
+  gameSettings: {fileID: 0}
   currentState: 2
+--- !u!1 &1596478341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1596478343}
+  - 114: {fileID: 1596478342}
+  m_Layer: 0
+  m_Name: GameSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1596478342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1596478341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f8038e46f8f8e48a2377b3ec337ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1596478343
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1596478341}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.55603826, y: 0.7773771, z: -0.06606603}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1 &1596685758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1725,10 +1761,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e58fa4a7dda40c8a36812c662e24c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
   playerSprite: {fileID: 0}
   aiSprite: {fileID: 0}
   button: {fileID: 20969326}
   isSet: 0
+  gameSettings: {fileID: 0}
   currentState: 2
 --- !u!1 &1654116424
 GameObject:
@@ -1986,10 +2024,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e58fa4a7dda40c8a36812c662e24c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
   playerSprite: {fileID: 0}
   aiSprite: {fileID: 0}
   button: {fileID: 268608015}
   isSet: 0
+  gameSettings: {fileID: 0}
   currentState: 2
 --- !u!1 &1766046022
 GameObject:

@@ -250,8 +250,13 @@ public class GameManager : MonoBehaviour
 	int targetEndScreenScorePlayer1 = 0, targetEndScreenScorePlayer2 = 0, currentEndScreenScorePlayer1 = 0, currentEndScreenScorePlayer2 = 0;
 
 
+    [SerializeField]
+    GameSettings gameSettings;
+
+
     void Start()
     {
+        gameSettings = GameObject.Find("GameSettings").GetComponent<GameSettings>();
         //forcing refresh at start because of inspector filling of starting money
         Player1Money = _player1money;
         Player2Money = _player2money;
@@ -260,6 +265,8 @@ public class GameManager : MonoBehaviour
         ChangeScore(0, PLAYERS.PLAYER1, LANES.TOP);//force score refresh at start
         ChangeScore(0, PLAYERS.PLAYER1, LANES.BOT);
 		zoomInProgress = false;
+        SetPlayer(0, gameSettings.SetPlayer1AI);
+        SetPlayer(1, gameSettings.SetPlayer2AI);
     }
 
     IEnumerator SpawnWave()
@@ -445,9 +452,8 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void SetPlayer(int index)
+    public void SetPlayer(int index, bool aiEnabled)
     {
-        bool aiEnabled = index == 0 ? player1DD.value == 1 : player2DD.value == 1;
         playerData.data[index].AI = aiEnabled;
 
         if (aiEnabled)
