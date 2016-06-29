@@ -193,8 +193,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Dropdown player2DD;
 
-    [SerializeField]
-    Text gameOverText;
+    //[SerializeField]
+    //Text gameOverText;
 
     private int unitsAlive = 0;
     private int prevUnitsAlive = 0;
@@ -227,9 +227,13 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	float centralFocusDuration = 1.0f;
 
+	bool zoomedOnce = false;
+
 	//[SerializeField]
 	//int scoreThreshold = 6;
 
+	[SerializeField]
+	GameObject gameOverRoot;
 
 
     void Start()
@@ -314,21 +318,21 @@ public class GameManager : MonoBehaviour
 //			gameStarted = false;
 //		}
 
-        if (gameTimer <= 0.0f)
-        {
-			gameOverText.transform.parent.gameObject.SetActive(true);
-			gameStarted = false;
-            //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
-
-			if (gameScore == 0)
-                gameOverText.text = "Game over. Draw.";
-
-			if (gameScore > 0)
-                gameOverText.text = "Game over. Blue wins.";
-
-			if (gameScore < 0)
-                gameOverText.text = "Game over. Red wins.";
-        }
+//        if (gameTimer <= 0.0f)
+//        {
+//			gameOverText.transform.parent.gameObject.SetActive(true);
+//			gameStarted = false;
+//            //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
+//
+//			if (gameScore == 0)
+//                gameOverText.text = "Game over. Draw.";
+//
+//			if (gameScore > 0)
+//                gameOverText.text = "Game over. Blue wins.";
+//
+//			if (gameScore < 0)
+//                gameOverText.text = "Game over. Red wins.";
+//        }
 
         if (!battleStarted)
         {
@@ -448,10 +452,11 @@ public class GameManager : MonoBehaviour
 
 		gameScore += score;
 
-		if(Mathf.Abs(gameScore) % 3 == 0 && !zoomInProgress)
+		if(gameScore!= 0 && Mathf.Abs(gameScore) % 3 == 0 && !zoomInProgress && !zoomedOnce)
 		{
 			StartCoroutine(ZoomIn());
 			zoomInProgress = true;
+			zoomedOnce = true;
 		}
 		//targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f); //moved this in the zoom coroutine
 
@@ -515,19 +520,19 @@ public class GameManager : MonoBehaviour
 
 
 		//moving this here
-		if(gameScore >= maxScore)
-		{
-			gameOverText.transform.parent.gameObject.SetActive(true);
-			gameOverText.text = "Game over. Blue wins.";
-			gameStarted = false;
-		}
-
-		if(gameScore <= maxScore * -1)
-		{
-			gameOverText.transform.parent.gameObject.SetActive(true);
-			gameOverText.text = "Game over. Red wins.";
-			gameStarted = false;
-		}
+//		if(gameScore >= maxScore)
+//		{
+//			gameOverText.transform.parent.gameObject.SetActive(true);
+//			gameOverText.text = "Game over. Blue wins.";
+//			gameStarted = false;
+//		}
+//
+//		if(gameScore <= maxScore * -1)
+//		{
+//			gameOverText.transform.parent.gameObject.SetActive(true);
+//			gameOverText.text = "Game over. Red wins.";
+//			gameStarted = false;
+//		}
 	}
 
 //	void UpdateZoom()
