@@ -3,6 +3,9 @@ using System.Collections;
 
 public class ProjectileScript : MonoBehaviour
 {
+    [SerializeField]
+    GameObject particle;
+
 	// Use this for initialization
 	void Start () {
 
@@ -18,6 +21,7 @@ public class ProjectileScript : MonoBehaviour
         UnitAI unit = col.transform.GetComponent<UnitAI>();
         if (unit)
             transform.parent.GetComponent<ProjParentScript>().DecreaseChildCount(unit);
+        Instantiate(particle, transform.position, Random.rotation);
         Destroy(gameObject);
     }
 }
