@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
 
             value = Mathf.Clamp(value, 0.0f, currentStage.forcedMaxMoney);
             _player1money = value;
-            _player1MoneyBar.SetCutout(Mathf.Clamp01(_player1money / 10f));
+            _player1MoneyBar.SetCutout(Mathf.Clamp01(_player1money / currentStage.forcedMaxMoney));
         }
     }
 
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
         {
             value = Mathf.Clamp(value, 0.0f, currentStage.forcedMaxMoney);
             _player2money = value;
-            _player2MoneyBar.SetCutout(Mathf.Clamp01(_player2money / 10f));
+            _player2MoneyBar.SetCutout(Mathf.Clamp01(_player2money / currentStage.forcedMaxMoney));
         }
     }
 
