@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites-CustomCutOff
+  m_Shader: {fileID: 4800000, guid: 317aaf3897c774ec198464a75b5850b8, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: c74a3b75497994f4681291f1020c40b1, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ExtraTex
+        second:
+          m_Texture: {fileID: 2800000, guid: aea4977271b0cf046a6d9f315b7d626c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _CoverTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 43ed73ffd2ac7dd4d90463b5f22c1558, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: PixelSnap
+        second: 0
+      data:
+        first:
+          name: _ValueX
+        second: 1
+      data:
+        first:
+          name: _ValueY
+        second: 1
+      data:
+        first:
+          name: _CoverUvRange
+        second: 1.41
+      data:
+        first:
+          name: _CoverUvRangeV
+        second: 1.8
+      data:
+        first:
+          name: _CoverUvRangeU
+        second: 0.3
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 1, b: 1, a: 1}
