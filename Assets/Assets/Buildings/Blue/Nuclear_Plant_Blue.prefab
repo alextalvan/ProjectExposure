@@ -205,6 +205,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &190320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400566}
+  - 119: {fileID: 11900478}
+  m_Layer: 0
+  m_Name: BlobShadowProjector (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &193560
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +237,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &400566
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190320}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0.5, y: 22, z: 0}
+  m_LocalScale: {x: 7.692308, y: 7.6923075, z: 7.6923065}
+  m_Children: []
+  m_Father: {fileID: 465952}
+  m_RootOrder: 7
 --- !u!4 &407660
 Transform:
   m_ObjectHideFlags: 1
@@ -310,6 +338,7 @@ Transform:
   - {fileID: 456850}
   - {fileID: 471382}
   - {fileID: 407660}
+  - {fileID: 400566}
   - {fileID: 22408878}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -656,6 +685,24 @@ MonoBehaviour:
   _building: {fileID: 11464352}
   maxLifeColor: {r: 0, g: 1, b: 0, a: 1}
   minLifeColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!119 &11900478
+Projector:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190320}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_NearClipPlane: 1.7
+  m_FarClipPlane: 3.36
+  m_FieldOfView: 25
+  m_AspectRatio: 0.7
+  m_Orthographic: 0
+  m_OrthographicSize: 2
+  m_Material: {fileID: 2100000, guid: e30ff3588e719f34bbf0c66f22d97487, type: 2}
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!135 &13561610
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -5264,7 +5311,7 @@ RectTransform:
   m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_Children: []
   m_Father: {fileID: 465952}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 5.27, y: 3.47}
