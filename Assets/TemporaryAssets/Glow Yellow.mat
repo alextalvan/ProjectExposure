@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Unit_Damage_mtrl
+  m_Name: Glow Yellow
   m_Shader: {fileID: 4800000, guid: a1cb7a4eddffa4358ab38bb9e930acf1, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 5
+  m_LightmapFlags: 1
   m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 7aab3e1f21fa2da4d8a874d381d25c4c, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -93,10 +93,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _InvFade
-        second: 1
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
@@ -106,7 +102,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0
+        second: 0.65
       data:
         first:
           name: _BumpScale
@@ -134,15 +130,23 @@ Material:
       data:
         first:
           name: _EXP
-        second: 1
+        second: 18
       data:
         first:
           name: _Edge_glow
-        second: 6.27
+        second: 5
       data:
         first:
           name: _Glow_intensity
-        second: 2.16
+        second: 4
+      data:
+        first:
+          name: _OutlineWidth
+        second: 0.25
+      data:
+        first:
+          name: _node_1524
+        second: 0
     m_Colors:
       data:
         first:
@@ -151,20 +155,20 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _TintColor
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-      data:
-        first:
-          name: _EmisColor
-        second: {r: 0.71323526, g: 0.71323526, b: 0.71323526, a: 0}
+        second: {r: 1, g: 0.9862213, b: 0, a: 1}
       data:
         first:
           name: _Base_Color
-        second: {r: 1, g: 0.066176474, b: 0.085496806, a: 1}
+        second: {r: 1, g: 0.93103456, b: 0, a: 1}
       data:
         first:
           name: _Glow_Color
-        second: {r: 0.6985294, g: 0, b: 0.04335698, a: 1}
+        second: {r: 1, g: 0.9839755, b: 0.41911763, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0.2161138, g: 0.9264706, b: 0.19074395, a: 1}
+      data:
+        first:
+          name: _node_7846
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}

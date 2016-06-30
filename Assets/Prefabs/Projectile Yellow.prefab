@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11430366}
   - 96: {fileID: 9660028}
   m_Layer: 0
-  m_Name: Projectile Green
+  m_Name: Projectile Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ TrailRenderer:
   m_SortingOrder: 0
   m_Time: 0.1
   m_StartWidth: 0.2
-  m_EndWidth: 0.02
+  m_EndWidth: 0.01
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe72dbe7f80c046428bbb578ba81a9af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle: {fileID: 107982, guid: 6bcc4e4bf958d475a9edf02d9d625dc9, type: 2}
 --- !u!135 &13502850
 SphereCollider:
   m_ObjectHideFlags: 1

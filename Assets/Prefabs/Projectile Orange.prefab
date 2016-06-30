@@ -91,7 +91,7 @@ TrailRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0717e3e63ace14cd5b28fd5de8d95fac, type: 2}
+  - {fileID: 2100000, guid: e2510f1e718f64560b2c075fa734e9f8, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -109,7 +109,7 @@ TrailRenderer:
   m_SortingOrder: 0
   m_Time: 0.1
   m_StartWidth: 0.2
-  m_EndWidth: 0.02
+  m_EndWidth: 0.01
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe72dbe7f80c046428bbb578ba81a9af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle: {fileID: 107982, guid: 61f3f4faed415aa4f99f2a6a755a717d, type: 2}
 --- !u!135 &13502850
 SphereCollider:
   m_ObjectHideFlags: 1
