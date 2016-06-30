@@ -120,7 +120,7 @@ public class UnitAI : GameManagerSearcher
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         buffList.Update();
         Behave();
@@ -209,12 +209,14 @@ public class UnitAI : GameManagerSearcher
             }
             else
             {
+                attackTimer = attackCoolDown * 0.5f;
                 SetAiState(AiState.Run);
                 return;
             }
         }
         else if (!(target = GetEnemyInRange()))
         {
+            attackTimer = attackCoolDown * 0.5f;
             SetAiState(AiState.Run);
             return;
         }
