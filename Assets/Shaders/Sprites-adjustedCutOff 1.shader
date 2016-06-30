@@ -10,6 +10,8 @@ Shader "Custom/CustomCutOff"
 		_ValueY ("Value y", Range(0.0, 1.0)) = 1.0
 		_CoverUvRangeV ("Cover Uv Range V", Range(0.0, 30.0)) = 1.0
 		_CoverUvRangeU ("Cover Uv Range U", Range(0.0, 30.0)) = 1.0
+		_SpeedUpTime ("Speed Up Time", float) = 5.0
+
 	}
 
 	SubShader
@@ -59,6 +61,7 @@ Shader "Custom/CustomCutOff"
 			float _ValueY;
 			float _CoverUvRangeV;
 			float _CoverUvRangeU;
+			float _SpeedUpTime;
 
 			v2f vert(appdata_t IN)
 			{
@@ -91,7 +94,8 @@ Shader "Custom/CustomCutOff"
 
 			fixed4 SampleCoverTexture (float2 uv2)
 			{
-				fixed4 cover = tex2D (_CoverTex, (uv2.x*_CoverUvRangeU, uv2.y*_CoverUvRangeV+abs(cos(_Time))));
+				fixed4 cover = tex2D (_CoverTex, (uv2.x*_CoverUvRangeU, uv2.y*_CoverUvRangeV - abs(_Time.r*_SpeedUpTime)));
+				if (uv2.y =1) uv2.y=0;
 
 						#if ETC1_EXTERNAL_ALPHA // get the color from an external texture (usecase: Alpha support for ETC1 on android)
 				
@@ -116,7 +120,7 @@ Shader "Custom/CustomCutOff"
 
 				}
 
-				return c+e;
+				return c+e*c.a;
 			}
 		ENDCG
 		}
