@@ -238,8 +238,6 @@ public class UnitAI : GameManagerSearcher
         if (cheerTimer <= 0f)
         {
             Destroy(this.gameObject);
-            gameManager.ChangeScore(1, this.Owner, this.lane);
-			Instantiate(starPrefab,this.transform.position,starPrefab.transform.rotation);
         }
     }
 
@@ -268,6 +266,8 @@ public class UnitAI : GameManagerSearcher
         healthBar.gameObject.SetActive(false);
         transform.GetComponent<Rigidbody>().isKinematic = true;
         transform.GetComponent<Collider>().isTrigger = true;
+        gameManager.ChangeScore(1, this.Owner, this.lane);
+        Instantiate(starPrefab, this.transform.position, starPrefab.transform.rotation);
         SetAiState(AiState.Cheer);
     }
 
