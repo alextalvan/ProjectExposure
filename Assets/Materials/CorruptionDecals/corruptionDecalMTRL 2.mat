@@ -39,20 +39,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Emission_texture
-        second:
-          m_Texture: {fileID: 2800000, guid: bc5decf8e48dedc4c9bca8aec460426a, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Diffuse_Texture
-        second:
-          m_Texture: {fileID: 2800000, guid: ccb45a9c783274e42a804a5d75ac538d, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -93,6 +79,20 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emission_texture
+        second:
+          m_Texture: {fileID: 2800000, guid: bc5decf8e48dedc4c9bca8aec460426a, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse_Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: ccb45a9c783274e42a804a5d75ac538d, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -110,22 +110,6 @@ Material:
         first:
           name: _Smoothness
         second: 1
-      data:
-        first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
-          name: _Emission_power
-        second: 4.5
-      data:
-        first:
-          name: _Filckering_rate
-        second: 0.25
-      data:
-        first:
-          name: _minimum_emission
-        second: 0.1
       data:
         first:
           name: _Parallax
@@ -160,6 +144,22 @@ Material:
         second: 2
       data:
         first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
+          name: _Emission_power
+        second: 4.5
+      data:
+        first:
+          name: _Filckering_rate
+        second: 0.25
+      data:
+        first:
+          name: _minimum_emission
+        second: 0.1
+      data:
+        first:
           name: _node_4114
         second: 0
       data:
@@ -169,7 +169,7 @@ Material:
       data:
         first:
           name: _noise_value
-        second: 0.018
+        second: 0.001
     m_Colors:
       data:
         first:
