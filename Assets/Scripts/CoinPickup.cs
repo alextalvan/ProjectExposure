@@ -25,15 +25,27 @@ public class CoinPickup : GameManagerSearcher {
 	public event OnDestructionDelegate OnDestruction = null;
 
 	[SerializeField]
-	float coinProbability = 0.75f;
+	float coinProbability = 0.7f;
 
 	[SerializeField]
-	float quakeProbability = 0.25f;
+	float quakeProbability = 0.1f;
 
-	//[SerializeField]
-	float nukeProbability = 0f;//0.051f;
+    [SerializeField]
+    float fireBallProbability = 0.2f;
 
-	[SerializeField]
+    [SerializeField]
+    float antiUnitFbChance = 0.5f;
+
+    [SerializeField]
+    float antiBuuldingFbChance = 0.5f;
+
+    [SerializeField]
+    int quakeDestrBuildingAfterNr = 3;
+
+    [SerializeField]
+    int quakeBuildingsDestrNr = 1;
+
+    [SerializeField]
 	Animator boxAnimator;
 
 	[SerializeField]
@@ -42,11 +54,16 @@ public class CoinPickup : GameManagerSearcher {
 	[SerializeField]
 	GameObject earthquakeObject;
 
-	[SerializeField]
-	GameObject nuclearObject;
+    [SerializeField]
+    GameObject antiUnitFireBall;
 
-	[SerializeField]
+    [SerializeField]
+    GameObject antiBuildingFireBall;
+
+    [SerializeField]
 	float destructionTimeAfterOpen = 1.0f;
+
+    PlayerGameData enemyData;
 
 #if TOUCH_INPUT
 	public void PenetratingTouchEnd()
@@ -61,35 +78,28 @@ public class CoinPickup : GameManagerSearcher {
        
 		float rng = Random.value;
 
-//		if(rng <= nukeProbability)
-//		{
-//			NukeAction();
-//			Destroy(this.gameObject);
-//			return;
-//		}
-
-		if(rng <= quakeProbability + nukeProbability)
+        if (rng <= fireBallProbability && (enemyData.units.Count > 0 || enemyData.buildingCount > 0))
+        {
+            FireBallAction();
+            Destroy(this.gameObject, destructionTimeAfterOpen);
+        }
+        else if (rng <= quakeProbability + fireBallProbability)
 		{
 			QuakeAction();
 			Destroy(this.gameObject, destructionTimeAfterOpen);
-			return;
 		}
-
-		if(rng <= coinProbability + nukeProbability + quakeProbability)
+        else
 		{
 			CoinAction();
 			Destroy(this.gameObject, destructionTimeAfterOpen);
-			return;
 		}
-
-
-			
     }
 
 	void Start()
 	{
-		//Destroy(this.gameObject,deletionTime);
-	}
+        enemyData = gameManager.playerData[(this.owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
+        //Destroy(this.gameObject,deletionTime);
+    }
 
 	void OnDestroy()
 	{
@@ -107,23 +117,39 @@ public class CoinPickup : GameManagerSearcher {
 			gameManager.player2MoneyBoostTime = boostDuration;
 	}
 
+    void FireBallAction()
+    {
+        float rng = Random.value;
+        if (rng <= antiUnitFbChance && enemyData.units.Count > 0)
+        {
+            antiUnitFireBall.SetActive(true);
+
+            Transform rndTargetUnit = enemyData.units[Random.Range(0, enemyData.units.Count)];
+            antiUnitFireBall.GetComponent<FireBall>().target = rndTargetUnit;
+            antiUnitFireBall.transform.parent = null;
+        }
+        else
+        {
+            antiBuildingFireBall.SetActive(true);
+
+            Transform rndTargetBuilding = enemyData.buildings[Random.Range(0, enemyData.buildingCount)].transform.parent;
+            antiBuildingFireBall.GetComponent<FireBall>().target = rndTargetBuilding;
+            antiBuildingFireBall.transform.parent = null;
+        }
+    }
+
     void QuakeAction()
     {
         earthquakeObject.SetActive(true);
-
-        PlayerGameData enemyData = gameManager.playerData[(this.owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
-
-        bool destroyEnemyBuilding = enemyData.buildingCount > 3;
+        
+        bool destroyEnemyBuilding = enemyData.buildingCount > quakeDestrBuildingAfterNr;
 
         //destroy one building
         if (destroyEnemyBuilding)
-            foreach (HexagonTile t in enemyData.tiles)
+            for (int i = 0; i < enemyData.tiles.Count && i < quakeBuildingsDestrNr; i++)
             {
-                if (t.CurrentEnergyBuilding)
-                {
-                    t.DestroyBuilding();
-                    break;
-                }
+                if (enemyData.tiles[i].CurrentEnergyBuilding)
+                    enemyData.tiles[i].DestroyBuilding();
             }
         /*
 		for (int i=0; i < data.tiles.Count - 1; ++i)
@@ -180,12 +206,6 @@ public class CoinPickup : GameManagerSearcher {
 		//PlayerGameData enemyData = gameManager.playerData[(this.owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
 
         Camera.main.GetComponent<CameraShake>().Shake();
-	}
-
-	void NukeAction()
-	{
-		nuclearObject.SetActive(true);
-		
 	}
 
 	//debug

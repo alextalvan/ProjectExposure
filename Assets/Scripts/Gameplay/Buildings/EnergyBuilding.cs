@@ -56,7 +56,7 @@ public class EnergyBuilding : GameManagerSearcher
 		//lifeTimeLeft = maxlifeTime;
 		constructionTimeLeft = constructionTime;
 
-        OnDestruction += () => { gameManager.playerData[Owner].buildings.Remove(this); };
+        //OnDestruction += () => { gameManager.playerData[Owner].buildings.Remove(this); };
     }
 
 	void OnDestroy()

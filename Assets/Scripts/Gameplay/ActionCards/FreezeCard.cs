@@ -21,6 +21,7 @@ public class FreezeCard : ActionCard
 
 	public override void DoCardEffect ()
 	{
+        /*
 		base.DoCardEffect();
 
 		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
@@ -49,7 +50,7 @@ public class FreezeCard : ActionCard
 				//unit.GetComponent<TemporaryBlink>().Begin(freezeDuration);
 			}
 		}
-
+        */
 		Destroy(this.gameObject);
 	}
 

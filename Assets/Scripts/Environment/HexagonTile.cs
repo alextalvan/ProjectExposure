@@ -130,7 +130,7 @@ public class HexagonTile : GameManagerSearcher
     {
 		if (!_energyBuilding || swap) return;
         startTime = Time.time;
-        swapCenterPos = (_energyBuilding.transform.position + transform.position) / 2f;
+        swapCenterPos = (_energyBuilding.transform.position + transform.position) * 0.5f;
         centerToThisVec = transform.position - swapCenterPos;
         centerToSwapVec = _energyBuilding.transform.position - swapCenterPos;
         swap = true;
