@@ -202,6 +202,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &154684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 414506}
+  - 119: {fileID: 11997146}
+  m_Layer: 0
+  m_Name: BlobShadowProjector (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &175138
 GameObject:
   m_ObjectHideFlags: 1
@@ -291,6 +307,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 455166}
   m_RootOrder: 0
+--- !u!4 &414506
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154684}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0.5, y: 22, z: 0}
+  m_LocalScale: {x: 7.692308, y: 7.6923075, z: 7.6923065}
+  m_Children: []
+  m_Father: {fileID: 497082}
+  m_RootOrder: 7
 --- !u!4 &425424
 Transform:
   m_ObjectHideFlags: 1
@@ -437,6 +465,7 @@ Transform:
   - {fileID: 455166}
   - {fileID: 486574}
   - {fileID: 22479294}
+  - {fileID: 414506}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!23 &2310354
@@ -685,6 +714,24 @@ MonoBehaviour:
   _building: {fileID: 11425498}
   maxLifeColor: {r: 0, g: 1, b: 0, a: 1}
   minLifeColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!119 &11997146
+Projector:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154684}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_NearClipPlane: 1.7
+  m_FarClipPlane: 3.36
+  m_FieldOfView: 25
+  m_AspectRatio: 0.7
+  m_Orthographic: 0
+  m_OrthographicSize: 2
+  m_Material: {fileID: 2100000, guid: e30ff3588e719f34bbf0c66f22d97487, type: 2}
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!135 &13506604
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -9915,7 +9962,7 @@ RectTransform:
   m_GameObject: {fileID: 124196}
   m_LocalRotation: {x: -0.29883635, y: 0.6408562, z: -0.29883617, w: -0.6408565}
   m_LocalPosition: {x: 0, y: 0, z: 3.38}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 497082}
   m_RootOrder: 6

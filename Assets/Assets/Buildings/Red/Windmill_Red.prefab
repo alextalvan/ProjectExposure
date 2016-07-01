@@ -327,6 +327,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &162470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 488542}
+  - 119: {fileID: 11976058}
+  m_Layer: 0
+  m_Name: BlobShadowProjector (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &164830
 GameObject:
   m_ObjectHideFlags: 1
@@ -574,7 +590,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &188064
 GameObject:
   m_ObjectHideFlags: 1
@@ -1084,6 +1100,7 @@ Transform:
   - {fileID: 414968}
   - {fileID: 436400}
   - {fileID: 22415610}
+  - {fileID: 488542}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &464614
@@ -1271,6 +1288,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 433056}
   m_RootOrder: 0
+--- !u!4 &488542
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162470}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0.5, y: 22, z: 0}
+  m_LocalScale: {x: 7.692308, y: -7.6923084, z: 7.6923084}
+  m_Children: []
+  m_Father: {fileID: 462296}
+  m_RootOrder: 7
 --- !u!4 &490110
 Transform:
   m_ObjectHideFlags: 1
@@ -1587,6 +1616,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dissolveTime: 9.5
   _renderer: {fileID: 13799736}
+--- !u!119 &11976058
+Projector:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162470}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_NearClipPlane: 1.7
+  m_FarClipPlane: 3.36
+  m_FieldOfView: 25
+  m_AspectRatio: 0.7
+  m_Orthographic: 0
+  m_OrthographicSize: 2
+  m_Material: {fileID: 2100000, guid: e30ff3588e719f34bbf0c66f22d97487, type: 2}
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!135 &13506378
 SphereCollider:
   m_ObjectHideFlags: 1
