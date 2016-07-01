@@ -301,7 +301,6 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space))
 		{
-			
             Application.LoadLevel(0);
 		}
 

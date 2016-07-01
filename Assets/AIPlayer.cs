@@ -82,7 +82,8 @@ public class AIPlayer : GameManagerSearcher
 
     void OnDisable()
     {
-        finger.SetActive(false);
+        if (finger)
+            finger.SetActive(false);
     }
 
     void FixedUpdate()

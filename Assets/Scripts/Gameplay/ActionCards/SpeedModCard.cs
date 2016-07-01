@@ -23,6 +23,7 @@ public class SpeedModCard : ActionCard
 
 	public override void DoCardEffect ()
 	{
+        /*
 		base.DoCardEffect();
 
 		enemyData = gameManager.playerData[(this.Owner == PLAYERS.PLAYER1) ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1];
@@ -46,7 +47,7 @@ public class SpeedModCard : ActionCard
 				aiComp.buffList.AddBuff(buff);
 			}
 		}
-
+        */
 		Destroy(this.gameObject);
 	}
 

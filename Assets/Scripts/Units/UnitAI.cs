@@ -81,11 +81,10 @@ public class UnitAI : GameManagerSearcher
     private HealthBar healthBar;
     float maxUnitHealth;
 
-    private Transform oppositeLane = null;
-
 	[SerializeField]
 	GameObject starPrefab;
-
+    PlayerGameData enemyData;
+    Transform oppositeLane;
 
     protected override void Awake()
     {
@@ -104,7 +103,9 @@ public class UnitAI : GameManagerSearcher
             materials.Add(model.transform.GetChild(0).GetComponent<Renderer>().material);
         }
         PLAYERS enemy = owner == PLAYERS.PLAYER1 ? PLAYERS.PLAYER2 : PLAYERS.PLAYER1;
-        oppositeLane = gameManager.playerData[enemy].unitGroups[(int)lane];
+        enemyData = gameManager.playerData[enemy];
+        gameManager.playerData[owner].units.Add(transform);
+        oppositeLane = enemyData.unitGroups[(int)lane];
 
         //orientation
         Vector3 worldUp = -Physics.gravity.normalized;
@@ -260,6 +261,7 @@ public class UnitAI : GameManagerSearcher
     {
         transform.GetComponent<Rigidbody>().isKinematic = true;
         transform.GetComponent<Collider>().isTrigger = true;
+        gameManager.playerData[owner].units.Remove(transform);
         SetAiState(AiState.Die);
     }
 
@@ -268,6 +270,7 @@ public class UnitAI : GameManagerSearcher
         healthBar.gameObject.SetActive(false);
         transform.GetComponent<Rigidbody>().isKinematic = true;
         transform.GetComponent<Collider>().isTrigger = true;
+        gameManager.playerData[owner].units.Remove(transform);
         gameManager.ChangeScore(1, this.Owner, this.lane);
         Instantiate(starPrefab, this.transform.position, starPrefab.transform.rotation);
         SetAiState(AiState.Cheer);
@@ -330,6 +333,9 @@ public class UnitAI : GameManagerSearcher
     public bool DecreaseHealth(int amount)
     {
         unitHealth -= amount;
+        if (unitHealth < 0)
+            unitHealth = 0;
+
         if (healthBar)
             healthBar.SetLength(unitHealth / maxUnitHealth);
 

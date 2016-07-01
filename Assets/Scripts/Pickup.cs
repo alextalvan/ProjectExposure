@@ -34,12 +34,9 @@ public class Pickup : GameManagerSearcher {
 
 	bool EnemyHasUnits()
 	{
-		foreach(Transform tr in enemyData.unitGroups)
-		{
-			if(tr.childCount > 0)
-				return true;
-		}
-		return false;
+        if (enemyData.units.Count > 0)
+            return true;
+        return false;
 	}
 
 	bool EnemyHasBuildings()
