@@ -1,4 +1,4 @@
-Shader "Custom/CustomCutOff"
+Shader "Custom/CustomArrows"
 {
 	Properties
 	{
@@ -11,6 +11,7 @@ Shader "Custom/CustomCutOff"
 		_CoverUvRangeV ("Cover Uv Range V", Range(0.0, 30.0)) = 1.0
 		_CoverUvRangeU ("Cover Uv Range U", Range(0.0, 30.0)) = 1.0
 		_SpeedUpTime ("Speed Up Time", float) = 5.0
+		_RotationSpeed ("Rotation Speed", Float) = 2.0
 
 	}
 
@@ -51,6 +52,7 @@ Shader "Custom/CustomCutOff"
 				float4 vertex   : SV_POSITION;
 				fixed4 color    : COLOR;
 				float2 texcoord  : TEXCOORD0;
+				float2 texcoord1  : TEXCOORD1;
 			};
 			
 			fixed4 _Color;
@@ -62,14 +64,22 @@ Shader "Custom/CustomCutOff"
 			float _CoverUvRangeV;
 			float _CoverUvRangeU;
 			float _SpeedUpTime;
+			float _RotationSpeed;
 
 			v2f vert(appdata_t IN)
 			{
 				v2f OUT;
+				float sinX = sin ( _RotationSpeed * _Time );
+            	float cosX = cos ( _RotationSpeed * _Time );
+            	float sinY = sin ( _RotationSpeed * _Time );
+            	float2x2 rotationMatrix = float2x2( cosX, -sinX, sinY, cosX);
 
 
 				OUT.vertex = mul(UNITY_MATRIX_MVP, IN.vertex);
+				OUT.texcoord1 = IN.texcoord;
 				OUT.texcoord = IN.texcoord;
+
+				OUT.texcoord.xy = mul (IN.texcoord.xy, rotationMatrix );
 
 				OUT.color = IN.color * _Color;
 				#ifdef PIXELSNAP_ON
@@ -99,16 +109,17 @@ Shader "Custom/CustomCutOff"
 			{
 
 
-            	//uv.r *= _CoverUvRangeU;
-            	//uv.g *= _CoverUvRangeV - abs(_Time.r*_SpeedUpTime);
+            	uv.r *= _CoverUvRangeU;
+            	uv.g *= _CoverUvRangeV - abs(_Time.r*_SpeedUpTime);
+            	if (uv.g =1) uv.g=0;
 
-				fixed4 cover = tex2D (_CoverTex, (uv.r, uv.g*_CoverUvRangeV - abs(_Time.r*_SpeedUpTime)));
+				fixed4 cover = tex2D (_CoverTex, uv.r);
 			
-				//if (uv.g =1) uv.g=0;
+
 
 						#if ETC1_EXTERNAL_ALPHA // get the color from an external texture (usecase: Alpha support for ETC1 on android)
 				
-				cover.a = tex2D (_AlphaTex, uv).rg;	
+				cover.a = tex2D (_AlphaTex, uv).r;	
 
 						#endif //ETC1_EXTERNAL_ALPHA
 
@@ -121,15 +132,14 @@ Shader "Custom/CustomCutOff"
 			{
 				fixed4 c = fixed4(0,0,0,0);
 				fixed4 e = fixed4(0,0,0,0);
-				if (IN.texcoord.x < _ValueX && IN.texcoord.y < _ValueY) {
-					c = (SampleSpriteTexture (IN.texcoord)) ;
+
+					c = (SampleSpriteTexture (IN.texcoord1));
 					c.rgb *= c.a;
 					e = (SampleCoverTexture (IN.texcoord) * IN.color) ;
 					e.rgb *= e.a;
 
-				}
 
-				return c+e*c.a;
+				return e*c.a+c;
 			}
 		ENDCG
 		}

@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites-CustomCutOff
-  m_Shader: {fileID: 4800000, guid: 317aaf3897c774ec198464a75b5850b8, type: 3}
+  m_Name: Sprites-Arrows
+  m_Shader: {fileID: 4800000, guid: d4790aadff76645b1855dd2f3b68fcc5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: c74a3b75497994f4681291f1020c40b1, type: 3}
+          m_Texture: {fileID: 2800000, guid: 41135d268ed7a453c8a07262220ee757, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -60,15 +60,15 @@ Material:
       data:
         first:
           name: _CoverUvRangeU
-        second: 0.3
+        second: 0.6
       data:
         first:
           name: _SpeedUpTime
-        second: 5
+        second: 2.5
       data:
         first:
           name: _RotationSpeed
-        second: 0
+        second: 22.75
     m_Colors:
       data:
         first:
