@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 494278}
   - 111: {fileID: 11182598}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 23: {fileID: 2328920}
   - 114: {fileID: 11432244}
   - 111: {fileID: 11108252}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - 135: {fileID: 13502848}
   - 54: {fileID: 5472170}
   - 114: {fileID: 11446802}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Diamond Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,17 @@ MonoBehaviour:
   deletionTime: 10
   coinProbability: 0.9
   quakeProbability: 0.1
-  nukeProbability: 0
+  fireBallProbability: 0.2
+  antiUnitFbChance: 0.5
+  antiBuuldingFbChance: 0.5
+  quakeDestrBuildingAfterNr: 3
+  quakeBuildingsDestrNr: 1
+  boxAnimator: {fileID: 0}
+  diamondObject: {fileID: 0}
+  earthquakeObject: {fileID: 0}
+  antiUnitFireBall: {fileID: 0}
+  antiBuildingFireBall: {fileID: 0}
+  destructionTimeAfterOpen: 1
 --- !u!135 &13502848
 SphereCollider:
   m_ObjectHideFlags: 1

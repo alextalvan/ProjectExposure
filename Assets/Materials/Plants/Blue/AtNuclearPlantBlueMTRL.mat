@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: AtNuclearPlantBlueMTRL
-  m_Shader: {fileID: 4800000, guid: e68f798c29a56af4e8a35346cfba79cc, type: 3}
+  m_Shader: {fileID: 4800000, guid: 56e901d0e7fe247beb763673b62a99df, type: 3}
   m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2450
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -47,7 +47,7 @@ Material:
         first:
           name: _Gloss_map
         second:
-          m_Texture: {fileID: 2800000, guid: 13f23772e0446424ea2b57a7c70c8de6, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -55,6 +55,13 @@ Material:
           name: _Emission_map
         second:
           m_Texture: {fileID: 2800000, guid: ceadc7533c806c64cbf38bcc62aafc58, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ambient_occ
+        second:
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -69,7 +76,11 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0
+        second: 1
+      data:
+        first:
+          name: _Spec_power
+        second: 1
       data:
         first:
           name: _Visibility
@@ -93,7 +104,7 @@ Material:
       data:
         first:
           name: _Emssion_power
-        second: 0.6
+        second: 0
       data:
         first:
           name: _Visibility_multiplier
@@ -110,6 +121,34 @@ Material:
         first:
           name: _Visibility_power
         second: 0.8471476
+      data:
+        first:
+          name: _Transparancy
+        second: 1
+      data:
+        first:
+          name: _Glossiness_copy
+        second: 0.5057089
+      data:
+        first:
+          name: _outline
+        second: 0.11
+      data:
+        first:
+          name: _Occlusion_power
+        second: 1
+      data:
+        first:
+          name: _F_rate
+        second: 0.5
+      data:
+        first:
+          name: _F_floor
+        second: 0.9
+      data:
+        first:
+          name: _F_power
+        second: 0.6
     m_Colors:
       data:
         first:
@@ -119,3 +158,15 @@ Material:
         first:
           name: _Glow_color
         second: {r: 0, g: 1, b: 0.17241383, a: 1}
+      data:
+        first:
+          name: _node_9654
+        second: {r: 0.14980313, g: 0.7941176, b: 0.064230114, a: 1}
+      data:
+        first:
+          name: _Spec_Color
+        second: {r: 0.74509805, g: 0.827451, b: 0.80784315, a: 1}
+      data:
+        first:
+          name: _outlinecolor
+        second: {r: 0, g: 0, b: 0, a: 1}

@@ -122,7 +122,7 @@ Shader "Custom/CustomCutOff"
 				fixed4 c = fixed4(0,0,0,0);
 				fixed4 e = fixed4(0,0,0,0);
 				if (IN.texcoord.x < _ValueX && IN.texcoord.y < _ValueY) {
-					c = (SampleSpriteTexture (IN.texcoord)) ;
+					c = (SampleSpriteTexture (IN.texcoord) * IN.color) ;
 					c.rgb *= c.a;
 					e = (SampleCoverTexture (IN.texcoord) * IN.color) ;
 					e.rgb *= e.a;

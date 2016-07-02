@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: CityBig 1
-  m_Shader: {fileID: 4800000, guid: e68f798c29a56af4e8a35346cfba79cc, type: 3}
+  m_Shader: {fileID: 4800000, guid: 56e901d0e7fe247beb763673b62a99df, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2450
@@ -32,13 +32,6 @@ Material:
       data:
         first:
           name: _DetailNormalMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MetallicGlossMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -80,6 +73,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Base_Color
         second:
           m_Texture: {fileID: 2800000, guid: 5c95686c96ef04f4085e579646deb0e4, type: 3}
@@ -103,7 +103,7 @@ Material:
         first:
           name: _Metallic_map
         second:
-          m_Texture: {fileID: 2800000, guid: bb170acaee4be514b8ceb2814d0f443b, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -116,6 +116,13 @@ Material:
       data:
         first:
           name: _Emission_map
+        second:
+          m_Texture: {fileID: 2800000, guid: 5c95686c96ef04f4085e579646deb0e4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ambient_occ
         second:
           m_Texture: {fileID: 2800000, guid: 5c95686c96ef04f4085e579646deb0e4, type: 3}
           m_Scale: {x: 1, y: 1}
@@ -135,24 +142,20 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Parallax
+        second: 0.02
+      data:
+        first:
           name: _ZWrite
         second: 1
       data:
         first:
           name: _Glossiness
-        second: 1
-      data:
-        first:
-          name: _Metallic
-        second: 1
+        second: 0.625
       data:
         first:
           name: _BumpScale
         second: 1
-      data:
-        first:
-          name: _Parallax
-        second: 0.02
       data:
         first:
           name: _OcclusionStrength
@@ -169,6 +172,14 @@ Material:
         first:
           name: _Mode
         second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 1
+      data:
+        first:
+          name: _Spec_power
+        second: 1
       data:
         first:
           name: _Visibility
@@ -192,7 +203,7 @@ Material:
       data:
         first:
           name: _Emssion_power
-        second: 1.36
+        second: 0
       data:
         first:
           name: _Visibility_multiplier
@@ -209,6 +220,34 @@ Material:
         first:
           name: _Visibility_power
         second: 0.8471476
+      data:
+        first:
+          name: _Transparancy
+        second: 1
+      data:
+        first:
+          name: _Glossiness_copy
+        second: 0.5057089
+      data:
+        first:
+          name: _outline
+        second: 0.1
+      data:
+        first:
+          name: _Occlusion_power
+        second: 1
+      data:
+        first:
+          name: _F_rate
+        second: 0
+      data:
+        first:
+          name: _F_floor
+        second: 3.6
+      data:
+        first:
+          name: _F_power
+        second: 0.6
     m_Colors:
       data:
         first:
@@ -221,8 +260,20 @@ Material:
       data:
         first:
           name: _Tint
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _Glow_color
         second: {r: 0.020112475, g: 0.9117647, b: 0.32142955, a: 1}
+      data:
+        first:
+          name: _node_9654
+        second: {r: 0.11483555, g: 0.43382347, b: 0.35462648, a: 1}
+      data:
+        first:
+          name: _Spec_Color
+        second: {r: 0.6435986, g: 0.9411765, b: 0.8672951, a: 1}
+      data:
+        first:
+          name: _outlinecolor
+        second: {r: 1, g: 1, b: 1, a: 1}

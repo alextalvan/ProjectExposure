@@ -107,10 +107,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
@@ -143,6 +139,10 @@ Material:
         second: 0
       data:
         first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
           name: _Spec_Power
         second: 0.54
       data:
@@ -152,7 +152,7 @@ Material:
       data:
         first:
           name: _Emission_Intensity
-        second: 3
+        second: 1.75
       data:
         first:
           name: _Clip
@@ -160,7 +160,7 @@ Material:
       data:
         first:
           name: _Flikkeringrate
-        second: 2
+        second: 1.5
       data:
         first:
           name: _emission_floor
@@ -181,8 +181,8 @@ Material:
       data:
         first:
           name: _Light_color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 1, g: 0, b: 0, a: 1}
       data:
         first:
           name: _Emssion_Tint
-        second: {r: 1, g: 0.491, b: 0, a: 1}
+        second: {r: 1, g: 0, b: 0, a: 1}

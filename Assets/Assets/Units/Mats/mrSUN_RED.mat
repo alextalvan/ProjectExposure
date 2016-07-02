@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: mrSUN_RED
-  m_Shader: {fileID: 4800000, guid: 56e901d0e7fe247beb763673b62a99df, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7b81e8f7cbdad4fc281e0f04e23b438f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2450
@@ -120,6 +120,13 @@ Material:
           m_Texture: {fileID: 2800000, guid: 7720a2213cd2e4758a658b2a0c2dff83, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ambient_occ
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -171,6 +178,10 @@ Material:
         second: 0
       data:
         first:
+          name: _Spec_power
+        second: 1
+      data:
+        first:
           name: _Visibility
         second: 1
       data:
@@ -213,6 +224,26 @@ Material:
         first:
           name: _Transparancy
         second: 1
+      data:
+        first:
+          name: _outline
+        second: 0.06197624
+      data:
+        first:
+          name: _Occlusion_power
+        second: 1
+      data:
+        first:
+          name: _F_rate
+        second: 2
+      data:
+        first:
+          name: _F_floor
+        second: 1
+      data:
+        first:
+          name: _F_power
+        second: 1
     m_Colors:
       data:
         first:
@@ -230,3 +261,11 @@ Material:
         first:
           name: _Glow_color
         second: {r: 1, g: 0.9724138, b: 0, a: 1}
+      data:
+        first:
+          name: _Spec_Color
+        second: {r: 0.6982591, g: 0.9044118, b: 0.8532291, a: 1}
+      data:
+        first:
+          name: _outlinecolor
+        second: {r: 0, g: 0, b: 0, a: 1}

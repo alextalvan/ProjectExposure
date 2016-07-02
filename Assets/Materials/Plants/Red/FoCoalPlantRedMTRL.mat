@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: FoCoalPlantRedMTRL
-  m_Shader: {fileID: 4800000, guid: e68f798c29a56af4e8a35346cfba79cc, type: 3}
-  m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
+  m_Shader: {fileID: 4800000, guid: 56e901d0e7fe247beb763673b62a99df, type: 3}
+  m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2450
   stringTagMap: {}
@@ -75,7 +75,7 @@ Material:
         first:
           name: _MetallicGlossMap
         second:
-          m_Texture: {fileID: 2800000, guid: ff9ac988321dbfb4f92a6d07dcea9055, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -120,6 +120,13 @@ Material:
           m_Texture: {fileID: 2800000, guid: 54c267552c6884d4494f996377069629, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ambient_occ
+        second:
+          m_Texture: {fileID: 2800000, guid: 54c267552c6884d4494f996377069629, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -135,10 +142,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
@@ -148,7 +151,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 1
+        second: 0.743
       data:
         first:
           name: _BumpScale
@@ -169,6 +172,14 @@ Material:
         first:
           name: _Mode
         second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 1
+      data:
+        first:
+          name: _Spec_power
+        second: 1
       data:
         first:
           name: _Visibility
@@ -192,7 +203,7 @@ Material:
       data:
         first:
           name: _Emssion_power
-        second: 1
+        second: 0
       data:
         first:
           name: _Visibility_multiplier
@@ -209,6 +220,38 @@ Material:
         first:
           name: _Visibility_power
         second: 1
+      data:
+        first:
+          name: _Transparancy
+        second: 1
+      data:
+        first:
+          name: _Glossiness_copy
+        second: 0.685
+      data:
+        first:
+          name: _node_8935
+        second: 0
+      data:
+        first:
+          name: _outline
+        second: 0.11
+      data:
+        first:
+          name: _Occlusion_power
+        second: 1
+      data:
+        first:
+          name: _F_rate
+        second: 1.4
+      data:
+        first:
+          name: _F_floor
+        second: 2
+      data:
+        first:
+          name: _F_power
+        second: 0.6
     m_Colors:
       data:
         first:
@@ -221,8 +264,20 @@ Material:
       data:
         first:
           name: _Tint
-        second: {r: 0.8745098, g: 0.7764706, b: 0.7764706, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _Glow_color
         second: {r: 0.9862069, g: 1, b: 0, a: 1}
+      data:
+        first:
+          name: _node_9654
+        second: {r: 0.85294116, g: 0.5266436, b: 0.27595156, a: 1}
+      data:
+        first:
+          name: _Spec_Color
+        second: {r: 0.88235295, g: 1, b: 0.9254902, a: 1}
+      data:
+        first:
+          name: _outlinecolor
+        second: {r: 0, g: 0, b: 0, a: 1}

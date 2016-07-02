@@ -342,7 +342,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177898}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0.5, y: 22, z: 0}
+  m_LocalPosition: {x: 0.5, y: 5.5, z: 0}
   m_LocalScale: {x: 7.692308, y: 7.6923075, z: 7.6923065}
   m_Children: []
   m_Father: {fileID: 497082}
@@ -660,16 +660,16 @@ Projector:
   m_GameObject: {fileID: 177898}
   m_Enabled: 1
   serializedVersion: 2
-  m_NearClipPlane: 1.7
-  m_FarClipPlane: 3.36
+  m_NearClipPlane: 0
+  m_FarClipPlane: 0.635
   m_FieldOfView: 25
   m_AspectRatio: 0.7
-  m_Orthographic: 0
-  m_OrthographicSize: 2
+  m_Orthographic: 1
+  m_OrthographicSize: 0.5
   m_Material: {fileID: 2100000, guid: e30ff3588e719f34bbf0c66f22d97487, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 65536
+    m_Bits: 4294967294
 --- !u!135 &13528498
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -6818,7 +6818,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f218097acd3ab4d6486ab33ff41ca942, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b9a3499d2ac524b04b81dabcf4b5273a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6830,7 +6830,7 @@ RectTransform:
   m_GameObject: {fileID: 117220}
   m_LocalRotation: {x: -0.29883635, y: 0.6408562, z: -0.29883617, w: -0.6408565}
   m_LocalPosition: {x: 0, y: 0, z: 3.38}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 497082}
   m_RootOrder: 5
