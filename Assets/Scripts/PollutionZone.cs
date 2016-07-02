@@ -56,8 +56,6 @@ public class PollutionZone : MonoBehaviour
                 currentDamage = maxDamage;
 
             targetAlpha = (float)currentDamage / (float)maxDamage + ((currentDamage > 0) ? startPollutionVisibility : 0.0f);
-            if (targetAlpha > 0.85f)
-                targetAlpha = 0.85f;
         }
     }
 
@@ -78,6 +76,6 @@ public class PollutionZone : MonoBehaviour
         Color c = pollutionDecalRenderer.material.color;
         c.a = currentAlpha;
         pollutionDecalRenderer.material.color = c;
-        pollutionDecalRenderer.material.SetFloat("_Curruption_Clip", 1 - currentAlpha);
+        pollutionDecalRenderer.material.SetFloat("_Curruption_Clip", currentAlpha);
     }
 }
