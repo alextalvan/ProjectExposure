@@ -30,15 +30,10 @@ public class GameManager : MonoBehaviour
     public float WaveCooldown { get { return waveCoolDown; } }
 
     [SerializeField]
-    int waveWinScore = 1;
-    public int GetWaveWinScore { get { return waveWinScore; } }
-
-    [SerializeField]
     TouchInputManager touchInputManager;
 
     public TouchInputManager GetTouchInputManager { get { return touchInputManager; } }
 
-    [SerializeField]
     bool gameStarted = false;
 
     [SerializeField]
@@ -59,7 +54,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float moneyRate = 0;
 
-    float timeAccumulatorMoney = 0.0f;
+    float timeAccumulatorMoney = 0.1f;
 
     [SerializeField]
     float _player1money = 0;
@@ -187,18 +182,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject UI_moneyPrefab;
 
-    [SerializeField]
-    Dropdown player1DD;
-
-    [SerializeField]
-    Dropdown player2DD;
-
     //[SerializeField]
     //Text gameOverText;
 
-    private int unitsAlive = 0;
     private int prevUnitsAlive = 0;
-    public int UnitsAlive { get { return unitsAlive; } set { unitsAlive = value; } }
 
 	[SerializeField]
 	List<PollutionZone> redPollutionSpots;
@@ -249,14 +236,9 @@ public class GameManager : MonoBehaviour
 
 	int targetEndScreenScorePlayer1 = 0, targetEndScreenScorePlayer2 = 0, currentEndScreenScorePlayer1 = 0, currentEndScreenScorePlayer2 = 0;
 
-
-    [SerializeField]
-    GameSettings gameSettings;
-
-
     void Start()
     {
-        gameSettings = GameObject.Find("GameSettings").GetComponent<GameSettings>();
+        GameSettings gameSettings = GameObject.Find("GameSettings").GetComponent<GameSettings>();
         //forcing refresh at start because of inspector filling of starting money
         Player1Money = _player1money;
         Player2Money = _player2money;
@@ -267,7 +249,7 @@ public class GameManager : MonoBehaviour
 		zoomInProgress = false;
         SetPlayer(0, gameSettings.SetPlayer1AI);
         SetPlayer(1, gameSettings.SetPlayer2AI);
-		Destroy(gameSettings.gameObject);
+        Destroy(gameSettings.gameObject);
     }
 
     IEnumerator SpawnWave()
@@ -302,14 +284,20 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
 		{
             Application.LoadLevel(0);
-		}
+        }
 
-		UpdateEndGameScores();
-
-        if (!gameStarted)
-            return;
-
-        timeAccumulatorMoney += Time.deltaTime;
+        UpdateEndGameScores();
+        
+        if (!battleStarted)
+        {
+            if (!gameStarted && (playerData[PLAYERS.PLAYER1].buildings.Count + playerData[PLAYERS.PLAYER2].buildings.Count) > 1)
+                StartGame();
+            if (playerData[PLAYERS.PLAYER1].ready && playerData[PLAYERS.PLAYER2].ready)
+            {
+                battleStarted = true;
+            }
+            prevUnitsAlive = 1;
+        }
 
         while (timeAccumulatorMoney >= MONEY_UPDATE_RATE)
         {
@@ -317,32 +305,41 @@ public class GameManager : MonoBehaviour
             UpdateMoney();
         }
 
-		player1MoneyBoostTime -= Time.deltaTime;
-		player2MoneyBoostTime -= Time.deltaTime;
+        if (!gameStarted)
+            return;
+
+        timeAccumulatorMoney += Time.deltaTime;
+
+        if (battleStarted && playerData[PLAYERS.PLAYER1].units.Count + playerData[PLAYERS.PLAYER2].units.Count <= 0 && prevUnitsAlive > 0)
+        {
+            StartCoroutine(SpawnWave());
+        }
+
+        player1MoneyBoostTime -= Time.deltaTime;
+        player2MoneyBoostTime -= Time.deltaTime;
 
         gameTimer -= Time.deltaTime;
         int seconds = ((int)gameTimer) % 60;
         int minutes = ((int)gameTimer) / 60;
         gameTimerText.text = minutes.ToString() + ":" + seconds.ToString();
 
-		currentScoreFloat = Mathf.Lerp(currentScoreFloat, targetScoreFloat, scoreBarInterpolationSpeed);
-		scoreRenderer.material.SetFloat("_CityClip", currentScoreFloat);
-		scoreRenderer1.material.SetFloat("_CityClip", currentScoreFloat);
+        currentScoreFloat = Mathf.Lerp(currentScoreFloat, targetScoreFloat, scoreBarInterpolationSpeed);
+        scoreRenderer.material.SetFloat("_CityClip", currentScoreFloat);
+        scoreRenderer1.material.SetFloat("_CityClip", currentScoreFloat);
 
-
-//		if(gameScore >= maxScore)
-//		{
-//			gameOverText.transform.parent.gameObject.SetActive(true);
-//			gameOverText.text = "Game over. Blue wins.";
-//			gameStarted = false;
-//		}
-//
-//		if(gameScore <= maxScore * -1)
-//		{
-//			gameOverText.transform.parent.gameObject.SetActive(true);
-//			gameOverText.text = "Game over. Red wins.";
-//			gameStarted = false;
-//		}
+        //		if(gameScore >= maxScore)
+        //		{
+        //			gameOverText.transform.parent.gameObject.SetActive(true);
+        //			gameOverText.text = "Game over. Blue wins.";
+        //			gameStarted = false;
+        //		}
+        //
+        //		if(gameScore <= maxScore * -1)
+        //		{
+        //			gameOverText.transform.parent.gameObject.SetActive(true);
+        //			gameOverText.text = "Game over. Red wins.";
+        //			gameStarted = false;
+        //		}
 
         if (gameTimer <= 0.0f)
         {
@@ -379,20 +376,6 @@ public class GameManager : MonoBehaviour
 			StartCoroutine(DelayedExit());
         }
 
-        if (!battleStarted)
-        {
-            if (playerData[PLAYERS.PLAYER1].ready && playerData[PLAYERS.PLAYER2].ready)
-            {
-                battleStarted = true;
-            }
-            prevUnitsAlive = 1;
-        }
-
-        if (battleStarted && unitsAlive <= 0 && prevUnitsAlive > 0)
-        {
-            StartCoroutine(SpawnWave());
-        }
-
         //
         //		if(gameTimer <= 0.0f)
         //			gameOverText.SetActive(true);
@@ -413,7 +396,7 @@ public class GameManager : MonoBehaviour
 
         //topLaneScoreData.Update();
         //botLaneScoreData.Update();
-        prevUnitsAlive = unitsAlive;
+        prevUnitsAlive = playerData[PLAYERS.PLAYER1].units.Count + playerData[PLAYERS.PLAYER2].units.Count;
 
 		//if(Input.GetKeyDown(KeyCode.J))
 		//	StartCoroutine(ZoomIn());
@@ -505,7 +488,7 @@ public class GameManager : MonoBehaviour
 
 		if(!zoomedOnce)
 		{
-			if(gameScore!= 0 && Mathf.Abs(gameScore) % 3 == 0 && !zoomInProgress)
+			if(gameScore!= 0 /*&& Mathf.Abs(gameScore) % 3 == 0*/ && !zoomInProgress)
 			{
 				StartCoroutine(ZoomIn());
 				zoomInProgress = true;
@@ -527,8 +510,7 @@ public class GameManager : MonoBehaviour
 				StartCoroutine(DelayedExit());
 
 			}
-			else
-			if(gameScore <= maxScore * -1)
+			else if(gameScore <= maxScore * -1)
 			{
 				gameOverRoot.SetActive(true);
 				crownPlayer1.SetActive(true);
@@ -538,12 +520,8 @@ public class GameManager : MonoBehaviour
 				gameStarted = false;
 				StartCoroutine(DelayedExit());
 			}
-
-
-
 		}
 		//targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f); //moved this in the zoom coroutine
-
     }
 
 //    void CalculateWinCondition()
@@ -631,6 +609,4 @@ public class GameManager : MonoBehaviour
 	{
 		StopCoroutine(DelayedExit());
 	}
-
-
 }

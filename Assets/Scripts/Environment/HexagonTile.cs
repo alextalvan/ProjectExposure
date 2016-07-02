@@ -250,7 +250,6 @@ public class HexagonTile : GameManagerSearcher
                         //gameManager.playerData[this.owner].buildingCount--;
                     }
 
-					gameManager.playerData[this.owner].buildingCount++;
 
                     GameObject energyBuilding = (GameObject)Instantiate(bc.BuildingType.prefab);
                     energyBuilding.transform.SetParent(this.transform, false);
@@ -311,7 +310,7 @@ public class HexagonTile : GameManagerSearcher
 		CalculateBaseOrNextOutline();
 		gameManager.playerData[this.Owner].RefreshAllTilesHighlight();
 		this.pollutionZone.SetGrowState(false);
-		gameManager.playerData[this.owner].buildingCount--;
+
 		//Debug.Log("cleanup");
     }
 

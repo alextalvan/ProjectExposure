@@ -30,6 +30,11 @@ public class FireBall : MonoBehaviour
     {
         if (target)
             targetPoint = target.position;
+        if (!target && Vector3.Distance(transform.position, targetPoint) < 0.1f)
+        {
+            Instantiate(particle, transform.position, Random.rotation);
+            Destroy(gameObject);
+        }
         
         Vector3 center = (launchPosition + targetPoint) * 0.5f;
         center.y -= Vector3.Distance(launchPosition, targetPoint) * 0.5f;
@@ -49,7 +54,7 @@ public class FireBall : MonoBehaviour
         else if (tile)
             tile.DestroyBuilding();
 
-        //Instantiate(particle, transform.position, Random.rotation);
+        Instantiate(particle, transform.position, Random.rotation);
         Destroy(gameObject);
     }
 }

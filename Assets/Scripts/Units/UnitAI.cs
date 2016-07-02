@@ -93,7 +93,6 @@ public class UnitAI : GameManagerSearcher
         cheerTimer = cheerAnimTime;
         deathTimer = deathAnimTime;
         maxUnitHealth = unitHealth;
-        gameManager.UnitsAlive += 1;
     }
 
     void Start()
@@ -280,7 +279,6 @@ public class UnitAI : GameManagerSearcher
     {
         if (OnDestruction != null)
             OnDestruction();
-        gameManager.UnitsAlive -= 1;
     }
 
     public void NullifyTarget()

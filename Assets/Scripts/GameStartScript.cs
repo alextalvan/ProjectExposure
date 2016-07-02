@@ -36,6 +36,7 @@ public class GameStartScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+        Debug.Log("a");
 		if(firstCount == 0 && !firstWaveDone)
 		{
 			foreach(Card c in secondWaveCards)
