@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: EarthquakePTCL_MTRL
-  m_Shader: {fileID: 4800000, guid: a1cb7a4eddffa4358ab38bb9e930acf1, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _DETAIL_MULX2 _NORMALMAP
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -19,14 +19,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: ea4bc5d34127c854cbd15a6447741689, type: 3}
+          m_Texture: {fileID: 2800000, guid: 9ec3a3dad487240cf9890871d1a9db38, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: c215558e842f2714b99661e32f92e01b, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -68,14 +68,28 @@ Material:
         first:
           name: _DetailAlbedoMap
         second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
+          m_Texture: {fileID: 2800000, guid: eed9e0f74aedf40b3946b0ccad8decaa, type: 3}
+          m_Scale: {x: 0.1, y: 0.1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _MetallicGlossMap
         second:
           m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emission_texture
+        second:
+          m_Texture: {fileID: 2800000, guid: f122cf83f9813c342af1a0c99c5ea120, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse_Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: 9ec3a3dad487240cf9890871d1a9db38, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -93,6 +107,18 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Smoothness
+        second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
+          name: _Glossiness
+        second: 0
+      data:
+        first:
           name: _InvFade
         second: 1
       data:
@@ -105,12 +131,8 @@ Material:
         second: 1
       data:
         first:
-          name: _Glossiness
-        second: 0.5
-      data:
-        first:
           name: _BumpScale
-        second: 1
+        second: 9.79
       data:
         first:
           name: _OcclusionStrength
@@ -129,7 +151,23 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
+          name: _Emission_power
+        second: 10
+      data:
+        first:
+          name: _Filckering_rate
+        second: 0.5
+      data:
+        first:
+          name: _minimum_emission
+        second: 0.1
+      data:
+        first:
+          name: _Curruption_Clip
+        second: 1
+      data:
+        first:
+          name: _noise_value
         second: 0
       data:
         first:
@@ -151,15 +189,19 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 1, g: 0.7403651, b: 0.41176468, a: 1}
+      data:
+        first:
+          name: _Base_Color
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       data:
         first:
           name: _TintColor
         second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
       data:
         first:
-          name: _Base_Color
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          name: _Emission_tint
+        second: {r: 1, g: 0.500244, b: 0.0441176, a: 1}
       data:
         first:
           name: _Glow_Color
