@@ -56,14 +56,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float _player1money = 0;
 
-	[SerializeField]
-	Image _player1barImage;
+    [SerializeField]
+    Image _player1barImage;
 
     [SerializeField]
     float _player2money = 0;
 
-	[SerializeField]
-	Image _player2barImage;
+    [SerializeField]
+    Image _player2barImage;
 
     //[SerializeField]
     //ScoreData topLaneScoreData = new ScoreData();
@@ -104,11 +104,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-	public float player1MoneyBoostTime = -1.0f;
-	public float player2MoneyBoostTime = -1.0f;
+    public float player1MoneyBoostTime = -1.0f;
+    public float player2MoneyBoostTime = -1.0f;
 
-	[SerializeField]
-	float moneyBoostStrength = 4.0f;
+    [SerializeField]
+    float moneyBoostStrength = 4.0f;
 
     //	[SerializeField]
     //	int _player1score = 0;
@@ -138,23 +138,24 @@ public class GameManager : MonoBehaviour
     //		}
     //	}
 
-	[SerializeField]
-	int gameScore = 0;
+    [SerializeField]
+    int gameScore = 0;
 
-	[SerializeField]
-	int maxScore = 9;
+    [SerializeField]
+    int maxScore = 9;
 
-	[SerializeField]
-	Renderer scoreRenderer;
+    [SerializeField]
+    Renderer scoreRenderer;
 
-	[SerializeField]
-	Renderer scoreRenderer1;
+    [SerializeField]
+    Renderer scoreRenderer1;
 
-	float currentScoreFloat = 0.5f;
-	float targetScoreFloat = 0.5f;
+    float prevScoreFloat = 0.5f;
+    float currentScoreFloat = 0.5f;
+    float targetScoreFloat = 0.5f;
 
-	[SerializeField]
-	float scoreBarInterpolationSpeed = 0.1f;
+    [SerializeField]
+    float scoreBarInterpolationSpeed = 0.1f;
 
 
     [SerializeField]
@@ -184,54 +185,61 @@ public class GameManager : MonoBehaviour
 
     private int prevUnitsAlive = 0;
 
-	[SerializeField]
-	List<PollutionZone> redPollutionSpots;
+    [SerializeField]
+    List<PollutionZone> redPollutionSpots;
 
-	[SerializeField]
-	List<PollutionZone> bluePollutionSpots;
+    [SerializeField]
+    List<PollutionZone> bluePollutionSpots;
 
     bool battleStarted = false;
 
 
-	//camera zoom variables
-	bool zoomInProgress = false;
+    //camera zoom variables
+    bool zoomInProgress = false;
 
-	[SerializeField]
-	Camera zoomCamera;
+    [SerializeField]
+    Camera zoomCamera;
 
-	[SerializeField]
-	float zoomOrthoDistance = 1.5f;
+    [SerializeField]
+    float zoomOrthoDistance = 1.5f;
 
-	[SerializeField]
-	float normalOrthoDistance = 4.0f;
+    [SerializeField]
+    float normalOrthoDistance = 4.0f;
 
-	[SerializeField]
-	float zoomDuration = 0.5f;
+    [SerializeField]
+    float zoomDuration = 0.5f;
 
-	[SerializeField]
-	float centralFocusDuration = 1.0f;
+    [SerializeField]
+    float centralFocusDuration = 1.0f;
 
-	bool zoomedOnce = false;
+    bool zoomedOnce = false;
 
-	//[SerializeField]
-	//int scoreThreshold = 6;
+    //[SerializeField]
+    //int scoreThreshold = 6;
 
-	[SerializeField]
-	GameObject gameOverRoot;
+    [SerializeField]
+    GameObject gameOverRoot;
 
-	[SerializeField]
-	GameObject crownPlayer1;
+    [SerializeField]
+    GameObject crownPlayer1;
 
-	[SerializeField]
-	GameObject crownPlayer2;
+    [SerializeField]
+    GameObject crownPlayer2;
 
-	[SerializeField]
-	Text player1ScoreText;
+    [SerializeField]
+    Text player1ScoreText;
 
-	[SerializeField]
-	Text player2ScoreText;
+    [SerializeField]
+    Text player2ScoreText;
 
-	int targetEndScreenScorePlayer1 = 0, targetEndScreenScorePlayer2 = 0, currentEndScreenScorePlayer1 = 0, currentEndScreenScorePlayer2 = 0;
+    float currentHLval = 1f;
+    float targetHLval = 1f;
+    [SerializeField]
+    float HLval = 3f;
+    [SerializeField]
+    float nonHLval = 1f;
+
+    int targetEndScreenScorePlayer1 = 0, targetEndScreenScorePlayer2 = 0, currentEndScreenScorePlayer1 = 0, currentEndScreenScorePlayer2 = 0;
 
     void Start()
     {
@@ -240,10 +248,10 @@ public class GameManager : MonoBehaviour
         Player1Money = _player1money;
         Player2Money = _player2money;
 
-		zoomInProgress = true;
+        zoomInProgress = true;
         ChangeScore(0, PLAYERS.PLAYER1, LANES.TOP);//force score refresh at start
         ChangeScore(0, PLAYERS.PLAYER1, LANES.BOT);
-		zoomInProgress = false;
+        zoomInProgress = false;
         SetPlayer(0, gameSettings.SetPlayer1AI);
         SetPlayer(1, gameSettings.SetPlayer2AI);
         Destroy(gameSettings.gameObject);
@@ -253,20 +261,20 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waveCoolDown);
 
-		foreach(PollutionZone pol in redPollutionSpots)
-			pol.HandleNewWave();
+        foreach (PollutionZone pol in redPollutionSpots)
+            pol.HandleNewWave();
 
-		foreach(PollutionZone pol in bluePollutionSpots)
-			pol.HandleNewWave();
+        foreach (PollutionZone pol in bluePollutionSpots)
+            pol.HandleNewWave();
 
         foreach (HexagonTile tile in playerData[PLAYERS.PLAYER1].tiles)
         {
-			if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.ConstructionTimeLeft < 0.0f)
+            if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.ConstructionTimeLeft < 0.0f)
                 tile.CurrentEnergyBuilding.GetComponent<UnitSpawner>().SpawnUnits();
         }
         foreach (HexagonTile tile in playerData[PLAYERS.PLAYER2].tiles)
         {
-			if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.ConstructionTimeLeft < 0.0f)
+            if (tile.CurrentEnergyBuilding && tile.CurrentEnergyBuilding.ConstructionTimeLeft < 0.0f)
                 tile.CurrentEnergyBuilding.GetComponent<UnitSpawner>().SpawnUnits();
         }
     }
@@ -277,12 +285,12 @@ public class GameManager : MonoBehaviour
             Application.Quit();
 
         if (Input.GetKeyUp(KeyCode.Space))
-		{
+        {
             Application.LoadLevel(0);
         }
 
         UpdateEndGameScores();
-        
+
         if (!battleStarted)
         {
             if (!gameStarted && (playerData[PLAYERS.PLAYER1].buildings.Count + playerData[PLAYERS.PLAYER2].buildings.Count) > 1)
@@ -321,6 +329,25 @@ public class GameManager : MonoBehaviour
         currentScoreFloat = Mathf.Lerp(currentScoreFloat, targetScoreFloat, scoreBarInterpolationSpeed);
         scoreRenderer.material.SetFloat("_CityClip", currentScoreFloat);
         scoreRenderer1.material.SetFloat("_CityClip", currentScoreFloat);
+        if (Mathf.Abs(prevScoreFloat - currentScoreFloat) > 0.001f)
+        {
+            targetHLval = HLval;
+            currentHLval = Mathf.Lerp(currentHLval, targetHLval, scoreBarInterpolationSpeed);
+            scoreRenderer.material.SetFloat("_Emission_Intensity_player1", currentHLval);
+            scoreRenderer.material.SetFloat("_Emission_Intensity_player2", currentHLval);
+            scoreRenderer1.material.SetFloat("_Emission_Intensity_player1", currentHLval);
+            scoreRenderer1.material.SetFloat("_Emission_Intensity_player2", currentHLval);
+        }
+        else
+        {
+            targetHLval = nonHLval;
+            currentHLval = Mathf.Lerp(currentHLval, targetHLval, scoreBarInterpolationSpeed);
+            scoreRenderer.material.SetFloat("_Emission_Intensity_player1", currentHLval);
+            scoreRenderer.material.SetFloat("_Emission_Intensity_player2", currentHLval);
+            scoreRenderer1.material.SetFloat("_Emission_Intensity_player1", currentHLval);
+            scoreRenderer1.material.SetFloat("_Emission_Intensity_player2", currentHLval);
+        }
+        prevScoreFloat = currentScoreFloat;
 
         //		if(gameScore >= maxScore)
         //		{
@@ -338,37 +365,37 @@ public class GameManager : MonoBehaviour
 
         if (gameTimer <= 0.0f)
         {
-			gameOverRoot.SetActive(true);
-			gameStarted = false;
+            gameOverRoot.SetActive(true);
+            gameStarted = false;
             //int finalScore = Mathf.RoundToInt(topLaneScoreData.Score) + Mathf.RoundToInt(botLaneScoreData.Score);
 
-			//if (gameScore == 0)
+            //if (gameScore == 0)
             //    gameOverText.text = "Game over. Draw.";
 
-			if (gameScore > 0)
-			{
-				crownPlayer2.SetActive(true);
-				targetEndScreenScorePlayer2 = 600 * Mathf.Abs(gameScore) / maxScore;
-				targetEndScreenScorePlayer1 = 600 - targetEndScreenScorePlayer2;
-				GetComponent<DBconnection>().SendScore(targetEndScreenScorePlayer1);
-			}
+            if (gameScore > 0)
+            {
+                crownPlayer2.SetActive(true);
+                targetEndScreenScorePlayer2 = 600 * Mathf.Abs(gameScore) / maxScore;
+                targetEndScreenScorePlayer1 = 600 - targetEndScreenScorePlayer2;
+                GetComponent<DBconnection>().SendScore(targetEndScreenScorePlayer1);
+            }
 
-			if (gameScore < 0)
-			{
-				crownPlayer1.SetActive(true);
-				targetEndScreenScorePlayer1 = 600 * Mathf.Abs(gameScore) / maxScore;
-				targetEndScreenScorePlayer2 = 600 - targetEndScreenScorePlayer2;
-				GetComponent<DBconnection>().SendScore(targetEndScreenScorePlayer1);
-			}
+            if (gameScore < 0)
+            {
+                crownPlayer1.SetActive(true);
+                targetEndScreenScorePlayer1 = 600 * Mathf.Abs(gameScore) / maxScore;
+                targetEndScreenScorePlayer2 = 600 - targetEndScreenScorePlayer2;
+                GetComponent<DBconnection>().SendScore(targetEndScreenScorePlayer1);
+            }
 
-			if(gameScore == 0)
-			{
-				targetEndScreenScorePlayer1 = 300;
-				targetEndScreenScorePlayer2 = 300;
-				GetComponent<DBconnection>().SendScore(300);
-			}
+            if (gameScore == 0)
+            {
+                targetEndScreenScorePlayer1 = 300;
+                targetEndScreenScorePlayer2 = 300;
+                GetComponent<DBconnection>().SendScore(300);
+            }
 
-			StartCoroutine(DelayedExit());
+            StartCoroutine(DelayedExit());
         }
 
         //
@@ -393,24 +420,24 @@ public class GameManager : MonoBehaviour
         //botLaneScoreData.Update();
         prevUnitsAlive = playerData[PLAYERS.PLAYER1].units.Count + playerData[PLAYERS.PLAYER2].units.Count;
 
-		//if(Input.GetKeyDown(KeyCode.J))
-		//	StartCoroutine(ZoomIn());
+        //if(Input.GetKeyDown(KeyCode.J))
+        //	StartCoroutine(ZoomIn());
     }
 
     void UpdateMoney()
     {
-		Player1Money += moneyRate * ((player1MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
-		Player2Money += moneyRate * ((player2MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
+        Player1Money += moneyRate * ((player1MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
+        Player2Money += moneyRate * ((player2MoneyBoostTime > 0.0f) ? moneyBoostStrength : 1.0f);
 
-		if (player1MoneyBoostTime > 0)
-			_player1barImage.color = new Color(0f,1.0f,0.2f,1f);
-		else
-			_player1barImage.color = Color.white;
-		
-		if (player2MoneyBoostTime > 0)
-			_player2barImage.color = new Color(0f,1.0f,0.2f,1f);
-		else
-			_player2barImage.color = Color.white;
+        if (player1MoneyBoostTime > 0)
+            _player1barImage.color = new Color(0f, 1.0f, 0.2f, 1f);
+        else
+            _player1barImage.color = Color.white;
+
+        if (player2MoneyBoostTime > 0)
+            _player2barImage.color = new Color(0f, 1.0f, 0.2f, 1f);
+        else
+            _player2barImage.color = Color.white;
     }
 
     void UpdateGameStage()
@@ -450,17 +477,19 @@ public class GameManager : MonoBehaviour
 
         if (index == 0)
         {
-			if (aiEnabled) {
-				AI1.Mod = AIPlayer.AIMod.AI;
-				touchInputManager.BlockHalf(index);
-			}
+            if (aiEnabled)
+            {
+                AI1.Mod = AIPlayer.AIMod.AI;
+                touchInputManager.BlockHalf(index);
+            }
         }
         else
         {
-			if (aiEnabled) {
-				AI2.Mod = AIPlayer.AIMod.AI;
-				touchInputManager.BlockHalf(index);
-			}
+            if (aiEnabled)
+            {
+                AI2.Mod = AIPlayer.AIMod.AI;
+                touchInputManager.BlockHalf(index);
+            }
         }
     }
 
@@ -474,134 +503,134 @@ public class GameManager : MonoBehaviour
     {
         //float scoreDelta = score * ((owner == PLAYERS.PLAYER1) ? -1.0f : 1.0f);
 
-		if(!gameStarted) return;
+        if (!gameStarted) return;
 
-		if(owner == PLAYERS.PLAYER1)
-			score *= -1;
+        if (owner == PLAYERS.PLAYER1)
+            score *= -1;
 
-		gameScore += score;
+        gameScore += score;
 
-		if(!zoomedOnce)
-		{
-			if(gameScore!= 0 /*&& Mathf.Abs(gameScore) % 3 == 0*/ && !zoomInProgress)
-			{
-				StartCoroutine(ZoomIn());
-				zoomInProgress = true;
-				zoomedOnce = true;
-			}
-		}
-		else
-		{
-			targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f);
-			if(gameScore >= maxScore)
-			{
-				gameOverRoot.SetActive(true);
-				crownPlayer2.SetActive(true);
-				targetEndScreenScorePlayer2 = 600;// * Mathf.Abs(gameScore) / maxScore;
-				targetEndScreenScorePlayer1 = 0;// - targetEndScreenScorePlayer2;
-				gameStarted = false;
+        if (!zoomedOnce)
+        {
+            if (gameScore != 0 /*&& Mathf.Abs(gameScore) % 3 == 0*/ && !zoomInProgress)
+            {
+                StartCoroutine(ZoomIn());
+                zoomInProgress = true;
+                zoomedOnce = true;
+            }
+        }
+        else
+        {
+            targetScoreFloat = 1.0f - (((float)gameScore / (float)maxScore) * 0.5f + 0.5f);
+            if (gameScore >= maxScore)
+            {
+                gameOverRoot.SetActive(true);
+                crownPlayer2.SetActive(true);
+                targetEndScreenScorePlayer2 = 600;// * Mathf.Abs(gameScore) / maxScore;
+                targetEndScreenScorePlayer1 = 0;// - targetEndScreenScorePlayer2;
+                gameStarted = false;
 
-				GetComponent<DBconnection>().SendScore(0);
-				StartCoroutine(DelayedExit());
+                GetComponent<DBconnection>().SendScore(0);
+                StartCoroutine(DelayedExit());
 
-			}
-			else if(gameScore <= maxScore * -1)
-			{
-				gameOverRoot.SetActive(true);
-				crownPlayer1.SetActive(true);
-				targetEndScreenScorePlayer1 = 600;// * Mathf.Abs(gameScore) / maxScore;
-				GetComponent<DBconnection>().SendScore(600);
-				targetEndScreenScorePlayer2 = 0;// - targetEndScreenScorePlayer1;
-				gameStarted = false;
-				StartCoroutine(DelayedExit());
-			}
-		}
-		//targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f); //moved this in the zoom coroutine
+            }
+            else if (gameScore <= maxScore * -1)
+            {
+                gameOverRoot.SetActive(true);
+                crownPlayer1.SetActive(true);
+                targetEndScreenScorePlayer1 = 600;// * Mathf.Abs(gameScore) / maxScore;
+                GetComponent<DBconnection>().SendScore(600);
+                targetEndScreenScorePlayer2 = 0;// - targetEndScreenScorePlayer1;
+                gameStarted = false;
+                StartCoroutine(DelayedExit());
+            }
+        }
+        //targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f); //moved this in the zoom coroutine
     }
 
-//    void CalculateWinCondition()
-//    {
-//
-//		//if(gameScore == -1 * maxScore)
-//
-//
-//        //float topRelativeScore = topLaneScoreData.Score / topLaneScoreData.MaxScore;
-//        //float botRelativeScore = botLaneScoreData.Score / botLaneScoreData.MaxScore;
-//
-//        //if (Mathf.Abs(topRelativeScore) >= 0.9999f && Mathf.Abs(botRelativeScore) >= 0.9999f && Mathf.Sign(botRelativeScore) == Mathf.Sign(topRelativeScore))
-//        //    gameTimer = -1.0f;//gameOverText.SetActive(true);
-//    }
+    //    void CalculateWinCondition()
+    //    {
+    //
+    //		//if(gameScore == -1 * maxScore)
+    //
+    //
+    //        //float topRelativeScore = topLaneScoreData.Score / topLaneScoreData.MaxScore;
+    //        //float botRelativeScore = botLaneScoreData.Score / botLaneScoreData.MaxScore;
+    //
+    //        //if (Mathf.Abs(topRelativeScore) >= 0.9999f && Mathf.Abs(botRelativeScore) >= 0.9999f && Mathf.Sign(botRelativeScore) == Mathf.Sign(topRelativeScore))
+    //        //    gameTimer = -1.0f;//gameOverText.SetActive(true);
+    //    }
 
-	public void LoadFirstLevel()
-	{
-		Application.LoadLevel(0);
-	}
+    public void LoadFirstLevel()
+    {
+        Application.LoadLevel(0);
+    }
 
-	IEnumerator ZoomIn()
-	{
-		bool zooming = true;
-		//float currentZoom = normalOrthoDistance;
-		float timeAccumulator = 0.0f;
+    IEnumerator ZoomIn()
+    {
+        bool zooming = true;
+        //float currentZoom = normalOrthoDistance;
+        float timeAccumulator = 0.0f;
 
-		while(zooming)
-		{
-			zoomCamera.orthographicSize = Mathf.Lerp(normalOrthoDistance,zoomOrthoDistance,timeAccumulator / zoomDuration);
-			timeAccumulator+= Time.deltaTime;
-			if(timeAccumulator >= zoomDuration)
-				zooming = false;
-			yield return null;//wait for next frame
-		}
+        while (zooming)
+        {
+            zoomCamera.orthographicSize = Mathf.Lerp(normalOrthoDistance, zoomOrthoDistance, timeAccumulator / zoomDuration);
+            timeAccumulator += Time.deltaTime;
+            if (timeAccumulator >= zoomDuration)
+                zooming = false;
+            yield return null;//wait for next frame
+        }
 
-		targetScoreFloat = 1.0f -  (((float)gameScore / (float)maxScore) * 0.5f + 0.5f);
-		yield return new WaitForSeconds(centralFocusDuration);
+        targetScoreFloat = 1.0f - (((float)gameScore / (float)maxScore) * 0.5f + 0.5f);
+        yield return new WaitForSeconds(centralFocusDuration);
 
-		StartCoroutine(ZoomOut());
-	}
+        StartCoroutine(ZoomOut());
+    }
 
-	IEnumerator ZoomOut()
-	{
-		bool zooming = true;
-		//float currentZoom = normalOrthoDistance;
-		float timeAccumulator = 0.0f;
+    IEnumerator ZoomOut()
+    {
+        bool zooming = true;
+        //float currentZoom = normalOrthoDistance;
+        float timeAccumulator = 0.0f;
 
-		while(zooming)
-		{
-			zoomCamera.orthographicSize = Mathf.Lerp(zoomOrthoDistance,normalOrthoDistance,timeAccumulator / zoomDuration);
-			timeAccumulator+= Time.deltaTime;
-			if(timeAccumulator >= zoomDuration)
-				zooming = false;
-			yield return null;//wait for next frame
-		}
+        while (zooming)
+        {
+            zoomCamera.orthographicSize = Mathf.Lerp(zoomOrthoDistance, normalOrthoDistance, timeAccumulator / zoomDuration);
+            timeAccumulator += Time.deltaTime;
+            if (timeAccumulator >= zoomDuration)
+                zooming = false;
+            yield return null;//wait for next frame
+        }
 
-		zoomInProgress = false;
+        zoomInProgress = false;
 
-	}
+    }
 
-	void UpdateEndGameScores()
-	{
-		int speed = 2;
+    void UpdateEndGameScores()
+    {
+        int speed = 2;
 
-		currentEndScreenScorePlayer1 += speed;
-		if(currentEndScreenScorePlayer1 > targetEndScreenScorePlayer1)
-			currentEndScreenScorePlayer1 = targetEndScreenScorePlayer1;
+        currentEndScreenScorePlayer1 += speed;
+        if (currentEndScreenScorePlayer1 > targetEndScreenScorePlayer1)
+            currentEndScreenScorePlayer1 = targetEndScreenScorePlayer1;
 
-		player1ScoreText.text = currentEndScreenScorePlayer1.ToString();
+        player1ScoreText.text = currentEndScreenScorePlayer1.ToString();
 
-		currentEndScreenScorePlayer2 += speed;
-		if(currentEndScreenScorePlayer2 > targetEndScreenScorePlayer2)
-			currentEndScreenScorePlayer2 = targetEndScreenScorePlayer2;
+        currentEndScreenScorePlayer2 += speed;
+        if (currentEndScreenScorePlayer2 > targetEndScreenScorePlayer2)
+            currentEndScreenScorePlayer2 = targetEndScreenScorePlayer2;
 
-		player2ScoreText.text = currentEndScreenScorePlayer2.ToString();
-	}
+        player2ScoreText.text = currentEndScreenScorePlayer2.ToString();
+    }
 
-	IEnumerator DelayedExit()
-	{
-		yield return new WaitForSeconds(30.0f);
-		Application.Quit();
-	}
+    IEnumerator DelayedExit()
+    {
+        yield return new WaitForSeconds(30.0f);
+        Application.Quit();
+    }
 
-	public void InterruptExit()
-	{
-		StopCoroutine(DelayedExit());
-	}
+    public void InterruptExit()
+    {
+        StopCoroutine(DelayedExit());
+    }
 }
