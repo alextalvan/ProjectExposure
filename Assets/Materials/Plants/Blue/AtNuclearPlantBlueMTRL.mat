@@ -24,20 +24,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Noise
-        second:
-          m_Texture: {fileID: 2800000, guid: 96814739708b5db47984a91c2fc57143, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Normal_Map
-        second:
-          m_Texture: {fileID: 2800000, guid: c3bf2c4bf4e2ddb4f80697dfa9ea7d08, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Metallic_map
         second:
           m_Texture: {fileID: 0}
@@ -52,9 +38,23 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Normal_Map
+        second:
+          m_Texture: {fileID: 2800000, guid: c3bf2c4bf4e2ddb4f80697dfa9ea7d08, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Emission_map
         second:
           m_Texture: {fileID: 2800000, guid: ceadc7533c806c64cbf38bcc62aafc58, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Noise
+        second:
+          m_Texture: {fileID: 2800000, guid: 96814739708b5db47984a91c2fc57143, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -71,27 +71,23 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Glossiness
-        second: 0.5
+          name: _Visibility
+        second: 1
       data:
         first:
           name: _Metallic
         second: 1
       data:
         first:
-          name: _Spec_power
-        second: 1
-      data:
-        first:
-          name: _Visibility
-        second: 1
-      data:
-        first:
-          name: _Edge_width
-        second: 52.45775
+          name: _Glossiness
+        second: 0.503
       data:
         first:
           name: _Normal_Map_Intensity
+        second: 0
+      data:
+        first:
+          name: _Emssion_power
         second: 0
       data:
         first:
@@ -99,12 +95,12 @@ Material:
         second: 0
       data:
         first:
-          name: _Edge_Glow_Power
-        second: 3
+          name: _Edge_width
+        second: 52.45775
       data:
         first:
-          name: _Emssion_power
-        second: 0
+          name: _Edge_Glow_Power
+        second: 3
       data:
         first:
           name: _Visibility_multiplier
@@ -123,6 +119,10 @@ Material:
         second: 0.8471476
       data:
         first:
+          name: _Spec_power
+        second: 1
+      data:
+        first:
           name: _Transparancy
         second: 1
       data:
@@ -136,7 +136,7 @@ Material:
       data:
         first:
           name: _Occlusion_power
-        second: 1
+        second: 0.875
       data:
         first:
           name: _F_rate

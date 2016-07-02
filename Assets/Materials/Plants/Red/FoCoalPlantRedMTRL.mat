@@ -38,6 +38,48 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Base_Color
+        second:
+          m_Texture: {fileID: 2800000, guid: 54c267552c6884d4494f996377069629, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Metallic_map
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Gloss_map
+        second:
+          m_Texture: {fileID: 2800000, guid: aa29625d6740919498c52673becc2dd8, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal_Map
+        second:
+          m_Texture: {fileID: 2800000, guid: 100741223a2f70b49bba9afdf152bf16, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Emission_map
+        second:
+          m_Texture: {fileID: 2800000, guid: 54c267552c6884d4494f996377069629, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Noise
+        second:
+          m_Texture: {fileID: 2800000, guid: 674d8251d2d0432418f0729c212e32e5, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -80,48 +122,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Base_Color
-        second:
-          m_Texture: {fileID: 2800000, guid: 54c267552c6884d4494f996377069629, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Noise
-        second:
-          m_Texture: {fileID: 2800000, guid: 674d8251d2d0432418f0729c212e32e5, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Normal_Map
-        second:
-          m_Texture: {fileID: 2800000, guid: 100741223a2f70b49bba9afdf152bf16, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Metallic_map
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Gloss_map
-        second:
-          m_Texture: {fileID: 2800000, guid: aa29625d6740919498c52673becc2dd8, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Emission_map
-        second:
-          m_Texture: {fileID: 2800000, guid: 54c267552c6884d4494f996377069629, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Ambient_occ
         second:
           m_Texture: {fileID: 2800000, guid: 54c267552c6884d4494f996377069629, type: 3}
@@ -142,16 +142,60 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Visibility
+        second: 1
+      data:
+        first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
+          name: _Glossiness
+        second: 0.502
+      data:
+        first:
+          name: _Normal_Map_Intensity
+        second: 1
+      data:
+        first:
+          name: _Emssion_power
+        second: 0
+      data:
+        first:
+          name: _Noise_Brightness
+        second: 0
+      data:
+        first:
+          name: _Edge_width
+        second: 50
+      data:
+        first:
+          name: _Edge_Glow_Power
+        second: 3
+      data:
+        first:
+          name: _Visibility_multiplier
+        second: 5.88
+      data:
+        first:
+          name: _Edge_Power
+        second: 5.1
+      data:
+        first:
+          name: _Visibility_floor
+        second: 0.5
+      data:
+        first:
+          name: _Visibility_power
+        second: 1
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
         first:
           name: _ZWrite
         second: 1
-      data:
-        first:
-          name: _Glossiness
-        second: 0.743
       data:
         first:
           name: _BumpScale
@@ -174,51 +218,7 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
-        second: 1
-      data:
-        first:
           name: _Spec_power
-        second: 1
-      data:
-        first:
-          name: _Visibility
-        second: 1
-      data:
-        first:
-          name: _Edge_width
-        second: 50
-      data:
-        first:
-          name: _Normal_Map_Intensity
-        second: 1
-      data:
-        first:
-          name: _Noise_Brightness
-        second: 0
-      data:
-        first:
-          name: _Edge_Glow_Power
-        second: 3
-      data:
-        first:
-          name: _Emssion_power
-        second: 0
-      data:
-        first:
-          name: _Visibility_multiplier
-        second: 5.88
-      data:
-        first:
-          name: _Edge_Power
-        second: 5.1
-      data:
-        first:
-          name: _Visibility_floor
-        second: 0.5
-      data:
-        first:
-          name: _Visibility_power
         second: 1
       data:
         first:
@@ -230,16 +230,12 @@ Material:
         second: 0.685
       data:
         first:
-          name: _node_8935
-        second: 0
-      data:
-        first:
           name: _outline
         second: 0.11
       data:
         first:
           name: _Occlusion_power
-        second: 1
+        second: 0.875
       data:
         first:
           name: _F_rate
@@ -252,6 +248,10 @@ Material:
         first:
           name: _F_power
         second: 0.6
+      data:
+        first:
+          name: _node_8935
+        second: 0
     m_Colors:
       data:
         first:

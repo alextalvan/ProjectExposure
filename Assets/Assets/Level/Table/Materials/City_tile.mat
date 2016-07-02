@@ -121,16 +121,20 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
+          name: _Glossiness
+        second: 0.08
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
         first:
           name: _ZWrite
         second: 1
-      data:
-        first:
-          name: _Glossiness
-        second: 0.08
       data:
         first:
           name: _BumpScale
@@ -153,10 +157,6 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
           name: _Emission_power
         second: 1
       data:
@@ -170,11 +170,11 @@ Material:
       data:
         first:
           name: _Emission_Intensity_player1
-        second: 1
+        second: 1.5
       data:
         first:
           name: _Emission_Intensity_player2
-        second: 1
+        second: 2
       data:
         first:
           name: _Spec_Power
@@ -251,7 +251,7 @@ Material:
       data:
         first:
           name: _Color1
-        second: {r: 0.9779412, g: 0, b: 0, a: 1}
+        second: {r: 1, g: 0, b: 0, a: 1}
       data:
         first:
           name: _Color2
