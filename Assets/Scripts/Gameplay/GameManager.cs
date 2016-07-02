@@ -2,9 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEngine.Networking;
-
-
 
 public enum INPUT_STATES
 {
@@ -255,8 +252,6 @@ public class GameManager : MonoBehaviour
     IEnumerator SpawnWave()
     {
         yield return new WaitForSeconds(waveCoolDown);
-
-		//Debug.Log("test");
 
 		foreach(PollutionZone pol in redPollutionSpots)
 			pol.HandleNewWave();

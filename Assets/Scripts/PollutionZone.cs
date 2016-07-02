@@ -5,9 +5,6 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Collider))]
 public class PollutionZone : MonoBehaviour 
 {
-
-	private List<UnitAI> units = new List<UnitAI>();
-
 	[SerializeField]
 	int currentDamage = 0;
 
@@ -42,8 +39,6 @@ public class PollutionZone : MonoBehaviour
 
 	public void HandleNewWave()
 	{
-		units.Clear();
-
 		currentTurnCount++;
 		if(currentTurnCount == turnsBeforeDamageUpgrade)
 		{
@@ -54,31 +49,28 @@ public class PollutionZone : MonoBehaviour
 			else
 				currentDamage -= damageGainPerUpgrade;
 
-			if(currentDamage < 0 )
+			if(currentDamage < 0)
 				currentDamage = 0;
 
 			if(currentDamage > maxDamage)
 				currentDamage = maxDamage;
-
-
+            
 			targetAlpha = (float)currentDamage / (float)maxDamage + ((currentDamage > 0) ? startPollutionVisibility : 0.0f);
 			if(targetAlpha > 0.85f)
 				targetAlpha = 0.85f;
-			
 		}
 	}
-
 
 	void OnTriggerEnter(Collider other)
 	{
 		UnitAI ai = other.GetComponent<UnitAI>();
 
-		if(ai && !units.Contains(ai))
+		if(ai)
 		{
-			units.Add(ai);
 			ai.DecreaseHealth(currentDamage);
 		}
 	}
+
 	void Update ()
 	{
 		currentAlpha = Mathf.Lerp (currentAlpha, targetAlpha, lerpSpeed);
