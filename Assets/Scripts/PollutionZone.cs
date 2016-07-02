@@ -76,6 +76,6 @@ public class PollutionZone : MonoBehaviour
         Color c = pollutionDecalRenderer.material.color;
         c.a = currentAlpha;
         pollutionDecalRenderer.material.color = c;
-        pollutionDecalRenderer.material.SetFloat("_Curruption_Clip", currentAlpha);
+        pollutionDecalRenderer.material.SetFloat("_Curruption_Clip", currentAlpha*2f);
     }
 }
