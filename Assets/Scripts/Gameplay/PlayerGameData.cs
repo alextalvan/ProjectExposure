@@ -23,8 +23,6 @@ public class PlayerGameData
     public bool AI = false;
     public bool ready = false;
 
-	public int buildingCount = 0;
-
     public void RefreshAllTilesHighlight()
 	{
 		foreach(HexagonTile t in tiles)

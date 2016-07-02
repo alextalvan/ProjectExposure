@@ -159,7 +159,7 @@ public class AIPlayer : GameManagerSearcher
         {
             if (!target)
                 SelectFreeTile(true);
-            else if (playerData.buildingCount > 0)
+            else if (playerData.buildings.Count > 0)
             {
                 target = null;
                 currentMod = AIMod.None;
