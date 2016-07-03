@@ -5,7 +5,7 @@ using System.Collections;
 public class ArrowScript : MonoBehaviour {
 
     [SerializeField]
-    float lerpSpeed = 0.01f;
+    float lerpSpeed = 1f;
 
     [SerializeField]
     GameObject hostCard;
@@ -23,8 +23,8 @@ public class ArrowScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (hostCard.transform.parent.position == hostCard.transform.position && targetCard.transform.parent.position == targetCard.transform.position)
-            img.color = new Color(1f, 1f, 1f, Mathf.Lerp(img.color.a, 1f, Time.time * lerpSpeed));
+            img.color = new Color(1f, 1f, 1f, Mathf.Lerp(img.color.a, 1f, lerpSpeed));
         else
-            img.color = new Color(1f, 1f, 1f, Mathf.Lerp(img.color.a, 0f, Time.time * lerpSpeed));
+            img.color = new Color(1f, 1f, 1f, Mathf.Lerp(img.color.a, 0f, lerpSpeed));
     }
 }
