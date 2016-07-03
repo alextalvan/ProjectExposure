@@ -629,7 +629,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DelayedExit()
     {
-        yield return new WaitForSeconds(30.0f);
+        yield return new WaitForSeconds(15.0f);
         Application.Quit();
     }
 
