@@ -6,6 +6,7 @@ public class Interacable_Button : MonoBehaviour {
 
 	public Select_PlayerType left;
 	public Select_PlayerType right;
+	[SerializeField] Image startGlow;
 
 
 	void Update () 
@@ -15,6 +16,7 @@ public class Interacable_Button : MonoBehaviour {
 		{
 			//allows the start button to be used
 			GetComponent<Button>().interactable = true;
+			startGlow.enabled = true;
 		}
 	}
 }

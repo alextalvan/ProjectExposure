@@ -113,7 +113,7 @@ Shader "Custom/CustomArrows"
             	uv.g *= _CoverUvRangeV - abs(_Time.r*_SpeedUpTime);
             	if (uv.g =1) uv.g=0;
 
-				fixed4 cover = tex2D (_CoverTex, uv.r);
+				fixed4 cover = tex2D (_CoverTex, uv.r+_CoverUvRangeV);
 			
 
 
