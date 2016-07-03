@@ -288,9 +288,7 @@ public class GameManager : MonoBehaviour
             Application.Quit();
 
         if (Input.GetKeyUp(KeyCode.Space))
-        {
             Application.LoadLevel(0);
-        }
 
         UpdateEndGameScores();
 

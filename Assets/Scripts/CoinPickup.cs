@@ -65,6 +65,7 @@ public class CoinPickup : GameManagerSearcher
     float destructionTimeAfterOpen = 1.0f;
 
     PlayerGameData enemyData;
+    Transform rndTarget = null;
 
 #if TOUCH_INPUT
 	public void PenetratingTouchEnd()
@@ -86,7 +87,7 @@ public class CoinPickup : GameManagerSearcher
         }
         else if(rng <= quakeProbability + fireBallProbability && (enemyData.units.Count > 0 || enemyData.buildings.Count > 1))
         {
-            StartCoroutine(FireBallAction());
+            FBAction();
             Destroy(this.gameObject, destructionTimeAfterOpen);
         }
         else
@@ -118,12 +119,9 @@ public class CoinPickup : GameManagerSearcher
             gameManager.player2MoneyBoostTime = boostDuration;
     }
 
-    IEnumerator FireBallAction()
+    void FBAction()
     {
-        yield return new WaitForSeconds(openTime);
         float rng = Random.value;
-        antiUnitFireBall.SetActive(true);
-        Transform rndTarget = null;
         if (rng <= antiUnitFbChance && enemyData.units.Count > 0)
         {
             rndTarget = enemyData.units[Random.Range(0, enemyData.units.Count)];
@@ -132,6 +130,16 @@ public class CoinPickup : GameManagerSearcher
         {
             rndTarget = enemyData.buildings[Random.Range(0, enemyData.buildings.Count)].transform.parent;
         }
+        if (!rndTarget)
+            CoinAction();
+        else
+            StartCoroutine(FireBallAction());
+    }
+
+    IEnumerator FireBallAction()
+    {
+        yield return new WaitForSeconds(openTime);
+        antiUnitFireBall.SetActive(true);
         antiUnitFireBall.GetComponent<FireBall>().target = rndTarget;
         antiUnitFireBall.transform.parent = null;
     }
