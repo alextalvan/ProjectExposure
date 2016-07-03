@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     public TouchInputManager GetTouchInputManager { get { return touchInputManager; } }
 
-    bool gameStarted = false;
+    public bool gameStarted = false;
 
     [SerializeField]
     AIPlayer AI1;
@@ -64,6 +64,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     Image _player2barImage;
+
+    [SerializeField]
+    CityScript city;
 
     //[SerializeField]
     //ScoreData topLaneScoreData = new ScoreData();
@@ -191,7 +194,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     List<PollutionZone> bluePollutionSpots;
 
-    bool battleStarted = false;
+    private bool battleStarted = false;
 
 
     //camera zoom variables
@@ -509,6 +512,7 @@ public class GameManager : MonoBehaviour
             score *= -1;
 
         gameScore += score;
+        city.SpawnNewBuilding();
 
         if (!zoomedOnce)
         {

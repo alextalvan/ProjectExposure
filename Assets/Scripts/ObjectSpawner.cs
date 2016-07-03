@@ -34,13 +34,16 @@ public class ObjectSpawner : GameManagerSearcher
 	// Update is called once per frame
 	void Update () 
 	{
-		timeAccumulator+= Time.deltaTime;
+        if (gameManager.gameStarted)
+        {
+            timeAccumulator += Time.deltaTime;
 
-		if(timeAccumulator >= spawnInterval)
-		{
-			timeAccumulator-= spawnInterval;
-			Spawn();
-		}
+            if (timeAccumulator >= spawnInterval)
+            {
+                timeAccumulator -= spawnInterval;
+                Spawn();
+            }
+        }
 	}
 
 	public void Spawn()

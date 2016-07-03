@@ -4,9 +4,6 @@ using System.Collections.Generic;
 
 public class CityScript : MonoBehaviour
 {
-
-    [SerializeField]
-    float buildingSpawnCoolDown = 1f;
     [SerializeField]
     float distBetweenBuldings = 1f;
     [SerializeField]
@@ -35,7 +32,6 @@ public class CityScript : MonoBehaviour
     private List<Vector3> grid = new List<Vector3>();
 
     private SphereCollider cityBound; //city size
-    private float spawnTimer;
     private int maxBuildingType;
     private float lastBuildingDist;
 
@@ -97,17 +93,15 @@ public class CityScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawnTimer > 0)
-            spawnTimer -= Time.deltaTime;
-        SpawnNewBuilding();
+
     }
 
     /// <summary>
     /// Spawns the new building.
     /// </summary>
-    void SpawnNewBuilding()
+    public void SpawnNewBuilding()
     {
-        if (grid.Count > 0 && spawnTimer <= 0)
+        if (grid.Count > 0)
         { //If there are free spots for buildings to spawn and no cooldown
             Vector3 pnt = grid[0]; //Get first point from the list
             float dist = Vector3.Distance(transform.localPosition + pnt, transform.localPosition); //Calculate distance from that point to center of city
@@ -129,7 +123,6 @@ public class CityScript : MonoBehaviour
                     grid[rndId] = pnt;
                 }
             }
-            spawnTimer = buildingSpawnCoolDown; //Reset spwan timer
             int rndUpd = Random.Range(0, rndUpgradeSkipRate); //Randomize if will be upgraded now or not
             if (rndUpd == 0)
                 UpgradeBuildings();

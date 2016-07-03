@@ -140,6 +140,12 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &5859421 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11409192, guid: c3bca82f6fc0c5d41af3f811531f3ed9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1051701198}
+  m_Script: {fileID: 11500000, guid: 445d86b48bf9c2647a02b5ab159f28ce, type: 3}
 --- !u!1001 &12329652
 Prefab:
   m_ObjectHideFlags: 0
@@ -10659,7 +10665,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11409192, guid: c3bca82f6fc0c5d41af3f811531f3ed9, type: 2}
       propertyPath: rndUpgradeSkipRate
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11409192, guid: c3bca82f6fc0c5d41af3f811531f3ed9, type: 2}
       propertyPath: upgradeRange
@@ -20772,6 +20778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveCoolDown: 3.5
   touchInputManager: {fileID: 1915953432}
+  gameStarted: 0
   AI1: {fileID: 1969614537}
   AI2: {fileID: 1969614536}
   gameTimer: 300
@@ -20782,6 +20789,7 @@ MonoBehaviour:
   _player1barImage: {fileID: 1404899489}
   _player2money: 5
   _player2barImage: {fileID: 714066064}
+  city: {fileID: 5859421}
   _player1MoneyBar: {fileID: 1404899488}
   _player2MoneyBar: {fileID: 714066063}
   player1MoneyBoostTime: -1

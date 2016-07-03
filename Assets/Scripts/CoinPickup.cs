@@ -84,7 +84,7 @@ public class CoinPickup : GameManagerSearcher
             QuakeAction();
             Destroy(this.gameObject, destructionTimeAfterOpen);
         }
-        else if(rng <= quakeProbability + fireBallProbability && (enemyData.units.Count > 0 || enemyData.buildings.Count > 0))
+        else if(rng <= quakeProbability + fireBallProbability && (enemyData.units.Count > 0 || enemyData.buildings.Count > 1))
         {
             StartCoroutine(FireBallAction());
             Destroy(this.gameObject, destructionTimeAfterOpen);
