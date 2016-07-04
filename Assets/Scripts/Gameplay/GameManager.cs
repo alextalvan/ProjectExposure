@@ -377,7 +377,7 @@ public class GameManager : MonoBehaviour
             {
                 crownPlayer2.SetActive(true);
                 targetEndScreenScorePlayer2 = 600 * Mathf.Abs(gameScore) / maxScore;
-                targetEndScreenScorePlayer1 = 600 - targetEndScreenScorePlayer2;
+                targetEndScreenScorePlayer1 = 600 - targetEndScreenScorePlayer1;
                 GetComponent<DBconnection>().SendScore(targetEndScreenScorePlayer1);
             }
 
@@ -531,19 +531,17 @@ public class GameManager : MonoBehaviour
                 targetEndScreenScorePlayer2 = 600;// * Mathf.Abs(gameScore) / maxScore;
                 targetEndScreenScorePlayer1 = 0;// - targetEndScreenScorePlayer2;
                 gameStarted = false;
-
                 GetComponent<DBconnection>().SendScore(0);
                 StartCoroutine(DelayedExit());
-
             }
-            else if (gameScore <= maxScore * -1)
+            else if (gameScore <= -maxScore)
             {
                 gameOverRoot.SetActive(true);
                 crownPlayer1.SetActive(true);
                 targetEndScreenScorePlayer1 = 600;// * Mathf.Abs(gameScore) / maxScore;
-                GetComponent<DBconnection>().SendScore(600);
                 targetEndScreenScorePlayer2 = 0;// - targetEndScreenScorePlayer1;
                 gameStarted = false;
+                GetComponent<DBconnection>().SendScore(600);
                 StartCoroutine(DelayedExit());
             }
         }
