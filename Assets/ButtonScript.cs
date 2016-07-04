@@ -28,9 +28,9 @@ public class ButtonScript : MonoBehaviour {
     public void SetPlayer()
     {
         if (player == PLAYERS.PLAYER1)
-            gameSettings.SetPlayer1AI = ai;
+            gameSettings.Player1AI = ai;
         else
-            gameSettings.SetPlayer2AI = ai;
+            gameSettings.Player2AI = ai;
     }
 
     public void ActivateGlow()

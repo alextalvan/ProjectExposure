@@ -21,8 +21,6 @@ public class TouchInputManager : MonoBehaviour
 	private static TouchInputManager _instance;
 	public static TouchInputManager Singleton { get { return _instance; } }
 
-
-
 	//used to keep track of the object each touch is locked to
 	//null value means the touch is not locked to any object
 	private Dictionary<int,GameObject> lockedObjects = new Dictionary<int, GameObject>();
@@ -45,7 +43,9 @@ public class TouchInputManager : MonoBehaviour
 	{
 		_instance = this;
 		appTimeOut = GetComponent<ApplicationTimeOut>();
-	}
+        if (GameObject.Find("GameSettings").GetComponent<GameSettings>().Player1AI && GameObject.Find("GameSettings").GetComponent<GameSettings>().Player2AI)
+            appTimeOut.enabled = false;
+    }
 
 
 	void HandleTouchInput()

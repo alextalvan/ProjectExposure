@@ -49,22 +49,22 @@ public class Select_PlayerType : MonoBehaviour {
         {
             if (currentState == MenuPlayerPickState.ai)
             {
-                gameSettings.SetPlayer1AI = true;
+                gameSettings.Player1AI = true;
             }
             else
             {
-                gameSettings.SetPlayer1AI = false;
+                gameSettings.Player1AI = false;
             }
         }
         else
         {
             if (currentState == MenuPlayerPickState.ai)
             {
-                gameSettings.SetPlayer2AI = true;
+                gameSettings.Player2AI = true;
             }
             else
             {
-                gameSettings.SetPlayer2AI = false;
+                gameSettings.Player2AI = false;
             }
         }
     }

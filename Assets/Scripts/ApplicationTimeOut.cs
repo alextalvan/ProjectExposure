@@ -11,7 +11,10 @@ public class ApplicationTimeOut : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		currentTimer += Time.deltaTime;
+        if (Input.GetMouseButtonDown(0))
+            Reset();
+
+        currentTimer += Time.deltaTime;
 		if(currentTimer >= timeOutDuration)
 			Application.Quit();
 	}

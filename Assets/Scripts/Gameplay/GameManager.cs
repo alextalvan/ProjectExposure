@@ -255,8 +255,8 @@ public class GameManager : MonoBehaviour
         ChangeScore(0, PLAYERS.PLAYER1, LANES.TOP);//force score refresh at start
         ChangeScore(0, PLAYERS.PLAYER1, LANES.BOT);
         zoomInProgress = false;
-        SetPlayer(0, gameSettings.SetPlayer1AI);
-        SetPlayer(1, gameSettings.SetPlayer2AI);
+        SetPlayer(0, gameSettings.Player1AI);
+        SetPlayer(1, gameSettings.Player2AI);
         Destroy(gameSettings.gameObject);
     }
 

@@ -6,8 +6,8 @@ public class GameSettings : MonoBehaviour {
     private bool player1IsAI = false;
     private bool player2IsAI = false;
 
-    public bool SetPlayer1AI { set { player1IsAI = value; } get { return player1IsAI; } }
-    public bool SetPlayer2AI { set { player2IsAI = value; } get { return player2IsAI; } }
+    public bool Player1AI { set { player1IsAI = value; } get { return player1IsAI; } }
+    public bool Player2AI { set { player2IsAI = value; } get { return player2IsAI; } }
 
     void Awake()
     {
